@@ -222,24 +222,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、创建github账号">一、创建github账号</h3><ol>
-<li><p>新建一个Repository,名字为xx.github.io</p>
-<pre><code>Repository 的地址就是 <span class="string">http:</span><span class="comment">//www.github.com/id/id.github.io.git</span>
-</code></pre></li>
-<li><p>配置ssh keys</p>
-<pre><code>打开github网站，然后找到ssh <span class="keyword">keys</span>的设置地方，具体网站上有教程。设置完测试一下
+        <h3 id="一、创建github账号">一、创建github账号</h3><h5 id="1-_新建一个Repository,名字为xx-github-io">1. 新建一个Repository,名字为xx.github.io</h5><pre><code>Repository 的地址就是 <span class="string">http:</span><span class="comment">//www.github.com/id/id.github.io.git</span>
+</code></pre><h4 id="2-_配置ssh_keys">2. 配置ssh keys</h4><pre><code>打开github网站，然后找到ssh <span class="keyword">keys</span>的设置地方，具体网站上有教程。设置完测试一下
 ssh -T git<span class="variable">@github</span>.com
-</code></pre></li>
-<li><p>安装hexo</p>
-<pre><code>npm <span class="keyword">install</span> -g hexo
-</code></pre><p> 新建一个文件夹来保存   </p>
-<pre><code>hexo init
-npm <span class="keyword">install</span>
-</code></pre><p> 安装好后，就可以开始了 </p>
-<pre><code>hexo generate  <span class="comment">//可以简写为 hexo g</span>
-hexo <span class="keyword">server</span>    <span class="comment">//可以简写为 hexo s</span>
-</code></pre><p> 在浏览器中输入 localhost:4000 查看本地博客    </p>
-</li>
+</code></pre><h5 id="3-_安装hexo">3. 安装hexo</h5><pre><code>    npm install -<span class="keyword">g</span> hexo
+
+新建一个文件夹来保存   
+
+    hexo init
+    npm install
+
+安装好后，就可以开始了 
+
+    hexo <span class="keyword">generate</span>  <span class="comment">//可以简写为 hexo g</span>
+    hexo server    <span class="comment">//可以简写为 hexo s</span>
+
+在浏览器中输入 localhost:4000 查看本地博客    
+</code></pre><ol>
 <li><p>部署到github上去</p>
 <pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span>
 </code></pre><p> 打开hexo文件夹的_config.yml ，文件拉到最后，设置deploy的type为git，repository<br>为：<a href="https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）" target="_blank" rel="external">https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）</a> </p>
