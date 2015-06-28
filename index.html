@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a>
+						<a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a>
 					</div>
 				</section>
 				
@@ -195,6 +195,122 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2015062801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/28/2015062801/" class="article-date">
+  	<time datetime="2015-06-28T01:57:35.000Z" itemprop="datePublished">2015-06-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/28/2015062801/">android 控件AutoCompleteTextView实战</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAutoCompleteTextView</span> <span class="keyword">extends</span> <span class="title">AutoCompleteTextView</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context)</span> </span>{
+        <span class="keyword">super</span>(context);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
+        <span class="keyword">super</span>(context, attrs);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>{
+        <span class="keyword">super</span>(context, attrs, defStyleAttr);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enoughToFilter</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">true</span>;
+    }
+}
+</code></pre><p>在layout里定义自定义的AutoCompleteTextView</p>
+<pre><code>&lt;com<span class="class">.dukelight</span><span class="class">.testandroidm</span><span class="class">.MyAutoCompleteTextView</span>
+    android:id=<span class="string">"@+id/autoCompleteTextView1"</span>
+    android:layout_width=<span class="string">"match_parent"</span>
+    android:layout_height=<span class="string">"wrap_content"</span>
+    android:completionThreshold=<span class="string">"1"</span>
+    android:dropDownHorizontalOffset=<span class="string">"10dp"</span>
+    android:text=<span class="string">""</span> &gt;
+
+    &lt;requestFocus /&gt;
+&lt;/com<span class="class">.dukelight</span><span class="class">.testandroidm</span><span class="class">.MyAutoCompleteTextView</span>&gt;
+</code></pre><p>最后就是Activity里的调用代码</p>
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">TestAutoCompleteActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Activity</span> {</span>
+
+
+    <span class="type">String</span>[] place = <span class="keyword">new</span> <span class="type">String</span>[]{<span class="string">"白云"</span>, <span class="string">"广州"</span>, <span class="string">"五山"</span>, <span class="string">"天河"</span>, <span class="string">"越秀"</span>, <span class="string">"二电厂"</span>, <span class="string">"大学城"</span>, <span class="string">"中山"</span>};
+    <span class="annotation">@InjectView</span>(<span class="type">R</span>.id.act_main)
+    <span class="type">MyAutoCompleteTextView</span> mActMain;
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+
+        setContentView(<span class="type">R</span>.layout.activity_test_complete);
+        <span class="type">ButterKnife</span>.inject(<span class="keyword">this</span>);
+
+        <span class="type">ArrayAdapter</span>&lt;<span class="type">String</span>&gt; arrayAdapter = <span class="keyword">new</span> <span class="type">ArrayAdapter</span>&lt;<span class="type">String</span>&gt;(<span class="keyword">this</span>,
+                android.<span class="type">R</span>.layout.simple_dropdown_item_1line, place);
+        mActMain.setAdapter(arrayAdapter);
+
+        mActMain.setOnTouchListener(<span class="keyword">new</span> <span class="type">View</span>.<span class="type">OnTouchListener</span>() {
+            <span class="annotation">@Override</span>
+            public boolean onTouch(<span class="type">View</span> v, <span class="type">MotionEvent</span> event) {
+                <span class="comment">// 手动向下弹出匹配的菜单        </span>
+                mActMain.showDropDown(); 
+                <span class="keyword">return</span> <span class="literal">false</span>;
+            }
+        });
+    }
+}
+</code></pre><p>最后的最后放上效果图片</p>
+<p><img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100" alt="空字符串显示全部"><br><img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062802.png?imageView/2/w/300/q/100" alt="匹配字符串显示">    </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-AutoCompleteTextView/">android AutoCompleteTextView</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
   

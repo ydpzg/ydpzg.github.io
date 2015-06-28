@@ -3,27 +3,32 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用hexo搭建博客平台，记录过程 | dekulight</title>
+  <title>android 控件AutoCompleteTextView实战 | dekulight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 在github上创建一个Repository,名字为xx.github.ioRepository 的地址就是 http://www.github.com/id/id.github.io.git
-2. 配置ssh keys打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下
-ssh -T git@github.com
-3. 安装hexonpm instal">
+  <meta name="description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表
+public class MyAutoCompleteTextView extends AutoCompleteTextView {
+
+    public MyAutoCompleteTextView(Context context) {
+        super(context">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用hexo搭建博客平台，记录过程">
-<meta property="og:url" content="http://ydpzg.github.io/2015/06/26/2015062601/index.html">
+<meta property="og:title" content="android 控件AutoCompleteTextView实战">
+<meta property="og:url" content="http://ydpzg.github.io/2015/06/28/2015062801/index.html">
 <meta property="og:site_name" content="dekulight">
-<meta property="og:description" content="1. 在github上创建一个Repository,名字为xx.github.ioRepository 的地址就是 http://www.github.com/id/id.github.io.git
-2. 配置ssh keys打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下
-ssh -T git@github.com
-3. 安装hexonpm instal">
-<meta property="og:updated_time" content="2015-06-26T12:11:37.000Z">
+<meta property="og:description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表
+public class MyAutoCompleteTextView extends AutoCompleteTextView {
+
+    public MyAutoCompleteTextView(Context context) {
+        super(context">
+<meta property="og:image" content="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100">
+<meta property="og:image" content="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062802.png?imageView/2/w/300/q/100">
+<meta property="og:updated_time" content="2015-06-28T02:38:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo搭建博客平台，记录过程">
-<meta name="twitter:description" content="1. 在github上创建一个Repository,名字为xx.github.ioRepository 的地址就是 http://www.github.com/id/id.github.io.git
-2. 配置ssh keys打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下
-ssh -T git@github.com
-3. 安装hexonpm instal">
+<meta name="twitter:title" content="android 控件AutoCompleteTextView实战">
+<meta name="twitter:description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表
+public class MyAutoCompleteTextView extends AutoCompleteTextView {
+
+    public MyAutoCompleteTextView(Context context) {
+        super(context">
   
     <link rel="alternative" href="/atom.xml" title="dekulight" type="application/atom+xml">
   
@@ -204,11 +209,11 @@ ssh -T git@github.com
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2015062801" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/06/26/2015062601/" class="article-date">
-  	<time datetime="2015-06-26T07:01:04.000Z" itemprop="datePublished">2015-06-26</time>
+      <a href="/2015/06/28/2015062801/" class="article-date">
+  	<time datetime="2015-06-28T01:57:35.000Z" itemprop="datePublished">2015-06-28</time>
 </a>
     </div>
   
@@ -221,7 +226,7 @@ ssh -T git@github.com
         
   
     <h1 class="article-title" itemprop="name">
-      使用hexo搭建博客平台，记录过程
+      android 控件AutoCompleteTextView实战
     </h1>
   
 
@@ -230,7 +235,7 @@ ssh -T git@github.com
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github-自搭建/">hexo github 自搭建</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-AutoCompleteTextView/">android AutoCompleteTextView</a></li></ul>
 	</div>
 
         
@@ -241,31 +246,68 @@ ssh -T git@github.com
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1-_在github上创建一个Repository,名字为xx-github-io">1. 在github上创建一个Repository,名字为xx.github.io</h4><pre><code>Repository 的地址就是 <span class="string">http:</span><span class="comment">//www.github.com/id/id.github.io.git</span>
-</code></pre><h4 id="2-_配置ssh_keys">2. 配置ssh keys</h4><p>打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下</p>
-<pre><code><span class="title">ssh</span> -T git<span class="variable">@github</span>.com
-</code></pre><h4 id="3-_安装hexo">3. 安装hexo</h4><pre><code>npm <span class="keyword">install</span> -g hexo
-</code></pre><p>新建一个文件夹来保存   </p>
-<pre><code>hexo init
-npm <span class="keyword">install</span>
-</code></pre><p>安装好后，就可以开始了 </p>
-<pre><code>hexo generate  <span class="comment">//可以简写为 hexo g</span>
-hexo <span class="keyword">server</span>    <span class="comment">//可以简写为 hexo s</span>
-</code></pre><p>在浏览器中输入 localhost:4000 查看本地博客    </p>
-<h4 id="4-_部署到github上去">4. 部署到github上去</h4><pre><code>npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span>
-</code></pre><p>打开hexo文件夹的_config.yml ，文件拉到最后，设置deploy的type为git，repository为：<a href="https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）" target="_blank" rel="external">https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）</a> </p>
-<pre><code>hexo <span class="keyword">g</span>
-hexo geploy    <span class="comment">//可简写为 hexo d</span>
-</code></pre><h4 id="5-_开始用hexo写文章">5. 开始用hexo写文章</h4><p>hexo博客目录里的source/_posts就是放文章的（使用markdown语法编写）,格式是xx.md</p>
-<pre><code>hexo <span class="built_in">new</span> <span class="built_in">post</span> <span class="string">"first article"</span>    
-</code></pre><p>会创建一个叫first article.md的文件（使用markdown语法），使用macdown打开找个文件，然后就可以开始写文章，写完后打命令</p>
-<pre><code>hexo <span class="keyword">g</span>
-hexo <span class="literal">s</span>
-hexo <span class="literal">d</span>
-</code></pre><h4 id="6-_关于文章中的图片问题">6. 关于文章中的图片问题</h4><pre><code>使用七牛云存储来保存图片，并换取图片外链. (<span class="string">http:</span><span class="comment">//www.qiniu.com)</span>
-</code></pre><blockquote>
-<p>ps: 使用hexo的第三方theme，看起来不错的主题 hexo-theme-yilia，部署后就么么哒~~<br><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia</a>    </p>
-</blockquote>
+        <p>首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAutoCompleteTextView</span> <span class="keyword">extends</span> <span class="title">AutoCompleteTextView</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context)</span> </span>{
+        <span class="keyword">super</span>(context);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
+        <span class="keyword">super</span>(context, attrs);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>{
+        <span class="keyword">super</span>(context, attrs, defStyleAttr);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enoughToFilter</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">true</span>;
+    }
+}
+</code></pre><p>在layout里定义自定义的AutoCompleteTextView</p>
+<pre><code>&lt;com<span class="class">.dukelight</span><span class="class">.testandroidm</span><span class="class">.MyAutoCompleteTextView</span>
+    android:id=<span class="string">"@+id/autoCompleteTextView1"</span>
+    android:layout_width=<span class="string">"match_parent"</span>
+    android:layout_height=<span class="string">"wrap_content"</span>
+    android:completionThreshold=<span class="string">"1"</span>
+    android:dropDownHorizontalOffset=<span class="string">"10dp"</span>
+    android:text=<span class="string">""</span> &gt;
+
+    &lt;requestFocus /&gt;
+&lt;/com<span class="class">.dukelight</span><span class="class">.testandroidm</span><span class="class">.MyAutoCompleteTextView</span>&gt;
+</code></pre><p>最后就是Activity里的调用代码</p>
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">TestAutoCompleteActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Activity</span> {</span>
+
+
+    <span class="type">String</span>[] place = <span class="keyword">new</span> <span class="type">String</span>[]{<span class="string">"白云"</span>, <span class="string">"广州"</span>, <span class="string">"五山"</span>, <span class="string">"天河"</span>, <span class="string">"越秀"</span>, <span class="string">"二电厂"</span>, <span class="string">"大学城"</span>, <span class="string">"中山"</span>};
+    <span class="annotation">@InjectView</span>(<span class="type">R</span>.id.act_main)
+    <span class="type">MyAutoCompleteTextView</span> mActMain;
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+
+        setContentView(<span class="type">R</span>.layout.activity_test_complete);
+        <span class="type">ButterKnife</span>.inject(<span class="keyword">this</span>);
+
+        <span class="type">ArrayAdapter</span>&lt;<span class="type">String</span>&gt; arrayAdapter = <span class="keyword">new</span> <span class="type">ArrayAdapter</span>&lt;<span class="type">String</span>&gt;(<span class="keyword">this</span>,
+                android.<span class="type">R</span>.layout.simple_dropdown_item_1line, place);
+        mActMain.setAdapter(arrayAdapter);
+
+        mActMain.setOnTouchListener(<span class="keyword">new</span> <span class="type">View</span>.<span class="type">OnTouchListener</span>() {
+            <span class="annotation">@Override</span>
+            public boolean onTouch(<span class="type">View</span> v, <span class="type">MotionEvent</span> event) {
+                <span class="comment">// 手动向下弹出匹配的菜单        </span>
+                mActMain.showDropDown(); 
+                <span class="keyword">return</span> <span class="literal">false</span>;
+            }
+        });
+    }
+}
+</code></pre><p>最后的最后放上效果图片</p>
+<p><img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100" alt="空字符串显示全部"><br><img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062802.png?imageView/2/w/300/q/100" alt="匹配字符串显示">    </p>
 
       
     </div>
@@ -275,15 +317,11 @@ hexo <span class="literal">d</span>
     
 <nav id="article-nav">
   
-    <a href="/2015/06/28/2015062801/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          android 控件AutoCompleteTextView实战
-        
-      </div>
-    </a>
   
+    <a href="/2015/06/26/2015062601/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用hexo搭建博客平台，记录过程</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -310,7 +348,7 @@ hexo <span class="literal">d</span>
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015062601" data-title="使用hexo搭建博客平台，记录过程" data-url="http://ydpzg.github.io/2015/06/26/2015062601/"></div>
+	<div class="ds-thread" data-thread-key="2015062801" data-title="android 控件AutoCompleteTextView实战" data-url="http://ydpzg.github.io/2015/06/28/2015062801/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
