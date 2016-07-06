@@ -10,7 +10,7 @@
 1、新建工程（高德地图demo），对一般的方法进行hook。1)  集成XposedBridgeApi-54.jar ，按照版本去下载集成，如果是as的话，scope为Provided2）在AndroidManifest.xml文件中添加如下配置：
 &amp;lt;!-- xposed支持 --&amp;gt;
         &amp;lt;meta-data
-            android:name=">
+            android:name">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】基于xposed的入门和安全漏洞的实战">
 <meta property="og:url" content="http://ydpzg.github.io/2016/07/06/2016070601/index.html">
@@ -20,8 +20,8 @@
 1、新建工程（高德地图demo），对一般的方法进行hook。1)  集成XposedBridgeApi-54.jar ，按照版本去下载集成，如果是as的话，scope为Provided2）在AndroidManifest.xml文件中添加如下配置：
 &amp;lt;!-- xposed支持 --&amp;gt;
         &amp;lt;meta-data
-            android:name=">
-<meta property="og:updated_time" content="2016-07-06T03:01:39.000Z">
+            android:name">
+<meta property="og:updated_time" content="2016-07-06T03:02:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】基于xposed的入门和安全漏洞的实战">
 <meta name="twitter:description" content="入门
@@ -29,14 +29,14 @@
 1、新建工程（高德地图demo），对一般的方法进行hook。1)  集成XposedBridgeApi-54.jar ，按照版本去下载集成，如果是as的话，scope为Provided2）在AndroidManifest.xml文件中添加如下配置：
 &amp;lt;!-- xposed支持 --&amp;gt;
         &amp;lt;meta-data
-            android:name=">
+            android:name">
   
     <link rel="alternative" href="/atom.xml" title="dekulight" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div id="container">
@@ -119,9 +119,9 @@
 					        
 								<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
 					        
-								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
 					        
-								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
 					        
 						</div>
 					</nav>
@@ -130,7 +130,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
+						<a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
 					</div>
 				</section>
 				
@@ -191,9 +191,9 @@
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
 			        
-						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
 			        
-						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
 			        
 				</div>
 			</nav>
@@ -241,60 +241,60 @@
 <p>入门</p>
 </blockquote>
 <p>1、新建工程（高德地图demo），对一般的方法进行hook。<br>1)  集成XposedBridgeApi-54.jar ，按照版本去下载集成，如果是as的话，scope为Provided<br>2）在AndroidManifest.xml文件中添加如下配置：</p>
-<pre><code><span class="comment">&lt;!-- xposed支持 --&gt;</span>
-        <span class="tag">&lt;<span class="title">meta-data</span>
-            <span class="attribute">android:name</span>=<span class="value">"xposedmodule"</span>
-            <span class="attribute">anafterHookedMethoddroid:value</span>=<span class="value">"true"</span> /&gt;</span>
-        <span class="tag">&lt;<span class="title">meta-data</span>
-            <span class="attribute">android:name</span>=<span class="value">"xposedminversion"</span>
-            <span class="attribute">android:value</span>=<span class="value">"54"</span> /&gt;</span>
-        <span class="tag">&lt;<span class="title">meta-data</span>
-            <span class="attribute">android:name</span>=<span class="value">"xposeddescription"</span>
-            <span class="attribute">android:value</span>=<span class="value">"xposeddemo"</span> /&gt;</span>
+<pre><code>&lt;!-- xposed支持 --&gt;
+        &lt;meta-data
+            android:name=&quot;xposedmodule&quot;
+            anafterHookedMethoddroid:value=&quot;true&quot; /&gt;
+        &lt;meta-data
+            android:name=&quot;xposedminversion&quot;
+            android:value=&quot;54&quot; /&gt;
+        &lt;meta-data
+            android:name=&quot;xposeddescription&quot;
+            android:value=&quot;xposeddemo&quot; /&gt;
 </code></pre><p>3) 在assets文件夹下定义访问入口xposed_init文件，内容书写为核心hook类的存放路径。<br>4）写一个类继承IXposedHookLoadPackage，在handleLoadPackage里写相关处理代码</p>
-<pre><code><span class="comment">// 只处理目标app</span>
-<span class="keyword">if</span> (<span class="subst">!</span>loadPackageParam<span class="built_in">.</span>packageName<span class="built_in">.</span><span class="keyword">equals</span>(<span class="string">"com.hgsoft.wk.main"</span>)) {
-           <span class="keyword">return</span>;
+<pre><code>// 只处理目标app
+if (!loadPackageParam.packageName.equals(&quot;com.hgsoft.wk.main&quot;)) {
+           return;
  }
 </code></pre><p>4）安装后，在Xposed Installer中激活该模块并重启手机<br>5）打开目标app，在Xposed Installer里的日志模块可以看到log<br>2、注意的点<br>1）hook方法：findAndHookMethod</p>
-<pre><code><span class="keyword">public</span> <span class="keyword">static</span> Unhook findAndHookMethod(<span class="keyword">String</span> className, ClassLoader classLoader, <span class="keyword">String</span> methodName, <span class="keyword">Object</span>... parameterTypesAndCallback) {
-        <span class="keyword">return</span> findAndHookMethod(findClass(className, classLoader), methodName, parameterTypesAndCallback);
+<pre><code>public static Unhook findAndHookMethod(String className, ClassLoader classLoader, String methodName, Object... parameterTypesAndCallback) {
+        return findAndHookMethod(findClass(className, classLoader), methodName, parameterTypesAndCallback);
 }
 </code></pre><p>第一个参数是类名称，第二个参数是ClassLoader，一般里面参数有提供，直接引用，如果是class里面的class，要用$，第三个参数是要hook的方法名，第四个是可以多个参数，放hook的方法的参数列表，最后的参数是hook的回调。<br>比如：</p>
-<pre><code>XposedHelpers.findAndHookMethod(<span class="string">"org.json.JSONObject"</span>, loadPackageParam.classLoader, <span class="string">"put"</span>,
-                <span class="built_in">String</span>.<span class="keyword">class</span>, <span class="built_in">boolean</span>.<span class="keyword">class</span>, <span class="keyword">new</span> XC_MethodHook());
+<pre><code>XposedHelpers.findAndHookMethod(&quot;org.json.JSONObject&quot;, loadPackageParam.classLoader, &quot;put&quot;,
+                String.class, boolean.class, new XC_MethodHook());
 </code></pre><p>2）hook构造方法：findAndHookConstructor</p>
-<pre><code><span class="keyword">public</span> <span class="keyword">static</span> Unhook findAndHookConstructor(<span class="keyword">String</span> className, ClassLoader classLoader, <span class="keyword">Object</span>... parameterTypesAndCallback) {
-        <span class="keyword">return</span> findAndHookConstructor(findClass(className, classLoader), parameterTypesAndCallback);
+<pre><code>public static Unhook findAndHookConstructor(String className, ClassLoader classLoader, Object... parameterTypesAndCallback) {
+        return findAndHookConstructor(findClass(className, classLoader), parameterTypesAndCallback);
 }
 </code></pre><p>关于构造方法这个没有用出效果来，比较郁闷，以后尝试出来再补充。。。。。。<br>3）关于回调XC_MethodHook</p>
-<pre><code><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>{}；
-<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">afterHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>{}；
+<pre><code>protected void beforeHookedMethod(MethodHookParam param) throws Throwable {}；
+protected void afterHookedMethod(MethodHookParam param) throws Throwable {}；
 </code></pre><p>MethodHookParam的用法上，args方法的参数列表，thisObject提供方法的类，getResult方法的返回值，可以通过setResult设置方法的返回值。</p>
 <blockquote>
 <p>实战</p>
 </blockquote>
 <p>1、反编译周报日报，然后对定位这块进行hook。<br>找到 class BdLocation extends CordovaPlugin，分析里面所有的方法，尝试对他们进行hook.</p>
-<pre><code><span class="class"><span class="keyword">class</span> <span class="title">MyBDLocationListener</span> <span class="keyword">implements</span> <span class="title">BDLocationListener</span> </span>{
+<pre><code>class MyBDLocationListener implements BDLocationListener {
         MyBDLocationListener() {
         }
-        <span class="keyword">public</span> <span class="keyword">void</span> onReceiveLocation(BDLocation bdLocation) 
+        public void onReceiveLocation(BDLocation bdLocation) 
 </code></pre><p>找到上面代码块后，准备hook onReceiveLocation，写个程序hook上去后发现posed框架没有报错，但就是什么都没有反应。查了一下官方说明，xposed只能hook普通方法或者构造方法，不能hook接口和抽象类。只能作罢，找其他的方法hook。</p>
 <p>在尝试hook 类BdLocation里的其他方法后，发现都没有反应，故猜想是因为继承了CordovaPlugin的原因，具体没有深究，等以后有机会再研究是不是因为CordovaPlugin的原因，并且怎么去hook cordova的东西。</p>
 <p>最后进行了一次尝试，看到app里面用到org.json.JSONObject的put，那么就开始hook put吧</p>
-<pre><code>XposedHelpers.findAndHookMethod(<span class="string">"org.json.JSONObject"</span>, loadPackageParam.classLoader, <span class="string">"put"</span>, String.class, <span class="keyword">boolean</span>.class, <span class="keyword">new</span> XC_MethodHook() {
-                    <span class="annotation">@Override</span>
-                    <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>{
-                        <span class="keyword">super</span>.beforeHookedMethod(param);
-                        XposedBridge.log(<span class="string">"hello-&gt;weekreport:before put="</span> + param.args[<span class="number">0</span>] + <span class="string">","</span> + param.args[<span class="number">1</span>]);
-                        <span class="keyword">if</span> (param.args[<span class="number">0</span>].equals(<span class="string">"inScope"</span>)) {
-                            param.args[<span class="number">1</span>] = <span class="keyword">false</span>;
+<pre><code>XposedHelpers.findAndHookMethod(&quot;org.json.JSONObject&quot;, loadPackageParam.classLoader, &quot;put&quot;, String.class, boolean.class, new XC_MethodHook() {
+                    @Override
+                    protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                        super.beforeHookedMethod(param);
+                        XposedBridge.log(&quot;hello-&gt;weekreport:before put=&quot; + param.args[0] + &quot;,&quot; + param.args[1]);
+                        if (param.args[0].equals(&quot;inScope&quot;)) {
+                            param.args[1] = false;
                         }
                     }
-                    <span class="annotation">@Override</span>
-                    <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">afterHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>{
-                        <span class="keyword">super</span>.afterHookedMethod(param);
-                        XposedBridge.log(<span class="string">"hello-&gt;weekreport:after put="</span> + param.args[<span class="number">0</span>] + <span class="string">","</span> + param.args[<span class="number">1</span>]);
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        super.afterHookedMethod(param);
+                        XposedBridge.log(&quot;hello-&gt;weekreport:after put=&quot; + param.args[0] + &quot;,&quot; + param.args[1]);
                     }
                 });
 </code></pre><p>可以看到，把值inScope改成了false，运行，终于跑进去方法里面，激动啊。改完后app的定位就一直失效。</p>
@@ -310,6 +310,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/07/06/2016070602/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          【学习笔记】android安全机制相关
+        
+      </div>
+    </a>
   
   
     <a href="/2016/07/04/2016070401/" id="article-nav-older" class="article-nav-link-wrap">
@@ -386,7 +395,7 @@
 
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -402,8 +411,8 @@
 		open_in_new: false
 	}
 </script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 

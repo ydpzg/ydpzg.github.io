@@ -29,13 +29,14 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
 
     public MyAutoCompleteTextView(Context context) {
         super(context">
+<meta name="twitter:image" content="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100">
   
     <link rel="alternative" href="/atom.xml" title="dekulight" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div id="container">
@@ -118,9 +119,9 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
 					        
 								<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
 					        
-								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
 					        
-								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
 					        
 						</div>
 					</nav>
@@ -129,7 +130,7 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
+						<a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
 					</div>
 				</section>
 				
@@ -190,9 +191,9 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
 			        
-						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
 			        
-						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
 			        
 				</div>
 			</nav>
@@ -237,61 +238,61 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
     <div class="article-entry" itemprop="articleBody">
       
         <p>首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表</p>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAutoCompleteTextView</span> <span class="keyword">extends</span> <span class="title">AutoCompleteTextView</span> </span>{
+<pre><code>public class MyAutoCompleteTextView extends AutoCompleteTextView {
 
-    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context)</span> </span>{
-        <span class="keyword">super</span>(context);
+    public MyAutoCompleteTextView(Context context) {
+        super(context);
     }
 
-    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
-        <span class="keyword">super</span>(context, attrs);
+    public MyAutoCompleteTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
-    <span class="function"><span class="keyword">public</span> <span class="title">MyAutoCompleteTextView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>{
-        <span class="keyword">super</span>(context, attrs, defStyleAttr);
+    public MyAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enoughToFilter</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> <span class="keyword">true</span>;
+    @Override
+    public boolean enoughToFilter() {
+        return true;
     }
 }
 </code></pre><p>在layout里定义自定义的AutoCompleteTextView</p>
-<pre><code>&lt;com<span class="class">.dukelight</span><span class="class">.testandroidm</span><span class="class">.MyAutoCompleteTextView</span>
-    android:id=<span class="string">"@+id/act_main"</span>
-    android:layout_width=<span class="string">"match_parent"</span>
-    android:layout_height=<span class="string">"wrap_content"</span>
-    android:completionThreshold=<span class="string">"1"</span>
-    android:dropDownHorizontalOffset=<span class="string">"10dp"</span>
-    android:text=<span class="string">""</span> &gt;
+<pre><code>&lt;com.dukelight.testandroidm.MyAutoCompleteTextView
+    android:id=&quot;@+id/act_main&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:completionThreshold=&quot;1&quot;
+    android:dropDownHorizontalOffset=&quot;10dp&quot;
+    android:text=&quot;&quot; &gt;
 
     &lt;requestFocus /&gt;
-&lt;/com<span class="class">.dukelight</span><span class="class">.testandroidm</span><span class="class">.MyAutoCompleteTextView</span>&gt;
+&lt;/com.dukelight.testandroidm.MyAutoCompleteTextView&gt;
 </code></pre><p>最后就是Activity里的调用代码</p>
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">TestAutoCompleteActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Activity</span> {</span>
+<pre><code>public class TestAutoCompleteActivity extends Activity {
 
 
-    <span class="type">String</span>[] place = <span class="keyword">new</span> <span class="type">String</span>[]{<span class="string">"白云"</span>, <span class="string">"广州"</span>, <span class="string">"五山"</span>, <span class="string">"天河"</span>, <span class="string">"越秀"</span>, <span class="string">"二电厂"</span>, <span class="string">"大学城"</span>, <span class="string">"中山"</span>};
-    <span class="annotation">@InjectView</span>(<span class="type">R</span>.id.act_main)
-    <span class="type">MyAutoCompleteTextView</span> mActMain;
+    String[] place = new String[]{&quot;白云&quot;, &quot;广州&quot;, &quot;五山&quot;, &quot;天河&quot;, &quot;越秀&quot;, &quot;二电厂&quot;, &quot;大学城&quot;, &quot;中山&quot;};
+    @InjectView(R.id.act_main)
+    MyAutoCompleteTextView mActMain;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
-        <span class="keyword">super</span>.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        setContentView(<span class="type">R</span>.layout.activity_test_complete);
-        <span class="type">ButterKnife</span>.inject(<span class="keyword">this</span>);
+        setContentView(R.layout.activity_test_complete);
+        ButterKnife.inject(this);
 
-        <span class="type">ArrayAdapter</span>&lt;<span class="type">String</span>&gt; arrayAdapter = <span class="keyword">new</span> <span class="type">ArrayAdapter</span>&lt;<span class="type">String</span>&gt;(<span class="keyword">this</span>,
-                android.<span class="type">R</span>.layout.simple_dropdown_item_1line, place);
+        ArrayAdapter&lt;String&gt; arrayAdapter = new ArrayAdapter&lt;String&gt;(this,
+                android.R.layout.simple_dropdown_item_1line, place);
         mActMain.setAdapter(arrayAdapter);
 
-        mActMain.setOnTouchListener(<span class="keyword">new</span> <span class="type">View</span>.<span class="type">OnTouchListener</span>() {
-            <span class="annotation">@Override</span>
-            public boolean onTouch(<span class="type">View</span> v, <span class="type">MotionEvent</span> event) {
-                <span class="comment">// 手动向下弹出匹配的菜单        </span>
+        mActMain.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // 手动向下弹出匹配的菜单        
                 mActMain.showDropDown(); 
-                <span class="keyword">return</span> <span class="literal">false</span>;
+                return false;
             }
         });
     }
@@ -392,7 +393,7 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
 
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -408,8 +409,8 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
 		open_in_new: false
 	}
 </script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 
