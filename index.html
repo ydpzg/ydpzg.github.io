@@ -214,13 +214,18 @@
 </blockquote>
 <p>实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。<br>Diffie-Hellman密钥交换协议<br>甲 ：A，                                        乙：B<br>甲 ：（A，keyX）  -> MsgA                 乙：（B，keyY） -> MsgB<br>甲 ：（keyX，MsgB）        =                乙：（keyY，MsgA）<br>最后的变换结果都是一样的，结果作为sessionKey </p>
 <blockquote>
-<p>android安全机制之消息摘要<br>一、HASH与散列函数的定义和特点<br>MD5（128bit），SHA1（160bit）易变性和不可逆<br>二、消息摘要和数字指纹<br>三、HASH的应用场景：防篡改<br>1.文件下载时的MD5<br>2.消息传送时尾部额外传MD<br>四、HASH的应用场景：防损坏<br>1.CRC校验<br>2.MD校验恶劣环境<br>3.应用程序读写鲁棒性保护<br>五、Hash的应用场景：认证和鉴别<br>1、不可逆<br>2、可认证对端<br>六、保证不密文放在客户端。<br>HMAC<br>HMAC就是使用Key对原始消息交换后再进行HASH。先随机数+key，再hash </p>
-<p>android安全机制之电子签名<br>签名解决的问题<br>公钥密码术的两面性<br>HASH+公钥密码术：电子签名<br>1、完整性保护<br>2、签名人不可否认<br>DprivateKey（EpublicKey（P））P 保密场景<br>DpublicKey（EprivateKey（P））P 电子签名场景 </p>
+<p>android安全机制之消息摘要 </p>
 </blockquote>
+<p>一、HASH与散列函数的定义和特点<br>MD5（128bit），SHA1（160bit）易变性和不可逆<br>二、消息摘要和数字指纹<br>三、HASH的应用场景：防篡改<br>1.文件下载时的MD5<br>2.消息传送时尾部额外传MD<br>四、HASH的应用场景：防损坏<br>1.CRC校验<br>2.MD校验恶劣环境<br>3.应用程序读写鲁棒性保护<br>五、Hash的应用场景：认证和鉴别<br>1、不可逆<br>2、可认证对端<br>六、保证不密文放在客户端。<br>HMAC<br>HMAC就是使用Key对原始消息交换后再进行HASH。先随机数+key，再hash </p>
+<blockquote>
+<p>android安全机制之电子签名 </p>
+</blockquote>
+<p>签名解决的问题<br>公钥密码术的两面性<br>HASH+公钥密码术：电子签名<br>1、完整性保护<br>2、签名人不可否认<br>DprivateKey（EpublicKey（P））P 保密场景<br>DpublicKey（EprivateKey（P））P 电子签名场景 </p>
 <p>直接对原始消息进行私钥签名太慢，应该先HASH后在私钥签名，原因是HASH后就是这个很短的字符串了。 </p>
 <blockquote>
-<p>android安全机制之证书与PKI<br>公钥的存储与交换<br>证书的作用<br>证书链和PKI </p>
+<p>android安全机制之证书与PKI </p>
 </blockquote>
+<p>公钥的存储与交换<br>证书的作用<br>证书链和PKI </p>
 <p>数字证书就是一个文件，包含公钥，电子签名<br>证书的信任链，根证书自签名，非根证书父 签名<br>传个证书下来到client，由client去验证父级到根证书，如果信任了，就通过<br>ski 公钥系统 </p>
 
       
