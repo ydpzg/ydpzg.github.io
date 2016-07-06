@@ -225,12 +225,46 @@
         <blockquote>
 <p>入门</p>
 </blockquote>
-<p>1、新建工程（高德地图demo），对一般的方法进行hook。<br>1)  集成XposedBridgeApi-54.jar ，按照版本去下载集成，如果是as的话，scope为Provided<br>2）在AndroidManifest.xml文件中添加如下配置：<br>    <!-- xposed支持 --><br>            <meta-data android:name="xposedmodule" anafterhookedmethoddroid:value="true"><br>            <meta-data android:name="xposedminversion" android:value="54"><br>            <meta-data android:name="xposeddescription" android:value="xposeddemo"><br>3) 在assets文件夹下定义访问入口xposed_init文件，内容书写为核心hook类的存放路径。<br>4）写一个类继承IXposedHookLoadPackage，在handleLoadPackage里写相关处理代码<br>     // 只处理目标app<br>     if (!loadPackageParam.packageName.equals(“com.hgsoft.wk.main”)) {<br>                return;<br>      }<br>4）安装后，在Xposed Installer中激活该模块并重启手机<br>5）打开目标app，在Xposed Installer里的日志模块可以看到log<br>2、注意的点<br>1）hook方法：findAndHookMethod<br>    public static Unhook findAndHookMethod(String className, ClassLoader classLoader, String methodName, Object… parameterTypesAndCallback) {<br>            return findAndHookMethod(findClass(className, classLoader), methodName, parameterTypesAndCallback);<br>    }<br>第一个参数是类名称，第二个参数是ClassLoader，一般里面参数有提供，直接引用，如果是class里面的class，要用$，第三个参数是要hook的方法名，第四个是可以多个参数，放hook的方法的参数列表，最后的参数是hook的回调。<br>比如：<br>    XposedHelpers.findAndHookMethod(“org.json.JSONObject”, loadPackageParam.classLoader, “put”,<br>                    String.class, boolean.class, new XC_MethodHook());</meta-data></meta-data></meta-data></p>
-<p>2）hook构造方法：findAndHookConstructor<br>    public static Unhook findAndHookConstructor(String className, ClassLoader classLoader, Object… parameterTypesAndCallback) {<br>            return findAndHookConstructor(findClass(className, classLoader), parameterTypesAndCallback);<br>    }<br>关于构造方法这个没有用出效果来，比较郁闷，以后尝试出来再补充。。。。。。<br>3）关于回调XC_MethodHook<br>    protected void beforeHookedMethod(MethodHookParam param) throws Throwable {}；<br>    protected void afterHookedMethod(MethodHookParam param) throws Throwable {}；<br>MethodHookParam的用法上，args方法的参数列表，thisObject提供方法的类，getResult方法的返回值，可以通过setResult设置方法的返回值。</p>
+<p>1、新建工程（高德地图demo），对一般的方法进行hook。<br>1)  集成XposedBridgeApi-54.jar ，按照版本去下载集成，如果是as的话，scope为Provided<br>2）在AndroidManifest.xml文件中添加如下配置：</p>
+<pre><code><span class="comment">&lt;!-- xposed支持 --&gt;</span>
+        <span class="tag">&lt;<span class="title">meta-data</span>
+            <span class="attribute">android:name</span>=<span class="value">"xposedmodule"</span>
+            <span class="attribute">anafterHookedMethoddroid:value</span>=<span class="value">"true"</span> /&gt;</span>
+        <span class="tag">&lt;<span class="title">meta-data</span>
+            <span class="attribute">android:name</span>=<span class="value">"xposedminversion"</span>
+            <span class="attribute">android:value</span>=<span class="value">"54"</span> /&gt;</span>
+        <span class="tag">&lt;<span class="title">meta-data</span>
+            <span class="attribute">android:name</span>=<span class="value">"xposeddescription"</span>
+            <span class="attribute">android:value</span>=<span class="value">"xposeddemo"</span> /&gt;</span>
+</code></pre><p>3) 在assets文件夹下定义访问入口xposed_init文件，内容书写为核心hook类的存放路径。<br>4）写一个类继承IXposedHookLoadPackage，在handleLoadPackage里写相关处理代码</p>
+<pre><code><span class="comment">// 只处理目标app</span>
+<span class="keyword">if</span> (<span class="subst">!</span>loadPackageParam<span class="built_in">.</span>packageName<span class="built_in">.</span><span class="keyword">equals</span>(<span class="string">"com.hgsoft.wk.main"</span>)) {
+           <span class="keyword">return</span>;
+ }
+</code></pre><p>4）安装后，在Xposed Installer中激活该模块并重启手机<br>5）打开目标app，在Xposed Installer里的日志模块可以看到log<br>2、注意的点<br>1）hook方法：findAndHookMethod</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">static</span> Unhook findAndHookMethod(<span class="keyword">String</span> className, ClassLoader classLoader, <span class="keyword">String</span> methodName, <span class="keyword">Object</span>... parameterTypesAndCallback) {
+        <span class="keyword">return</span> findAndHookMethod(findClass(className, classLoader), methodName, parameterTypesAndCallback);
+}
+</code></pre><p>第一个参数是类名称，第二个参数是ClassLoader，一般里面参数有提供，直接引用，如果是class里面的class，要用$，第三个参数是要hook的方法名，第四个是可以多个参数，放hook的方法的参数列表，最后的参数是hook的回调。<br>比如：</p>
+<pre><code>XposedHelpers.findAndHookMethod(<span class="string">"org.json.JSONObject"</span>, loadPackageParam.classLoader, <span class="string">"put"</span>,
+                <span class="built_in">String</span>.<span class="keyword">class</span>, <span class="built_in">boolean</span>.<span class="keyword">class</span>, <span class="keyword">new</span> XC_MethodHook());
+</code></pre><p>2）hook构造方法：findAndHookConstructor</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">static</span> Unhook findAndHookConstructor(<span class="keyword">String</span> className, ClassLoader classLoader, <span class="keyword">Object</span>... parameterTypesAndCallback) {
+        <span class="keyword">return</span> findAndHookConstructor(findClass(className, classLoader), parameterTypesAndCallback);
+}
+</code></pre><p>关于构造方法这个没有用出效果来，比较郁闷，以后尝试出来再补充。。。。。。<br>3）关于回调XC_MethodHook</p>
+<pre><code><span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>{}；
+<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">afterHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>{}；
+</code></pre><p>MethodHookParam的用法上，args方法的参数列表，thisObject提供方法的类，getResult方法的返回值，可以通过setResult设置方法的返回值。</p>
 <blockquote>
 <p>实战</p>
 </blockquote>
-<p>1、反编译周报日报，然后对定位这块进行hook。<br>找到 class BdLocation extends CordovaPlugin，分析里面所有的方法，尝试对他们进行hook，<br>    class MyBDLocationListener implements BDLocationListener {<br>            MyBDLocationListener() {<br>            }<br>            public void onReceiveLocation(BDLocation bdLocation)<br>找到上面代码块后，准备hook onReceiveLocation，写个程序hook上去后发现posed框架没有报错，但就是什么都没有反应。查了一下官方说明，xposed只能hook普通方法或者构造方法，不能hook接口和抽象类。只能作罢，找其他的方法hook。</p>
+<p>1、反编译周报日报，然后对定位这块进行hook。<br>找到 class BdLocation extends CordovaPlugin，分析里面所有的方法，尝试对他们进行hook.</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">MyBDLocationListener</span> <span class="keyword">implements</span> <span class="title">BDLocationListener</span> </span>{
+        MyBDLocationListener() {
+        }
+        <span class="keyword">public</span> <span class="keyword">void</span> onReceiveLocation(BDLocation bdLocation) 
+</code></pre><p>找到上面代码块后，准备hook onReceiveLocation，写个程序hook上去后发现posed框架没有报错，但就是什么都没有反应。查了一下官方说明，xposed只能hook普通方法或者构造方法，不能hook接口和抽象类。只能作罢，找其他的方法hook。</p>
 <p>在尝试hook 类BdLocation里的其他方法后，发现都没有反应，故猜想是因为继承了CordovaPlugin的原因，具体没有深究，等以后有机会再研究是不是因为CordovaPlugin的原因，并且怎么去hook cordova的东西。</p>
 <p>最后进行了一次尝试，看到app里面用到org.json.JSONObject的put，那么就开始hook put吧</p>
 <pre><code>XposedHelpers.findAndHookMethod(<span class="string">"org.json.JSONObject"</span>, loadPackageParam.classLoader, <span class="string">"put"</span>, String.class, <span class="keyword">boolean</span>.class, <span class="keyword">new</span> XC_MethodHook() {
