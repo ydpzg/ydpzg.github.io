@@ -219,8 +219,8 @@
 <pre><code>1、su 
 2、mount  
 </code></pre><p>可以查到这个android开发板的设备块名称是/dev/block/by-name/system</p>
-<pre><code>oot@octopus-perf:/ # **_su_**
-root@octopus-perf:/ # **_mount_**
+<pre><code>root@octopus-perf:/ # su          ----------1
+root@octopus-perf:/ # mount         ---------2
 rootfs / rootfs rw,relatime 0 0
 tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
 devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
@@ -234,7 +234,7 @@ tmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
 tmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
 none /dev/cpuctl cgroup rw,relatime,cpu 0 0
 debugfs /sys/kernel/debug debugfs rw,relatime 0 0
-**_/dev/block/by-name/system /system ext4 ro,seclabel,relatime,data=ordered 0 0_**
+/dev/block/by-name/system /system ext4 ro,seclabel,relatime,data=ordered 0 0       ---------------*
 /dev/block/by-name/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,data=ordered 0 0
 /dev/block/by-name/UDISK /data ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,noauto_da_alloc,data=ordered 0 0
 none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
@@ -245,8 +245,8 @@ none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
 <pre><code>1、mount -o remount /dev/block/by-name/system /system
 2、mount
 </code></pre><p>得到下面的结果</p>
-<pre><code>root@octopus-perf:/ # **_mount -o remount /dev/block/by-name/system /system_**
-root@octopus-perf:/ # **_mount_**                                                    
+<pre><code>root@octopus-perf:/ # mount -o remount /dev/block/by-name/system /system              ----------------1
+root@octopus-perf:/ # mount            -------------2                                             
 rootfs / rootfs rw,relatime 0 0
 tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
 devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
@@ -260,7 +260,7 @@ tmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
 tmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
 none /dev/cpuctl cgroup rw,relatime,cpu 0 0
 debugfs /sys/kernel/debug debugfs rw,relatime 0 0
-**_/dev/block/by-name/system /system ext4 rw,seclabel,relatime,data=ordered 0 0_**
+/dev/block/by-name/system /system ext4 rw,seclabel,relatime,data=ordered 0 0            ---------------*
 /dev/block/by-name/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,data=ordered 0 0
 /dev/block/by-name/UDISK /data ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,noauto_da_alloc,data=ordered 0 0
 none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
