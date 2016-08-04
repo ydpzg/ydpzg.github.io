@@ -189,6 +189,111 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016080401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/04/2016080401/" class="article-date">
+  	<time datetime="2016-08-04T03:50:21.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/04/2016080401/">android 开发板操作出现“Read-only file system”</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。<br>找了一下终于找到解决方案<br>打相应的命令：</p>
+<pre><code>1、su 
+2、mount  
+</code></pre><p>可以查到这个android开发板的设备块名称是/dev/block/by-name/system</p>
+<pre><code>oot@octopus-perf:/ # **_su_**
+root@octopus-perf:/ # **_mount_**
+rootfs / rootfs rw,relatime 0 0
+tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
+devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
+proc /proc proc rw,relatime 0 0
+sysfs /sys sysfs rw,seclabel,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0
+none /acct cgroup rw,relatime,cpuacct 0 0
+none /sys/fs/cgroup tmpfs rw,seclabel,relatime,mode=750,gid=1000 0 0
+tmpfs /mnt/secure tmpfs rw,seclabel,relatime,mode=700 0 0
+tmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+tmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+none /dev/cpuctl cgroup rw,relatime,cpu 0 0
+debugfs /sys/kernel/debug debugfs rw,relatime 0 0
+**_/dev/block/by-name/system /system ext4 ro,seclabel,relatime,data=ordered 0 0_**
+/dev/block/by-name/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,data=ordered 0 0
+/dev/block/by-name/UDISK /data ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,noauto_da_alloc,data=ordered 0 0
+none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
+/dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+/dev/block/vold/179:25 /mnt/extsd vfat rw,dirsync,nosuid,nodev,noexec,relatime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=cp437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
+/dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+</code></pre><p>打命令：</p>
+<pre><code>1、mount -o remount /dev/block/by-name/system /system
+2、mount
+</code></pre><p>得到下面的结果</p>
+<pre><code>root@octopus-perf:/ # **_mount -o remount /dev/block/by-name/system /system_**
+root@octopus-perf:/ # **_mount_**                                                    
+rootfs / rootfs rw,relatime 0 0
+tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
+devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
+proc /proc proc rw,relatime 0 0
+sysfs /sys sysfs rw,seclabel,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0
+none /acct cgroup rw,relatime,cpuacct 0 0
+none /sys/fs/cgroup tmpfs rw,seclabel,relatime,mode=750,gid=1000 0 0
+tmpfs /mnt/secure tmpfs rw,seclabel,relatime,mode=700 0 0
+tmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+tmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+none /dev/cpuctl cgroup rw,relatime,cpu 0 0
+debugfs /sys/kernel/debug debugfs rw,relatime 0 0
+**_/dev/block/by-name/system /system ext4 rw,seclabel,relatime,data=ordered 0 0_**
+/dev/block/by-name/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,data=ordered 0 0
+/dev/block/by-name/UDISK /data ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,noauto_da_alloc,data=ordered 0 0
+none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
+/dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+/dev/block/vold/179:25 /mnt/extsd vfat rw,dirsync,nosuid,nodev,noexec,relatime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=cp437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
+/dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+</code></pre><p>最后使用完后要还原回来（设置为只读状态）：</p>
+<pre><code>1、mount -o remount,r /dev/block/by-name/system /system
+</code></pre><p>参考：<br><a href="http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054" target="_blank" rel="external">http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016072601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
