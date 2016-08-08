@@ -25,7 +25,7 @@ mkdir pluginExample2
 mkdir src
 mkdir www
 touch plugin.xml">
-<meta property="og:updated_time" content="2016-08-08T17:27:49.000Z">
+<meta property="og:updated_time" content="2016-08-08T17:30:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova自定义插件入门">
 <meta name="twitter:description" content="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。
@@ -264,22 +264,22 @@ touch Pinging11.java
 </code></pre><p>编辑插件的配置文件，让后续cordova项目可以根据配置文件去完成跨平台代码的搬移。（./plugin.xml）<br>以下是plugin.xml的代码片段 </p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;plugin xmlns=&quot;http://apache.org/cordova/ns/plugins/1.0&quot;
-         id=&quot;com.example.cordova.plugin.pinging&quot; version=&quot;0.0.1&quot;&gt;     ------&lt;1&gt;
-         &lt;name&gt;pinging&lt;/name&gt;     ------&lt;2&gt;
-         &lt;description&gt;example pinging&lt;/description&gt;
-         &lt;license&gt;Apache 2.0&lt;/license&gt;
-         &lt;keywords&gt;cordova,pinging&lt;/keywords&gt;
-         &lt;js-module src=&quot;www/pinging.js&quot; name=&quot;pinging&quot;&gt;     ------&lt;3&gt;
-                  &lt;clobbers target=&quot;com.example.cordova.plugin.Pinging22&quot; /&gt;      ------&lt;4&gt;
-          &lt;/js-module&gt;
-          &lt;platform name=&quot;android&quot;&gt;
-                    &lt;config-file target=&quot;res/xml/config.xml&quot; parent=&quot;/*&quot;&gt;      ------&lt;5&gt;
-                              &lt;feature name=&quot;pinging22&quot;&gt;     ------&lt;6&gt;
-                                          &lt;param name=&quot;android-package&quot; value=&quot;com.example.cordova.plugin.Pinging11&quot;/&gt;     ------&lt;7&gt;
-                               &lt;/feature&gt;
-                     &lt;/config-file&gt;
-                     &lt;source-file src=&quot;src/android/Pinging11.java&quot; target-dir=&quot;src/com/example/cordova/plugin&quot; /&gt;      ------&lt;8&gt;
-          &lt;/platform&gt;
+        id=&quot;com.example.cordova.plugin.pinging&quot; version=&quot;0.0.1&quot;&gt;      ------&lt;1&gt;
+    &lt;name&gt;pinging&lt;/name&gt;        ------&lt;2&gt;
+    &lt;description&gt;example pinging&lt;/description&gt;
+    &lt;license&gt;Apache 2.0&lt;/license&gt;
+    &lt;keywords&gt;cordova,pinging&lt;/keywords&gt;
+    &lt;js-module src=&quot;www/pinging.js&quot; name=&quot;pinging&quot;&gt;      ------&lt;3&gt;
+        &lt;clobbers target=&quot;com.example.cordova.plugin.Pinging22&quot; /&gt;      ------&lt;4&gt;
+    &lt;/js-module&gt;
+    &lt;platform name=&quot;android&quot;&gt;
+        &lt;config-file target=&quot;res/xml/config.xml&quot; parent=&quot;/*&quot;&gt;       ------&lt;5&gt;
+            &lt;feature name=&quot;pinging22&quot;&gt;         ------&lt;6&gt;
+                &lt;param name=&quot;android-package&quot; value=&quot;com.example.cordova.plugin.Pinging11&quot;/&gt;       ------&lt;7&gt;
+            &lt;/feature&gt;
+        &lt;/config-file&gt;
+       &lt;source-file src=&quot;src/android/Pinging11.java&quot; target-dir=&quot;src/com/example/cordova/plugin&quot; /&gt;         ------&lt;8&gt;
+    &lt;/platform&gt;
 &lt;/plugin&gt;
 </code></pre><p>&lt;1&gt;:该插件的id和版本，类似maven的包名和版本，后续会出现在项目的cordova_plugins.js文件的module.exports.metadata里。<br>&lt;2&gt;:该插件的名字<br>&lt;3&gt;:该插件定义的js接口，主要是指定了文件的路径，属性name貌似没有什么作用<br>&lt;4&gt;:该插件的js调用的命名空间，后续在项目js调用该插件时使用，如com.example.cordova.plugin.Pinging22.init()<br>&lt;5&gt;:指定特定平台的配置文件位置。<br>&lt;6&gt;:该插件某一个模块的名称，后续在www/pinging.js里js调用native类时候出现。如cordova.exec(success, error, ‘pinging22’, ‘init’, <a href=""></a>);<br>&lt;7&gt;:该插件生成的native文件所在的包名，故native类里必须以这个包名去写代码<br>&lt; 8&gt;:声明该插件使用到的所有源文件，插件存在的文件路径和未来要放置到该平台的包完整路径。</p>
 <p>插件的js接口声明，目的是为了简化js应用层的调用，所有有关native的信息全都封装在这里。<br>以下是 pinging.js的代码片段</p>
@@ -287,7 +287,7 @@ touch Pinging11.java
 var pinging = function() {};       ------&lt;2&gt;
 
 pinging.prototype.init = function(success, error) {       ------&lt;3&gt;
-cordova.exec(success, error, &apos;pinging22&apos;, &apos;init&apos;, []);        ------&lt;4&gt;
+    cordova.exec(success, error, &apos;pinging22&apos;, &apos;init&apos;, []);        ------&lt;4&gt;
 };
 
 module.exports = new pinging();       ------&lt;5&gt;
