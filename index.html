@@ -243,7 +243,10 @@ touch Pinging11.java
 </li>
 </ol>
 <p>&lt;1&gt;:该插件的id和版本，类似maven的包名和版本，后续会出现在项目的cordova_plugins.js文件的module.exports.metadata里。<br>&lt;2&gt;:该插件的名字<br>&lt;3&gt;:该插件定义的js接口，主要是指定了文件的路径，属性name貌似没有什么作用<br>&lt;4&gt;:该插件的js调用的命名空间，后续在项目js调用该插件时使用，如com.example.cordova.plugin.Pinging22.init()<br>&lt;5&gt;:指定特定平台的配置文件位置。<br>&lt;6&gt;:该插件某一个模块的名称，后续在www/pinging.js里js调用native类时候出现。如cordova.exec(success, error, ‘pinging22’, ‘init’, <a href=""></a>);<br>&lt;7&gt;:该插件生成的native文件所在的包名，故native类里必须以这个包名去写代码<br>&lt; 8&gt;:声明该插件使用到的所有源文件，插件存在的文件路径和未来要放置到该平台的包完整路径。</p>
-<p>插件的js接口声明，目的是为了简化js应用层的调用，所有有关native的信息全都封装在这里。<br>以下是 pinging.js的代码片段</p>
+<ol>
+<li>插件的js接口声明，目的是为了简化js应用层的调用，所有有关native的信息全都封装在这里。</li>
+</ol>
+<p>以下是 pinging.js的代码片段</p>
 <pre><code>var cordova = require(&apos;cordova&apos;);       ------&lt;1&gt;
 var pinging = function() {};       ------&lt;2&gt;
 
@@ -253,24 +256,16 @@ pinging.prototype.init = function(success, error) {       ------&lt;3&gt;
 
 module.exports = new pinging();       ------&lt;5&gt;
 </code></pre><p>&lt;1&gt;:引入cordova库<br>&lt;2&gt;:声明一个空白类<br>&lt;3&gt;:在类里创建一个叫init的方法<br>&lt;4&gt;:使用exec调用pinging22这个feature里的init方法<br>&lt;5&gt;:导出到cordova里，让其他代码可以调用该文件的内容。</p>
-<p>插件的特定平台android类，提供给js调用的所有方法<br> 以下是 Pinging11.java 的代码片段</p>
-<pre><code>package com.example.cordova.plugin;
-
-import android.util.Log;
-import android.widget.Toast;
-
-import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaInterface;
-import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.CordovaWebView;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONException;
-
-import java.util.List;
-
-
-public class Pinging11 extends CordovaPlugin {
+<ol>
+<li><p>插件的特定平台android类，提供给js调用的所有方法</p>
+<p>以下是 Pinging11.java 的代码片段</p>
+<p> package com.example.cordova.plugin;</p>
+<p> import android.util.Log;<br> import android.widget.Toast;</p>
+<p> import org.apache.cordova.CallbackContext;<br> import org.apache.cordova.CordovaInterface;<br> import org.apache.cordova.CordovaPlugin;<br> import org.apache.cordova.CordovaWebView;<br> import org.json.JSONArray;<br> import org.json.JSONObject;<br> import org.json.JSONException;</p>
+<p> import java.util.List;</p>
+</li>
+</ol>
+<pre><code>public class Pinging11 extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);         ------&lt;1&gt;
@@ -289,23 +284,27 @@ public class Pinging11 extends CordovaPlugin {
     }
 }
 </code></pre><p>&lt;1&gt;: CordovaPlugin的生命周期里的初始化插件<br>&lt;2&gt;:通过判断不同的action，处理不同的方法<br>&lt;3&gt;:方法执行成功后返回成功给前端js调用方</p>
-<p>使用cordova命令生成cordova项目，并添加自定义的插件</p>
-<pre><code>cordova create cordovaExample2 
-cd cordovaExample2
-cordova platform add android
-cordova platform add browser
-cordova plugin add ../pluginExample2
-</code></pre><p>此时，插件的代码被搬运到具体的平台里去</p>
-<p>在index.js->onDeviceReady里面写业务代码，在需要调用插件的地方写上调用插件的代码。如下</p>
-<pre><code>com.example.cordova.plugin.Pinging22.init(function() {
-    alert(&quot;success&quot;);
-}, function() {
-    alert(&quot;failed&quot;);
-});
-</code></pre><p>最后，运行工程，看看效果。</p>
-<pre><code>cordova build android
-cordova run android
-</code></pre><p>如果发生报错，在使用build命令的时候就会打印出错误日志。</p>
+<ol>
+<li><p>使用cordova命令生成cordova项目，并添加自定义的插件</p>
+<p> cordova create cordovaExample2<br> cd cordovaExample2<br> cordova platform add android<br> cordova platform add browser<br> cordova plugin add ../pluginExample2</p>
+</li>
+</ol>
+<p>此时，插件的代码被搬运到具体的平台里去</p>
+<ol>
+<li><p>在index.js->onDeviceReady里面写业务代码，在需要调用插件的地方写上调用插件的代码。如下</p>
+<p> com.example.cordova.plugin.Pinging22.init(function() {</p>
+<pre><code>alert(&quot;success&quot;);
+</code></pre><p> }, function() {</p>
+<pre><code>alert(&quot;failed&quot;);
+</code></pre><p> });</p>
+</li>
+</ol>
+<ol>
+<li><p>最后，运行工程，看看效果。</p>
+<p> cordova build android<br> cordova run android</p>
+</li>
+</ol>
+<p>如果发生报错，在使用build命令的时候就会打印出错误日志。</p>
 <p>附上参考网址：</p>
 <blockquote>
 <p><a href="http://cordova.apache.org/docs/en/6.x/plugin_ref/spec.html" target="_blank" rel="external">http://cordova.apache.org/docs/en/6.x/plugin_ref/spec.html</a></p>
