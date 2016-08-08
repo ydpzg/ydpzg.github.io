@@ -251,7 +251,7 @@ id=&quot;com.example.cordova.plugin.pinging&quot; version=&quot;0.0.1&quot;&gt; 
    &lt;source-file src=&quot;src/android/Pinging11.java&quot; target-dir=&quot;src/com/example/cordova/plugin&quot; /&gt;      ------&lt;8&gt;
 &lt;/platform&gt;
 &lt;/plugin&gt;
-</code></pre><p>\<1\>:该插件的id和版本，类似maven的包名和版本，后续会出现在项目的cordova_plugins.js文件的module.exports.metadata里。<br>\<2\>:该插件的名字<br>\<3\>:该插件定义的js接口，主要是指定了文件的路径，属性name貌似没有什么作用<br>\<4\>:该插件的js调用的命名空间，后续在项目js调用该插件时使用，如com.example.cordova.plugin.Pinging22.init()<br>\<5\>:指定特定平台的配置文件位置。<br>\<6\>:该插件某一个模块的名称，后续在www/pinging.js里js调用native类时候出现。如cordova.exec(success, error, ‘pinging22’, ‘init’, <a href=""></a>);<br>\<7\>:该插件生成的native文件所在的包名，故native类里必须以这个包名去写代码<br>\<8\>:声明该插件使用到的所有源文件，插件存在的文件路径和未来要放置到该平台的包完整路径。</8\></7\></6\></5\></4\></3\></2\></1\></p>
+</code></pre><p>\&lt;\<1\>>:该插件的id和版本，类似maven的包名和版本，后续会出现在项目的cordova_plugins.js文件的module.exports.metadata里。<br>\<2\>:该插件的名字<br>\<3\>:该插件定义的js接口，主要是指定了文件的路径，属性name貌似没有什么作用<br>\<4\>:该插件的js调用的命名空间，后续在项目js调用该插件时使用，如com.example.cordova.plugin.Pinging22.init()<br>\<5\>:指定特定平台的配置文件位置。<br>\<6\>:该插件某一个模块的名称，后续在www/pinging.js里js调用native类时候出现。如cordova.exec(success, error, ‘pinging22’, ‘init’, <a href=""></a>);<br>\<7\>:该插件生成的native文件所在的包名，故native类里必须以这个包名去写代码<br>\<8\>:声明该插件使用到的所有源文件，插件存在的文件路径和未来要放置到该平台的包完整路径。</8\></7\></6\></5\></4\></3\></2\></1\></p>
 <p>插件的js接口声明，目的是为了简化js应用层的调用，所有有关native的信息全都封装在这里。<br>以下是 pinging.js的代码片段</p>
 <pre><code>var cordova = require(&apos;cordova&apos;);       ------&lt;1&gt;
 var pinging = function() {};       ------&lt;2&gt;
