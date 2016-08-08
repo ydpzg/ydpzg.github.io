@@ -25,7 +25,7 @@ mkdir pluginExample2
 mkdir src
 mkdir www
 touch plugin.xml">
-<meta property="og:updated_time" content="2016-08-08T17:25:22.000Z">
+<meta property="og:updated_time" content="2016-08-08T17:27:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova自定义插件入门">
 <meta name="twitter:description" content="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。
@@ -310,22 +310,22 @@ import java.util.List;
 
 
 public class Pinging11 extends CordovaPlugin {
-@Override
-public void initialize(CordovaInterface cordova, CordovaWebView webView) {        ------&lt;1&gt;
-super.initialize(cordova, webView);
-  }
+    @Override
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);         ------&lt;1&gt;
+      }
 
-@Override
-public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-if (&quot;init&quot;.equals(action)) {     ------&lt;2&gt;
-JSONObject jsonObject = new JSONObject();
-jsonObject.put(&quot;test&quot;, &quot;test&quot;);
-callbackContext.success(jsonObject);              ------&lt;3&gt;
-Toast.makeText(cordova.getActivity().getApplicationContext(), &quot;Pinging11-&gt;init()&quot;, Toast.LENGTH_LONG).show();
-return true;
-}
-return false;
-}
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        if (&quot;init&quot;.equals(action)) {            ------&lt;2&gt;
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put(&quot;test&quot;, &quot;test&quot;);
+            callbackContext.success(jsonObject);         ------&lt;3&gt;
+            Toast.makeText(cordova.getActivity().getApplicationContext(), &quot;Pinging11-&gt;init()&quot;, Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return false;
+    }
 }
 </code></pre><p>&lt;1&gt;: CordovaPlugin的生命周期里的初始化插件<br>&lt;2&gt;:通过判断不同的action，处理不同的方法<br>&lt;3&gt;:方法执行成功后返回成功给前端js调用方</p>
 <p>使用cordova命令生成cordova项目，并添加自定义的插件</p>
@@ -338,9 +338,9 @@ cordova plugin add ../pluginExample2
 <p>在index.js->onDeviceReady里面写业务代码，在需要调用插件的地方写上调用插件的代码。如下</p>
 <pre><code>com.example.cordova.plugin.Pinging22.init(function() {
     alert(&quot;success&quot;);
- }, function() {
+}, function() {
     alert(&quot;failed&quot;);
- });
+});
 </code></pre><p>最后，运行工程，看看效果。</p>
 <pre><code>cordova build android
 cordova run android
