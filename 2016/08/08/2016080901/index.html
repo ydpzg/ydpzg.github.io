@@ -33,7 +33,7 @@ mkdir pluginExample2
 mkdir src
 mkdir www
 touch plugin">
-<meta property="og:updated_time" content="2016-08-08T17:54:07.000Z">
+<meta property="og:updated_time" content="2016-08-08T17:55:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova自定义插件入门">
 <meta name="twitter:description" content="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。
@@ -315,15 +315,26 @@ pinging.prototype.init = function(success, error) {       ------&lt;3&gt;
 module.exports = new pinging();       ------&lt;5&gt;
 </code></pre><p>&lt;1&gt;:引入cordova库<br>&lt;2&gt;:声明一个空白类<br>&lt;3&gt;:在类里创建一个叫init的方法<br>&lt;4&gt;:使用exec调用pinging22这个feature里的init方法<br>&lt;5&gt;:导出到cordova里，让其他代码可以调用该文件的内容。</p>
 <ul>
-<li><p>插件的特定平台android类，提供给js调用的所有方法</p>
-<p>以下是 Pinging11.java 的代码片段</p>
-<p>  package com.example.cordova.plugin;</p>
-<p>  import android.util.Log;<br>  import android.widget.Toast;</p>
-<p>  import org.apache.cordova.CallbackContext;<br>  import org.apache.cordova.CordovaInterface;<br>  import org.apache.cordova.CordovaPlugin;<br>  import org.apache.cordova.CordovaWebView;<br>  import org.json.JSONArray;<br>  import org.json.JSONObject;<br>  import org.json.JSONException;</p>
-<p>  import java.util.List;</p>
-</li>
+<li>插件的特定平台android类，提供给js调用的所有方法</li>
 </ul>
-<pre><code>public class Pinging11 extends CordovaPlugin {
+<p> 以下是 Pinging11.java 的代码片段</p>
+<pre><code>package com.example.cordova.plugin;
+
+import android.util.Log;
+import android.widget.Toast;
+
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
+
+import java.util.List;
+
+
+public class Pinging11 extends CordovaPlugin {
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);         ------&lt;1&gt;
@@ -343,26 +354,25 @@ module.exports = new pinging();       ------&lt;5&gt;
 }
 </code></pre><p>&lt;1&gt;: CordovaPlugin的生命周期里的初始化插件<br>&lt;2&gt;:通过判断不同的action，处理不同的方法<br>&lt;3&gt;:方法执行成功后返回成功给前端js调用方</p>
 <ul>
-<li><p>使用cordova命令生成cordova项目，并添加自定义的插件</p>
-<p>  cordova create cordovaExample2<br>  cd cordovaExample2<br>  cordova platform add android<br>  cordova platform add browser<br>  cordova plugin add ../pluginExample2</p>
-</li>
+<li>使用cordova命令生成cordova项目，并添加自定义的插件</li>
 </ul>
-<p>此时，插件的代码被搬运到具体的平台里去</p>
+<pre><code>cordova create cordovaExample2 
+cd cordovaExample2
+cordova platform add android
+cordova platform add browser
+cordova plugin add ../pluginExample2
+</code></pre><p>此时，插件的代码被搬运到具体的平台里去</p>
 <ul>
-<li><p>在index.js->onDeviceReady里面写业务代码，在需要调用插件的地方写上调用插件的代码。如下</p>
-<p>  com.example.cordova.plugin.Pinging22.init(function() {</p>
-<pre><code>alert(&quot;success&quot;);
-</code></pre><p>  }, function() {</p>
-<pre><code>alert(&quot;failed&quot;);
-</code></pre><p>  });</p>
-</li>
+<li>在index.js->onDeviceReady里面写业务代码，在需要调用插件的地方写上调用插件的代码。如下</li>
 </ul>
-<ul>
-<li><p>最后，运行工程，看看效果。</p>
-<p> cordova build android<br> cordova run android</p>
-</li>
-</ul>
-<p>如果发生报错，在使用build命令的时候就会打印出错误日志。</p>
+<pre><code>com.example.cordova.plugin.Pinging22.init(function() {
+    alert(&quot;success&quot;);
+}, function() {
+    alert(&quot;failed&quot;);
+});
+</code></pre><h4 id="最后，运行工程，看看效果。"><a href="#最后，运行工程，看看效果。" class="headerlink" title="- 最后，运行工程，看看效果。"></a>- 最后，运行工程，看看效果。</h4><pre><code>cordova build android
+cordova run android
+</code></pre><p>如果发生报错，在使用build命令的时候就会打印出错误日志。</p>
 <p>附上参考网址：</p>
 <blockquote>
 <p><a href="http://cordova.apache.org/docs/en/6.x/plugin_ref/spec.html" target="_blank" rel="external">http://cordova.apache.org/docs/en/6.x/plugin_ref/spec.html</a></p>
