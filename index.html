@@ -218,11 +218,11 @@
         <blockquote>
 <h1 id="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。-而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。"><a href="#前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。-而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。" class="headerlink" title="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。"></a>前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。</h1></blockquote>
 <ol>
-<li><p>创建一个插件文件夹</p>
-<p> mkdir pluginExample2 </p>
-</li>
-<li><p>创建android插件里面需要的文件夹和文件</p>
-</li>
+<li>创建一个插件文件夹</li>
+</ol>
+<pre><code>mkdir pluginExample2 
+</code></pre><ol>
+<li>创建android插件里面需要的文件夹和文件</li>
 </ol>
 <pre><code>mkdir pluginExample2 
 mkdir src
@@ -235,7 +235,9 @@ cd src
 mkdir android
 cd android
 touch Pinging11.java
-</code></pre><p>编辑插件的配置文件，让后续cordova项目可以根据配置文件去完成跨平台代码的搬移。（./plugin.xml）</p>
+</code></pre><ol>
+<li>编辑插件的配置文件，让后续cordova项目可以根据配置文件去完成跨平台代码的搬移。（./plugin.xml）</li>
+</ol>
 <p>以下是plugin.xml的代码片段 </p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;plugin xmlns=&quot;http://apache.org/cordova/ns/plugins/1.0&quot;
@@ -257,7 +259,9 @@ touch Pinging11.java
     &lt;/platform&gt;
 &lt;/plugin&gt;
 </code></pre><p>&lt;1&gt;:该插件的id和版本，类似maven的包名和版本，后续会出现在项目的cordova_plugins.js文件的module.exports.metadata里。<br>&lt;2&gt;:该插件的名字<br>&lt;3&gt;:该插件定义的js接口，主要是指定了文件的路径，属性name貌似没有什么作用<br>&lt;4&gt;:该插件的js调用的命名空间，后续在项目js调用该插件时使用，如com.example.cordova.plugin.Pinging22.init()<br>&lt;5&gt;:指定特定平台的配置文件位置。<br>&lt;6&gt;:该插件某一个模块的名称，后续在www/pinging.js里js调用native类时候出现。如cordova.exec(success, error, ‘pinging22’, ‘init’, <a href=""></a>);<br>&lt;7&gt;:该插件生成的native文件所在的包名，故native类里必须以这个包名去写代码<br>&lt; 8&gt;:声明该插件使用到的所有源文件，插件存在的文件路径和未来要放置到该平台的包完整路径。</p>
-<p>插件的js接口声明，目的是为了简化js应用层的调用，所有有关native的信息全都封装在这里。</p>
+<ol>
+<li>插件的js接口声明，目的是为了简化js应用层的调用，所有有关native的信息全都封装在这里。</li>
+</ol>
 <p>以下是 pinging.js的代码片段</p>
 <pre><code>var cordova = require(&apos;cordova&apos;);       ------&lt;1&gt;
 var pinging = function() {};       ------&lt;2&gt;
