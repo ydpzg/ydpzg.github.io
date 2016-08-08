@@ -218,11 +218,11 @@
         <blockquote>
 <h1 id="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。-而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。"><a href="#前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。-而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。" class="headerlink" title="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。"></a>前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。</h1></blockquote>
 <ol>
-<li><p>创建一个插件文件夹</p>
-<p> mkdir pluginExample2 </p>
-</li>
-<li><p>创建android插件里面需要的文件夹和文件</p>
-</li>
+<li>创建一个插件文件夹</li>
+</ol>
+<pre><code>mkdir pluginExample2 
+</code></pre><ol>
+<li>创建android插件里面需要的文件夹和文件</li>
 </ol>
 <pre><code>mkdir pluginExample2 
 mkdir src
@@ -237,9 +237,6 @@ cd android
 touch Pinging11.java
 </code></pre><ol>
 <li><p>编辑插件的配置文件，让后续cordova项目可以根据配置文件去完成跨平台代码的搬移。（./plugin.xml）<br>以下是plugin.xml的代码片段 </p>
-<p> &lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
- <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.example.cordova.plugin.pinging" version="0.0.1">     ——<1><br>          <name>pinging</name>     ——<2><br>          <description>example pinging</description><br>          <license>Apache 2.0</license><br>          <keywords>cordova,pinging</keywords><br>          <js-module src="www/pinging.js" name="pinging">     ——<3><br>                   <clobbers target="com.example.cordova.plugin.Pinging22">      ——<4><br>           </4></clobbers></3></js-module><br>           <platform name="android"><br>                     <config-file target="res/xml/config.xml" parent="/*">      ——<5><br>                               <feature name="pinging22">     ——<6><br>                                           <param name="android-package" value="com.example.cordova.plugin.Pinging11">     ——<7><br>                                </7></6></feature><br>                      </5></config-file><br>                      <source-file src="src/android/Pinging11.java" target-dir="src/com/example/cordova/plugin">      ——<8><br>           </8></source-file></platform><br> </2></1></plugin>
-
 <p> &lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
  <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.example.cordova.plugin.pinging" version="0.0.1">      ——<1><br>     <name>pinging</name>        ——<2><br>     <description>example pinging</description><br>     <license>Apache 2.0</license><br>     <keywords>cordova,pinging</keywords><br>     <js-module src="www/pinging.js" name="pinging">      ——<3><br>         <clobbers target="com.example.cordova.plugin.Pinging22">      ——<4><br>     </4></clobbers></3></js-module><br>     <platform name="android"><br>         <config-file target="res/xml/config.xml" parent="/*">       ——<5><br>             <feature name="pinging22">         ——<6><br>                 <param name="android-package" value="com.example.cordova.plugin.Pinging11">       ——<7><br>             </7></6></feature><br>         </5></config-file><br>        <source-file src="src/android/Pinging11.java" target-dir="src/com/example/cordova/plugin">         ——<8><br>     </8></source-file></platform><br> </2></1></plugin>
 
