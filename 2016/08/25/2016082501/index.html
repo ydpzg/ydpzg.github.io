@@ -3,27 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用hexo搭建博客平台，记录过程 | dukelight&#39;s home</title>
+  <title>Android清空Activity栈的做法 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 在github上创建一个Repository,名字为xx.github.ioRepository 的地址就是 http://www.github.com/id/id.github.io.git
-2. 配置ssh keys打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下
-ssh -T git@github.com
-3. 安装hexonpm instal">
+  <meta name="description" content="以前的思路是这样的：在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
+现在还可以这样实现：直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用hexo搭建博客平台，记录过程">
-<meta property="og:url" content="http://ydpzg.github.io/2015/06/26/2015062601/index.html">
+<meta property="og:title" content="Android清空Activity栈的做法">
+<meta property="og:url" content="http://ydpzg.github.io/2016/08/25/2016082501/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="1. 在github上创建一个Repository,名字为xx.github.ioRepository 的地址就是 http://www.github.com/id/id.github.io.git
-2. 配置ssh keys打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下
-ssh -T git@github.com
-3. 安装hexonpm instal">
-<meta property="og:updated_time" content="2016-08-16T18:36:09.000Z">
+<meta property="og:description" content="以前的思路是这样的：在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
+现在还可以这样实现：直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK">
+<meta property="og:updated_time" content="2016-08-24T19:12:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo搭建博客平台，记录过程">
-<meta name="twitter:description" content="1. 在github上创建一个Repository,名字为xx.github.ioRepository 的地址就是 http://www.github.com/id/id.github.io.git
-2. 配置ssh keys打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下
-ssh -T git@github.com
-3. 安装hexonpm instal">
+<meta name="twitter:title" content="Android清空Activity栈的做法">
+<meta name="twitter:description" content="以前的思路是这样的：在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
+现在还可以这样实现：直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -200,11 +194,11 @@ ssh -T git@github.com
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2016082501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/06/26/2015062601/" class="article-date">
-  	<time datetime="2015-06-26T07:01:04.000Z" itemprop="datePublished">2015-06-26</time>
+      <a href="/2016/08/25/2016082501/" class="article-date">
+  	<time datetime="2016-08-24T19:06:11.000Z" itemprop="datePublished">2016-08-25</time>
 </a>
     </div>
   
@@ -217,7 +211,7 @@ ssh -T git@github.com
         
   
     <h1 class="article-title" itemprop="name">
-      使用hexo搭建博客平台，记录过程
+      Android清空Activity栈的做法
     </h1>
   
 
@@ -226,7 +220,7 @@ ssh -T git@github.com
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github-自搭建/">hexo github 自搭建</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activity-intent-flag/">Activity intent flag</a></li></ul>
 	</div>
 
         
@@ -237,27 +231,8 @@ ssh -T git@github.com
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1-在github上创建一个Repository-名字为xx-github-io"><a href="#1-在github上创建一个Repository-名字为xx-github-io" class="headerlink" title="1. 在github上创建一个Repository,名字为xx.github.io"></a>1. 在github上创建一个Repository,名字为xx.github.io</h4><pre><code>Repository 的地址就是 http://www.github.com/id/id.github.io.git
-</code></pre><h4 id="2-配置ssh-keys"><a href="#2-配置ssh-keys" class="headerlink" title="2. 配置ssh keys"></a>2. 配置ssh keys</h4><p>打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下</p>
-<pre><code>ssh -T git@github.com
-</code></pre><h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h4><pre><code>npm install -g hexo
-</code></pre><p>新建一个文件夹来保存<br>    hexo init<br>    npm install</p>
-<p>安装好后，就可以开始了<br>    hexo generate  //可以简写为 hexo g<br>    hexo server    //可以简写为 hexo s</p>
-<p>在浏览器中输入 localhost:4000 查看本地博客    </p>
-<h4 id="4-部署到github上去"><a href="#4-部署到github上去" class="headerlink" title="4. 部署到github上去"></a>4. 部署到github上去</h4><pre><code>npm install hexo-deployer-git --save
-</code></pre><p>打开hexo文件夹的_config.yml ，文件拉到最后，设置deploy的type为git，repository为：<a href="https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）" target="_blank" rel="external">https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）</a> </p>
-<pre><code>hexo g
-hexo deploy    //可简写为 hexo d
-</code></pre><h4 id="5-开始用hexo写文章"><a href="#5-开始用hexo写文章" class="headerlink" title="5. 开始用hexo写文章"></a>5. 开始用hexo写文章</h4><p>hexo博客目录里的source/_posts就是放文章的（使用markdown语法编写）,格式是xx.md</p>
-<pre><code>hexo new post &quot;first article&quot;   
-</code></pre><p>会创建一个叫first article.md的文件（使用markdown语法），使用macdown打开找个文件，然后就可以开始写文章，写完后打命令</p>
-<pre><code>hexo g
-hexo s
-hexo d
-</code></pre><h4 id="6-关于文章中的图片问题"><a href="#6-关于文章中的图片问题" class="headerlink" title="6. 关于文章中的图片问题"></a>6. 关于文章中的图片问题</h4><pre><code>使用七牛云存储来保存图片，并换取图片外链. (http://www.qiniu.com)
-</code></pre><blockquote>
-<p>ps: 使用hexo的第三方theme，看起来不错的主题 hexo-theme-yilia，部署后就么么哒~~<br><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia</a></p>
-</blockquote>
+        <h4 id="以前的思路是这样的："><a href="#以前的思路是这样的：" class="headerlink" title="以前的思路是这样的："></a>以前的思路是这样的：</h4><p>在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。</p>
+<h4 id="现在还可以这样实现："><a href="#现在还可以这样实现：" class="headerlink" title="现在还可以这样实现："></a>现在还可以这样实现：</h4><p>直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK</p>
 
       
     </div>
@@ -267,15 +242,11 @@ hexo d
     
 <nav id="article-nav">
   
-    <a href="/2015/06/28/2015062801/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          android 控件AutoCompleteTextView实战
-        
-      </div>
-    </a>
   
+    <a href="/2016/08/16/2016081601/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">购买nexus5，nexus6后应该对机器做的事情</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -302,7 +273,7 @@ hexo d
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015062601" data-title="使用hexo搭建博客平台，记录过程" data-url="http://ydpzg.github.io/2015/06/26/2015062601/"></div>
+	<div class="ds-thread" data-thread-key="2016082501" data-title="Android清空Activity栈的做法" data-url="http://ydpzg.github.io/2016/08/25/2016082501/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
