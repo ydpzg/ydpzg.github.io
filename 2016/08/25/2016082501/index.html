@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="dukelight's home">
 <meta property="og:description" content="以前的思路是这样的：在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
 现在还可以这样实现：直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK">
-<meta property="og:updated_time" content="2016-08-24T19:12:21.000Z">
+<meta property="og:updated_time" content="2016-08-24T19:14:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android清空Activity栈的做法">
 <meta name="twitter:description" content="以前的思路是这样的：在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
@@ -231,9 +231,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="以前的思路是这样的："><a href="#以前的思路是这样的：" class="headerlink" title="以前的思路是这样的："></a>以前的思路是这样的：</h4><p>在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。</p>
-<h4 id="现在还可以这样实现："><a href="#现在还可以这样实现：" class="headerlink" title="现在还可以这样实现："></a>现在还可以这样实现：</h4><p>直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK</p>
-
+        <h4 id="以前的思路是这样的："><a href="#以前的思路是这样的：" class="headerlink" title="以前的思路是这样的："></a>以前的思路是这样的：</h4><pre><code>在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
+</code></pre><h4 id="现在还可以这样实现："><a href="#现在还可以这样实现：" class="headerlink" title="现在还可以这样实现："></a>现在还可以这样实现：</h4><pre><code>直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+</code></pre>
       
     </div>
     
