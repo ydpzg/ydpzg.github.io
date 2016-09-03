@@ -3,27 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【学习笔记】android安全机制相关 | dukelight&#39;s home</title>
+  <title>Archives: 2016/9 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="android安全机制之秘钥交换 
-
-1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢 
-实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【学习笔记】android安全机制相关">
-<meta property="og:url" content="http://ydpzg.github.io/2016/07/06/2016070602/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="dukelight's home">
+<meta property="og:url" content="http://ydpzg.github.io/archives/2016/09/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="android安全机制之秘钥交换 
-
-1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢 
-实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
-<meta property="og:updated_time" content="2016-07-06T09:25:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【学习笔记】android安全机制相关">
-<meta name="twitter:description" content="android安全机制之秘钥交换 
-
-1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢 
-实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
+<meta name="twitter:title" content="dukelight's home">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -200,130 +187,53 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2016070602" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2016/07/06/2016070602/" class="article-date">
-  	<time datetime="2016-07-06T09:18:00.000Z" itemprop="datePublished">2016-07-06</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/09/03/2016090301/" class="archive-article-date">
+  	<time datetime="2016-09-03T13:24:08.000Z" itemprop="datePublished">Sep 3</time>
 </a>
-    </div>
+        </div>
+    	 
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      【学习笔记】android安全机制相关
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/09/03/2016090301/">android系统USB设备静默获得权限</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rsa-HMac-hash/">rsa HMac hash</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/usb/">usb</a></li></ul>
 	</div>
 
-        
+          
 
+        </div>
         <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>android安全机制之秘钥交换 </p>
-</blockquote>
-<p>1、非对称秘钥安全性足够高<br>2、没有密钥交换的问题<br>3、效率低，对于大数据加密很慢 </p>
-<p>实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。<br>Diffie-Hellman密钥交换协议<br>甲 ：A，                                        乙：B<br>甲 ：（A，keyX）  -> MsgA                 乙：（B，keyY） -> MsgB<br>甲 ：（keyX，MsgB）        =                乙：（keyY，MsgA）<br>最后的变换结果都是一样的，结果作为sessionKey </p>
-<blockquote>
-<p>android安全机制之消息摘要 </p>
-</blockquote>
-<p>一、HASH与散列函数的定义和特点<br>MD5（128bit），SHA1（160bit）易变性和不可逆<br>二、消息摘要和数字指纹<br>三、HASH的应用场景：防篡改<br>1.文件下载时的MD5<br>2.消息传送时尾部额外传MD<br>四、HASH的应用场景：防损坏<br>1.CRC校验<br>2.MD校验恶劣环境<br>3.应用程序读写鲁棒性保护<br>五、Hash的应用场景：认证和鉴别<br>1、不可逆<br>2、可认证对端<br>六、保证不密文放在客户端。<br>HMAC<br>HMAC就是使用Key对原始消息交换后再进行HASH。先随机数+key，再hash </p>
-<blockquote>
-<p>android安全机制之电子签名 </p>
-</blockquote>
-<p>签名解决的问题<br>公钥密码术的两面性<br>HASH+公钥密码术：电子签名<br>1、完整性保护<br>2、签名人不可否认<br>DprivateKey（EpublicKey（P））P 保密场景<br>DpublicKey（EprivateKey（P））P 电子签名场景 </p>
-<p>直接对原始消息进行私钥签名太慢，应该先HASH后在私钥签名，原因是HASH后就是这个很短的字符串了。 </p>
-<blockquote>
-<p>android安全机制之证书与PKI </p>
-</blockquote>
-<p>公钥的存储与交换<br>证书的作用<br>证书链和PKI </p>
-<p>数字证书就是一个文件，包含公钥，电子签名<br>证书的信任链，根证书自签名，非根证书父 签名<br>传个证书下来到client，由client去验证父级到根证书，如果信任了，就通过<br>ski 公钥系统 </p>
-
-      
-    </div>
-    
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/07/14/2016071401/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          【学习笔记】使用idea自带生成webservice客户端client的问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/07/06/2016070601/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【学习笔记】基于xposed的入门和安全漏洞的实战</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
-
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016070602" data-title="【学习笔记】android安全机制相关" data-url="http://ydpzg.github.io/2016/07/06/2016070602/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -358,8 +268,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
