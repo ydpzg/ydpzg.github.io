@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理 | dukelight&#39;s home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。
+调用主要看 testApple这个类，会有几种不同的值。
+
+{ } object型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理">
+<meta property="og:url" content="http://ydpzg.github.io/2016/09/11/2016091102/index.html">
+<meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。
+调用主要看 testApple这个类，会有几种不同的值。
+
+{ } object型">
+<meta property="og:updated_time" content="2016-09-11T10:43:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理">
+<meta name="twitter:description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。
+调用主要看 testApple这个类，会有几种不同的值。
+
+{ } object型">
+  
+    <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">dukelight</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://www.github.com/ydpzg" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Activity-intent-flag/" style="font-size: 10px;">Activity intent flag</a> <a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/cordova-plugin/" style="font-size: 10px;">cordova plugin</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/usb/" style="font-size: 10px;">usb</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.baidu.com/">百度</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://keeganlee.me/">Keegan小钢</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.gitbook.com/book/dodola/gitbook/details">dodola&#39;s Gitbook</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wuxiaolong.me/">吴小龙同學</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一个移动领域的攻城师，一个初出茅庐的小子，小余同学，这就是我。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">dukelight</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">dukelight</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://www.github.com/ydpzg" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2016091102" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/11/2016091102/" class="article-date">
+  	<time datetime="2016-09-11T10:11:53.000Z" itemprop="datePublished">2016-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。"><a href="#背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。" class="headerlink" title="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。"></a>背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。</h1></blockquote>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><p>主要看 testApple这个类，会有几种不同的值。</p>
+<ol>
+<li><a href="">{ }</a> object型  </li>
+<li><p><a href="">[] </a> array型</p>
+<p> Gson gson = new GsonBuilder().registerTypeAdapter(TestPeople.class, new MyDeserializer()).create();<br> String ssArray = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:[]}}”;<br> System.out.println(ssArray);<br> String ssArray2 = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:[{\”name\”:\”111\”,\”id\”:\”9\”}]}}”;<br> System.out.println(ssArray2);<br> String ssObject = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:{\”name\”:\”111\”,\”id\”:\”9\”}}}”;<br> System.out.println(ssObject);<br> TestHouse testHouseArray = gson.fromJson(ssArray, TestHouse.class);<br> TestHouse testHouseArray2 = gson.fromJson(ssArray2, TestHouse.class);<br> TestHouse testHouseObject = gson.fromJson(ssObject, TestHouse.class);<br> System.out.println(“result=” + testHouseArray.toString());<br> System.out.println(“result=” + testHouseArray2.toString());<br> System.out.println(“result=” + testHouseObject.toString());</p>
+</li>
+</ol>
+<h4 id="输出内容"><a href="#输出内容" class="headerlink" title="输出内容"></a>输出内容</h4><p>根据testApple可以看到，确实可以根据不同的输入正确解析出来。</p>
+<pre><code>{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[]}}
+{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}]}}
+{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}}}
+result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=null}}
+result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}
+result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}
+</code></pre><h4 id="最外层实体"><a href="#最外层实体" class="headerlink" title="最外层实体"></a>最外层实体</h4><p>为了演示用，构造了一个最外层的实体。</p>
+<pre><code>public class TestHouse {
+    private String name;
+    private String id;
+    private TestPeople testPeople;
+
+    public TestHouse(String name, String id, TestPeople testPeople) {
+        this.name = name;
+        this.id = id;
+        this.testPeople = testPeople;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public TestPeople getTestPeople() {
+        return testPeople;
+    }
+
+    public void setTestPeople(TestPeople testPeople) {
+        this.testPeople = testPeople;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;TestHouse{&quot; +
+                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
+                &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
+                &quot;, testPeople=&quot; + testPeople +
+                &apos;}&apos;;
+    }
+}
+</code></pre><h4 id="第二层实体"><a href="#第二层实体" class="headerlink" title="第二层实体"></a>第二层实体</h4><p>为了演示用，构造了一个第二层的实体。这里就直接涉及到不规则实体的容器了。</p>
+<pre><code>public class TestPeople {
+    private String name;
+    private TestApple testApple;
+
+    public TestPeople() {
+    }
+
+    public TestPeople(String name, TestApple testApple) {
+        this.name = name;
+        this.testApple = testApple;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public TestApple getTestApple() {
+        return testApple;
+    }
+
+    public void setTestApple(TestApple testApple) {
+        this.testApple = testApple;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;TestPeople{&quot; +
+                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
+                &quot;, testApple=&quot; + testApple +
+                &apos;}&apos;;
+    }
+}
+</code></pre><h4 id="最内层实体"><a href="#最内层实体" class="headerlink" title="最内层实体"></a>最内层实体</h4><p>不规则值的实体，有可能是object，也有可能是array。</p>
+<pre><code>public class TestApple {
+    private String name;
+    private String id;
+
+
+    public TestApple(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;TestApple{&quot; +
+                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
+                &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
+                &apos;}&apos;;
+    }
+}
+</code></pre><h4 id="自定义的JsonDeserializer"><a href="#自定义的JsonDeserializer" class="headerlink" title="自定义的JsonDeserializer"></a>自定义的JsonDeserializer</h4><p>主要是为了解析有争议的实体，针对不同的情况去做相关的处理，最后输出同一个最外层实体。</p>
+<pre><code>public class MyDeserializer implements JsonDeserializer&lt;TestPeople&gt; {
+    @Override
+    public TestPeople deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        JsonElement jsonElementApple = jsonElement.getAsJsonObject().get(&quot;testApple&quot;);
+        if (jsonElementApple == null) {
+            return null;
+        }
+        if (jsonElementApple.isJsonObject()) {
+            return new Gson().fromJson(jsonElement, TestPeople.class);
+        } else {
+            List&lt;TestApple&gt; testApple = jsonDeserializationContext.deserialize(jsonElementApple, new TypeToken&lt;List&lt;TestApple&gt;&gt;() {}.getType());
+            Gson gson = new Gson();
+            Map map = jsonDeserializationContext.deserialize(jsonElement, Map.class);
+            if (map.containsKey(&quot;testApple&quot;)) {
+                map.remove(&quot;testApple&quot;);
+            }
+            JsonElement jsonElementMixed = gson.toJsonTree(map);
+            TestPeople testPeople = gson.fromJson(jsonElementMixed, TestPeople.class);
+            if (testApple.size() &gt; 0) {
+                testPeople.setTestApple(testApple.get(0));
+            }
+            return testPeople;
+        }
+    }
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/11/2016091101/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【开发笔记】高德地图在fragment使用时切换时会黑屏</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016091102" data-title="【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理" data-url="http://ydpzg.github.io/2016/09/11/2016091102/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 dukelight
+    	</div>
+      	<div class="footer-right">
+      		<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+          <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>       
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
