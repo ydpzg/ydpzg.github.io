@@ -217,9 +217,7 @@
       
         <blockquote>
 <h1 id="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction-replace-int-fragment-切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。"><a href="#背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction-replace-int-fragment-切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。" class="headerlink" title="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。"></a>背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。</h1></blockquote>
-<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><ol>
-<li>使用两个FrameLayout</li>
-</ol>
+<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>1.使用两个FrameLayout</p>
 <p>在activity里使用两个FrameLayout容器，一个叫地图FrameLayout，一个叫普通FrameLayout，有map view的放到地图FrameLayout里面去，统一管理。<br>每次切换的时候先fragment所在的FrameLayout容器先gone掉，再去remove 掉具体的fragment。这时，耗时的ui操作在后台进行，所以就不会看到黑屏的存在，但是，还是有点耗时的时间存在，导致屏幕会有点卡顿。<br>结果是良好的，fragment的生命周期不变。</p>
 <pre><code>BaseFragment mLastBaseFragment;
 // 根据fragment实例去切换activity里的fragment
@@ -242,9 +240,7 @@ public void changeFragment(BaseFragment fragment) {
         mLastBaseFragment = fragment;
     }
 }
-</code></pre><ol>
-<li>将fragment的切换从replace环城show和hide</li>
-</ol>
+</code></pre><p>2.将fragment的切换从replace环城show和hide</p>
 <p>使用show和hide，黑屏不见了，原理就是这时fragment不会每次都被重新创建了。但是fragment的生命周期就乱了，具体表现为没有onResume和onPause，这时使用手动的方式模拟这两个fragment.setUserVisibleHint（true), 实际上setUserVisibleHint在fragment与view pager共用的时候才会被调用。</p>
 <pre><code>FragmentTransaction fragmentTransaction = fm.beginTransaction();
 Fragment fragment = fm.findFragmentByTag(type + &quot;&quot;);
