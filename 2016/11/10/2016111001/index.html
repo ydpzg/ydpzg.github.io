@@ -3,14 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016 | dukelight&#39;s home</title>
+  <title>mac下如何通过vpn连接公司的svn | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/2016/page/2/index.html">
+  <meta name="description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
+1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
+2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
+3、        
+#!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac下如何通过vpn连接公司的svn">
+<meta property="og:url" content="http://ydpzg.github.io/2016/11/10/2016111001/index.html">
 <meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
+1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
+2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
+3、        
+#!">
+<meta property="og:updated_time" content="2016-11-10T12:17:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="mac下如何通过vpn连接公司的svn">
+<meta name="twitter:description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
+1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
+2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
+3、        
+#!">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -187,262 +203,105 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2016111001" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/11/10/2016111001/" class="article-date">
+  	<time datetime="2016-11-10T12:10:26.000Z" itemprop="datePublished">2016-11-10</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mac下如何通过vpn连接公司的svn
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/16/2016081601/" class="archive-article-date">
-  	<time datetime="2016-08-16T15:30:24.000Z" itemprop="datePublished">Aug 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/16/2016081601/">购买nexus5，nexus6后应该对机器做的事情</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。</p>
+<p>1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。</p>
+<p>2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。</p>
+<p>3、        </p>
+<p><code>#!/bin/sh</code><br><code>/sbin/route add -net x.x.x -interface ppp0</code></p>
+<p>注：ppp0不要修改它，上述例子中需要将x.x.x替换成10.11.12</p>
+<p>4、试试打开公司svn的外网地址，是不是可以访问了。</p>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nexus/">nexus</a></li></ul>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/21/2016102201/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2016102201</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/08/2016080901/" class="archive-article-date">
-  	<time datetime="2016-08-08T15:48:37.000Z" itemprop="datePublished">Aug 8</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/08/2016080901/">cordova自定义插件入门</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cordova-plugin/">cordova plugin</a></li></ul>
-	</div>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016111001" data-title="mac下如何通过vpn连接公司的svn" data-url="http://ydpzg.github.io/2016/11/10/2016111001/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/04/2016080401/" class="archive-article-date">
-  	<time datetime="2016-08-04T03:50:21.000Z" itemprop="datePublished">Aug 4</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/04/2016080401/">android 开发板操作出现“Read-only file system”</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/26/2016072601/" class="archive-article-date">
-  	<time datetime="2016-07-26T05:47:15.000Z" itemprop="datePublished">Jul 26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/26/2016072601/">android开发板上做debug，不是用usb线连接</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/14/2016071401/" class="archive-article-date">
-  	<time datetime="2016-07-14T03:02:18.000Z" itemprop="datePublished">Jul 14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/14/2016071401/">【学习笔记】使用idea自带生成webservice客户端client的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/06/2016070602/" class="archive-article-date">
-  	<time datetime="2016-07-06T09:18:00.000Z" itemprop="datePublished">Jul 6</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/06/2016070602/">【学习笔记】android安全机制相关</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rsa-HMac-hash/">rsa HMac hash</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/06/2016070601/" class="archive-article-date">
-  	<time datetime="2016-07-06T00:33:13.000Z" itemprop="datePublished">Jul 6</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/06/2016070601/">【学习笔记】基于xposed的入门和安全漏洞的实战</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xposed-xposedmodule-XposedBridge-hook/">xposed xposedmodule XposedBridge hook</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/04/2016070401/" class="archive-article-date">
-  	<time datetime="2016-07-04T10:04:55.000Z" itemprop="datePublished">Jul 4</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/04/2016070401/">【学习笔记】找蓝牙通讯方法pc与android</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蓝牙通讯，pc与android/">蓝牙通讯，pc与android</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2016/">&laquo; Prev</a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -477,8 +336,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
