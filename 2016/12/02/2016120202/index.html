@@ -3,30 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mac下如何通过vpn连接公司的svn | dukelight&#39;s home</title>
+  <title>android连接https web service忽略证书的方法 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
-1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
-2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
-3、        
-#!">
+  <meta name="description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
+解决方法如下：
+在使用web service之前调用allowAllSSL()就行了。
+`public static void allowAllSSL() {  
+javax.net.ssl.HttpsURLConnection  
+        .setDef">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac下如何通过vpn连接公司的svn">
-<meta property="og:url" content="http://ydpzg.github.io/2016/11/10/2016111001/index.html">
+<meta property="og:title" content="android连接https web service忽略证书的方法">
+<meta property="og:url" content="http://ydpzg.github.io/2016/12/02/2016120202/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
-1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
-2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
-3、        
-#!">
-<meta property="og:updated_time" content="2016-11-10T12:17:02.000Z">
+<meta property="og:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
+解决方法如下：
+在使用web service之前调用allowAllSSL()就行了。
+`public static void allowAllSSL() {  
+javax.net.ssl.HttpsURLConnection  
+        .setDef">
+<meta property="og:updated_time" content="2016-12-02T14:57:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac下如何通过vpn连接公司的svn">
-<meta name="twitter:description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
-1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
-2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
-3、        
-#!">
+<meta name="twitter:title" content="android连接https web service忽略证书的方法">
+<meta name="twitter:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
+解决方法如下：
+在使用web service之前调用allowAllSSL()就行了。
+`public static void allowAllSSL() {  
+javax.net.ssl.HttpsURLConnection  
+        .setDef">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -203,11 +206,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2016111001" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2016120202" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/10/2016111001/" class="article-date">
-  	<time datetime="2016-11-10T12:10:26.000Z" itemprop="datePublished">2016-11-10</time>
+      <a href="/2016/12/02/2016120202/" class="article-date">
+  	<time datetime="2016-12-02T14:47:19.000Z" itemprop="datePublished">2016-12-02</time>
 </a>
     </div>
   
@@ -220,7 +223,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      mac下如何通过vpn连接公司的svn
+      android连接https web service忽略证书的方法
     </h1>
   
 
@@ -236,13 +239,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。</p>
-<p>1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。</p>
-<p>2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。</p>
-<p>3、        </p>
-<p><code>#!/bin/sh</code><br><code>/sbin/route add -net x.x.x -interface ppp0</code></p>
-<p>注：ppp0不要修改它，上述例子中需要将x.x.x替换成10.11.12</p>
-<p>4、试试打开公司svn的外网地址，是不是可以访问了。</p>
+        <p>如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。</p>
+<p>解决方法如下：</p>
+<p>在使用web service之前调用allowAllSSL()就行了。</p>
+<p>`public static void allowAllSSL() {  </p>
+<pre><code>javax.net.ssl.HttpsURLConnection  
+        .setDefaultHostnameVerifier(new HostnameVerifier() {  
+            public boolean verify(String hostname, SSLSession session) {  
+                return true;  
+            }  
+        });  
+
+javax.net.ssl.SSLContext context = null;  
+
+if (trustManagers == null) {  
+    trustManagers = new javax.net.ssl.TrustManager[] { new _FakeX509TrustManager() };  
+}  
+
+try {  
+    context = javax.net.ssl.SSLContext.getInstance(&quot;TLS&quot;);  
+    context.init(null, trustManagers, new SecureRandom());  
+} catch (NoSuchAlgorithmException e) {  
+    Log.e(&quot;allowAllSSL&quot;, e.toString());  
+} catch (KeyManagementException e) {  
+    Log.e(&quot;allowAllSSL&quot;, e.toString());  
+}  
+javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context  
+        .getSocketFactory());  
+</code></pre><p>}`</p>
 
       
     </div>
@@ -252,18 +276,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/02/2016120201/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/10/21/2016102201/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2016102201</div>
+    <a href="/2016/12/02/2016120201/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -292,7 +307,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016111001" data-title="mac下如何通过vpn连接公司的svn" data-url="http://ydpzg.github.io/2016/11/10/2016111001/"></div>
+	<div class="ds-thread" data-thread-key="2016120202" data-title="android连接https web service忽略证书的方法" data-url="http://ydpzg.github.io/2016/12/02/2016120202/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

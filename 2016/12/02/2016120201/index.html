@@ -3,30 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mac下如何通过vpn连接公司的svn | dukelight&#39;s home</title>
+  <title>android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
-1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
-2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
-3、        
-#!">
+  <meta name="description" content="在adb 打命令  am broadcast 发广播的时候，正常返回数据。但是android里面使用Runtime.getRuntime().exec()运行命令的时候，发现报错了，如下
+Permission Denial: broadcast asks to run as user -1 but is calling from user 0; this requires android.perm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac下如何通过vpn连接公司的svn">
-<meta property="og:url" content="http://ydpzg.github.io/2016/11/10/2016111001/index.html">
+<meta property="og:title" content="android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL">
+<meta property="og:url" content="http://ydpzg.github.io/2016/12/02/2016120201/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
-1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
-2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
-3、        
-#!">
-<meta property="og:updated_time" content="2016-11-10T12:17:02.000Z">
+<meta property="og:description" content="在adb 打命令  am broadcast 发广播的时候，正常返回数据。但是android里面使用Runtime.getRuntime().exec()运行命令的时候，发现报错了，如下
+Permission Denial: broadcast asks to run as user -1 but is calling from user 0; this requires android.perm">
+<meta property="og:updated_time" content="2016-12-02T14:52:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac下如何通过vpn连接公司的svn">
-<meta name="twitter:description" content="window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。
-1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。
-2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。
-3、        
-#!">
+<meta name="twitter:title" content="android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL">
+<meta name="twitter:description" content="在adb 打命令  am broadcast 发广播的时候，正常返回数据。但是android里面使用Runtime.getRuntime().exec()运行命令的时候，发现报错了，如下
+Permission Denial: broadcast asks to run as user -1 but is calling from user 0; this requires android.perm">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -203,11 +194,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2016111001" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2016120201" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/10/2016111001/" class="article-date">
-  	<time datetime="2016-11-10T12:10:26.000Z" itemprop="datePublished">2016-11-10</time>
+      <a href="/2016/12/02/2016120201/" class="article-date">
+  	<time datetime="2016-12-02T14:47:15.000Z" itemprop="datePublished">2016-12-02</time>
 </a>
     </div>
   
@@ -220,7 +211,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      mac下如何通过vpn连接公司的svn
+      android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL
     </h1>
   
 
@@ -236,13 +227,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。</p>
-<p>1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。</p>
-<p>2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。</p>
-<p>3、        </p>
-<p><code>#!/bin/sh</code><br><code>/sbin/route add -net x.x.x -interface ppp0</code></p>
-<p>注：ppp0不要修改它，上述例子中需要将x.x.x替换成10.11.12</p>
-<p>4、试试打开公司svn的外网地址，是不是可以访问了。</p>
+        <p>在adb 打命令  am broadcast 发广播的时候，正常返回数据。<br>但是android里面使用Runtime.getRuntime().exec()运行命令的时候，发现报错了，如下</p>
+<p><code>Permission Denial: broadcast asks to run as user -1 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL or android.permission.INTERACT_ACROSS_USERS_</code></p>
+<p>解决方案：<br>在命令里面加个参数  - - user 0，即 am broadcast  - - user 0，此时在android里面就可以正常返回了。</p>
 
       
     </div>
@@ -252,18 +239,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/02/2016120201/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/02/2016120202/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL
+          android连接https web service忽略证书的方法
         
       </div>
     </a>
   
   
-    <a href="/2016/10/21/2016102201/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2016102201</div>
+    <a href="/2016/11/10/2016111001/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mac下如何通过vpn连接公司的svn</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -292,7 +279,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016111001" data-title="mac下如何通过vpn连接公司的svn" data-url="http://ydpzg.github.io/2016/11/10/2016111001/"></div>
+	<div class="ds-thread" data-thread-key="2016120201" data-title="android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL" data-url="http://ydpzg.github.io/2016/12/02/2016120201/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

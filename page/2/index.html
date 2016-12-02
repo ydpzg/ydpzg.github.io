@@ -189,6 +189,153 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016090301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/03/2016090301/" class="article-date">
+  	<time datetime="2016-09-03T13:24:08.000Z" itemprop="datePublished">2016-09-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/03/2016090301/">android系统USB设备静默获得权限</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。"><a href="#背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。" class="headerlink" title="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。"></a>背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。</h1></blockquote>
+<h4 id="总结了一些，USB设备静默获得权限的条件，有两个"><a href="#总结了一些，USB设备静默获得权限的条件，有两个" class="headerlink" title="总结了一些，USB设备静默获得权限的条件，有两个"></a>总结了一些，USB设备静默获得权限的条件，有两个</h4><ol>
+<li>root</li>
+<li>系统app<br>注意：root手机有风险，需查看各种手机的root攻略；使用“幸运破解器”可以将app安装为系统app，或者将apk复制到/system/app/然后重启手机。</li>
+</ol>
+<h4 id="判断是否为系统app"><a href="#判断是否为系统app" class="headerlink" title="判断是否为系统app"></a>判断是否为系统app</h4><pre><code>public class PermissionUtil {
+    public static boolean isSystemApp(Context context) {
+        return (context.getApplicationInfo().flags &amp; ApplicationInfo.FLAG_SYSTEM) &gt; 0;
+    }
+}
+</code></pre><h4 id="下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。"><a href="#下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。" class="headerlink" title="下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。"></a>下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。</h4><pre><code>if (PermissionUtil.isSystemApp(mContext)) { // 如果是系统应用就执行尝试默默做usb权限
+    Intent intent = new Intent();
+    intent.setAction(ACTION_USB_PERMISSION);
+    intent.putExtra(UsbManager.EXTRA_DEVICE, device);
+    intent.putExtra(UsbManager.EXTRA_PERMISSION_GRANTED, true);
+
+    final PackageManager pm = mContext.getPackageManager();
+    try {
+        ApplicationInfo aInfo = pm.getApplicationInfo(mContext.getPackageName(),
+                0);
+        try {
+            IBinder b = ServiceManager.getService(USB_SERVICE);
+            IUsbManager service = IUsbManager.Stub.asInterface(b);
+            service.grantDevicePermission(device, aInfo.uid);
+        } catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    } catch (PackageManager.NameNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+
+    mContext.sendBroadcast(intent);
+}
+</code></pre><p>注意：由于android.hardware.usb.IUsbManager和android.os.ServiceManager是系统层面的代码，本来程序需要在android系统源码里编译，但这样直接复制这两个类的源码集成进项目工程里也可以实现。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/usb/">usb</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016082501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/25/2016082501/" class="article-date">
+  	<time datetime="2016-08-24T19:06:11.000Z" itemprop="datePublished">2016-08-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/25/2016082501/">Android清空Activity栈的做法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="以前的思路是这样的："><a href="#以前的思路是这样的：" class="headerlink" title="以前的思路是这样的："></a>以前的思路是这样的：</h4><pre><code>在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
+</code></pre><h4 id="现在还可以这样实现："><a href="#现在还可以这样实现：" class="headerlink" title="现在还可以这样实现："></a>现在还可以这样实现：</h4><pre><code>直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activity-intent-flag/">Activity intent flag</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016081601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -920,200 +1067,9 @@ protected void afterHookedMethod(MethodHookParam param) throws Throwable {}；
 
 
   
-    <article id="post-2015062801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/28/2015062801/" class="article-date">
-  	<time datetime="2015-06-28T01:57:35.000Z" itemprop="datePublished">2015-06-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/28/2015062801/">android 控件AutoCompleteTextView实战</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表</p>
-<pre><code>public class MyAutoCompleteTextView extends AutoCompleteTextView {
-
-    public MyAutoCompleteTextView(Context context) {
-        super(context);
-    }
-
-    public MyAutoCompleteTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public MyAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    @Override
-    public boolean enoughToFilter() {
-        return true;
-    }
-}
-</code></pre><p>在layout里定义自定义的AutoCompleteTextView</p>
-<pre><code>&lt;com.dukelight.testandroidm.MyAutoCompleteTextView
-    android:id=&quot;@+id/act_main&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    android:completionThreshold=&quot;1&quot;
-    android:dropDownHorizontalOffset=&quot;10dp&quot;
-    android:text=&quot;&quot; &gt;
-
-    &lt;requestFocus /&gt;
-&lt;/com.dukelight.testandroidm.MyAutoCompleteTextView&gt;
-</code></pre><p>最后就是Activity里的调用代码</p>
-<pre><code>public class TestAutoCompleteActivity extends Activity {
-
-
-    String[] place = new String[]{&quot;白云&quot;, &quot;广州&quot;, &quot;五山&quot;, &quot;天河&quot;, &quot;越秀&quot;, &quot;二电厂&quot;, &quot;大学城&quot;, &quot;中山&quot;};
-    @InjectView(R.id.act_main)
-    MyAutoCompleteTextView mActMain;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_test_complete);
-        ButterKnife.inject(this);
-
-        ArrayAdapter&lt;String&gt; arrayAdapter = new ArrayAdapter&lt;String&gt;(this,
-                android.R.layout.simple_dropdown_item_1line, place);
-        mActMain.setAdapter(arrayAdapter);
-
-        mActMain.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // 手动向下弹出匹配的菜单        
-                mActMain.showDropDown(); 
-                return false;
-            }
-        });
-    }
-}
-</code></pre><p>最后的最后放上效果图片</p>
-<p><img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100" alt="空字符串显示全部"> <img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062802.png?imageView/2/w/300/q/100" alt="匹配字符串显示"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-AutoCompleteTextView/">android AutoCompleteTextView</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/26/2015062601/" class="article-date">
-  	<time datetime="2015-06-26T07:01:04.000Z" itemprop="datePublished">2015-06-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/26/2015062601/">使用hexo搭建博客平台，记录过程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-在github上创建一个Repository-名字为xx-github-io"><a href="#1-在github上创建一个Repository-名字为xx-github-io" class="headerlink" title="1. 在github上创建一个Repository,名字为xx.github.io"></a>1. 在github上创建一个Repository,名字为xx.github.io</h4><pre><code>Repository 的地址就是 http://www.github.com/id/id.github.io.git
-</code></pre><h4 id="2-配置ssh-keys"><a href="#2-配置ssh-keys" class="headerlink" title="2. 配置ssh keys"></a>2. 配置ssh keys</h4><p>打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下</p>
-<pre><code>ssh -T git@github.com
-</code></pre><h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h4><pre><code>npm install -g hexo
-</code></pre><p>新建一个文件夹来保存<br>    hexo init<br>    npm install</p>
-<p>安装好后，就可以开始了<br>    hexo generate  //可以简写为 hexo g<br>    hexo server    //可以简写为 hexo s</p>
-<p>在浏览器中输入 localhost:4000 查看本地博客    </p>
-<h4 id="4-部署到github上去"><a href="#4-部署到github上去" class="headerlink" title="4. 部署到github上去"></a>4. 部署到github上去</h4><pre><code>npm install hexo-deployer-git --save
-</code></pre><p>打开hexo文件夹的_config.yml ，文件拉到最后，设置deploy的type为git，repository为：<a href="https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）" target="_blank" rel="external">https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）</a> </p>
-<pre><code>hexo g
-hexo deploy    //可简写为 hexo d
-</code></pre><h4 id="5-开始用hexo写文章"><a href="#5-开始用hexo写文章" class="headerlink" title="5. 开始用hexo写文章"></a>5. 开始用hexo写文章</h4><p>hexo博客目录里的source/_posts就是放文章的（使用markdown语法编写）,格式是xx.md</p>
-<pre><code>hexo new post &quot;first article&quot;   
-</code></pre><p>会创建一个叫first article.md的文件（使用markdown语法），使用macdown打开找个文件，然后就可以开始写文章，写完后打命令</p>
-<pre><code>hexo g
-hexo s
-hexo d
-</code></pre><h4 id="6-关于文章中的图片问题"><a href="#6-关于文章中的图片问题" class="headerlink" title="6. 关于文章中的图片问题"></a>6. 关于文章中的图片问题</h4><pre><code>使用七牛云存储来保存图片，并换取图片外链. (http://www.qiniu.com)
-</code></pre><blockquote>
-<p>ps: 使用hexo的第三方theme，看起来不错的主题 hexo-theme-yilia，部署后就么么哒~~<br><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia</a></p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github-自搭建/">hexo github 自搭建</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
