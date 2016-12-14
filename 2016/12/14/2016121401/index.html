@@ -3,33 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android连接https web service忽略证书的方法 | dukelight&#39;s home</title>
+  <title>有些时候，某些android设备需要用sh xxx.sh的方式去运行某些命令 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
-解决方法如下：
-在使用web service之前调用allowAllSSL()就行了。
-`public static void allowAllSSL() {  
-javax.net.ssl.HttpsURLConnection  
-        .setDef">
+  <meta name="description" content="有些设备在用Runtime.getRuntime().exec运行linux命令的时候，su，或者setprop等命令运行后没返回，此时的解决方法是：写一个shell脚本文件
+#!/bin/shsu -c ‘setprop service.adb.tcp.port 5555’su -c ‘stop adbd’su -c ‘start adbd’
+然后在java代码里运行 sh xx.sh，以运行s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android连接https web service忽略证书的方法">
-<meta property="og:url" content="http://ydpzg.github.io/2016/12/02/2016120202/index.html">
+<meta property="og:title" content="有些时候，某些android设备需要用sh xxx.sh的方式去运行某些命令">
+<meta property="og:url" content="http://ydpzg.github.io/2016/12/14/2016121401/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
-解决方法如下：
-在使用web service之前调用allowAllSSL()就行了。
-`public static void allowAllSSL() {  
-javax.net.ssl.HttpsURLConnection  
-        .setDef">
-<meta property="og:updated_time" content="2016-12-02T14:57:23.000Z">
+<meta property="og:description" content="有些设备在用Runtime.getRuntime().exec运行linux命令的时候，su，或者setprop等命令运行后没返回，此时的解决方法是：写一个shell脚本文件
+#!/bin/shsu -c ‘setprop service.adb.tcp.port 5555’su -c ‘stop adbd’su -c ‘start adbd’
+然后在java代码里运行 sh xx.sh，以运行s">
+<meta property="og:updated_time" content="2016-12-14T09:42:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android连接https web service忽略证书的方法">
-<meta name="twitter:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
-解决方法如下：
-在使用web service之前调用allowAllSSL()就行了。
-`public static void allowAllSSL() {  
-javax.net.ssl.HttpsURLConnection  
-        .setDef">
+<meta name="twitter:title" content="有些时候，某些android设备需要用sh xxx.sh的方式去运行某些命令">
+<meta name="twitter:description" content="有些设备在用Runtime.getRuntime().exec运行linux命令的时候，su，或者setprop等命令运行后没返回，此时的解决方法是：写一个shell脚本文件
+#!/bin/shsu -c ‘setprop service.adb.tcp.port 5555’su -c ‘stop adbd’su -c ‘start adbd’
+然后在java代码里运行 sh xx.sh，以运行s">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -206,11 +197,11 @@ javax.net.ssl.HttpsURLConnection
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2016120202" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2016121401" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/02/2016120202/" class="article-date">
-  	<time datetime="2016-12-02T14:47:19.000Z" itemprop="datePublished">2016-12-02</time>
+      <a href="/2016/12/14/2016121401/" class="article-date">
+  	<time datetime="2016-12-14T09:36:20.000Z" itemprop="datePublished">2016-12-14</time>
 </a>
     </div>
   
@@ -223,7 +214,7 @@ javax.net.ssl.HttpsURLConnection
         
   
     <h1 class="article-title" itemprop="name">
-      android连接https web service忽略证书的方法
+      有些时候，某些android设备需要用sh xxx.sh的方式去运行某些命令
     </h1>
   
 
@@ -239,34 +230,9 @@ javax.net.ssl.HttpsURLConnection
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。</p>
-<p>解决方法如下：</p>
-<p>在使用web service之前调用allowAllSSL()就行了。</p>
-<p>`public static void allowAllSSL() {  </p>
-<pre><code>javax.net.ssl.HttpsURLConnection  
-        .setDefaultHostnameVerifier(new HostnameVerifier() {  
-            public boolean verify(String hostname, SSLSession session) {  
-                return true;  
-            }  
-        });  
-
-javax.net.ssl.SSLContext context = null;  
-
-if (trustManagers == null) {  
-    trustManagers = new javax.net.ssl.TrustManager[] { new _FakeX509TrustManager() };  
-}  
-
-try {  
-    context = javax.net.ssl.SSLContext.getInstance(&quot;TLS&quot;);  
-    context.init(null, trustManagers, new SecureRandom());  
-} catch (NoSuchAlgorithmException e) {  
-    Log.e(&quot;allowAllSSL&quot;, e.toString());  
-} catch (KeyManagementException e) {  
-    Log.e(&quot;allowAllSSL&quot;, e.toString());  
-}  
-javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context  
-        .getSocketFactory());  
-</code></pre><p>}`</p>
+        <p>有些设备在用Runtime.getRuntime().exec<br>运行linux命令的时候，su，或者setprop等命令运行后没返回，此时的解决方法是：<br>写一个shell脚本文件</p>
+<p><code>#!/bin/sh</code><br><code>su -c ‘setprop service.adb.tcp.port 5555’</code><br><code>su -c ‘stop adbd’</code><br><code>su -c ‘start adbd’</code></p>
+<p>然后在java代码里运行 sh xx.sh，以运行shell脚本的方式去运行命令</p>
 
       
     </div>
@@ -276,18 +242,9 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
     
 <nav id="article-nav">
   
-    <a href="/2016/12/08/2016120801/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          adb模拟点击某个坐标
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/02/2016120201/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL</div>
+    <a href="/2016/12/08/2016120801/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">adb模拟点击某个坐标</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -316,7 +273,7 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016120202" data-title="android连接https web service忽略证书的方法" data-url="http://ydpzg.github.io/2016/12/02/2016120202/"></div>
+	<div class="ds-thread" data-thread-key="2016121401" data-title="有些时候，某些android设备需要用sh xxx.sh的方式去运行某些命令" data-url="http://ydpzg.github.io/2016/12/14/2016121401/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
