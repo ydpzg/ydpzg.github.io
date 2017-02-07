@@ -3,27 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android系统USB设备静默获得权限 | dukelight&#39;s home</title>
+  <title>JAVA使用futureTask时候注意的坑 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。
-总结了一些，USB设备静默获得权限的条件，有两个
-root
-系统app注意：root手机有风险，需查看各种手机的root攻略；使用“幸运破解器”可以将app安装为系统app，或者将apk复制到/system/app/然后重启">
+  <meta name="description" content="在call里面不要用try catch
+FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android系统USB设备静默获得权限">
-<meta property="og:url" content="http://ydpzg.github.io/2016/09/03/2016090301/index.html">
+<meta property="og:title" content="JAVA使用futureTask时候注意的坑">
+<meta property="og:url" content="http://ydpzg.github.io/2017/02/07/2017020701/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。
-总结了一些，USB设备静默获得权限的条件，有两个
-root
-系统app注意：root手机有风险，需查看各种手机的root攻略；使用“幸运破解器”可以将app安装为系统app，或者将apk复制到/system/app/然后重启">
-<meta property="og:updated_time" content="2016-09-03T13:50:17.000Z">
+<meta property="og:description" content="在call里面不要用try catch
+FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+<meta property="og:updated_time" content="2017-02-07T07:39:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android系统USB设备静默获得权限">
-<meta name="twitter:description" content="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。
-总结了一些，USB设备静默获得权限的条件，有两个
-root
-系统app注意：root手机有风险，需查看各种手机的root攻略；使用“幸运破解器”可以将app安装为系统app，或者将apk复制到/system/app/然后重启">
+<meta name="twitter:title" content="JAVA使用futureTask时候注意的坑">
+<meta name="twitter:description" content="在call里面不要用try catch
+FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -200,11 +194,11 @@ root
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2016090301" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/03/2016090301/" class="article-date">
-  	<time datetime="2016-09-03T13:24:08.000Z" itemprop="datePublished">2016-09-03</time>
+      <a href="/2017/02/07/2017020701/" class="article-date">
+  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">2017-02-07</time>
 </a>
     </div>
   
@@ -217,7 +211,7 @@ root
         
   
     <h1 class="article-title" itemprop="name">
-      android系统USB设备静默获得权限
+      JAVA使用futureTask时候注意的坑
     </h1>
   
 
@@ -225,10 +219,6 @@ root
       
       <div class="article-info article-info-post">
         
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/usb/">usb</a></li></ul>
-	</div>
-
         
 
         <div class="clearfix"></div>
@@ -237,43 +227,10 @@ root
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<h1 id="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。"><a href="#背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。" class="headerlink" title="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。"></a>背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。</h1></blockquote>
-<h4 id="总结了一些，USB设备静默获得权限的条件，有两个"><a href="#总结了一些，USB设备静默获得权限的条件，有两个" class="headerlink" title="总结了一些，USB设备静默获得权限的条件，有两个"></a>总结了一些，USB设备静默获得权限的条件，有两个</h4><ol>
-<li>root</li>
-<li>系统app<br>注意：root手机有风险，需查看各种手机的root攻略；使用“幸运破解器”可以将app安装为系统app，或者将apk复制到/system/app/然后重启手机。</li>
-</ol>
-<h4 id="判断是否为系统app"><a href="#判断是否为系统app" class="headerlink" title="判断是否为系统app"></a>判断是否为系统app</h4><pre><code>public class PermissionUtil {
-    public static boolean isSystemApp(Context context) {
-        return (context.getApplicationInfo().flags &amp; ApplicationInfo.FLAG_SYSTEM) &gt; 0;
-    }
-}
-</code></pre><h4 id="下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。"><a href="#下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。" class="headerlink" title="下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。"></a>下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。</h4><pre><code>if (PermissionUtil.isSystemApp(mContext)) { // 如果是系统应用就执行尝试默默做usb权限
-    Intent intent = new Intent();
-    intent.setAction(ACTION_USB_PERMISSION);
-    intent.putExtra(UsbManager.EXTRA_DEVICE, device);
-    intent.putExtra(UsbManager.EXTRA_PERMISSION_GRANTED, true);
-
-    final PackageManager pm = mContext.getPackageManager();
-    try {
-        ApplicationInfo aInfo = pm.getApplicationInfo(mContext.getPackageName(),
-                0);
-        try {
-            IBinder b = ServiceManager.getService(USB_SERVICE);
-            IUsbManager service = IUsbManager.Stub.asInterface(b);
-            service.grantDevicePermission(device, aInfo.uid);
-        } catch (RemoteException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    } catch (PackageManager.NameNotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-
-    mContext.sendBroadcast(intent);
-}
-</code></pre><p>注意：由于android.hardware.usb.IUsbManager和android.os.ServiceManager是系统层面的代码，本来程序需要在android系统源码里编译，但这样直接复制这两个类的源码集成进项目工程里也可以实现。</p>
+        <p>在call里面不要用try catch</p>
+<p>FutureTask mListenTask = new FutureTask(new Callable() {<br>    @Override<br>    public Object call() throws Exception {<br>//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。<br>   }<br>});</p>
+<p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
+<p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
 
       
     </div>
@@ -283,18 +240,9 @@ root
     
 <nav id="article-nav">
   
-    <a href="/2016/09/11/2016091101/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          【开发笔记】高德地图在fragment使用时切换时会黑屏
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/25/2016082501/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android清空Activity栈的做法</div>
+    <a href="/2016/12/16/2016121602/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">nexus6 7.0的root方法</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -323,7 +271,7 @@ root
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016090301" data-title="android系统USB设备静默获得权限" data-url="http://ydpzg.github.io/2016/09/03/2016090301/"></div>
+	<div class="ds-thread" data-thread-key="2017020701" data-title="JAVA使用futureTask时候注意的坑" data-url="http://ydpzg.github.io/2017/02/07/2017020701/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
