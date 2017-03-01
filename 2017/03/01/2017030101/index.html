@@ -3,21 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JAVA使用futureTask时候注意的坑 | dukelight&#39;s home</title>
+  <title>自定义view用到的几种定时刷新方法 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+  <meta name="description" content="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用Timer timer = new Timer();  
+        TimerTask timerTask = new TimerTask() {  
+            @Override  
+            public void run() {  
+                //具体处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA使用futureTask时候注意的坑">
-<meta property="og:url" content="http://ydpzg.github.io/2017/02/07/2017020701/index.html">
+<meta property="og:title" content="自定义view用到的几种定时刷新方法">
+<meta property="og:url" content="http://ydpzg.github.io/2017/03/01/2017030101/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
-<meta property="og:updated_time" content="2017-02-07T07:39:45.000Z">
+<meta property="og:description" content="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用Timer timer = new Timer();  
+        TimerTask timerTask = new TimerTask() {  
+            @Override  
+            public void run() {  
+                //具体处理">
+<meta property="og:updated_time" content="2017-03-01T15:27:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA使用futureTask时候注意的坑">
-<meta name="twitter:description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+<meta name="twitter:title" content="自定义view用到的几种定时刷新方法">
+<meta name="twitter:description" content="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用Timer timer = new Timer();  
+        TimerTask timerTask = new TimerTask() {  
+            @Override  
+            public void run() {  
+                //具体处理">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -194,11 +203,11 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2017030101" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/07/2017020701/" class="article-date">
-  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">2017-02-07</time>
+      <a href="/2017/03/01/2017030101/" class="article-date">
+  	<time datetime="2017-03-01T15:17:33.000Z" itemprop="datePublished">2017-03-01</time>
 </a>
     </div>
   
@@ -211,7 +220,7 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
         
   
     <h1 class="article-title" itemprop="name">
-      JAVA使用futureTask时候注意的坑
+      自定义view用到的几种定时刷新方法
     </h1>
   
 
@@ -227,10 +236,28 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在call里面不要用try catch</p>
-<p>FutureTask mListenTask = new FutureTask(new Callable() {<br>    @Override<br>    public Object call() throws Exception {<br>//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。<br>   }<br>});</p>
-<p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
-<p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
+        <h4 id="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用"><a href="#1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用" class="headerlink" title="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用"></a>1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用</h4><p><code>Timer timer = new Timer();  
+        TimerTask timerTask = new TimerTask() {  
+            @Override  
+            public void run() {  
+                //具体处理代码  
+                postInvalidate();  
+            }  
+        };  
+timer.schedule(timerTask, 0, 50);</code></p>
+<h4 id="2、使用view内部的延迟刷新方法"><a href="#2、使用view内部的延迟刷新方法" class="headerlink" title="2、使用view内部的延迟刷新方法"></a>2、使用view内部的延迟刷新方法</h4><p><code>public void draw(Canvas canvas) {</code><br><code>postDelayed(new Runnable() {  
+    @Override  
+    public void run() {  
+        //具体处理代码  
+        postInvalidate();  
+    }  
+}, 50);</code><br><code>super.draw(canvas);</code><br><code>}</code></p>
+<h4 id="3、利用属性动画对view里的某个属性进行赋值来实现动画效果"><a href="#3、利用属性动画对view里的某个属性进行赋值来实现动画效果" class="headerlink" title="3、利用属性动画对view里的某个属性进行赋值来实现动画效果"></a>3、利用属性动画对view里的某个属性进行赋值来实现动画效果</h4><p><code>ObjectAnimator waveShiftAnim = ObjectAnimator.ofFloat(  
+        mWaveView, &quot;waveShiftRatio&quot;, 0f, 1f);  
+waveShiftAnim.setRepeatCount(ValueAnimator.INFINITE);  
+waveShiftAnim.setDuration(1000);  
+waveShiftAnim.setInterpolator(new LinearInterpolator());  
+animators.add(waveShiftAnim);</code>  </p>
 
       
     </div>
@@ -240,18 +267,18 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
     
 <nav id="article-nav">
   
-    <a href="/2017/02/16/2017021601/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/01/2017030102/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          使用viewpager注意几个有用的点
+          利用BitmapShader来降低自定义view动画效果的难度
         
       </div>
     </a>
   
   
-    <a href="/2016/12/16/2016121602/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">nexus6 7.0的root方法</div>
+    <a href="/2017/02/20/2017022001/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">去掉android5.0以上button默认的阴影</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -280,7 +307,7 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017020701" data-title="JAVA使用futureTask时候注意的坑" data-url="http://ydpzg.github.io/2017/02/07/2017020701/"></div>
+	<div class="ds-thread" data-thread-key="2017030101" data-title="自定义view用到的几种定时刷新方法" data-url="http://ydpzg.github.io/2017/03/01/2017030101/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

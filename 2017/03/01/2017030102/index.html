@@ -3,21 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JAVA使用futureTask时候注意的坑 | dukelight&#39;s home</title>
+  <title>利用BitmapShader来降低自定义view动画效果的难度 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+  <meta name="description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。
+
+代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA使用futureTask时候注意的坑">
-<meta property="og:url" content="http://ydpzg.github.io/2017/02/07/2017020701/index.html">
+<meta property="og:title" content="利用BitmapShader来降低自定义view动画效果的难度">
+<meta property="og:url" content="http://ydpzg.github.io/2017/03/01/2017030102/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
-<meta property="og:updated_time" content="2017-02-07T07:39:45.000Z">
+<meta property="og:description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。
+
+代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
+<meta property="og:updated_time" content="2017-03-01T15:37:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA使用futureTask时候注意的坑">
-<meta name="twitter:description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+<meta name="twitter:title" content="利用BitmapShader来降低自定义view动画效果的难度">
+<meta name="twitter:description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。
+
+代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -194,11 +197,11 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2017030102" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/07/2017020701/" class="article-date">
-  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">2017-02-07</time>
+      <a href="/2017/03/01/2017030102/" class="article-date">
+  	<time datetime="2017-03-01T15:17:36.000Z" itemprop="datePublished">2017-03-01</time>
 </a>
     </div>
   
@@ -211,7 +214,7 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
         
   
     <h1 class="article-title" itemprop="name">
-      JAVA使用futureTask时候注意的坑
+      利用BitmapShader来降低自定义view动画效果的难度
     </h1>
   
 
@@ -227,10 +230,13 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在call里面不要用try catch</p>
-<p>FutureTask mListenTask = new FutureTask(new Callable() {<br>    @Override<br>    public Object call() throws Exception {<br>//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。<br>   }<br>});</p>
-<p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
-<p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
+        <blockquote>
+<p>基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。</p>
+</blockquote>
+<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><p><code>Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);  
+Canvas canvas = new Canvas(bitmap);</code><br><code>``//…把简单元素画进bitmap变成复杂元素</code><br><code>``BitmapShader</code><br><code>mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);</code><br><code>Paint mViewPaint.setShader(mWaveShader);</code><br><code>``Matrix shaderMaxtrix = new Matrix();//矩阵  
+shaderMaxtrix.postTranslate(dx, 0);  
+mWaveShader.setLocalMatrix(shaderMaxtrix); //变换</code><br><code>``canvas.drawRect(0, 0, 1440, 300, mViewPaint);</code></p>
 
       
     </div>
@@ -240,18 +246,9 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
     
 <nav id="article-nav">
   
-    <a href="/2017/02/16/2017021601/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          使用viewpager注意几个有用的点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/16/2016121602/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">nexus6 7.0的root方法</div>
+    <a href="/2017/03/01/2017030101/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自定义view用到的几种定时刷新方法</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -280,7 +277,7 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017020701" data-title="JAVA使用futureTask时候注意的坑" data-url="http://ydpzg.github.io/2017/02/07/2017020701/"></div>
+	<div class="ds-thread" data-thread-key="2017030102" data-title="利用BitmapShader来降低自定义view动画效果的难度" data-url="http://ydpzg.github.io/2017/03/01/2017030102/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

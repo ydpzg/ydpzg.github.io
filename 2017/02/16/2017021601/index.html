@@ -3,21 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JAVA使用futureTask时候注意的坑 | dukelight&#39;s home</title>
+  <title>使用viewpager注意几个有用的点 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+  <meta name="description" content="背景：做一个图片切换器做法：使用普通PagerAdapter 与 view pager来做，配合view集合要点：以下几个神奇的东西
+// 设置一开始初始化的页面个数mVpCarInfo.setOffscreenPageLimit(Math.min(mPageCarViews.size(), 5));
+// 点击延伸到背后的容器  
+mLlPageCarContainer.setOnTouchLi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA使用futureTask时候注意的坑">
-<meta property="og:url" content="http://ydpzg.github.io/2017/02/07/2017020701/index.html">
+<meta property="og:title" content="使用viewpager注意几个有用的点">
+<meta property="og:url" content="http://ydpzg.github.io/2017/02/16/2017021601/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
-<meta property="og:updated_time" content="2017-02-07T07:39:45.000Z">
+<meta property="og:description" content="背景：做一个图片切换器做法：使用普通PagerAdapter 与 view pager来做，配合view集合要点：以下几个神奇的东西
+// 设置一开始初始化的页面个数mVpCarInfo.setOffscreenPageLimit(Math.min(mPageCarViews.size(), 5));
+// 点击延伸到背后的容器  
+mLlPageCarContainer.setOnTouchLi">
+<meta property="og:updated_time" content="2017-03-01T15:18:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA使用futureTask时候注意的坑">
-<meta name="twitter:description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+<meta name="twitter:title" content="使用viewpager注意几个有用的点">
+<meta name="twitter:description" content="背景：做一个图片切换器做法：使用普通PagerAdapter 与 view pager来做，配合view集合要点：以下几个神奇的东西
+// 设置一开始初始化的页面个数mVpCarInfo.setOffscreenPageLimit(Math.min(mPageCarViews.size(), 5));
+// 点击延伸到背后的容器  
+mLlPageCarContainer.setOnTouchLi">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -194,11 +200,11 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2017021601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/07/2017020701/" class="article-date">
-  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">2017-02-07</time>
+      <a href="/2017/02/16/2017021601/" class="article-date">
+  	<time datetime="2017-02-16T00:20:41.000Z" itemprop="datePublished">2017-02-16</time>
 </a>
     </div>
   
@@ -211,7 +217,7 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
         
   
     <h1 class="article-title" itemprop="name">
-      JAVA使用futureTask时候注意的坑
+      使用viewpager注意几个有用的点
     </h1>
   
 
@@ -227,10 +233,20 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在call里面不要用try catch</p>
-<p>FutureTask mListenTask = new FutureTask(new Callable() {<br>    @Override<br>    public Object call() throws Exception {<br>//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。<br>   }<br>});</p>
-<p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
-<p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
+        <p>背景：做一个图片切换器<br>做法：使用普通PagerAdapter 与 view pager来做，配合view集合<br>要点：以下几个神奇的东西</p>
+<p><code>// 设置一开始初始化的页面个数</code><br><code>mVpCarInfo.setOffscreenPageLimit(Math.min(mPageCarViews.size(), 5));</code></p>
+<p><code>// 点击延伸到背后的容器  
+mLlPageCarContainer.setOnTouchListener(new View.OnTouchListener() {  
+    @Override  
+    public boolean onTouch(View v, MotionEvent event) {  
+        return mVpCarInfo.dispatchTouchEvent(event);  
+    }  
+});</code></p>
+<p><code>// 显示完整，不剪掉子view  
+mLlPageCarContainer.setClipChildren(false);  
+mVpCarInfo.setClipChildren(false);</code></p>
+<p><code>// 拖动不要出现边界黑色边框  
+mVpCarInfo.setOverScrollMode(View.OVER_SCROLL_NEVER);</code></p>
 
       
     </div>
@@ -240,18 +256,18 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
     
 <nav id="article-nav">
   
-    <a href="/2017/02/16/2017021601/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/20/2017022001/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          使用viewpager注意几个有用的点
+          去掉android5.0以上button默认的阴影
         
       </div>
     </a>
   
   
-    <a href="/2016/12/16/2016121602/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">nexus6 7.0的root方法</div>
+    <a href="/2017/02/07/2017020701/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JAVA使用futureTask时候注意的坑</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -280,7 +296,7 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017020701" data-title="JAVA使用futureTask时候注意的坑" data-url="http://ydpzg.github.io/2017/02/07/2017020701/"></div>
+	<div class="ds-thread" data-thread-key="2017021601" data-title="使用viewpager注意几个有用的点" data-url="http://ydpzg.github.io/2017/02/16/2017021601/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
