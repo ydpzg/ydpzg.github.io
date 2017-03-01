@@ -15,7 +15,7 @@
 <meta property="og:description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。
 
 代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
-<meta property="og:updated_time" content="2017-03-01T15:37:25.000Z">
+<meta property="og:updated_time" content="2017-03-01T15:44:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用BitmapShader来降低自定义view动画效果的难度">
 <meta name="twitter:description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。
@@ -233,11 +233,21 @@
         <blockquote>
 <p>基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。</p>
 </blockquote>
-<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><p><code>Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);  
-Canvas canvas = new Canvas(bitmap);</code><br><code>``//…把简单元素画进bitmap变成复杂元素</code><br><code>``BitmapShader</code><br><code>mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);</code><br><code>Paint mViewPaint.setShader(mWaveShader);</code><br><code>``Matrix shaderMaxtrix = new Matrix();//矩阵  
-shaderMaxtrix.postTranslate(dx, 0);  
-mWaveShader.setLocalMatrix(shaderMaxtrix); //变换</code><br><code>``canvas.drawRect(0, 0, 1440, 300, mViewPaint);</code></p>
+<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+Canvas canvas = new Canvas(bitmap);
 
+//…把简单元素画进bitmap变成复杂元素
+
+BitmapShader
+ mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
+Paint mViewPaint.setShader(mWaveShader);
+
+Matrix shaderMaxtrix = new Matrix();//矩阵
+shaderMaxtrix.postTranslate(dx, 0);
+mWaveShader.setLocalMatrix(shaderMaxtrix); //变换
+
+canvas.drawRect(0, 0, 1440, 300, mViewPaint);
+</code></pre>
       
     </div>
     

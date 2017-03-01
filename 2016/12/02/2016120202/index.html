@@ -8,9 +8,9 @@
   <meta name="description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
 解决方法如下：
 在使用web service之前调用allowAllSSL()就行了。
-`public static void allowAllSSL() {  
+public static void allowAllSSL() {  
 javax.net.ssl.HttpsURLConnection  
-        .setDef">
+        .setDefa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android连接https web service忽略证书的方法">
 <meta property="og:url" content="http://ydpzg.github.io/2016/12/02/2016120202/index.html">
@@ -18,18 +18,18 @@ javax.net.ssl.HttpsURLConnection
 <meta property="og:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
 解决方法如下：
 在使用web service之前调用allowAllSSL()就行了。
-`public static void allowAllSSL() {  
+public static void allowAllSSL() {  
 javax.net.ssl.HttpsURLConnection  
-        .setDef">
-<meta property="og:updated_time" content="2016-12-02T14:57:23.000Z">
+        .setDefa">
+<meta property="og:updated_time" content="2017-03-01T15:43:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android连接https web service忽略证书的方法">
 <meta name="twitter:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
 解决方法如下：
 在使用web service之前调用allowAllSSL()就行了。
-`public static void allowAllSSL() {  
+public static void allowAllSSL() {  
 javax.net.ssl.HttpsURLConnection  
-        .setDef">
+        .setDefa">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -242,8 +242,8 @@ javax.net.ssl.HttpsURLConnection
         <p>如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。</p>
 <p>解决方法如下：</p>
 <p>在使用web service之前调用allowAllSSL()就行了。</p>
-<p>`public static void allowAllSSL() {  </p>
-<pre><code>javax.net.ssl.HttpsURLConnection  
+<pre><code>public static void allowAllSSL() {  
+javax.net.ssl.HttpsURLConnection  
         .setDefaultHostnameVerifier(new HostnameVerifier() {  
             public boolean verify(String hostname, SSLSession session) {  
                 return true;  
