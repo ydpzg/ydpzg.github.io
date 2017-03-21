@@ -3,14 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2017 | dukelight&#39;s home</title>
+  <title>xutils使用post上传base64图片的时候的问题 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/2017/index.html">
+  <meta name="description" content="utils的网络部分，其实比较简单，但是也是有坑，比如在post一些比较长的参数值的时候就会报错。
+
+x.http().post 这个会想当然认为就是指定了post，其实不完全，requestParams.addBodyParameter(key, value)里，默认是GET方式的body，也就是附到url上变成get方式的参数形式，也就导致了长的参数值会报错，比较url不支持那么长的值。
+所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xutils使用post上传base64图片的时候的问题">
+<meta property="og:url" content="http://ydpzg.github.io/2017/03/22/2017032201/index.html">
 <meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="utils的网络部分，其实比较简单，但是也是有坑，比如在post一些比较长的参数值的时候就会报错。
+
+x.http().post 这个会想当然认为就是指定了post，其实不完全，requestParams.addBodyParameter(key, value)里，默认是GET方式的body，也就是附到url上变成get方式的参数形式，也就导致了长的参数值会报错，比较url不支持那么长的值。
+所">
+<meta property="og:updated_time" content="2017-03-21T16:54:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="xutils使用post上传base64图片的时候的问题">
+<meta name="twitter:description" content="utils的网络部分，其实比较简单，但是也是有坑，比如在post一些比较长的参数值的时候就会报错。
+
+x.http().post 这个会想当然认为就是指定了post，其实不完全，requestParams.addBodyParameter(key, value)里，默认是GET方式的body，也就是附到url上变成get方式的参数形式，也就导致了长的参数值会报错，比较url不支持那么长的值。
+所">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -187,184 +200,104 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2017032201" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2017/03/22/2017032201/" class="article-date">
+  	<time datetime="2017-03-21T16:46:58.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      xutils使用post上传base64图片的时候的问题
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/22/2017032201/" class="archive-article-date">
-  	<time datetime="2017-03-21T16:46:58.000Z" itemprop="datePublished">Mar 22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/22/2017032201/">xutils使用post上传base64图片的时候的问题</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>utils的网络部分，其实比较简单，但是也是有坑，比如在post一些比较长的参数值的时候就会报错。</p>
+</blockquote>
+<p>x.http().post 这个会想当然认为就是指定了post，其实不完全，<br>requestParams.addBodyParameter(key, value)里，默认是GET方式的body，也就是附到url上变成get方式的参数形式，也就导致了长的参数值会报错，比较url不支持那么长的值。</p>
+<p>所以解决方法就是：requestParams.setMethod(HttpMethod.POST);<br>将requestParams变成post方式的键值对。</p>
+<p>ps：requestParams.toString也不要随便调，会把参数值附到url上的。</p>
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/01/2017030102/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">利用BitmapShader来降低自定义view动画效果的难度</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/2017030102/" class="archive-article-date">
-  	<time datetime="2017-03-01T15:17:36.000Z" itemprop="datePublished">Mar 1</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/2017030102/">利用BitmapShader来降低自定义view动画效果的难度</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/2017030101/" class="archive-article-date">
-  	<time datetime="2017-03-01T15:17:33.000Z" itemprop="datePublished">Mar 1</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/2017030101/">自定义view用到的几种定时刷新方法</a>
-    </h1>
-  
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/20/2017022001/" class="archive-article-date">
-  	<time datetime="2017-02-20T03:18:00.000Z" itemprop="datePublished">Feb 20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/20/2017022001/">去掉android5.0以上button默认的阴影</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2017032201" data-title="xutils使用post上传base64图片的时候的问题" data-url="http://ydpzg.github.io/2017/03/22/2017032201/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/16/2017021601/" class="archive-article-date">
-  	<time datetime="2017-02-16T00:20:41.000Z" itemprop="datePublished">Feb 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/16/2017021601/">使用viewpager注意几个有用的点</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/07/2017020701/" class="archive-article-date">
-  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">Feb 7</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/07/2017020701/">JAVA使用futureTask时候注意的坑</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -399,8 +332,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

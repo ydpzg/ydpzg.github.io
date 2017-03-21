@@ -6,18 +6,27 @@
   <title>JAVA使用futureTask时候注意的坑 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+FutureTask mListenTask = new FutureTask(new Callable() {
+    @Override
+    public Object call() throws Exception {
+// 注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA使用futureTask时候注意的坑">
 <meta property="og:url" content="http://ydpzg.github.io/2017/02/07/2017020701/index.html">
 <meta property="og:site_name" content="dukelight's home">
 <meta property="og:description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
-<meta property="og:updated_time" content="2017-02-07T07:39:45.000Z">
+FutureTask mListenTask = new FutureTask(new Callable() {
+    @Override
+    public Object call() throws Exception {
+// 注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现">
+<meta property="og:updated_time" content="2017-03-09T08:50:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA使用futureTask时候注意的坑">
 <meta name="twitter:description" content="在call里面不要用try catch
-FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public Object call() throws Exception {//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远c">
+FutureTask mListenTask = new FutureTask(new Callable() {
+    @Override
+    public Object call() throws Exception {
+// 注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -228,8 +237,16 @@ FutureTask mListenTask = new FutureTask(new Callable() {    @Override    public 
     <div class="article-entry" itemprop="articleBody">
       
         <p>在call里面不要用try catch</p>
-<p>FutureTask mListenTask = new FutureTask(new Callable() {<br>    @Override<br>    public Object call() throws Exception {<br>//注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。<br>   }<br>});</p>
-<p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
+<pre><code>FutureTask mListenTask = new FutureTask(new Callable() {
+    @Override
+    public Object call() throws Exception {
+// 注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。
+// 代码
+Thread.sleep(1000);
+// 代码
+   }
+});
+</code></pre><p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
 <p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
 
       

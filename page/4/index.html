@@ -189,6 +189,122 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2015062801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/28/2015062801/" class="article-date">
+  	<time datetime="2015-06-28T01:57:35.000Z" itemprop="datePublished">2015-06-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/28/2015062801/">android 控件AutoCompleteTextView实战</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表</p>
+<pre><code>public class MyAutoCompleteTextView extends AutoCompleteTextView {
+
+    public MyAutoCompleteTextView(Context context) {
+        super(context);
+    }
+
+    public MyAutoCompleteTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public MyAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    public boolean enoughToFilter() {
+        return true;
+    }
+}
+</code></pre><p>在layout里定义自定义的AutoCompleteTextView</p>
+<pre><code>&lt;com.dukelight.testandroidm.MyAutoCompleteTextView
+    android:id=&quot;@+id/act_main&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:completionThreshold=&quot;1&quot;
+    android:dropDownHorizontalOffset=&quot;10dp&quot;
+    android:text=&quot;&quot; &gt;
+
+    &lt;requestFocus /&gt;
+&lt;/com.dukelight.testandroidm.MyAutoCompleteTextView&gt;
+</code></pre><p>最后就是Activity里的调用代码</p>
+<pre><code>public class TestAutoCompleteActivity extends Activity {
+
+
+    String[] place = new String[]{&quot;白云&quot;, &quot;广州&quot;, &quot;五山&quot;, &quot;天河&quot;, &quot;越秀&quot;, &quot;二电厂&quot;, &quot;大学城&quot;, &quot;中山&quot;};
+    @InjectView(R.id.act_main)
+    MyAutoCompleteTextView mActMain;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_test_complete);
+        ButterKnife.inject(this);
+
+        ArrayAdapter&lt;String&gt; arrayAdapter = new ArrayAdapter&lt;String&gt;(this,
+                android.R.layout.simple_dropdown_item_1line, place);
+        mActMain.setAdapter(arrayAdapter);
+
+        mActMain.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // 手动向下弹出匹配的菜单        
+                mActMain.showDropDown(); 
+                return false;
+            }
+        });
+    }
+}
+</code></pre><p>最后的最后放上效果图片</p>
+<p><img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100" alt="空字符串显示全部"> <img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062802.png?imageView/2/w/300/q/100" alt="匹配字符串显示"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-AutoCompleteTextView/">android AutoCompleteTextView</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
