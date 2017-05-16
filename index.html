@@ -189,6 +189,161 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017051603" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/16/2017051603/" class="article-date">
+  	<time datetime="2017-05-16T15:54:08.000Z" itemprop="datePublished">2017-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/2017051603/">2017051603</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>from random import randint<br>data = {x: randinx(80, 100) for x in ‘abcxyz’}<br>zipresult = zip(data.values(), data.keys())<br>sorted(zipresult)<br>list(zipresult)</p>
+<p>data.items()<br>sorted(data.items(), key=lambda x: x[1])<br>sorted(data.items(), key=lambda x: x[1], reverse=True)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017051602" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/16/2017051602/" class="article-date">
+  	<time datetime="2017-05-16T14:57:15.000Z" itemprop="datePublished">2017-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/2017051602/">python 2-3如何统计序列中元素的出现频度</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>from random import randint<br>data = [randint(1, 10) for _ in range(20)]<br>d = dict.fromkeys(data, 0)<br>d<br>for x in data:<br>…     d[x] += 1<br>d</p>
+<p>from collections import Counter<br>c = Counter(data)<br>c.most_common()<br>c.most_common(1)<br>c.most_common(2)<br>file = open(“/Users/dukelight/project/EasyPR/LICENSE”, “r”).read()<br>words = re.split(“\W+”, file)<br>wordsCounter = Counter(words)<br>wordsCounter.most_common(10)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017051601-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/16/2017051601-1/" class="article-date">
+  	<time datetime="2017-05-16T14:17:10.000Z" itemprop="datePublished">2017-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/2017051601-1/">python 2-2如何为元组中的每个元素命名, 提高程序可读性</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>r = range(4)<br>form collections import nameturple<br>Student = namedtuple(“Student”, (“name”, “age”, “sex”, “addr”))<br>ss = Student(1, 2, 3, 4)<br>ss = Student(name=1, age=2, sex=3, addr=4)<br>ss.name<br>ss.age<br>ss isinstance tuple</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017051601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -592,169 +747,6 @@ Thread.sleep(1000);
 });
 </code></pre><p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
 <p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016121602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/16/2016121602/" class="article-date">
-  	<time datetime="2016-12-16T01:50:10.000Z" itemprop="datePublished">2016-12-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/16/2016121602/">nexus6 7.0的root方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>详情请看：</p>
-<p><a href="https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/" target="_blank" rel="external">https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/</a></p>
-<p>Download the TWRP Recovery and extract it in the Downloads folder on the computer.<br>Set up the ADB for Windows on the computer and then come back and continue with this guide when that one is complete.<br>Install the ADB Driver on the computer so that the ADB commands you run can do so without any trouble.<br>Download the SuperSU but do not extract it.<br>Connect the Google Nexus 6 smartphone to the computer with the USB cable that is used for charging the battery of the device.<br>Open the Downloads folder to find the SuperSU and copy it over to the internal storage SD card folder for the Google Nexus 6 smartphone.<br>Copy all of the TWRP files from the Downloads folder so the same folder as the ADB, so you have everything available from the same directory.<br>Hold the Shift key available on the keyboard and right-click the mouse where it is white in the background of the ADB folder and choose to open a new command window here from the menu.<br>Type the command “adb reboot bootloader” to get the Google Nexus 6 smartphone into the Bootloader Mode that is a required before flashing the custom recovery image on the smartphone.<br>Type the command “fastboot flash recovery twrp-3.0.2-0-shamu.img” to have the custom recovery image flashed onto the Google Nexus 6 smartphone.<br>Type the command “adb reboot” to get back into normal mode and as soon as you can see the smartphone reboot you need to hold down the hardware key combination to boot directly into the Recovery Mode now and the custom recovery boots up.<br>Tap on the Install button and then follow the guidelines to install the SuperSU from the SD card.<br>Choose the reboot option followed by the System option to reboot the system back into the normal mode and continue using the device as you typically would but this time you now have the root access and the custom recovery image installed.</p>
-<p>Read more at <a href="https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/#YJoe7U3o84bWIcYg.99" target="_blank" rel="external">https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/#YJoe7U3o84bWIcYg.99</a></p>
-<p>需要下载的文件</p>
-<p>SuperSU-v2.78-201609011115.zip</p>
-<p><a href="https://www.androidfilehost.com/?w=file-thanks&amp;fid=24694152805484203&amp;mid=140&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851118&amp;hc=f65965d40223e634e53fc26b41fc7eee873dd1ef17bc87a67e07326856425084" target="_blank" rel="external">https://www.androidfilehost.com/?w=file-thanks&amp;fid=24694152805484203&amp;mid=140&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851118&amp;hc=f65965d40223e634e53fc26b41fc7eee873dd1ef17bc87a67e07326856425084</a></p>
-<p>twrp-3.0.2-0-shamu.img</p>
-<p><a href="https://www.androidfilehost.com/?w=file-thanks&amp;fid=24499762635998144&amp;mid=150&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851144&amp;hc=815ecb8f13ffc1df2938c8990071cf7cbe8dd5c7b923ebeb28952c8eeb4ee9a0" target="_blank" rel="external">https://www.androidfilehost.com/?w=file-thanks&amp;fid=24499762635998144&amp;mid=150&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851144&amp;hc=815ecb8f13ffc1df2938c8990071cf7cbe8dd5c7b923ebeb28952c8eeb4ee9a0</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016121601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/16/2016121601/" class="article-date">
-  	<time datetime="2016-12-15T16:57:11.000Z" itemprop="datePublished">2016-12-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/16/2016121601/">关于微信公众号UnionId的认识</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>公众号或者小程序，在同一个微信开放平台下的UnionId是唯一的。如果没有在开发平台里面绑定公众号或者小程序，是无法获取到UnionId的，只有绑定了后，返回的接口才会出现UnionId。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016121401" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/14/2016121401/" class="article-date">
-  	<time datetime="2016-12-14T09:36:20.000Z" itemprop="datePublished">2016-12-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/14/2016121401/">有些时候，某些android设备需要用sh xxx.sh的方式去运行某些命令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有些设备在用Runtime.getRuntime().exec<br>运行linux命令的时候，su，或者setprop等命令运行后没返回，此时的解决方法是：<br>写一个shell脚本文件</p>
-<p><code>#!/bin/sh</code><br><code>su -c ‘setprop service.adb.tcp.port 5555’</code><br><code>su -c ‘stop adbd’</code><br><code>su -c ‘start adbd’</code></p>
-<p>然后在java代码里运行 sh xx.sh，以运行shell脚本的方式去运行命令</p>
 
       
     </div>
