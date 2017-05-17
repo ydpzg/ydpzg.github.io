@@ -189,6 +189,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017051701" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/17/2017051701/" class="article-date">
+  	<time datetime="2017-05-17T14:06:13.000Z" itemprop="datePublished">2017-05-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/2017051701/">python 2-5如何快速找到多个字典中的公共键(key)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>from random import randint, sample
+sample(&apos;abcxyz&apos;, 4)
+sample(&apos;abcxyz&apos;, randint(3, 5)
+</code></pre><h4 id="得到初始序列"><a href="#得到初始序列" class="headerlink" title="得到初始序列"></a>得到初始序列</h4><pre><code>s1 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
+s2 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
+s3 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
+</code></pre><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><pre><code>for k in s1:
+...     if k in s2 and k in s3:
+...             res.append(k)&apos;&apos;
+</code></pre><h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><pre><code>s1.keys()
+s1.keys() &amp; s2.keys() &amp; s3.keys()
+</code></pre><h4 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h4><pre><code>map(dict.keys, [s1, s2, s3])
+from functools import reduce
+reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017051603" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -685,68 +749,6 @@ mLlPageCarContainer.setClipChildren(false);
 mVpCarInfo.setClipChildren(false);</code></p>
 <p><code>// 拖动不要出现边界黑色边框  
 mVpCarInfo.setOverScrollMode(View.OVER_SCROLL_NEVER);</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/07/2017020701/" class="article-date">
-  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">2017-02-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/07/2017020701/">JAVA使用futureTask时候注意的坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在call里面不要用try catch</p>
-<pre><code>FutureTask mListenTask = new FutureTask(new Callable() {
-    @Override
-    public Object call() throws Exception {
-// 注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。
-// 代码
-Thread.sleep(1000);
-// 代码
-   }
-});
-</code></pre><p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
-<p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
 
       
     </div>

@@ -189,6 +189,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/07/2017020701/" class="article-date">
+  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">2017-02-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/07/2017020701/">JAVA使用futureTask时候注意的坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在call里面不要用try catch</p>
+<pre><code>FutureTask mListenTask = new FutureTask(new Callable() {
+    @Override
+    public Object call() throws Exception {
+// 注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。
+// 代码
+Thread.sleep(1000);
+// 代码
+   }
+});
+</code></pre><p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
+<p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016121602" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -671,57 +733,6 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
         <p>环境 ：<br>ubuntu16.04<br>oracle jdk1.6<br>make3.82<br>百度云下载android的7z源码，从window复制到linux，再解压缩。<br>7z x file.7z  解压缩7z</p>
 <p>android5.1.1<br>. build/envsetup.sh<br>lunch  /  lunch full-eng<br>openjdk1.7</p>
 <p>make clean<br>make update-api<br>make<br>cp /usr/bin/ld.gold prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.11-4.6/x86_64-linux/bin/ld</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016100801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/08/2016100801/" class="article-date">
-  	<time datetime="2016-10-08T00:26:28.000Z" itemprop="datePublished">2016-10-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/08/2016100801/">centos上的nginx转ghost的时候出现502</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>不是nginx本身的问题，有可能是转发过去的服务有问题。<br>最后解决方案：ghost的config.js里把外部访问的地址写成了ip，所以当nginx转发的时候ghost服务不通。</p>
 
       
     </div>
