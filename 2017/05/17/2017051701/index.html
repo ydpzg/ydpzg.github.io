@@ -19,7 +19,7 @@ sample(&amp;apos;abcxyz&amp;apos;, 4)
 sample(&amp;apos;abcxyz&amp;apos;, randint(3, 5)
 得到初始序列s1 = {x: randint(1,4) for x in sample(&amp;apos;abcxyz&amp;apos;, randint(4,6))}
 s2 = {x: randin">
-<meta property="og:updated_time" content="2017-05-17T14:27:23.000Z">
+<meta property="og:updated_time" content="2017-05-17T14:29:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 2-5如何快速找到多个字典中的公共键(key)">
 <meta name="twitter:description" content="from random import randint, sample
@@ -244,7 +244,7 @@ s2 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
 s3 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
 </code></pre><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><pre><code>for k in s1:
 ...     if k in s2 and k in s3:
-...             res.append(k)&apos;&apos;
+...             res.append(k)
 </code></pre><h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><pre><code>s1.keys()
 s1.keys() &amp; s2.keys() &amp; s3.keys()
 </code></pre><h4 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h4><pre><code>map(dict.keys, [s1, s2, s3])
@@ -258,6 +258,15 @@ reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/05/17/2017051702/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          2017051702
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/16/2017051603/" id="article-nav-older" class="article-nav-link-wrap">

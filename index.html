@@ -189,6 +189,87 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017051702" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/17/2017051702/" class="article-date">
+  	<time datetime="2017-05-17T14:45:07.000Z" itemprop="datePublished">2017-05-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/2017051702/">2017051702</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="字典是无序的"><a href="#字典是无序的" class="headerlink" title="字典是无序的"></a>字典是无序的</h4><pre><code>dict = {}
+dict[&apos;a&apos;] = (1, 34)
+dict[&apos;b&apos;] = (3, 22)
+dict[&apos;c&apos;] = (2, 39)
+for x in dict: print(x)
+</code></pre><h4 id="有序的字典"><a href="#有序的字典" class="headerlink" title="有序的字典"></a>有序的字典</h4><pre><code>from collections import OrderedDict
+dict = OrderedDict()
+dict[&apos;a&apos;] = (1, 34)
+dict[&apos;b&apos;] = (3, 22)
+dict[&apos;c&apos;] = (2, 39)
+for x in dict: print(x)
+</code></pre><h4 id="模拟选手做题，最后保存选手排名和做题时间"><a href="#模拟选手做题，最后保存选手排名和做题时间" class="headerlink" title="模拟选手做题，最后保存选手排名和做题时间"></a>模拟选手做题，最后保存选手排名和做题时间</h4><pre><code>from time import time
+from random import randint
+from collections import OrderedDict
+from code import InteractiveConsole
+
+d = OrderedDict()
+players = list(&apos;ABCDEFGHIJ&apos;)
+start = time()
+
+for i in range(0, 10):
+    InteractiveConsole.raw_input(&quot;&quot;)
+    p = players.pop(randint(0, 9 - i))
+    end = time()
+    d[p] = (i + 1, end - start)
+    print(i + 1, p, end - start)
+
+print(&apos;-&apos; * 20)
+
+for x in d:
+    print(x, d[x])
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017051701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -223,7 +304,7 @@ s2 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
 s3 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
 </code></pre><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><pre><code>for k in s1:
 ...     if k in s2 and k in s3:
-...             res.append(k)&apos;&apos;
+...             res.append(k)
 </code></pre><h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><pre><code>s1.keys()
 s1.keys() &amp; s2.keys() &amp; s3.keys()
 </code></pre><h4 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h4><pre><code>map(dict.keys, [s1, s2, s3])
@@ -685,70 +766,6 @@ animators.add(waveShiftAnim);</code>  </p>
         <p>1、在button的xml属性里加入<br><code>&lt;button</code><br><code>style=&quot;?android:attr/borderlessButtonStyle&quot; &gt;</code><br><code>&lt;/button</code></p>
 <p>2、如果button已经写成style了，就让button的style继承Widget.AppCompat.Button.Borderless</p>
 <p><code>&lt;style name=&quot;btnStyle&quot; parent=&quot;Widget.AppCompat.Button.Borderless&quot;&gt;</code><br>`\&lt;/style<br>`</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017021601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/16/2017021601/" class="article-date">
-  	<time datetime="2017-02-16T00:20:41.000Z" itemprop="datePublished">2017-02-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/16/2017021601/">使用viewpager注意几个有用的点</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>背景：做一个图片切换器<br>做法：使用普通PagerAdapter 与 view pager来做，配合view集合<br>要点：以下几个神奇的东西</p>
-<p><code>// 设置一开始初始化的页面个数</code><br><code>mVpCarInfo.setOffscreenPageLimit(Math.min(mPageCarViews.size(), 5));</code></p>
-<p><code>// 点击延伸到背后的容器  
-mLlPageCarContainer.setOnTouchListener(new View.OnTouchListener() {  
-    @Override  
-    public boolean onTouch(View v, MotionEvent event) {  
-        return mVpCarInfo.dispatchTouchEvent(event);  
-    }  
-});</code></p>
-<p><code>// 显示完整，不剪掉子view  
-mLlPageCarContainer.setClipChildren(false);  
-mVpCarInfo.setClipChildren(false);</code></p>
-<p><code>// 拖动不要出现边界黑色边框  
-mVpCarInfo.setOverScrollMode(View.OVER_SCROLL_NEVER);</code></p>
 
       
     </div>
