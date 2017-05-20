@@ -3,14 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2017 | dukelight&#39;s home</title>
+  <title>python 2-7如何实现用户的历史记录功能(最多n条) | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/2017/page/2/index.html">
+  <meta name="description" content="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队from random import randint
+from collections import deque
+from code import InteractiveConsole
+import pickle
+
+N = randint(0, 100)
+history = dequ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 2-7如何实现用户的历史记录功能(最多n条)">
+<meta property="og:url" content="http://ydpzg.github.io/2017/05/20/2017052001/index.html">
 <meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队from random import randint
+from collections import deque
+from code import InteractiveConsole
+import pickle
+
+N = randint(0, 100)
+history = dequ">
+<meta property="og:updated_time" content="2017-05-20T05:45:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="python 2-7如何实现用户的历史记录功能(最多n条)">
+<meta name="twitter:description" content="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队from random import randint
+from collections import deque
+from code import InteractiveConsole
+import pickle
+
+N = randint(0, 100)
+history = dequ">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -187,107 +209,138 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2017052001" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2017/05/20/2017052001/" class="article-date">
+  	<time datetime="2017-05-20T05:43:03.000Z" itemprop="datePublished">2017-05-20</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python 2-7如何实现用户的历史记录功能(最多n条)
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/20/2017022001/" class="archive-article-date">
-  	<time datetime="2017-02-20T03:18:00.000Z" itemprop="datePublished">Feb 20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/20/2017022001/">去掉android5.0以上button默认的阴影</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="猜数字的游戏，利用pickle存储历史数据，利用raw-input获取输入数据，利用deque双向队列实现数据的排队"><a href="#猜数字的游戏，利用pickle存储历史数据，利用raw-input获取输入数据，利用deque双向队列实现数据的排队" class="headerlink" title="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队"></a>猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队</h4><pre><code>from random import randint
+from collections import deque
+from code import InteractiveConsole
+import pickle
 
-        <div class="article-info info-on-right">
-          
-          
+N = randint(0, 100)
+history = deque([], 5)
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+
+def guess(k):
+    if k == N:
+        print(&quot;you are right&quot;)
+        return True
+    elif k &gt; N:
+        print(&quot;num is lower than %s&quot; % k)
+    elif k &lt; N:
+        print(&quot;num is greater than %s&quot; % k)
+    return False
+
+
+while (True):
+
+    try:
+        history = pickle.load(open(&quot;./history.txt&quot;, &quot;rb&quot;))
+    except:
+        pass
+
+    line = InteractiveConsole.raw_input(&quot;please input a num&quot;)
+    if line.isdigit():
+        kk = int(line)
+        history.append(line)
+        pickle.dump(history, open(&quot;./history.txt&quot;, &quot;wb&quot;))
+        if guess(kk):
+            break
+        else:
+            continue
+    elif line == &apos;history&apos; or line == &apos;h?&apos;:
+        print(list(history))
+    elif line == &apos;quit&apos; or line == &apos;exit&apos; or line == &quot;q?&quot;:
+        break
+</code></pre>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/17/2017051702/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python 2-6如何让字典保持有序</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/16/2017021601/" class="archive-article-date">
-  	<time datetime="2017-02-16T00:20:41.000Z" itemprop="datePublished">Feb 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/16/2017021601/">使用viewpager注意几个有用的点</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/07/2017020701/" class="archive-article-date">
-  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">Feb 7</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/07/2017020701/">JAVA使用futureTask时候注意的坑</a>
-    </h1>
-  
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2017052001" data-title="python 2-7如何实现用户的历史记录功能(最多n条)" data-url="http://ydpzg.github.io/2017/05/20/2017052001/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -322,8 +375,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
