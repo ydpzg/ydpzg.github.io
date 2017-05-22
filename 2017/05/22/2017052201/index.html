@@ -5,31 +5,52 @@
   
   <title>python 3-2如何实现可迭代对象和迭代器对象(2) | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="实现可迭代对象和迭代器对象。1. 先定义一个Iterator实现next2. 再定义一个weatherIterable实现iter3. 最后使用for in 遍历解决import requests
+  <meta name="description" content="实现可迭代对象和迭代器对象。
+先定义一个Iterator实现next
+再定义一个weatherIterable实现iter
+最后使用for in 遍历解决
+
+import requests
 from collections.abc import Iterable, Iterator
 
 
 class weatherIterator(Iterator):
-    index = 0">
+    index = 0
+
+    def">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 3-2如何实现可迭代对象和迭代器对象(2)">
 <meta property="og:url" content="http://ydpzg.github.io/2017/05/22/2017052201/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="实现可迭代对象和迭代器对象。1. 先定义一个Iterator实现next2. 再定义一个weatherIterable实现iter3. 最后使用for in 遍历解决import requests
+<meta property="og:description" content="实现可迭代对象和迭代器对象。
+先定义一个Iterator实现next
+再定义一个weatherIterable实现iter
+最后使用for in 遍历解决
+
+import requests
 from collections.abc import Iterable, Iterator
 
 
 class weatherIterator(Iterator):
-    index = 0">
-<meta property="og:updated_time" content="2017-05-22T03:26:20.000Z">
+    index = 0
+
+    def">
+<meta property="og:updated_time" content="2017-05-22T03:41:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 3-2如何实现可迭代对象和迭代器对象(2)">
-<meta name="twitter:description" content="实现可迭代对象和迭代器对象。1. 先定义一个Iterator实现next2. 再定义一个weatherIterable实现iter3. 最后使用for in 遍历解决import requests
+<meta name="twitter:description" content="实现可迭代对象和迭代器对象。
+先定义一个Iterator实现next
+再定义一个weatherIterable实现iter
+最后使用for in 遍历解决
+
+import requests
 from collections.abc import Iterable, Iterator
 
 
 class weatherIterator(Iterator):
-    index = 0">
+    index = 0
+
+    def">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -239,7 +260,12 @@ class weatherIterator(Iterator):
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="实现可迭代对象和迭代器对象。"><a href="#实现可迭代对象和迭代器对象。" class="headerlink" title="实现可迭代对象和迭代器对象。"></a>实现可迭代对象和迭代器对象。</h4><h4 id="1-先定义一个Iterator实现next"><a href="#1-先定义一个Iterator实现next" class="headerlink" title="1. 先定义一个Iterator实现next"></a>1. 先定义一个Iterator实现<strong>next</strong></h4><h4 id="2-再定义一个weatherIterable实现iter"><a href="#2-再定义一个weatherIterable实现iter" class="headerlink" title="2. 再定义一个weatherIterable实现iter"></a>2. 再定义一个weatherIterable实现<strong>iter</strong></h4><h4 id="3-最后使用for-in-遍历解决"><a href="#3-最后使用for-in-遍历解决" class="headerlink" title="3. 最后使用for in 遍历解决"></a>3. 最后使用for in 遍历解决</h4><pre><code>import requests
+        <h4 id="实现可迭代对象和迭代器对象。"><a href="#实现可迭代对象和迭代器对象。" class="headerlink" title="实现可迭代对象和迭代器对象。"></a>实现可迭代对象和迭代器对象。</h4><ol>
+<li>先定义一个Iterator实现<strong>next</strong></li>
+<li>再定义一个weatherIterable实现<strong>iter</strong></li>
+<li>最后使用for in 遍历解决</li>
+</ol>
+<pre><code>import requests
 from collections.abc import Iterable, Iterator
 
 
