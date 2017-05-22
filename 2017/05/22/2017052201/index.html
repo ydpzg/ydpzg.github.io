@@ -3,36 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python 2-7如何实现用户的历史记录功能(最多n条) | dukelight&#39;s home</title>
+  <title>python 3-2如何实现可迭代对象和迭代器对象(2) | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队from random import randint
-from collections import deque
-from code import InteractiveConsole
-import pickle
+  <meta name="description" content="实现可迭代对象和迭代器对象。1. 先定义一个Iterator实现next2. 再定义一个weatherIterable实现iter3. 最后使用for in 遍历解决import requests
+from collections.abc import Iterable, Iterator
 
-N = randint(0, 100)
-history = dequ">
+
+class weatherIterator(Iterator):
+    index = 0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 2-7如何实现用户的历史记录功能(最多n条)">
-<meta property="og:url" content="http://ydpzg.github.io/2017/05/20/2017052001/index.html">
+<meta property="og:title" content="python 3-2如何实现可迭代对象和迭代器对象(2)">
+<meta property="og:url" content="http://ydpzg.github.io/2017/05/22/2017052201/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队from random import randint
-from collections import deque
-from code import InteractiveConsole
-import pickle
+<meta property="og:description" content="实现可迭代对象和迭代器对象。1. 先定义一个Iterator实现next2. 再定义一个weatherIterable实现iter3. 最后使用for in 遍历解决import requests
+from collections.abc import Iterable, Iterator
 
-N = randint(0, 100)
-history = dequ">
-<meta property="og:updated_time" content="2017-05-20T05:45:16.000Z">
+
+class weatherIterator(Iterator):
+    index = 0">
+<meta property="og:updated_time" content="2017-05-22T03:26:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 2-7如何实现用户的历史记录功能(最多n条)">
-<meta name="twitter:description" content="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队from random import randint
-from collections import deque
-from code import InteractiveConsole
-import pickle
+<meta name="twitter:title" content="python 3-2如何实现可迭代对象和迭代器对象(2)">
+<meta name="twitter:description" content="实现可迭代对象和迭代器对象。1. 先定义一个Iterator实现next2. 再定义一个weatherIterable实现iter3. 最后使用for in 遍历解决import requests
+from collections.abc import Iterable, Iterator
 
-N = randint(0, 100)
-history = dequ">
+
+class weatherIterator(Iterator):
+    index = 0">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -209,11 +206,11 @@ history = dequ">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2017052001" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2017052201" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/05/20/2017052001/" class="article-date">
-  	<time datetime="2017-05-20T05:43:03.000Z" itemprop="datePublished">2017-05-20</time>
+      <a href="/2017/05/22/2017052201/" class="article-date">
+  	<time datetime="2017-05-22T00:13:27.000Z" itemprop="datePublished">2017-05-22</time>
 </a>
     </div>
   
@@ -226,7 +223,7 @@ history = dequ">
         
   
     <h1 class="article-title" itemprop="name">
-      python 2-7如何实现用户的历史记录功能(最多n条)
+      python 3-2如何实现可迭代对象和迭代器对象(2)
     </h1>
   
 
@@ -242,46 +239,45 @@ history = dequ">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="猜数字的游戏，利用pickle存储历史数据，利用raw-input获取输入数据，利用deque双向队列实现数据的排队"><a href="#猜数字的游戏，利用pickle存储历史数据，利用raw-input获取输入数据，利用deque双向队列实现数据的排队" class="headerlink" title="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队"></a>猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队</h4><pre><code>from random import randint
-from collections import deque
-from code import InteractiveConsole
-import pickle
-
-N = randint(0, 100)
-history = deque([], 5)
+        <h4 id="实现可迭代对象和迭代器对象。"><a href="#实现可迭代对象和迭代器对象。" class="headerlink" title="实现可迭代对象和迭代器对象。"></a>实现可迭代对象和迭代器对象。</h4><h4 id="1-先定义一个Iterator实现next"><a href="#1-先定义一个Iterator实现next" class="headerlink" title="1. 先定义一个Iterator实现next"></a>1. 先定义一个Iterator实现<strong>next</strong></h4><h4 id="2-再定义一个weatherIterable实现iter"><a href="#2-再定义一个weatherIterable实现iter" class="headerlink" title="2. 再定义一个weatherIterable实现iter"></a>2. 再定义一个weatherIterable实现<strong>iter</strong></h4><h4 id="3-最后使用for-in-遍历解决"><a href="#3-最后使用for-in-遍历解决" class="headerlink" title="3. 最后使用for in 遍历解决"></a>3. 最后使用for in 遍历解决</h4><pre><code>import requests
+from collections.abc import Iterable, Iterator
 
 
-def guess(k):
-    if k == N:
-        print(&quot;you are right&quot;)
-        return True
-    elif k &gt; N:
-        print(&quot;num is lower than %s&quot; % k)
-    elif k &lt; N:
-        print(&quot;num is greater than %s&quot; % k)
-    return False
+class weatherIterator(Iterator):
+    index = 0
+
+    def __init__(self, cities):
+        self.cities = cities
+
+    def __next__(self):
+        if self.index == len(self.cities):
+            raise StopIteration
+        city = self.cities[self.index]
+        self.index = self.index + 1
+        return self.getweather(city)
+
+    #获取天气接口API
+    def getweather(self, s):
+        cities = {&apos;北京&apos;: &apos;CH010100&apos;, &apos;上海&apos;: &apos;CH020100&apos;, &apos;广州&apos;: &apos;CH280101&apos;}
+        # 北京：CH010100 上海：CH020100 广州：CH280101
+        # CH280101 http://api.yytianqi.com/forecast7d?city=CH280101&amp;key=rsdo40081gvhnecf
+        r = requests.get(&quot;http://api.yytianqi.com/forecast7d?city=%s&amp;key=rsdo40081gvhnecf&quot; % cities[s])
+        data = r.json()[&apos;data&apos;][&apos;list&apos;][0]
+        return &quot;%s: 白天气温 %s ℃, 夜间气温 %s ℃&quot; % (s, data[&apos;qw1&apos;], data[&apos;qw2&apos;])
 
 
-while (True):
+class weatherIterable(Iterable):
+    def __init__(self, cities):
+        self.cities = cities
 
-    try:
-        history = pickle.load(open(&quot;./history.txt&quot;, &quot;rb&quot;))
-    except:
-        pass
+    def __iter__(self):
+        return weatherIterator(self.cities)
 
-    line = InteractiveConsole.raw_input(&quot;please input a num&quot;)
-    if line.isdigit():
-        kk = int(line)
-        history.append(line)
-        pickle.dump(history, open(&quot;./history.txt&quot;, &quot;wb&quot;))
-        if guess(kk):
-            break
-        else:
-            continue
-    elif line == &apos;history&apos; or line == &apos;h?&apos;:
-        print(list(history))
-    elif line == &apos;quit&apos; or line == &apos;exit&apos; or line == &quot;q?&quot;:
-        break
+
+# 先定义一个Iterator实现__next__，再定义一个weatherIterable实现__iter__，最后使用for in 遍历解决
+cities = [&apos;北京&apos;, &apos;上海&apos;, &apos;广州&apos;]
+for x in weatherIterable(cities):
+    print(x)
 </code></pre>
       
     </div>
@@ -291,18 +287,9 @@ while (True):
     
 <nav id="article-nav">
   
-    <a href="/2017/05/22/2017052201/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          python 3-2如何实现可迭代对象和迭代器对象(2)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/05/17/2017051702/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python 2-6如何让字典保持有序</div>
+    <a href="/2017/05/20/2017052001/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python 2-7如何实现用户的历史记录功能(最多n条)</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -331,7 +318,7 @@ while (True):
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017052001" data-title="python 2-7如何实现用户的历史记录功能(最多n条)" data-url="http://ydpzg.github.io/2017/05/20/2017052001/"></div>
+	<div class="ds-thread" data-thread-key="2017052201" data-title="python 3-2如何实现可迭代对象和迭代器对象(2)" data-url="http://ydpzg.github.io/2017/05/22/2017052201/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
