@@ -189,6 +189,242 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016121401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/14/2016121401/" class="article-date">
+  	<time datetime="2016-12-14T09:36:20.000Z" itemprop="datePublished">2016-12-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/14/2016121401/">有些时候，某些android设备需要用sh xxx.sh的方式去运行某些命令</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有些设备在用Runtime.getRuntime().exec<br>运行linux命令的时候，su，或者setprop等命令运行后没返回，此时的解决方法是：<br>写一个shell脚本文件</p>
+<p><code>#!/bin/sh</code><br><code>su -c ‘setprop service.adb.tcp.port 5555’</code><br><code>su -c ‘stop adbd’</code><br><code>su -c ‘start adbd’</code></p>
+<p>然后在java代码里运行 sh xx.sh，以运行shell脚本的方式去运行命令</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016120801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/08/2016120801/" class="article-date">
+  	<time datetime="2016-12-08T06:32:58.000Z" itemprop="datePublished">2016-12-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/08/2016120801/">adb模拟点击某个坐标</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>adb shell input tap 1000 130<br>模拟点击，x， y</p>
+<p>开发者选项-》指针位置-》可以看某个点的x，y</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016120202" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/02/2016120202/" class="article-date">
+  	<time datetime="2016-12-02T14:47:19.000Z" itemprop="datePublished">2016-12-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/02/2016120202/">android连接https web service忽略证书的方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。</p>
+<p>解决方法如下：</p>
+<p>在使用web service之前调用allowAllSSL()就行了。</p>
+<pre><code>public static void allowAllSSL() {  
+javax.net.ssl.HttpsURLConnection  
+        .setDefaultHostnameVerifier(new HostnameVerifier() {  
+            public boolean verify(String hostname, SSLSession session) {  
+                return true;  
+            }  
+        });  
+
+javax.net.ssl.SSLContext context = null;  
+
+if (trustManagers == null) {  
+    trustManagers = new javax.net.ssl.TrustManager[] { new _FakeX509TrustManager() };  
+}  
+
+try {  
+    context = javax.net.ssl.SSLContext.getInstance(&quot;TLS&quot;);  
+    context.init(null, trustManagers, new SecureRandom());  
+} catch (NoSuchAlgorithmException e) {  
+    Log.e(&quot;allowAllSSL&quot;, e.toString());  
+} catch (KeyManagementException e) {  
+    Log.e(&quot;allowAllSSL&quot;, e.toString());  
+}  
+javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context  
+        .getSocketFactory());  
+</code></pre><p>}`</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016120201" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/02/2016120201/" class="article-date">
+  	<time datetime="2016-12-02T14:47:15.000Z" itemprop="datePublished">2016-12-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/02/2016120201/">android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在adb 打命令  am broadcast 发广播的时候，正常返回数据。<br>但是android里面使用Runtime.getRuntime().exec()运行命令的时候，发现报错了，如下</p>
+<p><code>Permission Denial: broadcast asks to run as user -1 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL or android.permission.INTERACT_ACROSS_USERS_</code></p>
+<p>解决方案：<br>在命令里面加个参数  - - user 0，即 am broadcast  - - user 0，此时在android里面就可以正常返回了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016111001" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -509,456 +745,9 @@
 
 
   
-    <article id="post-2016091102" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/11/2016091102/" class="article-date">
-  	<time datetime="2016-09-11T10:11:53.000Z" itemprop="datePublished">2016-09-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/11/2016091102/">【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。"><a href="#背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。" class="headerlink" title="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。"></a>背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。</h1></blockquote>
-<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><p>主要看 testApple这个类，会有几种不同的值。</p>
-<ol>
-<li><a href="">{ }</a> object型  </li>
-<li><p><a href="">[] </a> array型</p>
-<p> Gson gson = new GsonBuilder().registerTypeAdapter(TestPeople.class, new MyDeserializer()).create();<br> String ssArray = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:[]}}”;<br> System.out.println(ssArray);<br> String ssArray2 = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:[{\”name\”:\”111\”,\”id\”:\”9\”}]}}”;<br> System.out.println(ssArray2);<br> String ssObject = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:{\”name\”:\”111\”,\”id\”:\”9\”}}}”;<br> System.out.println(ssObject);<br> TestHouse testHouseArray = gson.fromJson(ssArray, TestHouse.class);<br> TestHouse testHouseArray2 = gson.fromJson(ssArray2, TestHouse.class);<br> TestHouse testHouseObject = gson.fromJson(ssObject, TestHouse.class);<br> System.out.println(“result=” + testHouseArray.toString());<br> System.out.println(“result=” + testHouseArray2.toString());<br> System.out.println(“result=” + testHouseObject.toString());</p>
-</li>
-</ol>
-<h4 id="输出内容"><a href="#输出内容" class="headerlink" title="输出内容"></a>输出内容</h4><p>根据testApple可以看到，确实可以根据不同的输入正确解析出来。</p>
-<pre><code>{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[]}}
-{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}]}}
-{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}}}
-result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=null}}
-result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}
-result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}
-</code></pre><h4 id="最外层实体"><a href="#最外层实体" class="headerlink" title="最外层实体"></a>最外层实体</h4><p>为了演示用，构造了一个最外层的实体。</p>
-<pre><code>public class TestHouse {
-    private String name;
-    private String id;
-    private TestPeople testPeople;
-
-    public TestHouse(String name, String id, TestPeople testPeople) {
-        this.name = name;
-        this.id = id;
-        this.testPeople = testPeople;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public TestPeople getTestPeople() {
-        return testPeople;
-    }
-
-    public void setTestPeople(TestPeople testPeople) {
-        this.testPeople = testPeople;
-    }
-
-    @Override
-    public String toString() {
-        return &quot;TestHouse{&quot; +
-                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
-                &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
-                &quot;, testPeople=&quot; + testPeople +
-                &apos;}&apos;;
-    }
-}
-</code></pre><h4 id="第二层实体"><a href="#第二层实体" class="headerlink" title="第二层实体"></a>第二层实体</h4><p>为了演示用，构造了一个第二层的实体。这里就直接涉及到不规则实体的容器了。</p>
-<pre><code>public class TestPeople {
-    private String name;
-    private TestApple testApple;
-
-    public TestPeople() {
-    }
-
-    public TestPeople(String name, TestApple testApple) {
-        this.name = name;
-        this.testApple = testApple;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public TestApple getTestApple() {
-        return testApple;
-    }
-
-    public void setTestApple(TestApple testApple) {
-        this.testApple = testApple;
-    }
-
-    @Override
-    public String toString() {
-        return &quot;TestPeople{&quot; +
-                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
-                &quot;, testApple=&quot; + testApple +
-                &apos;}&apos;;
-    }
-}
-</code></pre><h4 id="最内层实体"><a href="#最内层实体" class="headerlink" title="最内层实体"></a>最内层实体</h4><p>不规则值的实体，有可能是object，也有可能是array。</p>
-<pre><code>public class TestApple {
-    private String name;
-    private String id;
-
-
-    public TestApple(String name, String id) {
-        this.name = name;
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return &quot;TestApple{&quot; +
-                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
-                &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
-                &apos;}&apos;;
-    }
-}
-</code></pre><h4 id="自定义的JsonDeserializer"><a href="#自定义的JsonDeserializer" class="headerlink" title="自定义的JsonDeserializer"></a>自定义的JsonDeserializer</h4><p>主要是为了解析有争议的实体，针对不同的情况去做相关的处理，最后输出同一个最外层实体。</p>
-<pre><code>public class MyDeserializer implements JsonDeserializer&lt;TestPeople&gt; {
-    @Override
-    public TestPeople deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        JsonElement jsonElementApple = jsonElement.getAsJsonObject().get(&quot;testApple&quot;);
-        if (jsonElementApple == null) {
-            return null;
-        }
-        if (jsonElementApple.isJsonObject()) {
-            return new Gson().fromJson(jsonElement, TestPeople.class);
-        } else {
-            List&lt;TestApple&gt; testApple = jsonDeserializationContext.deserialize(jsonElementApple, new TypeToken&lt;List&lt;TestApple&gt;&gt;() {}.getType());
-            Gson gson = new Gson();
-            Map map = jsonDeserializationContext.deserialize(jsonElement, Map.class);
-            if (map.containsKey(&quot;testApple&quot;)) {
-                map.remove(&quot;testApple&quot;);
-            }
-            JsonElement jsonElementMixed = gson.toJsonTree(map);
-            TestPeople testPeople = gson.fromJson(jsonElementMixed, TestPeople.class);
-            if (testApple.size() &gt; 0) {
-                testPeople.setTestApple(testApple.get(0));
-            }
-            return testPeople;
-        }
-    }
-}
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016091101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/11/2016091101/" class="article-date">
-  	<time datetime="2016-09-11T06:28:54.000Z" itemprop="datePublished">2016-09-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/11/2016091101/">【开发笔记】高德地图在fragment使用时切换时会黑屏</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction-replace-int-fragment-切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。"><a href="#背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction-replace-int-fragment-切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。" class="headerlink" title="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。"></a>背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。</h1></blockquote>
-<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>1.使用两个FrameLayout</p>
-<p>在activity里使用两个FrameLayout容器，一个叫地图FrameLayout，一个叫普通FrameLayout，有map view的放到地图FrameLayout里面去，统一管理。<br>每次切换的时候先fragment所在的FrameLayout容器先gone掉，再去remove 掉具体的fragment。这时，耗时的ui操作在后台进行，所以就不会看到黑屏的存在，但是，还是有点耗时的时间存在，导致屏幕会有点卡顿。<br>结果是良好的，fragment的生命周期不变。</p>
-<pre><code>BaseFragment mLastBaseFragment;
-// 根据fragment实例去切换activity里的fragment
-public void changeFragment(BaseFragment fragment) {
-    FragmentTransaction fragmentTransaction = fm.beginTransaction();
-    if (mLastBaseFragment != fragment) {
-        if (fragment instanceof MapFragment) { // 区别是不是地图fragment单独处理
-            frameLayout.setVisibility(View.GONE);
-            mapFrameLayout.setVisibility(View.VISIBLE);
-            fragmentTransaction.replace(R.id.mapFrameLayout, fragment);
-        } else {
-            frameLayout.setVisibility(View.VISIBLE);
-            mapFrameLayout.setVisibility(View.GONE);
-            fragmentTransaction.replace(R.id.frameLayout, fragment);
-        }
-        if (mLastBaseFragment != null) {
-            fragmentTransaction.remove(mLastBaseFragment);
-        }
-        fragmentTransaction.commit();
-        mLastBaseFragment = fragment;
-    }
-}
-</code></pre><p>2.将fragment的切换从replace环城show和hide</p>
-<p>使用show和hide，黑屏不见了，原理就是这时fragment不会每次都被重新创建了。但是fragment的生命周期就乱了，具体表现为没有onResume和onPause，这时使用手动的方式模拟这两个fragment.setUserVisibleHint（true), 实际上setUserVisibleHint在fragment与view pager共用的时候才会被调用。</p>
-<pre><code>FragmentTransaction fragmentTransaction = fm.beginTransaction();
-Fragment fragment = fm.findFragmentByTag(type + &quot;&quot;);
-if (mCurFragment != null) {
-    fragmentTransaction.hide(mCurFragment);
-    mCurFragment.setUserVisibleHint(false);
-}
-if (fragment == null) {
-    fragmentTransaction.add(R.id.frameLayout, list.get(type), type + &quot;&quot;);
-} else {
-    fragmentTransaction.show(fragment);
-}
-fragment.setUserVisibleHint(true);
-mCurFragment = list.get(type);
-fragmentTransaction.commit();
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016090301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/03/2016090301/" class="article-date">
-  	<time datetime="2016-09-03T13:24:08.000Z" itemprop="datePublished">2016-09-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/03/2016090301/">android系统USB设备静默获得权限</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。"><a href="#背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。" class="headerlink" title="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。"></a>背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。</h1></blockquote>
-<h4 id="总结了一些，USB设备静默获得权限的条件，有两个"><a href="#总结了一些，USB设备静默获得权限的条件，有两个" class="headerlink" title="总结了一些，USB设备静默获得权限的条件，有两个"></a>总结了一些，USB设备静默获得权限的条件，有两个</h4><ol>
-<li>root</li>
-<li>系统app<br>注意：root手机有风险，需查看各种手机的root攻略；使用“幸运破解器”可以将app安装为系统app，或者将apk复制到/system/app/然后重启手机。</li>
-</ol>
-<h4 id="判断是否为系统app"><a href="#判断是否为系统app" class="headerlink" title="判断是否为系统app"></a>判断是否为系统app</h4><pre><code>public class PermissionUtil {
-    public static boolean isSystemApp(Context context) {
-        return (context.getApplicationInfo().flags &amp; ApplicationInfo.FLAG_SYSTEM) &gt; 0;
-    }
-}
-</code></pre><h4 id="下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。"><a href="#下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。" class="headerlink" title="下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。"></a>下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。</h4><pre><code>if (PermissionUtil.isSystemApp(mContext)) { // 如果是系统应用就执行尝试默默做usb权限
-    Intent intent = new Intent();
-    intent.setAction(ACTION_USB_PERMISSION);
-    intent.putExtra(UsbManager.EXTRA_DEVICE, device);
-    intent.putExtra(UsbManager.EXTRA_PERMISSION_GRANTED, true);
-
-    final PackageManager pm = mContext.getPackageManager();
-    try {
-        ApplicationInfo aInfo = pm.getApplicationInfo(mContext.getPackageName(),
-                0);
-        try {
-            IBinder b = ServiceManager.getService(USB_SERVICE);
-            IUsbManager service = IUsbManager.Stub.asInterface(b);
-            service.grantDevicePermission(device, aInfo.uid);
-        } catch (RemoteException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    } catch (PackageManager.NameNotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-
-    mContext.sendBroadcast(intent);
-}
-</code></pre><p>注意：由于android.hardware.usb.IUsbManager和android.os.ServiceManager是系统层面的代码，本来程序需要在android系统源码里编译，但这样直接复制这两个类的源码集成进项目工程里也可以实现。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/usb/">usb</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016082501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/25/2016082501/" class="article-date">
-  	<time datetime="2016-08-24T19:06:11.000Z" itemprop="datePublished">2016-08-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/25/2016082501/">Android清空Activity栈的做法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="以前的思路是这样的："><a href="#以前的思路是这样的：" class="headerlink" title="以前的思路是这样的："></a>以前的思路是这样的：</h4><pre><code>在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
-</code></pre><h4 id="现在还可以这样实现："><a href="#现在还可以这样实现：" class="headerlink" title="现在还可以这样实现："></a>现在还可以这样实现：</h4><pre><code>直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activity-intent-flag/">Activity intent flag</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
