@@ -3,14 +3,39 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2017 | dukelight&#39;s home</title>
+  <title>python 4-1如何拆分含有多种分隔符的字符串 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/2017/index.html">
+  <meta name="description" content="如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高def strSplit(x, d):
+    return x.split(d)
+
+def mySplit(s, ds):
+    res = [s]
+    for d in ds:
+        t = []
+        #对二维数据降成一维数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 4-1如何拆分含有多种分隔符的字符串">
+<meta property="og:url" content="http://ydpzg.github.io/2017/05/24/2017052401/index.html">
 <meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高def strSplit(x, d):
+    return x.split(d)
+
+def mySplit(s, ds):
+    res = [s]
+    for d in ds:
+        t = []
+        #对二维数据降成一维数组">
+<meta property="og:updated_time" content="2017-05-24T13:41:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="python 4-1如何拆分含有多种分隔符的字符串">
+<meta name="twitter:description" content="如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高def strSplit(x, d):
+    return x.split(d)
+
+def mySplit(s, ds):
+    res = [s]
+    for d in ds:
+        t = []
+        #对二维数据降成一维数组">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -187,290 +212,117 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2017052401" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2017/05/24/2017052401/" class="article-date">
+  	<time datetime="2017-05-24T13:38:38.000Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python 4-1如何拆分含有多种分隔符的字符串
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/24/2017052401/" class="archive-article-date">
-  	<time datetime="2017-05-24T13:38:38.000Z" itemprop="datePublished">May 24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/24/2017052401/">python 4-1如何拆分含有多种分隔符的字符串</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="如果是对字符串做一个字符的分割，用str-split-分割效率比较高；如果是多个字符的分割，用re-split-分割效率比较高"><a href="#如果是对字符串做一个字符的分割，用str-split-分割效率比较高；如果是多个字符的分割，用re-split-分割效率比较高" class="headerlink" title="如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高"></a>如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高</h4><pre><code>def strSplit(x, d):
+    return x.split(d)
 
-        <div class="article-info info-on-right">
-          
-          
+def mySplit(s, ds):
+    res = [s]
+    for d in ds:
+        t = []
+        #对二维数据降成一维数组
+        map(lambda x: t.extend(x.split(d)), res)
+        res = t
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    return [x for x in res if x]
+
+s = &apos;ab;dd:fdfd\dfsa+ddf=vfv%dfdf&apos;
+print(mySplit(s, &apos;=!+-=;:^%$\\&apos;))
+
+#使用re正则表达式分割字符串
+import re
+print(re.split(r&apos;[=!+-=;:^%$\\]+&apos;, s))
+</code></pre>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/23/2017052304/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python 3-6如何在一个for语句中迭代多个可迭代对象</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/23/2017052304/" class="archive-article-date">
-  	<time datetime="2017-05-23T14:32:28.000Z" itemprop="datePublished">May 23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/23/2017052304/">python 3-6如何在一个for语句中迭代多个可迭代对象</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/23/2017052303/" class="archive-article-date">
-  	<time datetime="2017-05-23T14:18:36.000Z" itemprop="datePublished">May 23</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/23/2017052302/" class="archive-article-date">
-  	<time datetime="2017-05-23T13:58:03.000Z" itemprop="datePublished">May 23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/23/2017052302/">python 3-4如何进行反向迭代以及如何实现反向迭代</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/23/2017052301/" class="archive-article-date">
-  	<time datetime="2017-05-23T13:42:28.000Z" itemprop="datePublished">May 23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/23/2017052301/">python 3-3如何使用生成器函数实现可迭代对象</a>
-    </h1>
-  
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2017052401" data-title="python 4-1如何拆分含有多种分隔符的字符串" data-url="http://ydpzg.github.io/2017/05/24/2017052401/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/22/2017052201/" class="archive-article-date">
-  	<time datetime="2017-05-22T00:13:27.000Z" itemprop="datePublished">May 22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/22/2017052201/">python 3-2如何实现可迭代对象和迭代器对象(2)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/20/2017052001/" class="archive-article-date">
-  	<time datetime="2017-05-20T05:43:03.000Z" itemprop="datePublished">May 20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/20/2017052001/">python 2-7如何实现用户的历史记录功能(最多n条)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/17/2017051702/" class="archive-article-date">
-  	<time datetime="2017-05-17T14:45:07.000Z" itemprop="datePublished">May 17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/17/2017051702/">python 2-6如何让字典保持有序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/17/2017051701/" class="archive-article-date">
-  	<time datetime="2017-05-17T14:06:13.000Z" itemprop="datePublished">May 17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/17/2017051701/">python 2-5如何快速找到多个字典中的公共键(key)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/2017051603/" class="archive-article-date">
-  	<time datetime="2017-05-16T15:54:08.000Z" itemprop="datePublished">May 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/2017051603/">python 2-4如何根据字典中值的大小, 对字典中的项排序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -505,8 +357,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
