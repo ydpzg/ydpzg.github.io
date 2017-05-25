@@ -189,6 +189,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017052502" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/25/2017052502/" class="article-date">
+  	<time datetime="2017-05-25T14:57:44.000Z" itemprop="datePublished">2017-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/25/2017052502/">python 4-3如何调整字符串中文本的格式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组"><a href="#读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组" class="headerlink" title="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组"></a>读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组</h4><pre><code>file = open(&quot;./catalina.2016-11-02.log&quot;).read()    
+import re 
+result = re.sub(r&apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&apos;, r&apos;\2,\1,\5:\4:\3&apos;, file)
+result = re.sub(r&apos;(?P&lt;day&gt;\d{2}), (?P&lt;year&gt;\d{4}) (?P&lt;hour&gt;\d{2}):(?P&lt;minute&gt;\d{2}):(?P&lt;second&gt;\d{2})&apos;, r&apos;\g&lt;year&gt;,\g&lt;day&gt;,\g&lt;second&gt;:\g&lt;minute&gt;:\g&lt;hour&gt;&apos;, file)
+print(result)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -829,70 +884,6 @@ print(&apos;-&apos; * 20)
 
 for x in d:
     print(x, d[x])
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017051701" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/17/2017051701/" class="article-date">
-  	<time datetime="2017-05-17T14:06:13.000Z" itemprop="datePublished">2017-05-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/2017051701/">python 2-5如何快速找到多个字典中的公共键(key)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>from random import randint, sample
-sample(&apos;abcxyz&apos;, 4)
-sample(&apos;abcxyz&apos;, randint(3, 5)
-</code></pre><h4 id="得到初始序列"><a href="#得到初始序列" class="headerlink" title="得到初始序列"></a>得到初始序列</h4><pre><code>s1 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
-s2 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
-s3 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
-</code></pre><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><pre><code>for k in s1:
-...     if k in s2 and k in s3:
-...             res.append(k)
-</code></pre><h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><pre><code>s1.keys()
-s1.keys() &amp; s2.keys() &amp; s3.keys()
-</code></pre><h4 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h4><pre><code>map(dict.keys, [s1, s2, s3])
-from functools import reduce
-reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
 </code></pre>
       
     </div>
