@@ -189,6 +189,59 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016120201" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/02/2016120201/" class="article-date">
+  	<time datetime="2016-12-02T14:47:15.000Z" itemprop="datePublished">2016-12-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/02/2016120201/">android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在adb 打命令  am broadcast 发广播的时候，正常返回数据。<br>但是android里面使用Runtime.getRuntime().exec()运行命令的时候，发现报错了，如下</p>
+<p><code>Permission Denial: broadcast asks to run as user -1 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL or android.permission.INTERACT_ACROSS_USERS_</code></p>
+<p>解决方案：<br>在命令里面加个参数  - - user 0，即 am broadcast  - - user 0，此时在android里面就可以正常返回了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016111001" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -900,65 +953,9 @@ fragmentTransaction.commit();
 
 
   
-    <article id="post-2016082501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/25/2016082501/" class="article-date">
-  	<time datetime="2016-08-24T19:06:11.000Z" itemprop="datePublished">2016-08-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/25/2016082501/">Android清空Activity栈的做法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="以前的思路是这样的："><a href="#以前的思路是这样的：" class="headerlink" title="以前的思路是这样的："></a>以前的思路是这样的：</h4><pre><code>在MainActivity设置singleTask，然后跳转到MainActivity，此时的栈就会被清空，然后再跳转到其他页面进行业务操作。
-</code></pre><h4 id="现在还可以这样实现："><a href="#现在还可以这样实现：" class="headerlink" title="现在还可以这样实现："></a>现在还可以这样实现：</h4><pre><code>直接跳转业务页面即可，设置intent的flag属性：Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Activity-intent-flag/">Activity intent flag</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 </div>

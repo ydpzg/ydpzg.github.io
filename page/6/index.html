@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | dukelight&#39;s home</title>
+  <title>dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/page/2/index.html">
+<meta property="og:url" content="http://ydpzg.github.io/page/6/index.html">
 <meta property="og:site_name" content="dukelight's home">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dukelight's home">
@@ -189,295 +189,86 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2015/06/26/2015062601/" class="article-date">
+  	<time datetime="2015-06-26T07:01:04.000Z" itemprop="datePublished">2015-06-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/26/2015062601/">使用hexo搭建博客平台，记录过程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-在github上创建一个Repository-名字为xx-github-io"><a href="#1-在github上创建一个Repository-名字为xx-github-io" class="headerlink" title="1. 在github上创建一个Repository,名字为xx.github.io"></a>1. 在github上创建一个Repository,名字为xx.github.io</h4><pre><code>Repository 的地址就是 http://www.github.com/id/id.github.io.git
+</code></pre><h4 id="2-配置ssh-keys"><a href="#2-配置ssh-keys" class="headerlink" title="2. 配置ssh keys"></a>2. 配置ssh keys</h4><p>打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下</p>
+<pre><code>ssh -T git@github.com
+</code></pre><h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h4><pre><code>npm install -g hexo
+</code></pre><p>新建一个文件夹来保存<br>    hexo init<br>    npm install</p>
+<p>安装好后，就可以开始了<br>    hexo generate  //可以简写为 hexo g<br>    hexo server    //可以简写为 hexo s</p>
+<p>在浏览器中输入 localhost:4000 查看本地博客    </p>
+<h4 id="4-部署到github上去"><a href="#4-部署到github上去" class="headerlink" title="4. 部署到github上去"></a>4. 部署到github上去</h4><pre><code>npm install hexo-deployer-git --save
+</code></pre><p>打开hexo文件夹的_config.yml ，文件拉到最后，设置deploy的type为git，repository为：<a href="https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）" target="_blank" rel="external">https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）</a> </p>
+<pre><code>hexo g
+hexo deploy    //可简写为 hexo d
+</code></pre><h4 id="5-开始用hexo写文章"><a href="#5-开始用hexo写文章" class="headerlink" title="5. 开始用hexo写文章"></a>5. 开始用hexo写文章</h4><p>hexo博客目录里的source/_posts就是放文章的（使用markdown语法编写）,格式是xx.md</p>
+<pre><code>hexo new post &quot;first article&quot;   
+</code></pre><p>会创建一个叫first article.md的文件（使用markdown语法），使用macdown打开找个文件，然后就可以开始写文章，写完后打命令</p>
+<pre><code>hexo g
+hexo s
+hexo d
+</code></pre><h4 id="6-关于文章中的图片问题"><a href="#6-关于文章中的图片问题" class="headerlink" title="6. 关于文章中的图片问题"></a>6. 关于文章中的图片问题</h4><pre><code>使用七牛云存储来保存图片，并换取图片外链. (http://www.qiniu.com)
+</code></pre><blockquote>
+<p>ps: 使用hexo的第三方theme，看起来不错的主题 hexo-theme-yilia，部署后就么么哒~~<br><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github-自搭建/">hexo github 自搭建</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/23/2017052301/" class="archive-article-date">
-  	<time datetime="2017-05-23T13:42:28.000Z" itemprop="datePublished">May 23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/23/2017052301/">python 3-3如何使用生成器函数实现可迭代对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
   </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/22/2017052201/" class="archive-article-date">
-  	<time datetime="2017-05-22T00:13:27.000Z" itemprop="datePublished">May 22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/22/2017052201/">python 3-2如何实现可迭代对象和迭代器对象(2)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/20/2017052001/" class="archive-article-date">
-  	<time datetime="2017-05-20T05:43:03.000Z" itemprop="datePublished">May 20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/20/2017052001/">python 2-7如何实现用户的历史记录功能(最多n条)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/17/2017051702/" class="archive-article-date">
-  	<time datetime="2017-05-17T14:45:07.000Z" itemprop="datePublished">May 17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/17/2017051702/">python 2-6如何让字典保持有序</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/17/2017051701/" class="archive-article-date">
-  	<time datetime="2017-05-17T14:06:13.000Z" itemprop="datePublished">May 17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/17/2017051701/">python 2-5如何快速找到多个字典中的公共键(key)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/2017051603/" class="archive-article-date">
-  	<time datetime="2017-05-16T15:54:08.000Z" itemprop="datePublished">May 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/2017051603/">python 2-4如何根据字典中值的大小, 对字典中的项排序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/2017051602/" class="archive-article-date">
-  	<time datetime="2017-05-16T14:57:15.000Z" itemprop="datePublished">May 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/2017051602/">python 2-3如何统计序列中元素的出现频度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/2017051601-1/" class="archive-article-date">
-  	<time datetime="2017-05-16T14:17:10.000Z" itemprop="datePublished">May 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/2017051601-1/">python 2-2如何为元组中的每个元素命名, 提高程序可读性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/2017051601/" class="archive-article-date">
-  	<time datetime="2017-05-16T00:21:16.000Z" itemprop="datePublished">May 16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/2017051601/">python 2-1如何在列表, 字典, 集合中根据条件筛选数据</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/22/2017032201/" class="archive-article-date">
-  	<time datetime="2017-03-21T16:46:58.000Z" itemprop="datePublished">Mar 22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/22/2017032201/">xutils使用post上传base64图片的时候的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
-  
-
-    
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
     </nav>
   
-
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
@@ -510,9 +301,9 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
