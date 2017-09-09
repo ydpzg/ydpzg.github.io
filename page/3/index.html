@@ -189,6 +189,122 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017051701" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/17/2017051701/" class="article-date">
+  	<time datetime="2017-05-17T14:06:13.000Z" itemprop="datePublished">2017-05-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/2017051701/">python 2-5如何快速找到多个字典中的公共键(key)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>from random import randint, sample
+sample(&apos;abcxyz&apos;, 4)
+sample(&apos;abcxyz&apos;, randint(3, 5)
+</code></pre><h4 id="得到初始序列"><a href="#得到初始序列" class="headerlink" title="得到初始序列"></a>得到初始序列</h4><pre><code>s1 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
+s2 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
+s3 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
+</code></pre><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><pre><code>for k in s1:
+...     if k in s2 and k in s3:
+...             res.append(k)
+</code></pre><h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><pre><code>s1.keys()
+s1.keys() &amp; s2.keys() &amp; s3.keys()
+</code></pre><h4 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h4><pre><code>map(dict.keys, [s1, s2, s3])
+from functools import reduce
+reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017051603" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/16/2017051603/" class="article-date">
+  	<time datetime="2017-05-16T15:54:08.000Z" itemprop="datePublished">2017-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/2017051603/">python 2-4如何根据字典中值的大小, 对字典中的项排序</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>from random import randint<br>data = {x: randinx(80, 100) for x in ‘abcxyz’}<br>zipresult = zip(data.values(), data.keys())<br>sorted(zipresult)<br>list(zipresult)</p>
+<p>data.items()<br>sorted(data.items(), key=lambda x: x[1])<br>sorted(data.items(), key=lambda x: x[1], reverse=True)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017051602" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -633,127 +749,6 @@ mLlPageCarContainer.setClipChildren(false);
 mVpCarInfo.setClipChildren(false);</code></p>
 <p><code>// 拖动不要出现边界黑色边框  
 mVpCarInfo.setOverScrollMode(View.OVER_SCROLL_NEVER);</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/07/2017020701/" class="article-date">
-  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">2017-02-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/07/2017020701/">JAVA使用futureTask时候注意的坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在call里面不要用try catch</p>
-<pre><code>FutureTask mListenTask = new FutureTask(new Callable() {
-    @Override
-    public Object call() throws Exception {
-// 注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。
-// 代码
-Thread.sleep(1000);
-// 代码
-   }
-});
-</code></pre><p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
-<p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016121602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/16/2016121602/" class="article-date">
-  	<time datetime="2016-12-16T01:50:10.000Z" itemprop="datePublished">2016-12-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/16/2016121602/">nexus6 7.0的root方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>详情请看：</p>
-<p><a href="https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/" target="_blank" rel="external">https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/</a></p>
-<p>Download the TWRP Recovery and extract it in the Downloads folder on the computer.<br>Set up the ADB for Windows on the computer and then come back and continue with this guide when that one is complete.<br>Install the ADB Driver on the computer so that the ADB commands you run can do so without any trouble.<br>Download the SuperSU but do not extract it.<br>Connect the Google Nexus 6 smartphone to the computer with the USB cable that is used for charging the battery of the device.<br>Open the Downloads folder to find the SuperSU and copy it over to the internal storage SD card folder for the Google Nexus 6 smartphone.<br>Copy all of the TWRP files from the Downloads folder so the same folder as the ADB, so you have everything available from the same directory.<br>Hold the Shift key available on the keyboard and right-click the mouse where it is white in the background of the ADB folder and choose to open a new command window here from the menu.<br>Type the command “adb reboot bootloader” to get the Google Nexus 6 smartphone into the Bootloader Mode that is a required before flashing the custom recovery image on the smartphone.<br>Type the command “fastboot flash recovery twrp-3.0.2-0-shamu.img” to have the custom recovery image flashed onto the Google Nexus 6 smartphone.<br>Type the command “adb reboot” to get back into normal mode and as soon as you can see the smartphone reboot you need to hold down the hardware key combination to boot directly into the Recovery Mode now and the custom recovery boots up.<br>Tap on the Install button and then follow the guidelines to install the SuperSU from the SD card.<br>Choose the reboot option followed by the System option to reboot the system back into the normal mode and continue using the device as you typically would but this time you now have the root access and the custom recovery image installed.</p>
-<p>Read more at <a href="https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/#YJoe7U3o84bWIcYg.99" target="_blank" rel="external">https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/#YJoe7U3o84bWIcYg.99</a></p>
-<p>需要下载的文件</p>
-<p>SuperSU-v2.78-201609011115.zip</p>
-<p><a href="https://www.androidfilehost.com/?w=file-thanks&amp;fid=24694152805484203&amp;mid=140&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851118&amp;hc=f65965d40223e634e53fc26b41fc7eee873dd1ef17bc87a67e07326856425084" target="_blank" rel="external">https://www.androidfilehost.com/?w=file-thanks&amp;fid=24694152805484203&amp;mid=140&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851118&amp;hc=f65965d40223e634e53fc26b41fc7eee873dd1ef17bc87a67e07326856425084</a></p>
-<p>twrp-3.0.2-0-shamu.img</p>
-<p><a href="https://www.androidfilehost.com/?w=file-thanks&amp;fid=24499762635998144&amp;mid=150&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851144&amp;hc=815ecb8f13ffc1df2938c8990071cf7cbe8dd5c7b923ebeb28952c8eeb4ee9a0" target="_blank" rel="external">https://www.androidfilehost.com/?w=file-thanks&amp;fid=24499762635998144&amp;mid=150&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851144&amp;hc=815ecb8f13ffc1df2938c8990071cf7cbe8dd5c7b923ebeb28952c8eeb4ee9a0</a></p>
 
       
     </div>
