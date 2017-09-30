@@ -189,6 +189,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017052602" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/26/2017052602/" class="article-date">
+  	<time datetime="2017-05-26T14:03:18.000Z" itemprop="datePublished">2017-05-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/26/2017052602/">python 4-5如何对字符串进行左, 右, 居中对齐</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
+s.ljust(10, &apos;_&apos;)
+s.rjust(10, &apos;_&apos;)
+s.center(10, &apos;_&apos;)
+format(s, &apos;&lt;10&apos;)
+format(s, &apos;&gt;10&apos;)
+format(s, &apos;^10&apos;)
+
+d ={&apos;a&apos;:100,&apos;adb3dd&apos;:9,&apos;lof&apos;:3444}
+map(len, d.keys())
+list(map(len, d.keys()))
+k = max(map(len, d.keys()))
+for x in d:
+      print(x.ljust(k), &apos;:&apos;, d[x])
+rmax = max(map(len, [str(x) for x in d.values()]))
+rmax
+for x in d:
+     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -769,96 +837,6 @@ class weatherIterable(Iterable):
 cities = [&apos;北京&apos;, &apos;上海&apos;, &apos;广州&apos;]
 for x in weatherIterable(cities):
     print(x)
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052001" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/20/2017052001/" class="article-date">
-  	<time datetime="2017-05-20T05:43:03.000Z" itemprop="datePublished">2017-05-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/20/2017052001/">python 2-7如何实现用户的历史记录功能(最多n条)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="猜数字的游戏，利用pickle存储历史数据，利用raw-input获取输入数据，利用deque双向队列实现数据的排队"><a href="#猜数字的游戏，利用pickle存储历史数据，利用raw-input获取输入数据，利用deque双向队列实现数据的排队" class="headerlink" title="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队"></a>猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队</h4><pre><code>from random import randint
-from collections import deque
-from code import InteractiveConsole
-import pickle
-
-N = randint(0, 100)
-history = deque([], 5)
-
-
-def guess(k):
-    if k == N:
-        print(&quot;you are right&quot;)
-        return True
-    elif k &gt; N:
-        print(&quot;num is lower than %s&quot; % k)
-    elif k &lt; N:
-        print(&quot;num is greater than %s&quot; % k)
-    return False
-
-
-while (True):
-
-    try:
-        history = pickle.load(open(&quot;./history.txt&quot;, &quot;rb&quot;))
-    except:
-        pass
-
-    line = InteractiveConsole.raw_input(&quot;please input a num&quot;)
-    if line.isdigit():
-        kk = int(line)
-        history.append(line)
-        pickle.dump(history, open(&quot;./history.txt&quot;, &quot;wb&quot;))
-        if guess(kk):
-            break
-        else:
-            continue
-    elif line == &apos;history&apos; or line == &apos;h?&apos;:
-        print(list(history))
-    elif line == &apos;quit&apos; or line == &apos;exit&apos; or line == &quot;q?&quot;:
-        break
 </code></pre>
       
     </div>

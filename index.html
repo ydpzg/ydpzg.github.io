@@ -189,6 +189,64 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017093001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/30/2017093001/" class="article-date">
+  	<time datetime="2017-09-30T10:01:19.000Z" itemprop="datePublished">2017-09-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/30/2017093001/">防止系统字体大小变化导致app字体大小变化</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"><a href="#大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop" class="headerlink" title="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"></a>大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在2560<em>1440上表现出现是要相对耗时500ms</em>，而xiaop</h4><p><code>Configuration config = context.getResources().getConfiguration();  
+config.setToDefaults();  
+context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());</code></p>
+<h4 id="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"><a href="#所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现" class="headerlink" title="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"></a>所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现</h4><p><code>Configuration config = context.getResources().getConfiguration();  
+if (config.fontScale != 1) {  
+    config.fontScale = 1;  
+    context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());  
+}</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-20170901501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -699,74 +757,6 @@ s.replace(&apos;\t&apos;, &apos;&apos;)
 s = &apos;\tsss\tcvv\tppp\rfdf\rccc&apos;
 import re
 re.sub(&apos;[\t\r]&apos;, &apos;&apos;)
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052602/" class="article-date">
-  	<time datetime="2017-05-26T14:03:18.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052602/">python 4-5如何对字符串进行左, 右, 居中对齐</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
-s.ljust(10, &apos;_&apos;)
-s.rjust(10, &apos;_&apos;)
-s.center(10, &apos;_&apos;)
-format(s, &apos;&lt;10&apos;)
-format(s, &apos;&gt;10&apos;)
-format(s, &apos;^10&apos;)
-
-d ={&apos;a&apos;:100,&apos;adb3dd&apos;:9,&apos;lof&apos;:3444}
-map(len, d.keys())
-list(map(len, d.keys()))
-k = max(map(len, d.keys()))
-for x in d:
-      print(x.ljust(k), &apos;:&apos;, d[x])
-rmax = max(map(len, [str(x) for x in d.values()]))
-rmax
-for x in d:
-     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))
 </code></pre>
       
     </div>
