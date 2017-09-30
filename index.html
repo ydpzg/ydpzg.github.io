@@ -216,7 +216,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"><a href="#大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop" class="headerlink" title="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"></a>大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在2560<em>1440上表现出现是要相对耗时500ms</em>，而xiaop</h4><p><code>Configuration config = context.getResources().getConfiguration();  
-config.setToDefaults();  
+config.fontScale = 1;  
 context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());</code></p>
 <h4 id="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"><a href="#所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现" class="headerlink" title="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"></a>所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现</h4><p><code>Configuration config = context.getResources().getConfiguration();  
 if (config.fontScale != 1) {  

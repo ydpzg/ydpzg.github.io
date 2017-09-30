@@ -6,21 +6,21 @@
   <title>防止系统字体大小变化导致app字体大小变化 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaopConfiguration config = context.getResources().getConfiguration();  
-config.setToDefaults();  
-context.getResources().updateConfigur">
+config.fontScale = 1;  
+context.getResources().updateConfigurat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="防止系统字体大小变化导致app字体大小变化">
 <meta property="og:url" content="http://ydpzg.github.io/2017/09/30/2017093001/index.html">
 <meta property="og:site_name" content="dukelight's home">
 <meta property="og:description" content="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaopConfiguration config = context.getResources().getConfiguration();  
-config.setToDefaults();  
-context.getResources().updateConfigur">
-<meta property="og:updated_time" content="2017-09-30T10:07:42.000Z">
+config.fontScale = 1;  
+context.getResources().updateConfigurat">
+<meta property="og:updated_time" content="2017-09-30T10:21:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="防止系统字体大小变化导致app字体大小变化">
 <meta name="twitter:description" content="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaopConfiguration config = context.getResources().getConfiguration();  
-config.setToDefaults();  
-context.getResources().updateConfigur">
+config.fontScale = 1;  
+context.getResources().updateConfigurat">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -231,7 +231,7 @@ context.getResources().updateConfigur">
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"><a href="#大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop" class="headerlink" title="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"></a>大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在2560<em>1440上表现出现是要相对耗时500ms</em>，而xiaop</h4><p><code>Configuration config = context.getResources().getConfiguration();  
-config.setToDefaults();  
+config.fontScale = 1;  
 context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());</code></p>
 <h4 id="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"><a href="#所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现" class="headerlink" title="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"></a>所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现</h4><p><code>Configuration config = context.getResources().getConfiguration();  
 if (config.fontScale != 1) {  
