@@ -3,24 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>防止系统字体大小变化导致app字体大小变化 | dukelight&#39;s home</title>
+  <title>NoScrollListView 跟 android:layerType=&quot;software&quot;，冲突 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaopConfiguration config = context.getResources().getConfiguration();  
-config.fontScale = 1;  
-context.getResources().updateConfigurat">
+  <meta name="description" content="设置了后，画了大概20行就会出现bug，item布局还在，点击事件还在，就是看不到任何东西。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="防止系统字体大小变化导致app字体大小变化">
-<meta property="og:url" content="http://ydpzg.github.io/2017/09/30/2017093001/index.html">
+<meta property="og:title" content="NoScrollListView 跟 android:layerType="software"，冲突">
+<meta property="og:url" content="http://ydpzg.github.io/2017/10/29/2017102801/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaopConfiguration config = context.getResources().getConfiguration();  
-config.fontScale = 1;  
-context.getResources().updateConfigurat">
-<meta property="og:updated_time" content="2017-09-30T10:21:37.000Z">
+<meta property="og:description" content="设置了后，画了大概20行就会出现bug，item布局还在，点击事件还在，就是看不到任何东西。">
+<meta property="og:updated_time" content="2017-10-28T16:03:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="防止系统字体大小变化导致app字体大小变化">
-<meta name="twitter:description" content="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaopConfiguration config = context.getResources().getConfiguration();  
-config.fontScale = 1;  
-context.getResources().updateConfigurat">
+<meta name="twitter:title" content="NoScrollListView 跟 android:layerType="software"，冲突">
+<meta name="twitter:description" content="设置了后，画了大概20行就会出现bug，item布局还在，点击事件还在，就是看不到任何东西。">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -197,11 +191,11 @@ context.getResources().updateConfigurat">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2017093001" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2017102801" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/09/30/2017093001/" class="article-date">
-  	<time datetime="2017-09-30T10:01:19.000Z" itemprop="datePublished">2017-09-30</time>
+      <a href="/2017/10/29/2017102801/" class="article-date">
+  	<time datetime="2017-10-28T16:01:36.000Z" itemprop="datePublished">2017-10-29</time>
 </a>
     </div>
   
@@ -214,7 +208,7 @@ context.getResources().updateConfigurat">
         
   
     <h1 class="article-title" itemprop="name">
-      防止系统字体大小变化导致app字体大小变化
+      NoScrollListView 跟 android:layerType=&quot;software&quot;，冲突
     </h1>
   
 
@@ -230,14 +224,7 @@ context.getResources().updateConfigurat">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"><a href="#大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop" class="headerlink" title="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"></a>大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在2560<em>1440上表现出现是要相对耗时500ms</em>，而xiaop</h4><p><code>Configuration config = context.getResources().getConfiguration();  
-config.fontScale = 1;  
-context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());</code></p>
-<h4 id="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"><a href="#所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现" class="headerlink" title="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"></a>所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现</h4><p><code>Configuration config = context.getResources().getConfiguration();  
-if (config.fontScale != 1) {  
-    config.fontScale = 1;  
-    context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());  
-}</code></p>
+        <p>设置了后，画了大概20行就会出现bug，item布局还在，点击事件还在，就是看不到任何东西。</p>
 
       
     </div>
@@ -247,18 +234,9 @@ if (config.fontScale != 1) {
     
 <nav id="article-nav">
   
-    <a href="/2017/10/29/2017102801/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          NoScrollListView 跟 android:layerType=&quot;software&quot;，冲突
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/09/15/20170901501/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">小米手机在android studio ide上run不了的奇葩问题</div>
+    <a href="/2017/09/30/2017093001/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">防止系统字体大小变化导致app字体大小变化</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -287,7 +265,7 @@ if (config.fontScale != 1) {
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017093001" data-title="防止系统字体大小变化导致app字体大小变化" data-url="http://ydpzg.github.io/2017/09/30/2017093001/"></div>
+	<div class="ds-thread" data-thread-key="2017102801" data-title="NoScrollListView 跟 android:layerType=&quot;software&quot;，冲突" data-url="http://ydpzg.github.io/2017/10/29/2017102801/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

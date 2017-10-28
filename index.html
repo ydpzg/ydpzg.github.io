@@ -189,6 +189,57 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017102801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/29/2017102801/" class="article-date">
+  	<time datetime="2017-10-28T16:01:36.000Z" itemprop="datePublished">2017-10-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/29/2017102801/">NoScrollListView 跟 android:layerType=&quot;software&quot;，冲突</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>设置了后，画了大概20行就会出现bug，item布局还在，点击事件还在，就是看不到任何东西。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017093001" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -690,73 +741,6 @@ f2 = open(&apos;demo2.wav&apos;, &apos;wb&apos;)
 f2.write(info)
 buf.tofile(f2)
 f2.close()
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052603" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052603/" class="article-date">
-  	<time datetime="2017-05-26T15:53:29.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052603/">python 4-6如何去掉字符串中不需要的字符</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="有很多种"><a href="#有很多种" class="headerlink" title="有很多种"></a>有很多种</h4><pre><code>s = &quot;    jjj   ee    &quot;
-s.strip()
-s.lstrip()
-s.rstrip()
-
-s  = &apos;-----abd++++++&apos;
-s.strip(&apos;-+&apos;)
-
-s = &apos;adb:123&apos;
-s[:3] + s[4:]
-
-s = &apos;\tsss\tcvv\ppp&apos;
-s.replace(&apos;\t&apos;, &apos;&apos;)
-
-s = &apos;\tsss\tcvv\tppp\rfdf\rccc&apos;
-import re
-re.sub(&apos;[\t\r]&apos;, &apos;&apos;)
 </code></pre>
       
     </div>
