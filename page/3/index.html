@@ -189,6 +189,202 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017052303" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/23/2017052303/" class="article-date">
+  	<time datetime="2017-05-23T14:18:36.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: python 2-5如何对迭代器做切片操作<br>date: 2017-05-23 22:18:36<br>tags:<br>—</p>
+<h4 id="使用islice来让迭代器支持切片操作，节省资源，不用一次性读完全部"><a href="#使用islice来让迭代器支持切片操作，节省资源，不用一次性读完全部" class="headerlink" title="使用islice来让迭代器支持切片操作，节省资源，不用一次性读完全部"></a>使用islice来让迭代器支持切片操作，节省资源，不用一次性读完全部</h4><pre><code>from itertools import islice
+l = range(1, 21)
+for x in  l:
+   ...:     print(x)
+t = iter(l)
+for x in islice(t, 5, 10): 
+    ...:    print(x)
+for x in t:
+    ...:     print(x)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017052302" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/23/2017052302/" class="article-date">
+  	<time datetime="2017-05-23T13:58:03.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/23/2017052302/">python 3-4如何进行反向迭代以及如何实现反向迭代</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="利用生成器做了一个浮点的步进器，reversed-调用的是内部的reversed方法"><a href="#利用生成器做了一个浮点的步进器，reversed-调用的是内部的reversed方法" class="headerlink" title="利用生成器做了一个浮点的步进器，reversed()调用的是内部的reversed方法"></a>利用生成器做了一个浮点的步进器，reversed()调用的是内部的<strong>reversed</strong>方法</h4><pre><code> class FloatRange:
+    def __init__(self, start, end, step=0.1):
+        self.start = start
+        self.end = end
+        self.step = step
+
+    def __iter__(self):
+        value = self.start
+        while value &lt;= self.end:
+            yield value
+            value += self.step
+
+    def __reversed__(self):
+        value = self.end
+        while value &gt;= self.start:
+            yield value
+            value -= self.step
+
+print(&quot;顺序：&quot;)
+
+for x in FloatRange(1.0, 4.0, 0.5):
+    print(x)
+
+print(&quot;\n倒序：&quot;)
+
+for x in reversed(FloatRange(1.0, 4.0, 0.5)):
+    print(x)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017052301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/23/2017052301/" class="article-date">
+  	<time datetime="2017-05-23T13:42:28.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/23/2017052301/">python 3-3如何使用生成器函数实现可迭代对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值"><a href="#重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值" class="headerlink" title="重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值"></a>重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值</h4><pre><code>class PrimeNum:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def isPrime(self, k):
+        if k &lt; 2:
+            return False
+        for x in range(2, k):
+            if k % x == 0:
+                return False
+        return True
+
+    def __iter__(self):
+        for x in range(self.start, self.end + 1):
+            if self.isPrime(x):
+                yield x
+
+for x in PrimeNum(1, 100):
+    print(x)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052201" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -673,185 +869,9 @@ reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
 
 
   
-    <article id="post-2017051601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/16/2017051601/" class="article-date">
-  	<time datetime="2017-05-16T00:21:16.000Z" itemprop="datePublished">2017-05-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/16/2017051601/">python 2-1如何在列表, 字典, 集合中根据条件筛选数据</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>列表<br>d = [randint(-10, 10) for _ in range(10)]<br>[x for x in d if x &gt;= 0]</p>
-<p>字典<br>dd = {x:randint(60, 100) for x in range(1, 21)}<br>{k:v for k, v in dd.items() if v &gt;= 95}</p>
-<p>集合<br>s = set(d)<br>{x for x in s if x &gt;= 0}</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017032201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/22/2017032201/" class="article-date">
-  	<time datetime="2017-03-21T16:46:58.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/2017032201/">xutils使用post上传base64图片的时候的问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>utils的网络部分，其实比较简单，但是也是有坑，比如在post一些比较长的参数值的时候就会报错。</p>
-</blockquote>
-<p>x.http().post 这个会想当然认为就是指定了post，其实不完全，<br>requestParams.addBodyParameter(key, value)里，默认是GET方式的body，也就是附到url上变成get方式的参数形式，也就导致了长的参数值会报错，比较url不支持那么长的值。</p>
-<p>所以解决方法就是：requestParams.setMethod(HttpMethod.POST);<br>将requestParams变成post方式的键值对。</p>
-<p>ps：requestParams.toString也不要随便调，会把参数值附到url上的。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017030102" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/01/2017030102/" class="article-date">
-  	<time datetime="2017-03-01T15:17:36.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/2017030102/">利用BitmapShader来降低自定义view动画效果的难度</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。</p>
-</blockquote>
-<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-Canvas canvas = new Canvas(bitmap);
-
-//…把简单元素画进bitmap变成复杂元素
-
-BitmapShader
- mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
-Paint mViewPaint.setShader(mWaveShader);
-
-Matrix shaderMaxtrix = new Matrix();//矩阵
-shaderMaxtrix.postTranslate(dx, 0);
-mWaveShader.setLocalMatrix(shaderMaxtrix); //变换
-
-canvas.drawRect(0, 0, 1440, 300, mViewPaint);
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>

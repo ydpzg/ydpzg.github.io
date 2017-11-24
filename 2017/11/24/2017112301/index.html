@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2017/10 | dukelight&#39;s home</title>
+  <title>关于使用listview时候的一些坑 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/2017/10/index.html">
+  <meta name="description" content="关于使用listview时候的一些坑1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
+2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于使用listview时候的一些坑">
+<meta property="og:url" content="http://ydpzg.github.io/2017/11/24/2017112301/index.html">
 <meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="关于使用listview时候的一些坑1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
+2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到">
+<meta property="og:updated_time" content="2017-11-24T04:37:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="关于使用listview时候的一些坑">
+<meta name="twitter:description" content="关于使用listview时候的一些坑1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
+2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -187,76 +194,104 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2017112301" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/30/2017103001/" class="archive-article-date">
-  	<time datetime="2017-10-30T08:00:00.000Z" itemprop="datePublished">Oct 30</time>
+    <div class="article-meta">
+      <a href="/2017/11/24/2017112301/" class="article-date">
+  	<time datetime="2017-11-24T04:28:11.000Z" itemprop="datePublished">2017-11-24</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/30/2017103001/">web view栈手动管理，重载GoBack（）</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于使用listview时候的一些坑
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="关于使用listview时候的一些坑"><a href="#关于使用listview时候的一些坑" class="headerlink" title="关于使用listview时候的一些坑"></a>关于使用listview时候的一些坑</h4><p>1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。</p>
+<p>2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到数据更新的那个位置，不让scrollview自己滚动的方法是：focusOn srcollview下面的子view。</p>
+<p>3、listview使用addHeaderView后，导致点击回调的position错乱，解决方法是，回调后去调</p>
+<p>position = (int) listview.getAdapter().getItemId(position);</p>
+<p>而adatper里面要实现</p>
+<p>@Override<br>public long getItemId(int position) {<br>    // TODO Auto-generated method stub<br>    return position;<br>}</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/03/2017110301/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">七牛使用工具上传可以覆盖同名文件</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/29/2017102801/" class="archive-article-date">
-  	<time datetime="2017-10-28T16:01:36.000Z" itemprop="datePublished">Oct 29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/29/2017102801/">NoScrollListView 跟 android:layerType=&quot;software&quot;，冲突</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-    
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2017112301" data-title="关于使用listview时候的一些坑" data-url="http://ydpzg.github.io/2017/11/24/2017112301/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -291,8 +326,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
