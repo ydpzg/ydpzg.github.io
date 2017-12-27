@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Android 5.0以上虚拟按键适配Popupwindow | dukelight&#39;s home</title>
+  <title>关于小米5 miui9刷xp框架的问题 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。解决方案：给自定义的popupwindow设置属性然后弹出来：
-popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.show">
+  <meta name="description" content="过程比较久，要有耐心
+1、云备份，本地备份2、如果recovery和system都进不了，卡米了，那就用miflash线刷，注意右下角选择“保留所有数据”3、进去bootloader，用fastboot命令fastboot flash recovery twrp-3.0.2-3-gemini.img进去第三方recovery，先双清，然后adb线刷模式adb sideload SuperSU-v2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 5.0以上虚拟按键适配Popupwindow">
-<meta property="og:url" content="http://ydpzg.github.io/2017/12/21/2017122101/index.html">
+<meta property="og:title" content="关于小米5 miui9刷xp框架的问题">
+<meta property="og:url" content="http://ydpzg.github.io/2017/12/27/2017122701/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。解决方案：给自定义的popupwindow设置属性然后弹出来：
-popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.show">
-<meta property="og:updated_time" content="2017-12-21T09:49:59.048Z">
+<meta property="og:description" content="过程比较久，要有耐心
+1、云备份，本地备份2、如果recovery和system都进不了，卡米了，那就用miflash线刷，注意右下角选择“保留所有数据”3、进去bootloader，用fastboot命令fastboot flash recovery twrp-3.0.2-3-gemini.img进去第三方recovery，先双清，然后adb线刷模式adb sideload SuperSU-v2">
+<meta property="og:updated_time" content="2017-12-27T07:05:22.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 5.0以上虚拟按键适配Popupwindow">
-<meta name="twitter:description" content="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。解决方案：给自定义的popupwindow设置属性然后弹出来：
-popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.show">
+<meta name="twitter:title" content="关于小米5 miui9刷xp框架的问题">
+<meta name="twitter:description" content="过程比较久，要有耐心
+1、云备份，本地备份2、如果recovery和system都进不了，卡米了，那就用miflash线刷，注意右下角选择“保留所有数据”3、进去bootloader，用fastboot命令fastboot flash recovery twrp-3.0.2-3-gemini.img进去第三方recovery，先双清，然后adb线刷模式adb sideload SuperSU-v2">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -194,11 +194,11 @@ popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2017122101" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2017122701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/12/21/2017122101/" class="article-date">
-  	<time datetime="2017-12-21T09:45:14.000Z" itemprop="datePublished">2017-12-21</time>
+      <a href="/2017/12/27/2017122701/" class="article-date">
+  	<time datetime="2017-12-27T06:59:22.000Z" itemprop="datePublished">2017-12-27</time>
 </a>
     </div>
   
@@ -211,7 +211,7 @@ popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
         
   
     <h1 class="article-title" itemprop="name">
-      Android 5.0以上虚拟按键适配Popupwindow
+      关于小米5 miui9刷xp框架的问题
     </h1>
   
 
@@ -227,9 +227,8 @@ popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"><a href="#在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。" class="headerlink" title="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"></a>在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。</h4><p>解决方案：<br>给自定义的popupwindow设置属性然后弹出来：</p>
-<p>popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);</p>
-<p>在华为荣耀7android5.0上测试通过</p>
+        <p>过程比较久，要有耐心</p>
+<p><code>1、云备份，本地备份</code><br><code>2、如果recovery和system都进不了，卡米了，那就用miflash线刷，注意右下角选择“保留所有数据”</code><br><code>3、进去bootloader，用fastboot命令</code><br><code>fastboot flash recovery twrp-3.0.2-3-gemini.img</code><br><code>进去第三方recovery，先双清，然后adb线刷模式</code><br><code>adb sideload SuperSU-v2.79-SR4-支持7.1.1.zip</code><br><code>adb sideload xposed-v88.2-sdk24%26Android7.0X-arm64-test5.zip</code><br><code>4、启动到system_，miui9欢迎你，此时看到已经root了</code><br><code>adb install XposedInstaller_3.1.2.apk</code><br><code>5、恢复备份，起飞</code></p>
 
       
     </div>
@@ -239,18 +238,9 @@ popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
     
 <nav id="article-nav">
   
-    <a href="/2017/12/27/2017122701/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          关于小米5 miui9刷xp框架的问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/24/2017112301/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于使用listview时候的一些坑</div>
+    <a href="/2017/12/21/2017122101/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 5.0以上虚拟按键适配Popupwindow</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -279,7 +269,7 @@ popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017122101" data-title="Android 5.0以上虚拟按键适配Popupwindow" data-url="http://ydpzg.github.io/2017/12/21/2017122101/"></div>
+	<div class="ds-thread" data-thread-key="2017122701" data-title="关于小米5 miui9刷xp框架的问题" data-url="http://ydpzg.github.io/2017/12/27/2017122701/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
