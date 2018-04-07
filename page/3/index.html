@@ -189,6 +189,247 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017052602" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/26/2017052602/" class="article-date">
+  	<time datetime="2017-05-26T14:03:18.000Z" itemprop="datePublished">2017-05-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/26/2017052602/">python 4-5如何对字符串进行左, 右, 居中对齐</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
+s.ljust(10, &apos;_&apos;)
+s.rjust(10, &apos;_&apos;)
+s.center(10, &apos;_&apos;)
+format(s, &apos;&lt;10&apos;)
+format(s, &apos;&gt;10&apos;)
+format(s, &apos;^10&apos;)
+
+d ={&apos;a&apos;:100,&apos;adb3dd&apos;:9,&apos;lof&apos;:3444}
+map(len, d.keys())
+list(map(len, d.keys()))
+k = max(map(len, d.keys()))
+for x in d:
+      print(x.ljust(k), &apos;:&apos;, d[x])
+rmax = max(map(len, [str(x) for x in d.values()]))
+rmax
+for x in d:
+     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017052601" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/26/2017052601/" class="article-date">
+  	<time datetime="2017-05-26T13:38:54.000Z" itemprop="datePublished">2017-05-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/26/2017052601/">python 4-4如何将多个小字符串拼接成一个大的字符串</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="两种方式：1、使用-号连接；2、使用str-join-做字符串连接"><a href="#两种方式：1、使用-号连接；2、使用str-join-做字符串连接" class="headerlink" title="两种方式：1、使用+号连接；2、使用str.join()做字符串连接"></a>两种方式：1、使用+号连接；2、使用str.join()做字符串连接</h4><pre><code>s1=&quot;123&quot;
+s2=&quot;456&quot;
+s1 + s2
+&quot;&quot;.join([&apos;123&apos;, &apos;444&apos;])
+array = [111, &quot;2323&quot;, dd, &quot;pp&quot;]
+&apos;:&apos;.join(str(x) for x in array)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017052502" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/25/2017052502/" class="article-date">
+  	<time datetime="2017-05-25T14:57:44.000Z" itemprop="datePublished">2017-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/25/2017052502/">python 4-3如何调整字符串中文本的格式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组"><a href="#读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组" class="headerlink" title="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组"></a>读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组</h4><pre><code>file = open(&quot;./catalina.2016-11-02.log&quot;).read()    
+import re 
+result = re.sub(r&apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&apos;, r&apos;\2,\1,\5:\4:\3&apos;, file)
+result = re.sub(r&apos;(?P&lt;day&gt;\d{2}), (?P&lt;year&gt;\d{4}) (?P&lt;hour&gt;\d{2}):(?P&lt;minute&gt;\d{2}):(?P&lt;second&gt;\d{2})&apos;, r&apos;\g&lt;year&gt;,\g&lt;day&gt;,\g&lt;second&gt;:\g&lt;minute&gt;:\g&lt;hour&gt;&apos;, file)
+print(result)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017052501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/25/2017052501/" class="article-date">
+  	<time datetime="2017-05-25T12:25:33.000Z" itemprop="datePublished">2017-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/25/2017052501/">python 4-2如何判断字符串a是否以字符串b开头或结尾</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="主要运用endswith-和startswith-识别字符串开头和结尾"><a href="#主要运用endswith-和startswith-识别字符串开头和结尾" class="headerlink" title="主要运用endswith()和startswith()识别字符串开头和结尾"></a>主要运用endswith()和startswith()识别字符串开头和结尾</h4><pre><code>import os
+os.listdir(&quot;.&quot;)
+[name for name in os.listdir(&apos;.&apos;) if name.endswith(&apos;txt&apos;)]
+os.stat(&apos;./history.txt&apos;)
+ls -l
+os.stat(&apos;./history.txt&apos;).st_mode
+oct[os.stat(&apos;./history.txt&apos;).st_mode]
+import stat
+#设置当前位为1
+os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode | stat.S_IXUSR)
+#设置当前位取反
+os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode ^ stat.S_IXUSR)
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052401" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -620,293 +861,6 @@ for x in weatherIterable(cities):
 
 
   
-    <article id="post-2017052001" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/20/2017052001/" class="article-date">
-  	<time datetime="2017-05-20T05:43:03.000Z" itemprop="datePublished">2017-05-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/20/2017052001/">python 2-7如何实现用户的历史记录功能(最多n条)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="猜数字的游戏，利用pickle存储历史数据，利用raw-input获取输入数据，利用deque双向队列实现数据的排队"><a href="#猜数字的游戏，利用pickle存储历史数据，利用raw-input获取输入数据，利用deque双向队列实现数据的排队" class="headerlink" title="猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队"></a>猜数字的游戏，利用pickle存储历史数据，利用raw_input获取输入数据，利用deque双向队列实现数据的排队</h4><pre><code>from random import randint
-from collections import deque
-from code import InteractiveConsole
-import pickle
-
-N = randint(0, 100)
-history = deque([], 5)
-
-
-def guess(k):
-    if k == N:
-        print(&quot;you are right&quot;)
-        return True
-    elif k &gt; N:
-        print(&quot;num is lower than %s&quot; % k)
-    elif k &lt; N:
-        print(&quot;num is greater than %s&quot; % k)
-    return False
-
-
-while (True):
-
-    try:
-        history = pickle.load(open(&quot;./history.txt&quot;, &quot;rb&quot;))
-    except:
-        pass
-
-    line = InteractiveConsole.raw_input(&quot;please input a num&quot;)
-    if line.isdigit():
-        kk = int(line)
-        history.append(line)
-        pickle.dump(history, open(&quot;./history.txt&quot;, &quot;wb&quot;))
-        if guess(kk):
-            break
-        else:
-            continue
-    elif line == &apos;history&apos; or line == &apos;h?&apos;:
-        print(list(history))
-    elif line == &apos;quit&apos; or line == &apos;exit&apos; or line == &quot;q?&quot;:
-        break
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017051702" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/17/2017051702/" class="article-date">
-  	<time datetime="2017-05-17T14:45:07.000Z" itemprop="datePublished">2017-05-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/2017051702/">python 2-6如何让字典保持有序</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="字典是无序的"><a href="#字典是无序的" class="headerlink" title="字典是无序的"></a>字典是无序的</h4><pre><code>dict = {}
-dict[&apos;a&apos;] = (1, 34)
-dict[&apos;b&apos;] = (3, 22)
-dict[&apos;c&apos;] = (2, 39)
-for x in dict: print(x)
-</code></pre><h4 id="有序的字典"><a href="#有序的字典" class="headerlink" title="有序的字典"></a>有序的字典</h4><pre><code>from collections import OrderedDict
-dict = OrderedDict()
-dict[&apos;a&apos;] = (1, 34)
-dict[&apos;b&apos;] = (3, 22)
-dict[&apos;c&apos;] = (2, 39)
-for x in dict: print(x)
-</code></pre><h4 id="模拟选手做题，最后保存选手排名和做题时间"><a href="#模拟选手做题，最后保存选手排名和做题时间" class="headerlink" title="模拟选手做题，最后保存选手排名和做题时间"></a>模拟选手做题，最后保存选手排名和做题时间</h4><pre><code>from time import time
-from random import randint
-from collections import OrderedDict
-from code import InteractiveConsole
-
-d = OrderedDict()
-players = list(&apos;ABCDEFGHIJ&apos;)
-start = time()
-
-for i in range(0, 10):
-    InteractiveConsole.raw_input(&quot;&quot;)
-    p = players.pop(randint(0, 9 - i))
-    end = time()
-    d[p] = (i + 1, end - start)
-    print(i + 1, p, end - start)
-
-print(&apos;-&apos; * 20)
-
-for x in d:
-    print(x, d[x])
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017051701" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/17/2017051701/" class="article-date">
-  	<time datetime="2017-05-17T14:06:13.000Z" itemprop="datePublished">2017-05-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/2017051701/">python 2-5如何快速找到多个字典中的公共键(key)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>from random import randint, sample
-sample(&apos;abcxyz&apos;, 4)
-sample(&apos;abcxyz&apos;, randint(3, 5)
-</code></pre><h4 id="得到初始序列"><a href="#得到初始序列" class="headerlink" title="得到初始序列"></a>得到初始序列</h4><pre><code>s1 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
-s2 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
-s3 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
-</code></pre><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><pre><code>for k in s1:
-...     if k in s2 and k in s3:
-...             res.append(k)
-</code></pre><h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><pre><code>s1.keys()
-s1.keys() &amp; s2.keys() &amp; s3.keys()
-</code></pre><h4 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h4><pre><code>map(dict.keys, [s1, s2, s3])
-from functools import reduce
-reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017051603" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/16/2017051603/" class="article-date">
-  	<time datetime="2017-05-16T15:54:08.000Z" itemprop="datePublished">2017-05-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/16/2017051603/">python 2-4如何根据字典中值的大小, 对字典中的项排序</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>from random import randint<br>data = {x: randinx(80, 100) for x in ‘abcxyz’}<br>zipresult = zip(data.values(), data.keys())<br>sorted(zipresult)<br>list(zipresult)</p>
-<p>data.items()<br>sorted(data.items(), key=lambda x: x[1])<br>sorted(data.items(), key=lambda x: x[1], reverse=True)</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -920,7 +874,7 @@ reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 dukelight
+    		&copy; 2018 dukelight
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_uv">

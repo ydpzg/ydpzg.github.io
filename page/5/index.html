@@ -189,6 +189,244 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017022001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/20/2017022001/" class="article-date">
+  	<time datetime="2017-02-20T03:18:00.000Z" itemprop="datePublished">2017-02-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/2017022001/">去掉android5.0以上button默认的阴影</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、在button的xml属性里加入<br><code>&lt;button</code><br><code>style=&quot;?android:attr/borderlessButtonStyle&quot; &gt;</code><br><code>&lt;/button</code></p>
+<p>2、如果button已经写成style了，就让button的style继承Widget.AppCompat.Button.Borderless</p>
+<p><code>&lt;style name=&quot;btnStyle&quot; parent=&quot;Widget.AppCompat.Button.Borderless&quot;&gt;</code><br>`\&lt;/style<br>`</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017021601" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/16/2017021601/" class="article-date">
+  	<time datetime="2017-02-16T00:20:41.000Z" itemprop="datePublished">2017-02-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/16/2017021601/">使用viewpager注意几个有用的点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>背景：做一个图片切换器<br>做法：使用普通PagerAdapter 与 view pager来做，配合view集合<br>要点：以下几个神奇的东西</p>
+<p><code>// 设置一开始初始化的页面个数</code><br><code>mVpCarInfo.setOffscreenPageLimit(Math.min(mPageCarViews.size(), 5));</code></p>
+<p><code>// 点击延伸到背后的容器  
+mLlPageCarContainer.setOnTouchListener(new View.OnTouchListener() {  
+    @Override  
+    public boolean onTouch(View v, MotionEvent event) {  
+        return mVpCarInfo.dispatchTouchEvent(event);  
+    }  
+});</code></p>
+<p><code>// 显示完整，不剪掉子view  
+mLlPageCarContainer.setClipChildren(false);  
+mVpCarInfo.setClipChildren(false);</code></p>
+<p><code>// 拖动不要出现边界黑色边框  
+mVpCarInfo.setOverScrollMode(View.OVER_SCROLL_NEVER);</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/07/2017020701/" class="article-date">
+  	<time datetime="2017-02-07T07:33:53.000Z" itemprop="datePublished">2017-02-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/07/2017020701/">JAVA使用futureTask时候注意的坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在call里面不要用try catch</p>
+<pre><code>FutureTask mListenTask = new FutureTask(new Callable() {
+    @Override
+    public Object call() throws Exception {
+// 注意这里面如有需要用轮询做一些事情的话，使用Thread.sleep的时候要注意不要try catch。不然的话，结果会表现为永远cancel不掉这个线程。因为本事用Exception去结束这个线程，却被我们try catch了。
+// 代码
+Thread.sleep(1000);
+// 代码
+   }
+});
+</code></pre><p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
+<p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016121602" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/16/2016121602/" class="article-date">
+  	<time datetime="2016-12-16T01:50:10.000Z" itemprop="datePublished">2016-12-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/16/2016121602/">nexus6 7.0的root方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>详情请看：</p>
+<p><a href="https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/" target="_blank" rel="external">https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/</a></p>
+<p>Download the TWRP Recovery and extract it in the Downloads folder on the computer.<br>Set up the ADB for Windows on the computer and then come back and continue with this guide when that one is complete.<br>Install the ADB Driver on the computer so that the ADB commands you run can do so without any trouble.<br>Download the SuperSU but do not extract it.<br>Connect the Google Nexus 6 smartphone to the computer with the USB cable that is used for charging the battery of the device.<br>Open the Downloads folder to find the SuperSU and copy it over to the internal storage SD card folder for the Google Nexus 6 smartphone.<br>Copy all of the TWRP files from the Downloads folder so the same folder as the ADB, so you have everything available from the same directory.<br>Hold the Shift key available on the keyboard and right-click the mouse where it is white in the background of the ADB folder and choose to open a new command window here from the menu.<br>Type the command “adb reboot bootloader” to get the Google Nexus 6 smartphone into the Bootloader Mode that is a required before flashing the custom recovery image on the smartphone.<br>Type the command “fastboot flash recovery twrp-3.0.2-0-shamu.img” to have the custom recovery image flashed onto the Google Nexus 6 smartphone.<br>Type the command “adb reboot” to get back into normal mode and as soon as you can see the smartphone reboot you need to hold down the hardware key combination to boot directly into the Recovery Mode now and the custom recovery boots up.<br>Tap on the Install button and then follow the guidelines to install the SuperSU from the SD card.<br>Choose the reboot option followed by the System option to reboot the system back into the normal mode and continue using the device as you typically would but this time you now have the root access and the custom recovery image installed.</p>
+<p>Read more at <a href="https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/#YJoe7U3o84bWIcYg.99" target="_blank" rel="external">https://dottech.org/202068/how-to-root-google-nexus-6-on-android-7-0-with-supersu/#YJoe7U3o84bWIcYg.99</a></p>
+<p>需要下载的文件</p>
+<p>SuperSU-v2.78-201609011115.zip</p>
+<p><a href="https://www.androidfilehost.com/?w=file-thanks&amp;fid=24694152805484203&amp;mid=140&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851118&amp;hc=f65965d40223e634e53fc26b41fc7eee873dd1ef17bc87a67e07326856425084" target="_blank" rel="external">https://www.androidfilehost.com/?w=file-thanks&amp;fid=24694152805484203&amp;mid=140&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851118&amp;hc=f65965d40223e634e53fc26b41fc7eee873dd1ef17bc87a67e07326856425084</a></p>
+<p>twrp-3.0.2-0-shamu.img</p>
+<p><a href="https://www.androidfilehost.com/?w=file-thanks&amp;fid=24499762635998144&amp;mid=150&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851144&amp;hc=815ecb8f13ffc1df2938c8990071cf7cbe8dd5c7b923ebeb28952c8eeb4ee9a0" target="_blank" rel="external">https://www.androidfilehost.com/?w=file-thanks&amp;fid=24499762635998144&amp;mid=150&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851144&amp;hc=815ecb8f13ffc1df2938c8990071cf7cbe8dd5c7b923ebeb28952c8eeb4ee9a0</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016121601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -533,215 +771,6 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
 
 
   
-    <article id="post-2016102201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/21/2016102201/" class="article-date">
-  	<time datetime="2016-10-21T12:02:06.000Z" itemprop="datePublished">2016-10-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/21/2016102201/">2016102201</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016101801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/20/2016101801/" class="article-date">
-  	<time datetime="2016-10-19T16:03:34.000Z" itemprop="datePublished">2016-10-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/20/2016101801/">编译android4.3</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>环境 ：<br>ubuntu16.04<br>oracle jdk1.6<br>make3.82<br>百度云下载android的7z源码，从window复制到linux，再解压缩。<br>7z x file.7z  解压缩7z</p>
-<p>android5.1.1<br>. build/envsetup.sh<br>lunch  /  lunch full-eng<br>openjdk1.7</p>
-<p>make clean<br>make update-api<br>make<br>cp /usr/bin/ld.gold prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.11-4.6/x86_64-linux/bin/ld</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016100801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/08/2016100801/" class="article-date">
-  	<time datetime="2016-10-08T00:26:28.000Z" itemprop="datePublished">2016-10-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/08/2016100801/">centos上的nginx转ghost的时候出现502</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>不是nginx本身的问题，有可能是转发过去的服务有问题。<br>最后解决方案：ghost的config.js里把外部访问的地址写成了ip，所以当nginx转发的时候ghost服务不通。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016100701" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/07/2016100701/" class="article-date">
-  	<time datetime="2016-10-07T09:08:58.000Z" itemprop="datePublished">2016-10-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/07/2016100701/">印象笔记怎么才能去掉复制过来的文字格式？</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>command + c 复制后，<br>在印象笔记里面command + shift + v，粘贴后的文字就是去掉格式的。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/印象笔记/">印象笔记</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -755,7 +784,7 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 dukelight
+    		&copy; 2018 dukelight
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_uv">
