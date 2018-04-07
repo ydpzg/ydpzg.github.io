@@ -5,19 +5,28 @@
   
   <title>浅谈nodejs加log4js日志管理 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 --save
-log4js v2.x的配置：{  “appenders”: {“access”: {  “type”: “dateFile”,  “filename”:">
+  <meta name="description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 —save
+log4js v2.x的配置：{
+  &amp;quot;appenders&amp;quot;: {
+&amp;quot;access&amp;quot;: {
+  &amp;quot;type&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈nodejs加log4js日志管理">
 <meta property="og:url" content="http://ydpzg.github.io/2018/04/07/2018041101/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 --save
-log4js v2.x的配置：{  “appenders”: {“access”: {  “type”: “dateFile”,  “filename”:">
-<meta property="og:updated_time" content="2018-04-07T16:22:12.756Z">
+<meta property="og:description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 —save
+log4js v2.x的配置：{
+  &amp;quot;appenders&amp;quot;: {
+&amp;quot;access&amp;quot;: {
+  &amp;quot;type&amp;">
+<meta property="og:updated_time" content="2018-04-07T16:35:17.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈nodejs加log4js日志管理">
-<meta name="twitter:description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 --save
-log4js v2.x的配置：{  “appenders”: {“access”: {  “type”: “dateFile”,  “filename”:">
+<meta name="twitter:description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 —save
+log4js v2.x的配置：{
+  &amp;quot;appenders&amp;quot;: {
+&amp;quot;access&amp;quot;: {
+  &amp;quot;type&amp;">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -227,12 +236,66 @@ log4js v2.x的配置：{  “appenders”: {“access”: {  “type”: “date
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"><a href="#日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4" class="headerlink" title="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"></a>日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4</h4><h3 id="首先安装koa-log4"><a href="#首先安装koa-log4" class="headerlink" title="首先安装koa-log4"></a>首先安装koa-log4</h3><p><code>npm install koa-log4 --save</code></p>
-<h3 id="log4js-v2-x的配置："><a href="#log4js-v2-x的配置：" class="headerlink" title="log4js v2.x的配置："></a>log4js v2.x的配置：</h3><p>{<br>  “appenders”: {<br>“access”: {<br>  “type”: “dateFile”,<br>  “filename”: “logs/access.log”,<br>  “pattern”: “-yyyy-MM-dd”<br>},<br>“rule-console”: {<br>  “type”: “console”<br>},<br>“rule-file”: {<br>  “type”: “dateFile”,<br>  “filename”: “logs/server-“,<br>  “encoding”: “utf-8”,<br>  “maxLogSize”: 10000000,<br>  “numBackups”: 3,<br>  “pattern”: “yyyy-MM-dd.log”,<br>  “alwaysIncludePattern”: true<br>},<br>“rule-error”: {<br>  “type”: “dateFile”,<br>  “filename”: “logs/error-“,<br>  “encoding”: “utf-8”,<br>  “maxLogSize”: 1000000,<br>  “numBackups”: 3,<br>  “pattern”: “yyyy-MM-dd.log”,<br>  “alwaysIncludePattern”: true,<br>  “level”: “error”<br>}<br>  },<br>  “categories”: {<br>“default”: {<br>  “appenders”: [<br>“rule-console”<br>  ],<br>  “level”: “all”<br>},<br>“resLogger”: {<br>  “appenders”: [<br>“rule-file”<br>  ],<br>  “level”: “info”<br>},<br>“errorLogger”: {<br>  “appenders”: [<br>“rule-error”<br>  ],<br>  “level”: “error”<br>},<br>“http”: {<br>  “appenders”: [<br>“access”<br>  ],<br>  “level”: “info”<br>}<br>  }<br>}</p>
-<h3 id="ps"><a href="#ps" class="headerlink" title="ps:"></a>ps:</h3><h3 id="appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。"><a href="#appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。" class="headerlink" title="appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。"></a>appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。</h3><pre><code>获取配置的代码  log4js.getLogger(&quot;resLogger&quot;)
-</code></pre><p>log4js的使用：</p>
-<h3 id="一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。"><a href="#一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。" class="headerlink" title="一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。"></a>一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。</h3><p>so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。</p>
-<pre><code>const debug = require(&apos;debug&apos;)(&apos;koa-weapp-demo&apos;)
+        <h4 id="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"><a href="#日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4" class="headerlink" title="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"></a>日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4</h4><h3 id="首先安装koa-log4"><a href="#首先安装koa-log4" class="headerlink" title="首先安装koa-log4"></a>首先安装koa-log4</h3><pre><code>npm install koa-log4 —save
+</code></pre><h3 id="log4js-v2-x的配置："><a href="#log4js-v2-x的配置：" class="headerlink" title="log4js v2.x的配置："></a>log4js v2.x的配置：</h3><pre><code>{
+  &quot;appenders&quot;: {
+&quot;access&quot;: {
+  &quot;type&quot;: &quot;dateFile&quot;,
+  &quot;filename&quot;: &quot;logs/access.log&quot;,
+  &quot;pattern&quot;: &quot;-yyyy-MM-dd&quot;
+},
+&quot;rule-console&quot;: {
+  &quot;type&quot;: &quot;console&quot;
+},
+&quot;rule-file&quot;: {
+  &quot;type&quot;: &quot;dateFile&quot;,
+  &quot;filename&quot;: &quot;logs/server-&quot;,
+  &quot;encoding&quot;: &quot;utf-8&quot;,
+  &quot;maxLogSize&quot;: 10000000,
+  &quot;numBackups&quot;: 3,
+  &quot;pattern&quot;: &quot;yyyy-MM-dd.log&quot;,
+  &quot;alwaysIncludePattern&quot;: true
+},
+&quot;rule-error&quot;: {
+  &quot;type&quot;: &quot;dateFile&quot;,
+  &quot;filename&quot;: &quot;logs/error-&quot;,
+  &quot;encoding&quot;: &quot;utf-8&quot;,
+  &quot;maxLogSize&quot;: 1000000,
+  &quot;numBackups&quot;: 3,
+  &quot;pattern&quot;: &quot;yyyy-MM-dd.log&quot;,
+  &quot;alwaysIncludePattern&quot;: true,
+  &quot;level&quot;: &quot;error&quot;
+}
+  },
+  &quot;categories&quot;: {
+&quot;default&quot;: {
+  &quot;appenders&quot;: [
+&quot;rule-console&quot;
+  ],
+  &quot;level&quot;: &quot;all&quot;
+},
+&quot;resLogger&quot;: {
+  &quot;appenders&quot;: [
+&quot;rule-file&quot;
+  ],
+  &quot;level&quot;: &quot;info&quot;
+},
+&quot;errorLogger&quot;: {
+  &quot;appenders&quot;: [
+&quot;rule-error&quot;
+  ],
+  &quot;level&quot;: &quot;error&quot;
+},
+&quot;http&quot;: {
+  &quot;appenders&quot;: [
+&quot;access&quot;
+  ],
+  &quot;level&quot;: &quot;info&quot;
+}
+  }
+}
+</code></pre><h3 id="ps"><a href="#ps" class="headerlink" title="ps:"></a>ps:</h3><h3 id="appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。"><a href="#appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。" class="headerlink" title="appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。"></a>appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。</h3><pre><code>获取配置的代码  log4js.getLogger(&quot;resLogger&quot;)
+</code></pre><h3 id="log4js的使用："><a href="#log4js的使用：" class="headerlink" title="log4js的使用："></a>log4js的使用：</h3><h3 id="一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。"><a href="#一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。" class="headerlink" title="一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。"></a>一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。</h3><h3 id="so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。"><a href="#so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。" class="headerlink" title="so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。"></a>so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。</h3><pre><code>const debug = require(&apos;debug&apos;)(&apos;koa-weapp-demo&apos;)
 const logUtil = require(&apos;../tools/logUtil.js&apos;)
 
 /**
@@ -282,8 +345,7 @@ ctx.body = {
 const response = require(&apos;./middlewares/response&apos;)
 // 使用响应处理中间件
 app.use(response)
-</code></pre><h3 id="而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力"><a href="#而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力" class="headerlink" title="而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力"></a>而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力</h3><p>logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（/root/logs），所以引用log4js会导致测试环境跑不了，切记<a href="https://www.cnblogs.com/smartsensor/p/7838169.html" target="_blank" rel="external">https://www.cnblogs.com/smartsensor/p/7838169.html</a></p>
-<pre><code>/**
+</code></pre><h3 id="而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力"><a href="#而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力" class="headerlink" title="而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力"></a>而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力</h3><h3 id="logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（-root-logs），所以引用log4js会导致测试环境跑不了，切记https-www-cnblogs-com-smartsensor-p-7838169-html"><a href="#logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（-root-logs），所以引用log4js会导致测试环境跑不了，切记https-www-cnblogs-com-smartsensor-p-7838169-html" class="headerlink" title="logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（/root/logs），所以引用log4js会导致测试环境跑不了，切记https://www.cnblogs.com/smartsensor/p/7838169.html"></a>logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（/root/logs），所以引用log4js会导致测试环境跑不了，切记<a href="https://www.cnblogs.com/smartsensor/p/7838169.html" target="_blank" rel="external">https://www.cnblogs.com/smartsensor/p/7838169.html</a></h3><pre><code>/**
 使用方法：
 logUtil.resLogger.info(&apos;test&apos;)
 logUtil.errorLogger.error(&apos;test&apos;)
@@ -459,8 +521,7 @@ return logText
 </code></pre><h3 id="可以将console-log重定向到log4js统一管理，如下："><a href="#可以将console-log重定向到log4js统一管理，如下：" class="headerlink" title="可以将console.log重定向到log4js统一管理，如下："></a>可以将console.log重定向到log4js统一管理，如下：</h3><pre><code>console.log = resLogger.info.bind(resLogger)
 </code></pre><h3 id="使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下"><a href="#使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下" class="headerlink" title="使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下"></a>使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下</h3><pre><code>const log4js = require(&apos;koa-log4&apos;)
 app.use(log4js.koaLogger(log4js.getLogger(&quot;http&quot;), { level: &apos;auto&apos; }))
-</code></pre><p>到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。</p>
-
+</code></pre><h3 id="到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。"><a href="#到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。" class="headerlink" title="到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。"></a>到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。</h3>
       
     </div>
     
