@@ -233,16 +233,16 @@ task tests(dependsOn: [&apos;task1&apos;, &apos;task2&apos;, &apos;task3&apos;])
 }
 </code></pre><p>输出的是<br>Hello World MR QBert<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
 <pre><code>task tests &lt;&lt; { 
-task1.execute()
-task2.execute() 
-task3.execute() 
+    task1.execute()
+    task2.execute() 
+    task3.execute() 
 }
 </code></pre><p>是没法确定结果的，因为闭包是异步的。</p>
 <p>再比如，假设我们要在assembleDebug后加一个task（runTask），<br>可以这样做，利用gradle.taskGraph.afterTask找到task，执行命令<br>gradle assembleDebug</p>
 <pre><code>gradle.taskGraph.afterTask { task -&gt;
-if (task.name == &apos;assembleDebug&apos;) {
-    runTask.execute()
-}
+    if (task.name == &apos;assembleDebug&apos;) {
+        runTask.execute()
+    }
 }
 </code></pre><p>实际上跑的命令是</p>
 <pre><code>assembleDebug
@@ -255,23 +255,24 @@ runTask
 runTask
 </code></pre><h3 id="关于copy"><a href="#关于copy" class="headerlink" title="关于copy"></a>关于copy</h3><p>可以在task里直接写copy，比如</p>
 <pre><code>gradle.taskGraph.afterTask { task -&gt;
-if (task.name == &apos;assembleDebug&apos;) {
-copy {
-from &quot;${project.buildDir}/outputs/apk/app-debug.apk &quot;
-into &quot;${project.buildDir}/outputs/apk/&quot;
-rename { String fileName -&gt;
-fileName.replace(&quot;app-debug.apk&quot;, “test.apk”)
-}
-}
-}
+    if (task.name == &apos;assembleDebug&apos;) {
+        copy {
+            from &quot;${project.buildDir}/outputs/apk/app-debug.apk &quot;
+            into &quot;${project.buildDir}/outputs/apk/&quot;
+            rename { String fileName -&gt;
+                fileName.replace(&quot;app-debug.apk&quot;, “test.apk”)
+            }
+        }
+    }
 }
 </code></pre><p>也可以写一个copy类型的task</p>
 <pre><code>task copyApk(typy: copy)  {
-from &quot;${project.buildDir}/outputs/apk/app-debug.apk &quot;
-into &quot;${project.buildDir}/outputs/apk/&quot;
-rename { String fileName -&gt;
-fileName.replace(&quot;app-debug.apk&quot;, “test.apk”)
-}
+    from &quot;${project.buildDir}/outputs/apk/app-debug.apk &quot;
+    into &quot;${project.buildDir}/outputs/apk/&quot;
+    rename { 
+        String fileName -&gt;
+        fileName.replace(&quot;app-debug.apk&quot;, “test.apk”)
+    }
 }
 </code></pre>
       
