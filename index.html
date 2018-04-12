@@ -215,7 +215,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="在使用jenkins与walle结合的时候，需要用到gradle-task的一些功能，使用task来做一些事情，就有了一些实践。"><a href="#在使用jenkins与walle结合的时候，需要用到gradle-task的一些功能，使用task来做一些事情，就有了一些实践。" class="headerlink" title="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。"></a>在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。</h4><h3 id="task的调用，怎么运行"><a href="#task的调用，怎么运行" class="headerlink" title="task的调用，怎么运行"></a>task的调用，怎么运行</h3><p>1、taskname.execute()<br>2、gradle taskname</p>
+        <blockquote>
+<h1 id="在使用jenkins与walle结合的时候，需要用到gradle-task的一些功能，使用task来做一些事情，就有了一些实践。"><a href="#在使用jenkins与walle结合的时候，需要用到gradle-task的一些功能，使用task来做一些事情，就有了一些实践。" class="headerlink" title="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。"></a>在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。</h1></blockquote>
+<h3 id="task的调用，怎么运行"><a href="#task的调用，怎么运行" class="headerlink" title="task的调用，怎么运行"></a>task的调用，怎么运行</h3><p>1、taskname.execute()<br>2、gradle taskname</p>
 <p>比如一个简单的例子</p>
 <pre><code>task task1 &lt;&lt; { 
      println &quot;Hello&quot; 
@@ -324,7 +326,9 @@ runTask
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"><a href="#日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4" class="headerlink" title="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"></a>日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4</h4><h3 id="首先安装koa-log4"><a href="#首先安装koa-log4" class="headerlink" title="首先安装koa-log4"></a>首先安装koa-log4</h3><pre><code>npm install koa-log4 —save
+        <blockquote>
+<h1 id="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"><a href="#日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4" class="headerlink" title="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"></a>日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4</h1></blockquote>
+<h3 id="首先安装koa-log4"><a href="#首先安装koa-log4" class="headerlink" title="首先安装koa-log4"></a>首先安装koa-log4</h3><pre><code>npm install koa-log4 —save
 </code></pre><h3 id="log4js-v2-x的配置："><a href="#log4js-v2-x的配置：" class="headerlink" title="log4js v2.x的配置："></a>log4js v2.x的配置：</h3><pre><code>{
   &quot;appenders&quot;: {
 &quot;access&quot;: {

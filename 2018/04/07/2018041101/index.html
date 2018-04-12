@@ -5,28 +5,31 @@
   
   <title>浅谈nodejs加log4js日志管理 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 —save
+  <meta name="description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4
+首先安装koa-log4npm install koa-log4 —save
 log4js v2.x的配置：{
   &amp;quot;appenders&amp;quot;: {
 &amp;quot;access&amp;quot;: {
-  &amp;quot;type&amp;">
+  &amp;quot;typ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈nodejs加log4js日志管理">
 <meta property="og:url" content="http://ydpzg.github.io/2018/04/07/2018041101/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 —save
+<meta property="og:description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4
+首先安装koa-log4npm install koa-log4 —save
 log4js v2.x的配置：{
   &amp;quot;appenders&amp;quot;: {
 &amp;quot;access&amp;quot;: {
-  &amp;quot;type&amp;">
-<meta property="og:updated_time" content="2018-04-07T16:35:17.854Z">
+  &amp;quot;typ">
+<meta property="og:updated_time" content="2018-04-12T03:30:01.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈nodejs加log4js日志管理">
-<meta name="twitter:description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4首先安装koa-log4npm install koa-log4 —save
+<meta name="twitter:description" content="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4
+首先安装koa-log4npm install koa-log4 —save
 log4js v2.x的配置：{
   &amp;quot;appenders&amp;quot;: {
 &amp;quot;access&amp;quot;: {
-  &amp;quot;type&amp;">
+  &amp;quot;typ">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -236,7 +239,9 @@ log4js v2.x的配置：{
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"><a href="#日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4" class="headerlink" title="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"></a>日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4</h4><h3 id="首先安装koa-log4"><a href="#首先安装koa-log4" class="headerlink" title="首先安装koa-log4"></a>首先安装koa-log4</h3><pre><code>npm install koa-log4 —save
+        <blockquote>
+<h1 id="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"><a href="#日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4" class="headerlink" title="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"></a>日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4</h1></blockquote>
+<h3 id="首先安装koa-log4"><a href="#首先安装koa-log4" class="headerlink" title="首先安装koa-log4"></a>首先安装koa-log4</h3><pre><code>npm install koa-log4 —save
 </code></pre><h3 id="log4js-v2-x的配置："><a href="#log4js-v2-x的配置：" class="headerlink" title="log4js v2.x的配置："></a>log4js v2.x的配置：</h3><pre><code>{
   &quot;appenders&quot;: {
 &quot;access&quot;: {
