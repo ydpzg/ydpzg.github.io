@@ -5,19 +5,22 @@
   
   <title>关于使用listview时候的一些坑 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于使用listview时候的一些坑1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
-2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到">
+  <meta name="description" content="关于使用listview时候的一些坑
+1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
+2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于使用listview时候的一些坑">
 <meta property="og:url" content="http://ydpzg.github.io/2017/11/24/2017112301/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="关于使用listview时候的一些坑1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
-2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到">
-<meta property="og:updated_time" content="2017-11-24T04:37:45.000Z">
+<meta property="og:description" content="关于使用listview时候的一些坑
+1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
+2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会">
+<meta property="og:updated_time" content="2018-04-12T03:32:17.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于使用listview时候的一些坑">
-<meta name="twitter:description" content="关于使用listview时候的一些坑1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
-2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到">
+<meta name="twitter:description" content="关于使用listview时候的一些坑
+1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。
+2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -227,7 +230,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="关于使用listview时候的一些坑"><a href="#关于使用listview时候的一些坑" class="headerlink" title="关于使用listview时候的一些坑"></a>关于使用listview时候的一些坑</h4><p>1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。</p>
+        <blockquote>
+<h1 id="关于使用listview时候的一些坑"><a href="#关于使用listview时候的一些坑" class="headerlink" title="关于使用listview时候的一些坑"></a>关于使用listview时候的一些坑</h1></blockquote>
+<p>1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。</p>
 <p>2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到数据更新的那个位置，不让scrollview自己滚动的方法是：focusOn srcollview下面的子view。</p>
 <p>3、listview使用addHeaderView后，导致点击回调的position错乱，解决方法是，回调后去调</p>
 <p>position = (int) listview.getAdapter().getItemId(position);</p>

@@ -879,7 +879,9 @@ startActivity(intent);_</code></p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"><a href="#在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。" class="headerlink" title="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"></a>在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。</h4><p>解决方案：<br>给自定义的popupwindow设置属性然后弹出来：</p>
+        <blockquote>
+<h1 id="在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"><a href="#在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。" class="headerlink" title="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"></a>在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。</h1></blockquote>
+<p>解决方案：<br>给自定义的popupwindow设置属性然后弹出来：</p>
 <p>popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);</p>
 <p>在华为荣耀7android5.0上测试通过</p>
 
@@ -932,7 +934,9 @@ startActivity(intent);_</code></p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="关于使用listview时候的一些坑"><a href="#关于使用listview时候的一些坑" class="headerlink" title="关于使用listview时候的一些坑"></a>关于使用listview时候的一些坑</h4><p>1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。</p>
+        <blockquote>
+<h1 id="关于使用listview时候的一些坑"><a href="#关于使用listview时候的一些坑" class="headerlink" title="关于使用listview时候的一些坑"></a>关于使用listview时候的一些坑</h1></blockquote>
+<p>1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。</p>
 <p>2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到数据更新的那个位置，不让scrollview自己滚动的方法是：focusOn srcollview下面的子view。</p>
 <p>3、listview使用addHeaderView后，导致点击回调的position错乱，解决方法是，回调后去调</p>
 <p>position = (int) listview.getAdapter().getItemId(position);</p>
