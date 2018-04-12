@@ -8,9 +8,9 @@
   <meta name="description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。task的调用，怎么运行1、taskname.execute()2、gradle taskname
 比如一个简单的例子
 task task1 &amp;lt;&amp;lt; { 
-println &amp;quot;Hello&amp;quot; 
+     println &amp;quot;Hello&amp;quot; 
 } 
-task task2 &amp;lt;&amp;lt; {">
+task task2 &amp;lt;&amp;lt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gradle task一些实践">
 <meta property="og:url" content="http://ydpzg.github.io/2018/04/12/2018041201/index.html">
@@ -18,18 +18,18 @@ task task2 &amp;lt;&amp;lt; {">
 <meta property="og:description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。task的调用，怎么运行1、taskname.execute()2、gradle taskname
 比如一个简单的例子
 task task1 &amp;lt;&amp;lt; { 
-println &amp;quot;Hello&amp;quot; 
+     println &amp;quot;Hello&amp;quot; 
 } 
-task task2 &amp;lt;&amp;lt; {">
-<meta property="og:updated_time" content="2018-04-12T03:22:54.149Z">
+task task2 &amp;lt;&amp;lt">
+<meta property="og:updated_time" content="2018-04-12T03:25:50.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle task一些实践">
 <meta name="twitter:description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。task的调用，怎么运行1、taskname.execute()2、gradle taskname
 比如一个简单的例子
 task task1 &amp;lt;&amp;lt; { 
-println &amp;quot;Hello&amp;quot; 
+     println &amp;quot;Hello&amp;quot; 
 } 
-task task2 &amp;lt;&amp;lt; {">
+task task2 &amp;lt;&amp;lt">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -242,16 +242,16 @@ task task2 &amp;lt;&amp;lt; {">
         <h4 id="在使用jenkins与walle结合的时候，需要用到gradle-task的一些功能，使用task来做一些事情，就有了一些实践。"><a href="#在使用jenkins与walle结合的时候，需要用到gradle-task的一些功能，使用task来做一些事情，就有了一些实践。" class="headerlink" title="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。"></a>在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。</h4><h3 id="task的调用，怎么运行"><a href="#task的调用，怎么运行" class="headerlink" title="task的调用，怎么运行"></a>task的调用，怎么运行</h3><p>1、taskname.execute()<br>2、gradle taskname</p>
 <p>比如一个简单的例子</p>
 <pre><code>task task1 &lt;&lt; { 
-println &quot;Hello&quot; 
+     println &quot;Hello&quot; 
 } 
 task task2 &lt;&lt; { 
-println &quot;World&quot; 
+    println &quot;World&quot; 
 } 
 task task3(dependsOn: &apos;task3dependency&apos;) &lt;&lt; { 
-println &quot;QBert&quot; 
+    println &quot;QBert&quot; 
 } 
 task task3dependency &lt;&lt; { 
-println &quot;MR&quot; 
+    println &quot;MR&quot; 
 } 
 task tests(dependsOn: [&apos;task1&apos;, &apos;task2&apos;, &apos;task3&apos;]) {
 }
