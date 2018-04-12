@@ -23,7 +23,7 @@ task task1 &amp;lt;&amp;lt; {
      println &amp;quot;Hello&amp;quot; 
 } 
 task task2 &amp;lt;&amp;">
-<meta property="og:updated_time" content="2018-04-12T03:31:22.895Z">
+<meta property="og:updated_time" content="2018-04-12T03:34:02.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle task一些实践">
 <meta name="twitter:description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。
@@ -253,14 +253,14 @@ task task2 &lt;&lt; {
     println &quot;World&quot; 
 } 
 task task3(dependsOn: &apos;task3dependency&apos;) &lt;&lt; { 
-    println &quot;QBert&quot; 
+    println &quot;Yu&quot; 
 } 
 task task3dependency &lt;&lt; { 
-    println &quot;MR&quot; 
+    println &quot;Duke&quot; 
 } 
 task tests(dependsOn: [&apos;task1&apos;, &apos;task2&apos;, &apos;task3&apos;]) {
 }
-</code></pre><p>输出的是<br>Hello World MR QBert<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
+</code></pre><p>输出的是<br>Hello World Duke Yu<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
 <pre><code>task tests &lt;&lt; { 
     task1.execute()
     task2.execute() 

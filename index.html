@@ -226,14 +226,14 @@ task task2 &lt;&lt; {
     println &quot;World&quot; 
 } 
 task task3(dependsOn: &apos;task3dependency&apos;) &lt;&lt; { 
-    println &quot;QBert&quot; 
+    println &quot;Yu&quot; 
 } 
 task task3dependency &lt;&lt; { 
-    println &quot;MR&quot; 
+    println &quot;Duke&quot; 
 } 
 task tests(dependsOn: [&apos;task1&apos;, &apos;task2&apos;, &apos;task3&apos;]) {
 }
-</code></pre><p>输出的是<br>Hello World MR QBert<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
+</code></pre><p>输出的是<br>Hello World Duke Yu<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
 <pre><code>task tests &lt;&lt; { 
     task1.execute()
     task2.execute() 
