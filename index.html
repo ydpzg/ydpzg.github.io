@@ -216,26 +216,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>出现：</p>
-<p>Cannot choose between the following configurations of project :UmengSocialSdkLibrary:</p>
-<ul>
-<li>debugApiElements</li>
-<li>debugRuntimeElements</li>
-<li>releaseApiElements</li>
-<li>releaseRuntimeElements<br>All of them match the consumer attributes:</li>
-<li>Configuration ‘debugApiElements’:<ul>
-<li>Found com.android.build.api.attributes.BuildTypeAttr ‘debug’ but wasn’t required.</li>
-<li>Found com.android.build.api.attributes.VariantAttr ‘debug’ but wasn’t required.</li>
-<li>Found com.android.build.gradle.internal.dependency.AndroidTypeAttr ‘Aar’ but wasn’t required.</li>
-<li>Found org.gradle.usage ‘java-api’ but wasn’t required.</li>
-</ul>
-</li>
-</ul>
-<p>原因是更新了gradle插件，classpath ‘com.android.tools.build:gradle:3.2.0-alpha07’</p>
-<p>解决方案：</p>
-<p>compile project(‘:UmengSocialSdkLibrary’)</p>
-<p>改成：</p>
-<p>compile project(path: ‘:UmengSocialSdkLibrary’, configuration: ‘default’)</p>
-
+<pre><code>Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
+debugApiElements
+debugRuntimeElements
+releaseApiElements
+releaseRuntimeElements
+All of them match the consumer attributes:
+Configuration &apos;debugApiElements&apos;:
+    Found com.android.build.api.attributes.BuildTypeAttr &apos;debug&apos; but wasn&apos;t required.
+    Found com.android.build.api.attributes.VariantAttr &apos;debug&apos; but wasn&apos;t required.
+    Found com.android.build.gradle.internal.dependency.AndroidTypeAttr &apos;Aar&apos; but wasn&apos;t required.
+    Found org.gradle.usage &apos;java-api&apos; but wasn&apos;t required.
+</code></pre><p>原因是更新了gradle插件，</p>
+<pre><code>classpath &apos;com.android.tools.build:gradle:3.2.0-alpha07&apos;
+</code></pre><p>解决方案：</p>
+<pre><code>compile project(&apos;:UmengSocialSdkLibrary&apos;)
+</code></pre><p>改成：</p>
+<pre><code>compile project(path: &apos;:UmengSocialSdkLibrary&apos;, configuration: &apos;default&apos;)
+</code></pre>
       
     </div>
     

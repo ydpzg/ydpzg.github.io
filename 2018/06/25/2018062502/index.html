@@ -7,32 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="出现：
 Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
-
 debugApiElements
 debugRuntimeElements
 releaseApiElements
-releaseRuntimeElementsAll of them match the consumer">
+releaseRuntimeElements
+All of them match the consumer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="更新gradle插件后的出错">
 <meta property="og:url" content="http://ydpzg.github.io/2018/06/25/2018062502/index.html">
 <meta property="og:site_name" content="dukelight's home">
 <meta property="og:description" content="出现：
 Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
-
 debugApiElements
 debugRuntimeElements
 releaseApiElements
-releaseRuntimeElementsAll of them match the consumer">
-<meta property="og:updated_time" content="2018-06-25T07:00:37.141Z">
+releaseRuntimeElements
+All of them match the consumer">
+<meta property="og:updated_time" content="2018-06-25T11:50:26.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="更新gradle插件后的出错">
 <meta name="twitter:description" content="出现：
 Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
-
 debugApiElements
 debugRuntimeElements
 releaseApiElements
-releaseRuntimeElementsAll of them match the consumer">
+releaseRuntimeElements
+All of them match the consumer">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -243,26 +243,24 @@ releaseRuntimeElementsAll of them match the consumer">
     <div class="article-entry" itemprop="articleBody">
       
         <p>出现：</p>
-<p>Cannot choose between the following configurations of project :UmengSocialSdkLibrary:</p>
-<ul>
-<li>debugApiElements</li>
-<li>debugRuntimeElements</li>
-<li>releaseApiElements</li>
-<li>releaseRuntimeElements<br>All of them match the consumer attributes:</li>
-<li>Configuration ‘debugApiElements’:<ul>
-<li>Found com.android.build.api.attributes.BuildTypeAttr ‘debug’ but wasn’t required.</li>
-<li>Found com.android.build.api.attributes.VariantAttr ‘debug’ but wasn’t required.</li>
-<li>Found com.android.build.gradle.internal.dependency.AndroidTypeAttr ‘Aar’ but wasn’t required.</li>
-<li>Found org.gradle.usage ‘java-api’ but wasn’t required.</li>
-</ul>
-</li>
-</ul>
-<p>原因是更新了gradle插件，classpath ‘com.android.tools.build:gradle:3.2.0-alpha07’</p>
-<p>解决方案：</p>
-<p>compile project(‘:UmengSocialSdkLibrary’)</p>
-<p>改成：</p>
-<p>compile project(path: ‘:UmengSocialSdkLibrary’, configuration: ‘default’)</p>
-
+<pre><code>Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
+debugApiElements
+debugRuntimeElements
+releaseApiElements
+releaseRuntimeElements
+All of them match the consumer attributes:
+Configuration &apos;debugApiElements&apos;:
+    Found com.android.build.api.attributes.BuildTypeAttr &apos;debug&apos; but wasn&apos;t required.
+    Found com.android.build.api.attributes.VariantAttr &apos;debug&apos; but wasn&apos;t required.
+    Found com.android.build.gradle.internal.dependency.AndroidTypeAttr &apos;Aar&apos; but wasn&apos;t required.
+    Found org.gradle.usage &apos;java-api&apos; but wasn&apos;t required.
+</code></pre><p>原因是更新了gradle插件，</p>
+<pre><code>classpath &apos;com.android.tools.build:gradle:3.2.0-alpha07&apos;
+</code></pre><p>解决方案：</p>
+<pre><code>compile project(&apos;:UmengSocialSdkLibrary&apos;)
+</code></pre><p>改成：</p>
+<pre><code>compile project(path: &apos;:UmengSocialSdkLibrary&apos;, configuration: &apos;default&apos;)
+</code></pre>
       
     </div>
     
