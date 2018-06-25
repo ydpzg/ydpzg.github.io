@@ -217,8 +217,9 @@
       
         <blockquote>
 <h1 id="加入kotlin的辅助库androidx-core-core-ktx-0-3，结果编译出现FontFamilyFont的error"><a href="#加入kotlin的辅助库androidx-core-core-ktx-0-3，结果编译出现FontFamilyFont的error" class="headerlink" title="加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyFont的error"></a>加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyFont的error</h1></blockquote>
-<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>可能是引入的新版本的appcompat的库</p>
-<h4 id="先列表本工程的所有依赖关系"><a href="#先列表本工程的所有依赖关系" class="headerlink" title="先列表本工程的所有依赖关系"></a>先列表本工程的所有依赖关系</h4><pre><code>gradle :app:dependencies --configuration compile
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>可能是引入的新版本的appcompat的库</p>
+<h3 id="先列表本工程的所有依赖关系"><a href="#先列表本工程的所有依赖关系" class="headerlink" title="先列表本工程的所有依赖关系"></a>先列表本工程的所有依赖关系</h3><pre><code>gradle :app:dependencies --configuration compile&quot;
+
 
 …
 +--- com.android.support:appcompat-v7:25.3.1
@@ -231,7 +232,7 @@
      +--- com.android.support:support-annotations:27.1.0
      +--- org.jetbrains.kotlin:kotlin-stdlib:1.2.31 (*)
      \--- com.android.support:support-compat:27.1.0 (*)*
-</code></pre><h4 id="发现core-ktx引入的27-1-0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27-1-0，问题就解决了。"><a href="#发现core-ktx引入的27-1-0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27-1-0，问题就解决了。" class="headerlink" title="发现core-ktx引入的27.1.0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27.1.0，问题就解决了。"></a>发现core-ktx引入的27.1.0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27.1.0，问题就解决了。</h4><h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><pre><code>compile (&quot;androidx.core:core-ktx:0.3&quot;) {
+</code></pre><h3 id="发现core-ktx引入的27-1-0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27-1-0，问题就解决了。"><a href="#发现core-ktx引入的27-1-0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27-1-0，问题就解决了。" class="headerlink" title="发现core-ktx引入的27.1.0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27.1.0，问题就解决了。"></a>发现core-ktx引入的27.1.0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27.1.0，问题就解决了。</h3><h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><pre><code>compile (&quot;androidx.core:core-ktx:0.3&quot;) {
 exclude group: &apos;com.android.support&apos;, module: &apos;support-compat&apos;
 }
 </code></pre>
