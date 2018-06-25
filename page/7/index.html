@@ -27,7 +27,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="http://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
+			<img lazy-src="https://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
 			
 		</a>
 
@@ -153,7 +153,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img lazy-src="http://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
+				<img lazy-src="https://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author">dukelight</h1>
@@ -188,6 +188,215 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2016091102" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/11/2016091102/" class="article-date">
+  	<time datetime="2016-09-11T10:11:53.000Z" itemprop="datePublished">2016-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/11/2016091102/">【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。"><a href="#背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。" class="headerlink" title="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。"></a>背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。</h1></blockquote>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><p>主要看 testApple这个类，会有几种不同的值。</p>
+<ol>
+<li><a href="">{ }</a> object型  </li>
+<li><p><a href="">[] </a> array型</p>
+<p> Gson gson = new GsonBuilder().registerTypeAdapter(TestPeople.class, new MyDeserializer()).create();<br> String ssArray = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:[]}}”;<br> System.out.println(ssArray);<br> String ssArray2 = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:[{\”name\”:\”111\”,\”id\”:\”9\”}]}}”;<br> System.out.println(ssArray2);<br> String ssObject = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:{\”name\”:\”111\”,\”id\”:\”9\”}}}”;<br> System.out.println(ssObject);<br> TestHouse testHouseArray = gson.fromJson(ssArray, TestHouse.class);<br> TestHouse testHouseArray2 = gson.fromJson(ssArray2, TestHouse.class);<br> TestHouse testHouseObject = gson.fromJson(ssObject, TestHouse.class);<br> System.out.println(“result=” + testHouseArray.toString());<br> System.out.println(“result=” + testHouseArray2.toString());<br> System.out.println(“result=” + testHouseObject.toString());</p>
+</li>
+</ol>
+<h4 id="输出内容"><a href="#输出内容" class="headerlink" title="输出内容"></a>输出内容</h4><p>根据testApple可以看到，确实可以根据不同的输入正确解析出来。</p>
+<pre><code>{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[]}}
+{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}]}}
+{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}}}
+result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=null}}
+result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}
+result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}
+</code></pre><h4 id="最外层实体"><a href="#最外层实体" class="headerlink" title="最外层实体"></a>最外层实体</h4><p>为了演示用，构造了一个最外层的实体。</p>
+<pre><code>public class TestHouse {
+    private String name;
+    private String id;
+    private TestPeople testPeople;
+
+    public TestHouse(String name, String id, TestPeople testPeople) {
+        this.name = name;
+        this.id = id;
+        this.testPeople = testPeople;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public TestPeople getTestPeople() {
+        return testPeople;
+    }
+
+    public void setTestPeople(TestPeople testPeople) {
+        this.testPeople = testPeople;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;TestHouse{&quot; +
+                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
+                &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
+                &quot;, testPeople=&quot; + testPeople +
+                &apos;}&apos;;
+    }
+}
+</code></pre><h4 id="第二层实体"><a href="#第二层实体" class="headerlink" title="第二层实体"></a>第二层实体</h4><p>为了演示用，构造了一个第二层的实体。这里就直接涉及到不规则实体的容器了。</p>
+<pre><code>public class TestPeople {
+    private String name;
+    private TestApple testApple;
+
+    public TestPeople() {
+    }
+
+    public TestPeople(String name, TestApple testApple) {
+        this.name = name;
+        this.testApple = testApple;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public TestApple getTestApple() {
+        return testApple;
+    }
+
+    public void setTestApple(TestApple testApple) {
+        this.testApple = testApple;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;TestPeople{&quot; +
+                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
+                &quot;, testApple=&quot; + testApple +
+                &apos;}&apos;;
+    }
+}
+</code></pre><h4 id="最内层实体"><a href="#最内层实体" class="headerlink" title="最内层实体"></a>最内层实体</h4><p>不规则值的实体，有可能是object，也有可能是array。</p>
+<pre><code>public class TestApple {
+    private String name;
+    private String id;
+
+
+    public TestApple(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;TestApple{&quot; +
+                &quot;name=&apos;&quot; + name + &apos;\&apos;&apos; +
+                &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
+                &apos;}&apos;;
+    }
+}
+</code></pre><h4 id="自定义的JsonDeserializer"><a href="#自定义的JsonDeserializer" class="headerlink" title="自定义的JsonDeserializer"></a>自定义的JsonDeserializer</h4><p>主要是为了解析有争议的实体，针对不同的情况去做相关的处理，最后输出同一个最外层实体。</p>
+<pre><code>public class MyDeserializer implements JsonDeserializer&lt;TestPeople&gt; {
+    @Override
+    public TestPeople deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        JsonElement jsonElementApple = jsonElement.getAsJsonObject().get(&quot;testApple&quot;);
+        if (jsonElementApple == null) {
+            return null;
+        }
+        if (jsonElementApple.isJsonObject()) {
+            return new Gson().fromJson(jsonElement, TestPeople.class);
+        } else {
+            List&lt;TestApple&gt; testApple = jsonDeserializationContext.deserialize(jsonElementApple, new TypeToken&lt;List&lt;TestApple&gt;&gt;() {}.getType());
+            Gson gson = new Gson();
+            Map map = jsonDeserializationContext.deserialize(jsonElement, Map.class);
+            if (map.containsKey(&quot;testApple&quot;)) {
+                map.remove(&quot;testApple&quot;);
+            }
+            JsonElement jsonElementMixed = gson.toJsonTree(map);
+            TestPeople testPeople = gson.fromJson(jsonElementMixed, TestPeople.class);
+            if (testApple.size() &gt; 0) {
+                testPeople.setTestApple(testApple.get(0));
+            }
+            return testPeople;
+        }
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-2016091101" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -956,125 +1165,6 @@ adb -s 192.168.31.171:5555 shell
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rsa-HMac-hash/">rsa HMac hash</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016070601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/06/2016070601/" class="article-date">
-  	<time datetime="2016-07-06T00:33:13.000Z" itemprop="datePublished">2016-07-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/06/2016070601/">【学习笔记】基于xposed的入门和安全漏洞的实战</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>入门</p>
-</blockquote>
-<p>1、新建工程（高德地图demo），对一般的方法进行hook。<br>1)  集成XposedBridgeApi-54.jar ，按照版本去下载集成，如果是as的话，scope为Provided<br>2）在AndroidManifest.xml文件中添加如下配置：</p>
-<pre><code>&lt;!-- xposed支持 --&gt;
-        &lt;meta-data
-            android:name=&quot;xposedmodule&quot;
-            anafterHookedMethoddroid:value=&quot;true&quot; /&gt;
-        &lt;meta-data
-            android:name=&quot;xposedminversion&quot;
-            android:value=&quot;54&quot; /&gt;
-        &lt;meta-data
-            android:name=&quot;xposeddescription&quot;
-            android:value=&quot;xposeddemo&quot; /&gt;
-</code></pre><p>3) 在assets文件夹下定义访问入口xposed_init文件，内容书写为核心hook类的存放路径。<br>4）写一个类继承IXposedHookLoadPackage，在handleLoadPackage里写相关处理代码</p>
-<pre><code>// 只处理目标app
-if (!loadPackageParam.packageName.equals(&quot;com.hgsoft.wk.main&quot;)) {
-           return;
- }
-</code></pre><p>4）安装后，在Xposed Installer中激活该模块并重启手机<br>5）打开目标app，在Xposed Installer里的日志模块可以看到log<br>2、注意的点<br>1）hook方法：findAndHookMethod</p>
-<pre><code>public static Unhook findAndHookMethod(String className, ClassLoader classLoader, String methodName, Object... parameterTypesAndCallback) {
-        return findAndHookMethod(findClass(className, classLoader), methodName, parameterTypesAndCallback);
-}
-</code></pre><p>第一个参数是类名称，第二个参数是ClassLoader，一般里面参数有提供，直接引用，如果是class里面的class，要用$，第三个参数是要hook的方法名，第四个是可以多个参数，放hook的方法的参数列表，最后的参数是hook的回调。<br>比如：</p>
-<pre><code>XposedHelpers.findAndHookMethod(&quot;org.json.JSONObject&quot;, loadPackageParam.classLoader, &quot;put&quot;,
-                String.class, boolean.class, new XC_MethodHook());
-</code></pre><p>2）hook构造方法：findAndHookConstructor</p>
-<pre><code>public static Unhook findAndHookConstructor(String className, ClassLoader classLoader, Object... parameterTypesAndCallback) {
-        return findAndHookConstructor(findClass(className, classLoader), parameterTypesAndCallback);
-}
-</code></pre><p>关于构造方法这个没有用出效果来，比较郁闷，以后尝试出来再补充。。。。。。<br>3）关于回调XC_MethodHook</p>
-<pre><code>protected void beforeHookedMethod(MethodHookParam param) throws Throwable {}；
-protected void afterHookedMethod(MethodHookParam param) throws Throwable {}；
-</code></pre><p>MethodHookParam的用法上，args方法的参数列表，thisObject提供方法的类，getResult方法的返回值，可以通过setResult设置方法的返回值。</p>
-<blockquote>
-<p>实战</p>
-</blockquote>
-<p>1、反编译周报日报，然后对定位这块进行hook。<br>找到 class BdLocation extends CordovaPlugin，分析里面所有的方法，尝试对他们进行hook.</p>
-<pre><code>class MyBDLocationListener implements BDLocationListener {
-        MyBDLocationListener() {
-        }
-        public void onReceiveLocation(BDLocation bdLocation) 
-</code></pre><p>找到上面代码块后，准备hook onReceiveLocation，写个程序hook上去后发现posed框架没有报错，但就是什么都没有反应。查了一下官方说明，xposed只能hook普通方法或者构造方法，不能hook接口和抽象类。只能作罢，找其他的方法hook。</p>
-<p>在尝试hook 类BdLocation里的其他方法后，发现都没有反应，故猜想是因为继承了CordovaPlugin的原因，具体没有深究，等以后有机会再研究是不是因为CordovaPlugin的原因，并且怎么去hook cordova的东西。</p>
-<p>最后进行了一次尝试，看到app里面用到org.json.JSONObject的put，那么就开始hook put吧</p>
-<pre><code>XposedHelpers.findAndHookMethod(&quot;org.json.JSONObject&quot;, loadPackageParam.classLoader, &quot;put&quot;, String.class, boolean.class, new XC_MethodHook() {
-                    @Override
-                    protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                        super.beforeHookedMethod(param);
-                        XposedBridge.log(&quot;hello-&gt;weekreport:before put=&quot; + param.args[0] + &quot;,&quot; + param.args[1]);
-                        if (param.args[0].equals(&quot;inScope&quot;)) {
-                            param.args[1] = false;
-                        }
-                    }
-                    @Override
-                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                        super.afterHookedMethod(param);
-                        XposedBridge.log(&quot;hello-&gt;weekreport:after put=&quot; + param.args[0] + &quot;,&quot; + param.args[1]);
-                    }
-                });
-</code></pre><p>可以看到，把值inScope改成了false，运行，终于跑进去方法里面，激动啊。改完后app的定位就一直失效。</p>
-<blockquote>
-<p><em>引用一下OverAndroid博客提到的功能：</em><br><em> ▪    渗透测试</em><br><em> ▪    测试数据构造</em><br><em> ▪    环境监控</em><br><em> ▪    动态埋点</em><br><em> ▪    热补丁</em><br><em> ▪    自动化录制</em></p>
-</blockquote>
-<p>学习链接：<br><a href="https://github.com/rovo89/XposedBridge/wiki/" target="_blank" rel="external">https://github.com/rovo89/XposedBridge/wiki/</a><br><a href="">https://segmentfault.com/a/1190000002883122</a><br><a href="">http://blog.csdn.net/wzgiceman/article/details/50607020</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xposed-xposedmodule-XposedBridge-hook/">xposed xposedmodule XposedBridge hook</a></li></ul>
 	</div>
 
       

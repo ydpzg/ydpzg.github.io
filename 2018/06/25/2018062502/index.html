@@ -3,30 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android生成jni的c++部分的坑(集成openssl) | dukelight&#39;s home</title>
+  <title>更新gradle插件后的出错 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;
-    }
-在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TAR">
+  <meta name="description" content="出现：
+Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
+
+debugApiElements
+debugRuntimeElements
+releaseApiElements
+releaseRuntimeElementsAll of them match the consumer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android生成jni的c++部分的坑(集成openssl)">
-<meta property="og:url" content="http://ydpzg.github.io/2017/06/14/2017061401/index.html">
+<meta property="og:title" content="更新gradle插件后的出错">
+<meta property="og:url" content="http://ydpzg.github.io/2018/06/25/2018062502/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;
-    }
-在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TAR">
-<meta property="og:updated_time" content="2017-06-14T00:53:22.000Z">
+<meta property="og:description" content="出现：
+Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
+
+debugApiElements
+debugRuntimeElements
+releaseApiElements
+releaseRuntimeElementsAll of them match the consumer">
+<meta property="og:updated_time" content="2018-06-25T07:00:37.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android生成jni的c++部分的坑(集成openssl)">
-<meta name="twitter:description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;
-    }
-在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TAR">
+<meta name="twitter:title" content="更新gradle插件后的出错">
+<meta name="twitter:description" content="出现：
+Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
+
+debugApiElements
+debugRuntimeElements
+releaseApiElements
+releaseRuntimeElementsAll of them match the consumer">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -203,11 +209,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2017061401" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2018062502" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/14/2017061401/" class="article-date">
-  	<time datetime="2017-06-14T00:25:07.000Z" itemprop="datePublished">2017-06-14</time>
+      <a href="/2018/06/25/2018062502/" class="article-date">
+  	<time datetime="2018-06-25T06:57:38.000Z" itemprop="datePublished">2018-06-25</time>
 </a>
     </div>
   
@@ -220,7 +226,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      android生成jni的c++部分的坑(集成openssl)
+      更新gradle插件后的出错
     </h1>
   
 
@@ -236,25 +242,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="jni里集成openssl，最好在build-gradle做些处理"><a href="#jni里集成openssl，最好在build-gradle做些处理" class="headerlink" title="jni里集成openssl，最好在build.gradle做些处理"></a>jni里集成openssl，最好在build.gradle做些处理</h4><pre><code>sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir &apos;src/main/jniLibs&apos;
-    }
-</code></pre><h4 id="在android-mk写个dir指向自定义文件夹jniLibs"><a href="#在android-mk写个dir指向自定义文件夹jniLibs" class="headerlink" title="在android.mk写个dir指向自定义文件夹jniLibs"></a>在android.mk写个dir指向自定义文件夹jniLibs</h4><pre><code>NDK_APP_DST_DIR := ../jniLibs/$(TARGET_ARCH_ABI)
-</code></pre><h4 id="c-语法处理部分细节坑"><a href="#c-语法处理部分细节坑" class="headerlink" title="c++语法处理部分细节坑"></a>c++语法处理部分细节坑</h4><pre><code>1、记得无论什么时候，都要对数组初始化，不然多余的数值会对调试生成影响
-memset(a, 0x00, sizeof(a));
+        <p>出现：</p>
+<p>Cannot choose between the following configurations of project :UmengSocialSdkLibrary:</p>
+<ul>
+<li>debugApiElements</li>
+<li>debugRuntimeElements</li>
+<li>releaseApiElements</li>
+<li>releaseRuntimeElements<br>All of them match the consumer attributes:</li>
+<li>Configuration ‘debugApiElements’:<ul>
+<li>Found com.android.build.api.attributes.BuildTypeAttr ‘debug’ but wasn’t required.</li>
+<li>Found com.android.build.api.attributes.VariantAttr ‘debug’ but wasn’t required.</li>
+<li>Found com.android.build.gradle.internal.dependency.AndroidTypeAttr ‘Aar’ but wasn’t required.</li>
+<li>Found org.gradle.usage ‘java-api’ but wasn’t required.</li>
+</ul>
+</li>
+</ul>
+<p>原因是更新了gradle插件，classpath ‘com.android.tools.build:gradle:3.2.0-alpha07’</p>
+<p>解决方案：</p>
+<p>compile project(‘:UmengSocialSdkLibrary’)</p>
+<p>改成：</p>
+<p>compile project(path: ‘:UmengSocialSdkLibrary’, configuration: ‘default’)</p>
 
-2、对字符数组求长度的时候，在c++里遇到0x00或者’\0’的时候strlen会提前结束，导致错误的输出，这点在调试过程中是个问题
-strlen(a)
-
-3、记得字符数组转成16进制后再输出，原因就是字符有些是不可见的
-
-4、从其他地方接收的参数如果是16进制的字符串，记得先转成10进制的字符数组，再参与计算
-
-5、使用PEM_read_bio_PrivateKey可以读取rsa的私钥，而PEM_read_bio_RsaPrivateKey也可以读，不过是两个不同的结果，两种key的类型可以互转
-EVP_PKEY_get1_RSA 
-EVP_PKEY_set1_RSA
-</code></pre>
       
     </div>
     
@@ -263,18 +271,9 @@ EVP_PKEY_set1_RSA
     
 <nav id="article-nav">
   
-    <a href="/2017/09/05/2017090501/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          android颜色的一个坑
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/02/2017060201/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">研究root权限</div>
+    <a href="/2018/06/25/2018062501/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">编译出现Error:In \&lt;declare-styleable\&gt; FontFamilyFont, unable to find</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -303,7 +302,7 @@ EVP_PKEY_set1_RSA
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017061401" data-title="android生成jni的c++部分的坑(集成openssl)" data-url="http://ydpzg.github.io/2017/06/14/2017061401/"></div>
+	<div class="ds-thread" data-thread-key="2018062502" data-title="更新gradle插件后的出错" data-url="http://ydpzg.github.io/2018/06/25/2018062502/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

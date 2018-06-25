@@ -27,7 +27,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="http://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
+			<img lazy-src="https://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
 			
 		</a>
 
@@ -153,7 +153,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img lazy-src="http://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
+				<img lazy-src="https://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author">dukelight</h1>
@@ -188,6 +188,58 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2017090501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/05/2017090501/" class="article-date">
+  	<time datetime="2017-09-05T01:48:45.000Z" itemprop="datePublished">2017-09-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/05/2017090501/">android颜色的一个坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="在使用android-xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为-99ffffff的透明颜色值。"><a href="#在使用android-xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为-99ffffff的透明颜色值。" class="headerlink" title="在使用android xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为#99ffffff的透明颜色值。"></a>在使用android xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为#99ffffff的透明颜色值。</h4><p>现象：下面的这个layout如果加了shape的圆角，会发现四个角有问题，查了好久，还以为是shape的问题，结果发现是上面这个透明view的问题，虽然是透明，但是还是有值，所以会看到四个角有颜色，而不是全部是圆角。</p>
+<p>解决方案：透明层也要加shape圆角。。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-2017061401" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -748,78 +800,6 @@ print(mySplit(s, &apos;=!+-=;:^%$\\&apos;))
 #使用re正则表达式分割字符串
 import re
 print(re.split(r&apos;[=!+-=;:^%$\\]+&apos;, s))
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052304" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/23/2017052304/" class="article-date">
-  	<time datetime="2017-05-23T14:32:28.000Z" itemprop="datePublished">2017-05-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/23/2017052304/">python 3-6如何在一个for语句中迭代多个可迭代对象</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="主要是使用了zip和chain分别对迭代器的串行和并行处理"><a href="#主要是使用了zip和chain分别对迭代器的串行和并行处理" class="headerlink" title="主要是使用了zip和chain分别对迭代器的串行和并行处理"></a>主要是使用了zip和chain分别对迭代器的串行和并行处理</h4><pre><code>e1 = [1, 2, 3, 4]
-e2 = [9, 8, 7, 6]
-for x in zip(e1, e2):
-   ...:     print(x)
-from itertools import chain
-for x in chain(e1, e2):
-    ...:     print(x)
-</code></pre><h4 id="结果是"><a href="#结果是" class="headerlink" title="结果是"></a>结果是</h4><pre><code>zip并行的输出是
-(1, 9)
-(2, 8)
-(3, 7)
-(4, 6)
-
-chain串行的输出是
-1
-2
-3
-4
-9
-8
-7
-6
 </code></pre>
       
     </div>
