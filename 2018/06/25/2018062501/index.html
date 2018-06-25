@@ -3,27 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android不使用系统权限调用拨号程序 | dukelight&#39;s home</title>
+  <title>编译出现Error:In \&lt;declare-styleable\&gt; FontFamilyFont, unable to find | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####不同与使用Intent.ACTION_CALL，需要系统权限才能调用
-String phone = &amp;quot;+34666777888&amp;quot;;
-Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts(&amp;quot;tel&amp;quot;, phone, null));
-startActivity(intent);_">
+  <meta name="description" content="加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyFont的error
+思路：可能是引入的新版本的appcompat的库
+先列表本工程的所有依赖关系gradle :app:dependencies --configuration compile
+
+…
++--- com.android.support:appcompat-v7:25.3.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android不使用系统权限调用拨号程序">
-<meta property="og:url" content="http://ydpzg.github.io/2018/02/11/2018021101/index.html">
+<meta property="og:title" content="编译出现Error:In \<declare-styleable\> FontFamilyFont, unable to find">
+<meta property="og:url" content="http://ydpzg.github.io/2018/06/25/2018062501/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="####不同与使用Intent.ACTION_CALL，需要系统权限才能调用
-String phone = &amp;quot;+34666777888&amp;quot;;
-Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts(&amp;quot;tel&amp;quot;, phone, null));
-startActivity(intent);_">
-<meta property="og:updated_time" content="2018-02-11T08:15:22.680Z">
+<meta property="og:description" content="加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyFont的error
+思路：可能是引入的新版本的appcompat的库
+先列表本工程的所有依赖关系gradle :app:dependencies --configuration compile
+
+…
++--- com.android.support:appcompat-v7:25.3.">
+<meta property="og:updated_time" content="2018-06-25T03:28:26.001Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android不使用系统权限调用拨号程序">
-<meta name="twitter:description" content="####不同与使用Intent.ACTION_CALL，需要系统权限才能调用
-String phone = &amp;quot;+34666777888&amp;quot;;
-Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts(&amp;quot;tel&amp;quot;, phone, null));
-startActivity(intent);_">
+<meta name="twitter:title" content="编译出现Error:In \<declare-styleable\> FontFamilyFont, unable to find">
+<meta name="twitter:description" content="加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyFont的error
+思路：可能是引入的新版本的appcompat的库
+先列表本工程的所有依赖关系gradle :app:dependencies --configuration compile
+
+…
++--- com.android.support:appcompat-v7:25.3.">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -200,11 +206,11 @@ startActivity(intent);_">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2018021101" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2018062501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/02/11/2018021101/" class="article-date">
-  	<time datetime="2018-02-11T08:12:46.000Z" itemprop="datePublished">2018-02-11</time>
+      <a href="/2018/06/25/2018062501/" class="article-date">
+  	<time datetime="2018-06-25T03:09:33.000Z" itemprop="datePublished">2018-06-25</time>
 </a>
     </div>
   
@@ -217,7 +223,7 @@ startActivity(intent);_">
         
   
     <h1 class="article-title" itemprop="name">
-      android不使用系统权限调用拨号程序
+      编译出现Error:In \&lt;declare-styleable\&gt; FontFamilyFont, unable to find
     </h1>
   
 
@@ -233,11 +239,26 @@ startActivity(intent);_">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####<br>不同与使用Intent.ACTION_CALL，需要系统权限才能调用</p>
-<p><code>String phone = &quot;+34666777888&quot;;
-Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts(&quot;tel&quot;, phone, null));
-startActivity(intent);_</code></p>
+        <blockquote>
+<h1 id="加入kotlin的辅助库androidx-core-core-ktx-0-3，结果编译出现FontFamilyFont的error"><a href="#加入kotlin的辅助库androidx-core-core-ktx-0-3，结果编译出现FontFamilyFont的error" class="headerlink" title="加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyFont的error"></a>加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyFont的error</h1></blockquote>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>可能是引入的新版本的appcompat的库</p>
+<h4 id="先列表本工程的所有依赖关系"><a href="#先列表本工程的所有依赖关系" class="headerlink" title="先列表本工程的所有依赖关系"></a>先列表本工程的所有依赖关系</h4><pre><code>gradle :app:dependencies --configuration compile
 
+…
++--- com.android.support:appcompat-v7:25.3.1
++--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.30
+|    +--- org.jetbrains.kotlin:kotlin-stdlib:1.2.30 -&gt; 1.2.31
+|    |    \--- org.jetbrains:annotations:13.0
+|    \--- org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.30
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:1.2.30 -&gt; 1.2.31 (*)
+\--- androidx.core:core-ktx:0.3
+     +--- com.android.support:support-annotations:27.1.0
+     +--- org.jetbrains.kotlin:kotlin-stdlib:1.2.31 (*)
+     \--- com.android.support:support-compat:27.1.0 (*)*
+</code></pre><h4 id="发现core-ktx引入的27-1-0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27-1-0，问题就解决了。"><a href="#发现core-ktx引入的27-1-0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27-1-0，问题就解决了。" class="headerlink" title="发现core-ktx引入的27.1.0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27.1.0，问题就解决了。"></a>发现core-ktx引入的27.1.0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27.1.0，问题就解决了。</h4><h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><pre><code>compile (&quot;androidx.core:core-ktx:0.3&quot;) {
+exclude group: &apos;com.android.support&apos;, module: &apos;support-compat&apos;
+}
+</code></pre>
       
     </div>
     
@@ -246,18 +267,9 @@ startActivity(intent);_</code></p>
     
 <nav id="article-nav">
   
-    <a href="/2018/03/22/2018032201/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          关于android多渠道打包的总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/27/2017122701/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于小米5 miui9刷xp框架的问题</div>
+    <a href="/2018/05/31/2018053101/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MpAndroidChart的使用心得</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -286,7 +298,7 @@ startActivity(intent);_</code></p>
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2018021101" data-title="android不使用系统权限调用拨号程序" data-url="http://ydpzg.github.io/2018/02/11/2018021101/"></div>
+	<div class="ds-thread" data-thread-key="2018062501" data-title="编译出现Error:In \&lt;declare-styleable\&gt; FontFamilyFont, unable to find" data-url="http://ydpzg.github.io/2018/06/25/2018062501/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
