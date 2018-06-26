@@ -189,6 +189,58 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017051602" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/16/2017051602/" class="article-date">
+  	<time datetime="2017-05-16T14:57:15.000Z" itemprop="datePublished">2017-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/2017051602/">python 2-3如何统计序列中元素的出现频度</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>from random import randint<br>data = [randint(1, 10) for _ in range(20)]<br>d = dict.fromkeys(data, 0)<br>d<br>for x in data:<br>…     d[x] += 1<br>d</p>
+<p>from collections import Counter<br>c = Counter(data)<br>c.most_common()<br>c.most_common(1)<br>c.most_common(2)<br>file = open(“/Users/dukelight/project/EasyPR/LICENSE”, “r”).read()<br>words = re.split(“\W+”, file)<br>wordsCounter = Counter(words)<br>wordsCounter.most_common(10)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017051601-1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -702,57 +754,6 @@ Thread.sleep(1000);
 <p><a href="https://www.androidfilehost.com/?w=file-thanks&amp;fid=24694152805484203&amp;mid=140&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851118&amp;hc=f65965d40223e634e53fc26b41fc7eee873dd1ef17bc87a67e07326856425084" target="_blank" rel="external">https://www.androidfilehost.com/?w=file-thanks&amp;fid=24694152805484203&amp;mid=140&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851118&amp;hc=f65965d40223e634e53fc26b41fc7eee873dd1ef17bc87a67e07326856425084</a></p>
 <p>twrp-3.0.2-0-shamu.img</p>
 <p><a href="https://www.androidfilehost.com/?w=file-thanks&amp;fid=24499762635998144&amp;mid=150&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851144&amp;hc=815ecb8f13ffc1df2938c8990071cf7cbe8dd5c7b923ebeb28952c8eeb4ee9a0" target="_blank" rel="external">https://www.androidfilehost.com/?w=file-thanks&amp;fid=24499762635998144&amp;mid=150&amp;download_id=32a9d921c010776bda8ffb813a3a2e2b&amp;tid=1481851144&amp;hc=815ecb8f13ffc1df2938c8990071cf7cbe8dd5c7b923ebeb28952c8eeb4ee9a0</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016121601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/16/2016121601/" class="article-date">
-  	<time datetime="2016-12-15T16:57:11.000Z" itemprop="datePublished">2016-12-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/16/2016121601/">关于微信公众号UnionId的认识</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>公众号或者小程序，在同一个微信开放平台下的UnionId是唯一的。如果没有在开发平台里面绑定公众号或者小程序，是无法获取到UnionId的，只有绑定了后，返回的接口才会出现UnionId。</p>
 
       
     </div>

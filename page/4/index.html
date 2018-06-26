@@ -189,6 +189,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017052401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/24/2017052401/" class="article-date">
+  	<time datetime="2017-05-24T13:38:38.000Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/24/2017052401/">python 4-1如何拆分含有多种分隔符的字符串</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="如果是对字符串做一个字符的分割，用str-split-分割效率比较高；如果是多个字符的分割，用re-split-分割效率比较高"><a href="#如果是对字符串做一个字符的分割，用str-split-分割效率比较高；如果是多个字符的分割，用re-split-分割效率比较高" class="headerlink" title="如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高"></a>如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高</h4><pre><code>def strSplit(x, d):
+    return x.split(d)
+
+def mySplit(s, ds):
+    res = [s]
+    for d in ds:
+        t = []
+        #对二维数据降成一维数组
+        map(lambda x: t.extend(x.split(d)), res)
+        res = t
+
+    return [x for x in res if x]
+
+s = &apos;ab;dd:fdfd\dfsa+ddf=vfv%dfdf&apos;
+print(mySplit(s, &apos;=!+-=;:^%$\\&apos;))
+
+#使用re正则表达式分割字符串
+import re
+print(re.split(r&apos;[=!+-=;:^%$\\]+&apos;, s))
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052304" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -814,58 +883,6 @@ reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
       
         <p>from random import randint<br>data = {x: randinx(80, 100) for x in ‘abcxyz’}<br>zipresult = zip(data.values(), data.keys())<br>sorted(zipresult)<br>list(zipresult)</p>
 <p>data.items()<br>sorted(data.items(), key=lambda x: x[1])<br>sorted(data.items(), key=lambda x: x[1], reverse=True)</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017051602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/16/2017051602/" class="article-date">
-  	<time datetime="2017-05-16T14:57:15.000Z" itemprop="datePublished">2017-05-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/16/2017051602/">python 2-3如何统计序列中元素的出现频度</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>from random import randint<br>data = [randint(1, 10) for _ in range(20)]<br>d = dict.fromkeys(data, 0)<br>d<br>for x in data:<br>…     d[x] += 1<br>d</p>
-<p>from collections import Counter<br>c = Counter(data)<br>c.most_common()<br>c.most_common(1)<br>c.most_common(2)<br>file = open(“/Users/dukelight/project/EasyPR/LICENSE”, “r”).read()<br>words = re.split(“\W+”, file)<br>wordsCounter = Counter(words)<br>wordsCounter.most_common(10)</p>
 
       
     </div>

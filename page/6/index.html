@@ -189,6 +189,57 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016121601" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/16/2016121601/" class="article-date">
+  	<time datetime="2016-12-15T16:57:11.000Z" itemprop="datePublished">2016-12-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/16/2016121601/">关于微信公众号UnionId的认识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>公众号或者小程序，在同一个微信开放平台下的UnionId是唯一的。如果没有在开发平台里面绑定公众号或者小程序，是无法获取到UnionId的，只有绑定了后，返回的接口才会出现UnionId。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016121401" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -674,60 +725,6 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/印象笔记/">印象笔记</a></li></ul>
 	</div>
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016091801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/19/2016091801/" class="article-date">
-  	<time datetime="2016-09-18T16:38:59.000Z" itemprop="datePublished">2016-09-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/19/2016091801/">￼ 【开发笔记】 ￼如何将svn 回滚old revision到head revision</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="背景需求：-有些时候错误地提交了代码到trunk-head-revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head-revision上。"><a href="#背景需求：-有些时候错误地提交了代码到trunk-head-revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head-revision上。" class="headerlink" title="背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。"></a>背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。</h1></blockquote>
-<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>1.checkout ，project update<br>2.找到head revision版本号<br>3.找到目标revision 版本号<br>4.在当前project里执行 “   svn merge -r 10551:10197 ./     “<br>注：（10551是head revision，10197是需要回滚的目标revision  ./是当前workplace copy）（这步做完多了diff）<br>5.commit </p>
-<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a href="http://blog.sina.com.cn/s/blog_5432f2730100vmz4.h" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_5432f2730100vmz4.h</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
       
 
       
