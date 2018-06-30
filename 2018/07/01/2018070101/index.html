@@ -3,42 +3,39 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何实现域名转发 | dukelight&#39;s home</title>
+  <title>androidstudio Function main not found in class Main | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
+  <meta name="description" content="解决方法：
+Change you class for an object and add platformStatic to your main method
+object Main {
+  platformStatic fun main(args: Array&amp;lt;String&amp;gt;){
+    println(&amp;quot;Hello kotlin&amp;quot;)
+  }
+}
+or put y">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何实现域名转发">
-<meta property="og:url" content="http://ydpzg.github.io/2018/06/26/2018062601/index.html">
+<meta property="og:title" content="androidstudio Function main not found in class Main">
+<meta property="og:url" content="http://ydpzg.github.io/2018/07/01/2018070101/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
-<meta property="og:updated_time" content="2018-06-26T02:22:46.306Z">
+<meta property="og:description" content="解决方法：
+Change you class for an object and add platformStatic to your main method
+object Main {
+  platformStatic fun main(args: Array&amp;lt;String&amp;gt;){
+    println(&amp;quot;Hello kotlin&amp;quot;)
+  }
+}
+or put y">
+<meta property="og:updated_time" content="2018-06-30T16:31:52.602Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何实现域名转发">
-<meta name="twitter:description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
+<meta name="twitter:title" content="androidstudio Function main not found in class Main">
+<meta name="twitter:description" content="解决方法：
+Change you class for an object and add platformStatic to your main method
+object Main {
+  platformStatic fun main(args: Array&amp;lt;String&amp;gt;){
+    println(&amp;quot;Hello kotlin&amp;quot;)
+  }
+}
+or put y">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -215,11 +212,11 @@ proxy_pass http://ydpzg">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2018062601" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2018070101" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/26/2018062601/" class="article-date">
-  	<time datetime="2018-06-26T02:00:11.000Z" itemprop="datePublished">2018-06-26</time>
+      <a href="/2018/07/01/2018070101/" class="article-date">
+  	<time datetime="2018-06-30T16:30:30.000Z" itemprop="datePublished">2018-07-01</time>
 </a>
     </div>
   
@@ -232,7 +229,7 @@ proxy_pass http://ydpzg">
         
   
     <h1 class="article-title" itemprop="name">
-      如何实现域名转发
+      androidstudio Function main not found in class Main
     </h1>
   
 
@@ -248,18 +245,16 @@ proxy_pass http://ydpzg">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<h1 id="访问A域名，实现把流量带过去B域名"><a href="#访问A域名，实现把流量带过去B域名" class="headerlink" title="访问A域名，实现把流量带过去B域名"></a>访问A域名，实现把流量带过去B域名</h1></blockquote>
-<p>1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名</p>
-<p>2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发</p>
-<pre><code>server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg.github.io/; 显现转发
+        <p>解决方法：</p>
+<pre><code>Change you class for an object and add platformStatic to your main method
+object Main {
+  platformStatic fun main(args: Array&lt;String&gt;){
+    println(&quot;Hello kotlin&quot;)
+  }
 }
-#return       301 http://www.yudapei.cn$request_uri;  重定向，隐性转发
+or put your main function outside the class
+fun main(args: Array&lt;String&gt;){
+    println(&quot;Hello kotlin&quot;)
 }
 </code></pre>
       
@@ -270,18 +265,9 @@ proxy_pass http://ydpzg.github.io/; 显现转发
     
 <nav id="article-nav">
   
-    <a href="/2018/07/01/2018070101/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          androidstudio Function main not found in class Main
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/25/2018062502/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">更新gradle插件后的出错</div>
+    <a href="/2018/06/26/2018062601/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何实现域名转发</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -310,7 +296,7 @@ proxy_pass http://ydpzg.github.io/; 显现转发
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2018062601" data-title="如何实现域名转发" data-url="http://ydpzg.github.io/2018/06/26/2018062601/"></div>
+	<div class="ds-thread" data-thread-key="2018070101" data-title="androidstudio Function main not found in class Main" data-url="http://ydpzg.github.io/2018/07/01/2018070101/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

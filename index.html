@@ -189,6 +189,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2018070101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/07/01/2018070101/" class="article-date">
+  	<time datetime="2018-06-30T16:30:30.000Z" itemprop="datePublished">2018-07-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/01/2018070101/">androidstudio Function main not found in class Main</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>解决方法：</p>
+<pre><code>Change you class for an object and add platformStatic to your main method
+object Main {
+  platformStatic fun main(args: Array&lt;String&gt;){
+    println(&quot;Hello kotlin&quot;)
+  }
+}
+or put your main function outside the class
+fun main(args: Array&lt;String&gt;){
+    println(&quot;Hello kotlin&quot;)
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2018062601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1050,60 +1111,6 @@ npm run dev
 <p>整个过程大约需要15分钟</p>
 <p>debug 流程 ：（给内部人员提供测试版本下载）<br>-> 打包<br>->上传蒲公英<br>->展示二维码</p>
 <p>整个过程大约需要4分钟</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018021101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/02/11/2018021101/" class="article-date">
-  	<time datetime="2018-02-11T08:12:46.000Z" itemprop="datePublished">2018-02-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/11/2018021101/">android不使用系统权限调用拨号程序</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####<br>不同与使用Intent.ACTION_CALL，需要系统权限才能调用</p>
-<p><code>String phone = &quot;+34666777888&quot;;
-Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts(&quot;tel&quot;, phone, null));
-startActivity(intent);_</code></p>
 
       
     </div>
