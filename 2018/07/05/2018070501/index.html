@@ -3,42 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何实现域名转发 | dukelight&#39;s home</title>
+  <title>命令行让gradle下载新的库的奇怪问题 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
+  <meta name="description" content="发现改成gradle3.0后直接gradle xxx，找不到google
+1Could not find method google() for arguments []() on repository container.
+1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync project">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何实现域名转发">
-<meta property="og:url" content="http://ydpzg.github.io/2018/06/26/2018062601/index.html">
+<meta property="og:title" content="命令行让gradle下载新的库的奇怪问题">
+<meta property="og:url" content="http://ydpzg.github.io/2018/07/05/2018070501/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
-<meta property="og:updated_time" content="2018-09-06T09:12:08.520Z">
+<meta property="og:description" content="发现改成gradle3.0后直接gradle xxx，找不到google
+1Could not find method google() for arguments []() on repository container.
+1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync project">
+<meta property="og:updated_time" content="2018-09-06T09:11:39.078Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何实现域名转发">
-<meta name="twitter:description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
+<meta name="twitter:title" content="命令行让gradle下载新的库的奇怪问题">
+<meta name="twitter:description" content="发现改成gradle3.0后直接gradle xxx，找不到google
+1Could not find method google() for arguments []() on repository container.
+1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync project">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -215,11 +197,11 @@ proxy_pass http://ydpzg">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2018062601" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2018070501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/26/2018062601/" class="article-date">
-  	<time datetime="2018-06-26T02:00:11.000Z" itemprop="datePublished">2018-06-26</time>
+      <a href="/2018/07/05/2018070501/" class="article-date">
+  	<time datetime="2018-07-05T04:04:01.000Z" itemprop="datePublished">2018-07-05</time>
 </a>
     </div>
   
@@ -232,7 +214,7 @@ proxy_pass http://ydpzg">
         
   
     <h1 class="article-title" itemprop="name">
-      如何实现域名转发
+      命令行让gradle下载新的库的奇怪问题
     </h1>
   
 
@@ -249,19 +231,17 @@ proxy_pass http://ydpzg">
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<h1 id="访问A域名，实现把流量带过去B域名"><a href="#访问A域名，实现把流量带过去B域名" class="headerlink" title="访问A域名，实现把流量带过去B域名"></a>访问A域名，实现把流量带过去B域名</h1></blockquote>
-<p>1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名</p>
-<p>2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发</p>
-<pre><code>server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
+<h3 id="发现改成gradle3-0后直接gradle-xxx，找不到google"><a href="#发现改成gradle3-0后直接gradle-xxx，找不到google" class="headerlink" title="发现改成gradle3.0后直接gradle xxx，找不到google"></a>发现改成gradle3.0后直接gradle xxx，找不到google</h3></blockquote>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Could <span class="keyword">not</span> find <span class="function"><span class="keyword">method</span> <span class="title">google</span><span class="params">()</span> <span class="title">for</span> <span class="title">arguments</span> []<span class="params">()</span> <span class="title">on</span> <span class="title">repository</span> <span class="title">container</span>.</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">背景：原来旧项目采用<span class="selector-tag">gradle3</span><span class="selector-class">.3</span>，后面升级后改成了<span class="selector-tag">gradle4</span><span class="selector-class">.4</span>，结果<span class="selector-tag">gradle</span>没法自己下载，如果在<span class="selector-tag">android</span> <span class="selector-tag">studio</span>，使用<span class="selector-tag">sync</span> <span class="selector-tag">project</span> <span class="selector-tag">with</span> <span class="selector-tag">gradle</span> <span class="selector-tag">files</span>，但命令没有。</div></pre></td></tr></table></figure>
+<ul>
+<li>解决方案</li>
+<li><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>而不是使用</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle <span class="built_in">clean</span> build</div></pre></td></tr></table></figure>
 
-location / {
-proxy_pass http://ydpzg.github.io/; 显现转发
-}
-#return       301 http://www.yudapei.cn$request_uri;  重定向，隐性转发
-}
-</code></pre>
       
     </div>
     
@@ -270,18 +250,18 @@ proxy_pass http://ydpzg.github.io/; 显现转发
     
 <nav id="article-nav">
   
-    <a href="/2018/07/01/2018070101/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/02/2018080201/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          androidstudio Function main not found in class Main
+          android悬浮窗
         
       </div>
     </a>
   
   
-    <a href="/2018/06/25/2018062502/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">更新gradle插件后的出错</div>
+    <a href="/2018/07/01/2018070101/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">androidstudio Function main not found in class Main</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -310,7 +290,7 @@ proxy_pass http://ydpzg.github.io/; 显现转发
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2018062601" data-title="如何实现域名转发" data-url="http://ydpzg.github.io/2018/06/26/2018062601/"></div>
+	<div class="ds-thread" data-thread-key="2018070501" data-title="命令行让gradle下载新的库的奇怪问题" data-url="http://ydpzg.github.io/2018/07/05/2018070501/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

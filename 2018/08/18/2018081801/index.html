@@ -3,42 +3,41 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何实现域名转发 | dukelight&#39;s home</title>
+  <title>关于友盟event不能批量处理中文event的问题 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
+  <meta name="description" content="友盟https://gateway.open.umeng.com/ 不能传中文
 
-location / {
-proxy_pass http://ydpzg">
+经过测试，企业的openapi文档可以，http://api.umeng.com/
+
+12345auth_token认证POST http://api.umeng.com/authorize创建事件 GroupPOST /events
+
+
+事件添加网页也可以传eventid中文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何实现域名转发">
-<meta property="og:url" content="http://ydpzg.github.io/2018/06/26/2018062601/index.html">
+<meta property="og:title" content="关于友盟event不能批量处理中文event的问题">
+<meta property="og:url" content="http://ydpzg.github.io/2018/08/18/2018081801/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
+<meta property="og:description" content="友盟https://gateway.open.umeng.com/ 不能传中文
 
-location / {
-proxy_pass http://ydpzg">
-<meta property="og:updated_time" content="2018-09-06T09:12:08.520Z">
+经过测试，企业的openapi文档可以，http://api.umeng.com/
+
+12345auth_token认证POST http://api.umeng.com/authorize创建事件 GroupPOST /events
+
+
+事件添加网页也可以传eventid中文">
+<meta property="og:image" content="http://pd4ketimy.bkt.clouddn.com/15362247455411.jpg">
+<meta property="og:updated_time" content="2018-09-06T09:06:23.509Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何实现域名转发">
-<meta name="twitter:description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
+<meta name="twitter:title" content="关于友盟event不能批量处理中文event的问题">
+<meta name="twitter:description" content="友盟https://gateway.open.umeng.com/ 不能传中文
 
-location / {
-proxy_pass http://ydpzg">
+经过测试，企业的openapi文档可以，http://api.umeng.com/
+
+12345auth_token认证POST http://api.umeng.com/authorize创建事件 GroupPOST /events
+
+
+事件添加网页也可以传eventid中文">
+<meta name="twitter:image" content="http://pd4ketimy.bkt.clouddn.com/15362247455411.jpg">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -215,11 +214,11 @@ proxy_pass http://ydpzg">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2018062601" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2018081801" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/26/2018062601/" class="article-date">
-  	<time datetime="2018-06-26T02:00:11.000Z" itemprop="datePublished">2018-06-26</time>
+      <a href="/2018/08/18/2018081801/" class="article-date">
+  	<time datetime="2018-08-18T04:16:06.000Z" itemprop="datePublished">2018-08-18</time>
 </a>
     </div>
   
@@ -232,7 +231,7 @@ proxy_pass http://ydpzg">
         
   
     <h1 class="article-title" itemprop="name">
-      如何实现域名转发
+      关于友盟event不能批量处理中文event的问题
     </h1>
   
 
@@ -249,19 +248,17 @@ proxy_pass http://ydpzg">
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<h1 id="访问A域名，实现把流量带过去B域名"><a href="#访问A域名，实现把流量带过去B域名" class="headerlink" title="访问A域名，实现把流量带过去B域名"></a>访问A域名，实现把流量带过去B域名</h1></blockquote>
-<p>1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名</p>
-<p>2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发</p>
-<pre><code>server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
+<h1 id="友盟https-gateway-open-umeng-com-不能传中文"><a href="#友盟https-gateway-open-umeng-com-不能传中文" class="headerlink" title="友盟https://gateway.open.umeng.com/ 不能传中文"></a>友盟<a href="https://gateway.open.umeng.com/" target="_blank" rel="external">https://gateway.open.umeng.com/</a> 不能传中文</h1></blockquote>
+<ul>
+<li>经过测试，企业的openapi文档可以，<a href="http://api.umeng.com/" target="_blank" rel="external">http://api.umeng.com/</a></li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">auth_token认证</div><div class="line"><span class="keyword">POST</span> http:<span class="comment">//api.umeng.com/authorize</span></div><div class="line"></div><div class="line">创建事件 <span class="built_in">Group</span></div><div class="line"><span class="keyword">POST</span> /events</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>事件添加网页也可以传eventid中文</li>
+</ul>
+<p><img src="http://pd4ketimy.bkt.clouddn.com/15362247455411.jpg" alt=""></p>
 
-location / {
-proxy_pass http://ydpzg.github.io/; 显现转发
-}
-#return       301 http://www.yudapei.cn$request_uri;  重定向，隐性转发
-}
-</code></pre>
       
     </div>
     
@@ -270,18 +267,9 @@ proxy_pass http://ydpzg.github.io/; 显现转发
     
 <nav id="article-nav">
   
-    <a href="/2018/07/01/2018070101/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          androidstudio Function main not found in class Main
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/25/2018062502/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">更新gradle插件后的出错</div>
+    <a href="/2018/08/13/2018081301/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">cocos2d demo把跳转activity报错</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -310,7 +298,7 @@ proxy_pass http://ydpzg.github.io/; 显现转发
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2018062601" data-title="如何实现域名转发" data-url="http://ydpzg.github.io/2018/06/26/2018062601/"></div>
+	<div class="ds-thread" data-thread-key="2018081801" data-title="关于友盟event不能批量处理中文event的问题" data-url="http://ydpzg.github.io/2018/08/18/2018081801/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

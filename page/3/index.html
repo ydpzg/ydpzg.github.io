@@ -189,6 +189,325 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017110301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/03/2017110301/" class="article-date">
+  	<time datetime="2017-11-03T08:17:14.000Z" itemprop="datePublished">2017-11-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/03/2017110301/">七牛使用工具上传可以覆盖同名文件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017103001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/30/2017103001/" class="article-date">
+  	<time datetime="2017-10-30T08:00:00.000Z" itemprop="datePublished">2017-10-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/30/2017103001/">web view栈手动管理，重载GoBack（）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017102801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/29/2017102801/" class="article-date">
+  	<time datetime="2017-10-28T16:01:36.000Z" itemprop="datePublished">2017-10-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/29/2017102801/">NoScrollListView 跟 android:layerType=&quot;software&quot;，冲突</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>设置了后，画了大概20行就会出现bug，item布局还在，点击事件还在，就是看不到任何东西。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017093001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/30/2017093001/" class="article-date">
+  	<time datetime="2017-09-30T10:01:19.000Z" itemprop="datePublished">2017-09-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/30/2017093001/">防止系统字体大小变化导致app字体大小变化</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"><a href="#大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop" class="headerlink" title="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"></a>大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在2560<em>1440上表现出现是要相对耗时500ms</em>，而xiaop</h4><p><code>Configuration config = context.getResources().getConfiguration();  
+config.fontScale = 1;  
+context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());</code></p>
+<h4 id="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"><a href="#所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现" class="headerlink" title="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"></a>所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现</h4><p><code>Configuration config = context.getResources().getConfiguration();  
+if (config.fontScale != 1) {  
+    config.fontScale = 1;  
+    context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());  
+}</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-20170901501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/15/20170901501/" class="article-date">
+  	<time datetime="2017-09-15T01:44:12.000Z" itemprop="datePublished">2017-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/15/20170901501/">小米手机在android studio ide上run不了的奇葩问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>instant run会导致一直报有一个新的app在手机里，要卸载</p>
+<p>Error:Execution failed for task ‘:app:transformClassesWithInstantRunForDebug’.</p>
+<blockquote>
+<p>android/hardware/fingerprint/FingerprintManager$AuthenticationCallback</p>
+</blockquote>
+<p>终极方案：<br>关instant run+关miui优化+开usb安装+开未知来源</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017090901" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/09/2017090901/" class="article-date">
+  	<time datetime="2017-09-09T10:26:13.000Z" itemprop="datePublished">2017-09-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/09/2017090901/">idea使用单元测试并且合理查看代码覆盖率</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。"><a href="#没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。" class="headerlink" title="没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。"></a>没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。</h1></blockquote>
+<p>代码覆盖率：写的单元测试覆盖着类的行数和方法数。方法数是指单元测试覆盖了被测试类的多少个方法，行数是指单元测试覆盖了多少个逻辑分支，例如ifelse。</p>
+<p>idea里如何看代码覆盖率：<br>先写被测试类，写好了以后，按快捷键commant+shift+t，创建一个测试类，写好测试类。在测试类右键点击“run ‘xxx’ with” coverage，运行后，在类右边就可以看到覆盖了多少方法数和行数。<br>在Edit Configurations 里可以选择单元测试的引擎，有idea和jacoco两个选择。<br>所以每次写好类后（尤其是工具类），要写好单元测试，尽量覆盖所有的逻辑分支，而case的质量则影响单元测试的正确性和深度。覆盖率并不能减少所有的错误，但是可以减少逻辑错误。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017090801" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -412,393 +731,9 @@ EVP_PKEY_set1_RSA
 
 
   
-    <article id="post-2017060201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/02/2017060201/" class="article-date">
-  	<time datetime="2017-06-02T00:28:42.000Z" itemprop="datePublished">2017-06-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/2017060201/">研究root权限</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://blog.csdn.net/hxdanya/article/details/39371759" target="_blank" rel="external">http://blog.csdn.net/hxdanya/article/details/39371759</a></p>
-<p>PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。</p>
-<p>LOCAL_CFLAGS += -pie -fPIE<br>LOCAL<em>LDFLAGS += -pie -fPIE</em></p>
-<p><a href="http://hold-on.iteye.com/blog/1901152" target="_blank" rel="external">http://hold-on.iteye.com/blog/1901152</a></p>
-<p>Android应用程序永久获取root权限方法的基本思路，引入zlsu</p>
-<p><a href="http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966" target="_blank" rel="external">http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966</a></p>
-<p>解决办法：</p>
-<ol>
-<li>最简单的，adb remount</li>
-<li>不行的话，adb shell su之后将文件系统remount为读写权限： mount -o remount rw /system。出于安全考虑，记得完事后remount回只读： mount -o ro,remount /system</li>
-<li><p>和方法2类似，mount -o rw,remount -t ext3 /dev/block/mmcblk1p21 /system</p>
-<p>chown 0:0 /system/bin/su</p>
-</li>
-</ol>
-<p>busybox chown 0:0 /system/bin/su</p>
-<p><a href="http://blog.csdn.net/wan_ing/article/details/53407748" target="_blank" rel="external">http://blog.csdn.net/wan_ing/article/details/53407748</a></p>
-<p>android 版本更新 静默安装及自启动</p>
-<p><a href="http://www.jianshu.com/p/9ece07344630" target="_blank" rel="external">http://www.jianshu.com/p/9ece07344630</a></p>
-<p>Android上app_process启动java进程</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017053101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/31/2017053101/" class="article-date">
-  	<time datetime="2017-05-31T13:48:47.000Z" itemprop="datePublished">2017-05-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/31/2017053101/">python 5-2如何处理二进制文件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="掌握二进制处理方法，比如struct-unpack-file-seek-file-tell-file-readinfo-aray-array"><a href="#掌握二进制处理方法，比如struct-unpack-file-seek-file-tell-file-readinfo-aray-array" class="headerlink" title="掌握二进制处理方法，比如struct.unpack;file.seek();file.tell();file.readinfo();aray.array()"></a>掌握二进制处理方法，比如struct.unpack;file.seek();file.tell();file.readinfo();aray.array()</h4><pre><code>file = open(&apos;&apos;, &apos;rb&apos;)
-info = file.read(44)
-import struct
-struct.unpack(&apos;h&apos;, info[22:24]); #解析字节
- struct.unpack(&apos;i&apos;, info[24:28]);
-
-import array
-file.seek(0,2)#把指针挪到末尾
-file.tell()#指针的位置
-n = (file.tell() - 44) / 2
-buf = array.array(&apos;h&apos;, (0 for _ in range(n)))
-file.seek(44)
-file.readinfo(buf)
-for i in range(n): buf[i] /= 8
-
-f2 = open(&apos;demo2.wav&apos;, &apos;wb&apos;)
-f2.write(info)
-buf.tofile(f2)
-f2.close()
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052603" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052603/" class="article-date">
-  	<time datetime="2017-05-26T15:53:29.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052603/">python 4-6如何去掉字符串中不需要的字符</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="有很多种"><a href="#有很多种" class="headerlink" title="有很多种"></a>有很多种</h4><pre><code>s = &quot;    jjj   ee    &quot;
-s.strip()
-s.lstrip()
-s.rstrip()
-
-s  = &apos;-----abd++++++&apos;
-s.strip(&apos;-+&apos;)
-
-s = &apos;adb:123&apos;
-s[:3] + s[4:]
-
-s = &apos;\tsss\tcvv\ppp&apos;
-s.replace(&apos;\t&apos;, &apos;&apos;)
-
-s = &apos;\tsss\tcvv\tppp\rfdf\rccc&apos;
-import re
-re.sub(&apos;[\t\r]&apos;, &apos;&apos;)
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052602/" class="article-date">
-  	<time datetime="2017-05-26T14:03:18.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052602/">python 4-5如何对字符串进行左, 右, 居中对齐</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
-s.ljust(10, &apos;_&apos;)
-s.rjust(10, &apos;_&apos;)
-s.center(10, &apos;_&apos;)
-format(s, &apos;&lt;10&apos;)
-format(s, &apos;&gt;10&apos;)
-format(s, &apos;^10&apos;)
-
-d ={&apos;a&apos;:100,&apos;adb3dd&apos;:9,&apos;lof&apos;:3444}
-map(len, d.keys())
-list(map(len, d.keys()))
-k = max(map(len, d.keys()))
-for x in d:
-      print(x.ljust(k), &apos;:&apos;, d[x])
-rmax = max(map(len, [str(x) for x in d.values()]))
-rmax
-for x in d:
-     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052601/" class="article-date">
-  	<time datetime="2017-05-26T13:38:54.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052601/">python 4-4如何将多个小字符串拼接成一个大的字符串</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="两种方式：1、使用-号连接；2、使用str-join-做字符串连接"><a href="#两种方式：1、使用-号连接；2、使用str-join-做字符串连接" class="headerlink" title="两种方式：1、使用+号连接；2、使用str.join()做字符串连接"></a>两种方式：1、使用+号连接；2、使用str.join()做字符串连接</h4><pre><code>s1=&quot;123&quot;
-s2=&quot;456&quot;
-s1 + s2
-&quot;&quot;.join([&apos;123&apos;, &apos;444&apos;])
-array = [111, &quot;2323&quot;, dd, &quot;pp&quot;]
-&apos;:&apos;.join(str(x) for x in array)
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052502" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/25/2017052502/" class="article-date">
-  	<time datetime="2017-05-25T14:57:44.000Z" itemprop="datePublished">2017-05-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/2017052502/">python 4-3如何调整字符串中文本的格式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组"><a href="#读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组" class="headerlink" title="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组"></a>读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组</h4><pre><code>file = open(&quot;./catalina.2016-11-02.log&quot;).read()    
-import re 
-result = re.sub(r&apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&apos;, r&apos;\2,\1,\5:\4:\3&apos;, file)
-result = re.sub(r&apos;(?P&lt;day&gt;\d{2}), (?P&lt;year&gt;\d{4}) (?P&lt;hour&gt;\d{2}):(?P&lt;minute&gt;\d{2}):(?P&lt;second&gt;\d{2})&apos;, r&apos;\g&lt;year&gt;,\g&lt;day&gt;,\g&lt;second&gt;:\g&lt;minute&gt;:\g&lt;hour&gt;&apos;, file)
-print(result)
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
