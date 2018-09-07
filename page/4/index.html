@@ -189,6 +189,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017061401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/14/2017061401/" class="article-date">
+  	<time datetime="2017-06-14T00:25:07.000Z" itemprop="datePublished">2017-06-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/14/2017061401/">android生成jni的c++部分的坑(集成openssl)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="jni里集成openssl，最好在build-gradle做些处理"><a href="#jni里集成openssl，最好在build-gradle做些处理" class="headerlink" title="jni里集成openssl，最好在build.gradle做些处理"></a>jni里集成openssl，最好在build.gradle做些处理</h4><pre><code>sourceSets.main {
+        jni.srcDirs = []
+        jniLibs.srcDir &apos;src/main/jniLibs&apos;
+    }
+</code></pre><h4 id="在android-mk写个dir指向自定义文件夹jniLibs"><a href="#在android-mk写个dir指向自定义文件夹jniLibs" class="headerlink" title="在android.mk写个dir指向自定义文件夹jniLibs"></a>在android.mk写个dir指向自定义文件夹jniLibs</h4><pre><code>NDK_APP_DST_DIR := ../jniLibs/$(TARGET_ARCH_ABI)
+</code></pre><h4 id="c-语法处理部分细节坑"><a href="#c-语法处理部分细节坑" class="headerlink" title="c++语法处理部分细节坑"></a>c++语法处理部分细节坑</h4><pre><code>1、记得无论什么时候，都要对数组初始化，不然多余的数值会对调试生成影响
+memset(a, 0x00, sizeof(a));
+
+2、对字符数组求长度的时候，在c++里遇到0x00或者’\0’的时候strlen会提前结束，导致错误的输出，这点在调试过程中是个问题
+strlen(a)
+
+3、记得字符数组转成16进制后再输出，原因就是字符有些是不可见的
+
+4、从其他地方接收的参数如果是16进制的字符串，记得先转成10进制的字符数组，再参与计算
+
+5、使用PEM_read_bio_PrivateKey可以读取rsa的私钥，而PEM_read_bio_RsaPrivateKey也可以读，不过是两个不同的结果，两种key的类型可以互转
+EVP_PKEY_get1_RSA 
+EVP_PKEY_set1_RSA
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017060201" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -752,55 +820,6 @@ chain串行的输出是
 8
 7
 6
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052303" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/23/2017052303/" class="article-date">
-  	<time datetime="2017-05-23T14:18:36.000Z" itemprop="datePublished">2017-05-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>title: python 2-5如何对迭代器做切片操作<br>date: 2017-05-23 22:18:36<br>tags:<br>—</p>
-<h4 id="使用islice来让迭代器支持切片操作，节省资源，不用一次性读完全部"><a href="#使用islice来让迭代器支持切片操作，节省资源，不用一次性读完全部" class="headerlink" title="使用islice来让迭代器支持切片操作，节省资源，不用一次性读完全部"></a>使用islice来让迭代器支持切片操作，节省资源，不用一次性读完全部</h4><pre><code>from itertools import islice
-l = range(1, 21)
-for x in  l:
-   ...:     print(x)
-t = iter(l)
-for x in islice(t, 5, 10): 
-    ...:    print(x)
-for x in t:
-    ...:     print(x)
 </code></pre>
       
     </div>

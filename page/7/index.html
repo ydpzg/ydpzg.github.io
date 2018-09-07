@@ -189,6 +189,58 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016120801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/08/2016120801/" class="article-date">
+  	<time datetime="2016-12-08T06:32:58.000Z" itemprop="datePublished">2016-12-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/08/2016120801/">adb模拟点击某个坐标</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>adb shell input tap 1000 130<br>模拟点击，x， y</p>
+<p>开发者选项-》指针位置-》可以看某个点的x，y</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016120202" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -825,97 +877,6 @@ result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{
         }
     }
 }
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016091101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/11/2016091101/" class="article-date">
-  	<time datetime="2016-09-11T06:28:54.000Z" itemprop="datePublished">2016-09-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/11/2016091101/">【开发笔记】高德地图在fragment使用时切换时会黑屏</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction-replace-int-fragment-切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。"><a href="#背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction-replace-int-fragment-切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。" class="headerlink" title="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。"></a>背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。</h1></blockquote>
-<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>1.使用两个FrameLayout</p>
-<p>在activity里使用两个FrameLayout容器，一个叫地图FrameLayout，一个叫普通FrameLayout，有map view的放到地图FrameLayout里面去，统一管理。<br>每次切换的时候先fragment所在的FrameLayout容器先gone掉，再去remove 掉具体的fragment。这时，耗时的ui操作在后台进行，所以就不会看到黑屏的存在，但是，还是有点耗时的时间存在，导致屏幕会有点卡顿。<br>结果是良好的，fragment的生命周期不变。</p>
-<pre><code>BaseFragment mLastBaseFragment;
-// 根据fragment实例去切换activity里的fragment
-public void changeFragment(BaseFragment fragment) {
-    FragmentTransaction fragmentTransaction = fm.beginTransaction();
-    if (mLastBaseFragment != fragment) {
-        if (fragment instanceof MapFragment) { // 区别是不是地图fragment单独处理
-            frameLayout.setVisibility(View.GONE);
-            mapFrameLayout.setVisibility(View.VISIBLE);
-            fragmentTransaction.replace(R.id.mapFrameLayout, fragment);
-        } else {
-            frameLayout.setVisibility(View.VISIBLE);
-            mapFrameLayout.setVisibility(View.GONE);
-            fragmentTransaction.replace(R.id.frameLayout, fragment);
-        }
-        if (mLastBaseFragment != null) {
-            fragmentTransaction.remove(mLastBaseFragment);
-        }
-        fragmentTransaction.commit();
-        mLastBaseFragment = fragment;
-    }
-}
-</code></pre><p>2.将fragment的切换从replace环城show和hide</p>
-<p>使用show和hide，黑屏不见了，原理就是这时fragment不会每次都被重新创建了。但是fragment的生命周期就乱了，具体表现为没有onResume和onPause，这时使用手动的方式模拟这两个fragment.setUserVisibleHint（true), 实际上setUserVisibleHint在fragment与view pager共用的时候才会被调用。</p>
-<pre><code>FragmentTransaction fragmentTransaction = fm.beginTransaction();
-Fragment fragment = fm.findFragmentByTag(type + &quot;&quot;);
-if (mCurFragment != null) {
-    fragmentTransaction.hide(mCurFragment);
-    mCurFragment.setUserVisibleHint(false);
-}
-if (fragment == null) {
-    fragmentTransaction.add(R.id.frameLayout, list.get(type), type + &quot;&quot;);
-} else {
-    fragmentTransaction.show(fragment);
-}
-fragment.setUserVisibleHint(true);
-mCurFragment = list.get(type);
-fragmentTransaction.commit();
 </code></pre>
       
     </div>
