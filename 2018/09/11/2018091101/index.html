@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2018/7 | dukelight&#39;s home</title>
+  <title>Charles将指定的请求改为固定返回值,开发调试专用 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/2018/07/index.html">
+  <meta name="description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。
+
+12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Charles将指定的请求改为固定返回值,开发调试专用">
+<meta property="og:url" content="http://ydpzg.github.io/2018/09/11/2018091101/index.html">
 <meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。
+
+12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
+<meta property="og:updated_time" content="2018-09-11T09:41:12.910Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="Charles将指定的请求改为固定返回值,开发调试专用">
+<meta name="twitter:description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。
+
+12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -187,76 +197,111 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2018091101" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/05/2018070501/" class="archive-article-date">
-  	<time datetime="2018-07-05T04:04:01.000Z" itemprop="datePublished">Jul 5</time>
+    <div class="article-meta">
+      <a href="/2018/09/11/2018091101/" class="article-date">
+  	<time datetime="2018-09-11T09:37:01.000Z" itemprop="datePublished">2018-09-11</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/05/2018070501/">命令行让gradle下载新的库的奇怪问题</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Charles将指定的请求改为固定返回值,开发调试专用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>####看了之后 <a href="https://blog.csdn.net/u014115673/article/details/54984084" target="_blank" rel="external">https://blog.csdn.net/u014115673/article/details/54984084</a> 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。</p>
+</blockquote>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">方法一：本地映射</div><div class="line">Charles进行抓包</div><div class="line">选择某一个网络请求 &gt; 鼠标右键 <span class="keyword">Save</span> Response...</div><div class="line">如果该请求返回的是一个json串，保存文件时需要保存<span class="keyword">rename</span>.json</div><div class="line">需要更改的请求点击右键 Map <span class="keyword">Local</span>.. 指定到本地保存的<span class="keyword">renam</span>.json.</div><div class="line">通过在本地更改<span class="keyword">rename</span>.json就可以自动的更改请求的返回值。</div><div class="line"></div><div class="line">方法二：打断点</div><div class="line">选择某一个网络请求 &gt; 鼠标右键 Breakpoints</div><div class="line">然后点击 Execute 执行，然后编辑返回值 </div><div class="line">缺点：容易请求超时。还没等你调整完返回数据，<span class="keyword">app</span>那边已经请求超时了。</div><div class="line"></div><div class="line">方法三：远端映射</div><div class="line">将<span class="keyword">App</span>内部的请求映射到远端写好的接口。推荐一个东东 Mocky：http:<span class="comment">//www.mocky.io/。</span></div><div class="line"></div><div class="line">方法四：rewrite</div><div class="line">菜单栏 Tools —&gt; Rewrite</div><div class="line">根据自己的需求重写…。 </div><div class="line">推荐网址：http:<span class="comment">//www.cnblogs.com/wonyun/p/5586746.html</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/09/22/2018092201/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          gradle-wrapper.properties设置gradle 4.4报错 Connect to d29vzk4ow07wi7.cloudfront.net:443 xxx
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/07/20180900701/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">aspectj接入后发现一些问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/01/2018070101/" class="archive-article-date">
-  	<time datetime="2018-06-30T16:30:30.000Z" itemprop="datePublished">Jul 1</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/01/2018070101/">kotlin androidstudio Function main not found in class Main</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-    
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2018091101" data-title="Charles将指定的请求改为固定返回值,开发调试专用" data-url="http://ydpzg.github.io/2018/09/11/2018091101/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -291,8 +336,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
