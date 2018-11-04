@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | dukelight&#39;s home</title>
+  <title>dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/page/2/index.html">
+<meta property="og:url" content="http://ydpzg.github.io/page/10/index.html">
 <meta property="og:site_name" content="dukelight's home">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dukelight's home">
@@ -189,295 +189,86 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2015/06/26/2015062601/" class="article-date">
+  	<time datetime="2015-06-26T07:01:04.000Z" itemprop="datePublished">2015-06-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/26/2015062601/">使用hexo搭建博客平台，记录过程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-在github上创建一个Repository-名字为xx-github-io"><a href="#1-在github上创建一个Repository-名字为xx-github-io" class="headerlink" title="1. 在github上创建一个Repository,名字为xx.github.io"></a>1. 在github上创建一个Repository,名字为xx.github.io</h4><pre><code>Repository 的地址就是 http://www.github.com/id/id.github.io.git
+</code></pre><h4 id="2-配置ssh-keys"><a href="#2-配置ssh-keys" class="headerlink" title="2. 配置ssh keys"></a>2. 配置ssh keys</h4><p>打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下</p>
+<pre><code>ssh -T git@github.com
+</code></pre><h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h4><pre><code>npm install -g hexo
+</code></pre><p>新建一个文件夹来保存<br>    hexo init<br>    npm install</p>
+<p>安装好后，就可以开始了<br>    hexo generate  //可以简写为 hexo g<br>    hexo server    //可以简写为 hexo s</p>
+<p>在浏览器中输入 localhost:4000 查看本地博客    </p>
+<h4 id="4-部署到github上去"><a href="#4-部署到github上去" class="headerlink" title="4. 部署到github上去"></a>4. 部署到github上去</h4><pre><code>npm install hexo-deployer-git --save
+</code></pre><p>打开hexo文件夹的_config.yml ，文件拉到最后，设置deploy的type为git，repository为：<a href="https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）" target="_blank" rel="external">https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）</a> </p>
+<pre><code>hexo g
+hexo deploy    //可简写为 hexo d
+</code></pre><h4 id="5-开始用hexo写文章"><a href="#5-开始用hexo写文章" class="headerlink" title="5. 开始用hexo写文章"></a>5. 开始用hexo写文章</h4><p>hexo博客目录里的source/_posts就是放文章的（使用markdown语法编写）,格式是xx.md</p>
+<pre><code>hexo new post &quot;first article&quot;   
+</code></pre><p>会创建一个叫first article.md的文件（使用markdown语法），使用macdown打开找个文件，然后就可以开始写文章，写完后打命令</p>
+<pre><code>hexo g
+hexo s
+hexo d
+</code></pre><h4 id="6-关于文章中的图片问题"><a href="#6-关于文章中的图片问题" class="headerlink" title="6. 关于文章中的图片问题"></a>6. 关于文章中的图片问题</h4><pre><code>使用七牛云存储来保存图片，并换取图片外链. (http://www.qiniu.com)
+</code></pre><blockquote>
+<p>ps: 使用hexo的第三方theme，看起来不错的主题 hexo-theme-yilia，部署后就么么哒~~<br><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github-自搭建/">hexo github 自搭建</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/13/2018081301/" class="archive-article-date">
-  	<time datetime="2018-08-12T16:18:16.000Z" itemprop="datePublished">Aug 13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/13/2018081301/">cocos2d demo把跳转activity报错</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
   </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/06/2018080602/" class="archive-article-date">
-  	<time datetime="2018-08-06T09:54:19.000Z" itemprop="datePublished">Aug 6</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/06/2018080602/">上传到maven</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/05/2018080601/" class="archive-article-date">
-  	<time datetime="2018-08-05T09:36:44.000Z" itemprop="datePublished">Aug 5</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/05/2018080601/">kotlin实践</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/2018080201/" class="archive-article-date">
-  	<time datetime="2018-08-02T12:31:24.000Z" itemprop="datePublished">Aug 2</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/2018080201/">android悬浮窗</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/05/2018070501/" class="archive-article-date">
-  	<time datetime="2018-07-05T04:04:01.000Z" itemprop="datePublished">Jul 5</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/05/2018070501/">命令行让gradle下载新的库的奇怪问题</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/01/2018070101/" class="archive-article-date">
-  	<time datetime="2018-06-30T16:30:30.000Z" itemprop="datePublished">Jul 1</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/01/2018070101/">kotlin androidstudio Function main not found in class Main</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/26/2018062601/" class="archive-article-date">
-  	<time datetime="2018-06-26T02:00:11.000Z" itemprop="datePublished">Jun 26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/26/2018062601/">如何实现域名转发</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/2018062502/" class="archive-article-date">
-  	<time datetime="2018-06-25T06:57:38.000Z" itemprop="datePublished">Jun 25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/2018062502/">更新gradle插件后的出错</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/25/2018062501/" class="archive-article-date">
-  	<time datetime="2018-06-25T03:09:33.000Z" itemprop="datePublished">Jun 25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/25/2018062501/">编译出现Error:In \&lt;declare-styleable\&gt; FontFamilyFont, unable to find</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/2018053101/" class="archive-article-date">
-  	<time datetime="2018-05-31T02:33:40.000Z" itemprop="datePublished">May 31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/2018053101/">MpAndroidChart的使用心得</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
-  
-
-    
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
     </nav>
   
-
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
@@ -510,9 +301,9 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ios storyboard的入门 | dukelight&#39;s home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0、如何让storyboard的ViewController控件绑定代码的ViewController
+12在storyboard里面创建了一个ViewController后，要在代码那边创建一个自定义Controller去继承UIViewController，然后在storyboard里面选择对应的custom class为自定义Controller，就可以完成关联
+1、如何让storyboar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ios storyboard的入门">
+<meta property="og:url" content="http://ydpzg.github.io/2018/10/14/2018101401/index.html">
+<meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="0、如何让storyboard的ViewController控件绑定代码的ViewController
+12在storyboard里面创建了一个ViewController后，要在代码那边创建一个自定义Controller去继承UIViewController，然后在storyboard里面选择对应的custom class为自定义Controller，就可以完成关联
+1、如何让storyboar">
+<meta property="og:updated_time" content="2018-10-29T16:59:31.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ios storyboard的入门">
+<meta name="twitter:description" content="0、如何让storyboard的ViewController控件绑定代码的ViewController
+12在storyboard里面创建了一个ViewController后，要在代码那边创建一个自定义Controller去继承UIViewController，然后在storyboard里面选择对应的custom class为自定义Controller，就可以完成关联
+1、如何让storyboar">
+  
+    <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7vzq3x.com1.z0.glb.clouddn.com/33342.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">dukelight</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://www.github.com/ydpzg" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Activity-intent-flag/" style="font-size: 10px;">Activity intent flag</a> <a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/cordova-plugin/" style="font-size: 10px;">cordova plugin</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/usb/" style="font-size: 10px;">usb</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/印象笔记/" style="font-size: 10px;">印象笔记</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.baidu.com/">百度</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://keeganlee.me/">Keegan小钢</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.gitbook.com/book/dodola/gitbook/details">dodola&#39;s Gitbook</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wuxiaolong.me/">吴小龙同學</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一个移动领域的攻城师，一个初出茅庐的小子，小余同学，这就是我。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">dukelight</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7vzq3x.com1.z0.glb.clouddn.com/33342.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">dukelight</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://www.github.com/ydpzg" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2018101401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/14/2018101401/" class="article-date">
+  	<time datetime="2018-10-14T05:44:42.000Z" itemprop="datePublished">2018-10-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ios storyboard的入门
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>0、如何让storyboard的ViewController控件绑定代码的ViewController</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">在storyboard里面创建了一个ViewController后，要在代码那边创建一个</div><div class="line">自定义Controller去继承UIViewController，然后在storyboard里面选择对应的custom <span class="class"><span class="keyword">class</span>为自定义<span class="title">Controller</span>，就可以完成关联</span></div></pre></td></tr></table></figure>
+<p>1、如何让storyboard与代码进行事件交互。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">在storyboard里拉出一个label和一个button，然后屏幕调出来两个界面，一个storyboard，一个controller的代码框</div><div class="line">选中storyboard里的label，右键按住，拉到代码框的<span class="variable">@interface</span> <span class="variable">@end</span>中间，就会出现label的定义</div><div class="line">选中storyboard里的button，右键按住，拉到代码框的<span class="variable">@implementation</span> <span class="variable">@end</span>中间，就会出现button的事件定义</div></pre></td></tr></table></figure>
+<p>1、出现Launch screens may not set custom classnames问题</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">图中所画的不要打勾</div><div class="line">!<span class="selector-attr">[]</span>(<span class="attribute">http</span>:<span class="comment">//pd4ketimy.bkt.clouddn.com/15394960479910.jpg)</span></div></pre></td></tr></table></figure>
+<p>4、如何设定storyboard的入口</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">在storyborad的viewController里面设置，如下图，红色那个选项打勾</div><div class="line">!<span class="selector-attr">[]</span>(<span class="attribute">http</span>:<span class="comment">//pd4ketimy.bkt.clouddn.com/15394966538273.jpg)</span></div></pre></td></tr></table></figure>
+<p>5、多个storyBoard，怎么设置特定的storyBoard<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">项目-&gt;<span class="function"><span class="title">info</span>.plist-&gt;</span>Main storyboard file base <span class="keyword">name</span> 设置为指定的storyBoard即可</div></pre></td></tr></table></figure></p>
+<p>6、使用storyBoard生成viewController，关联viewController后，代码pushViewController 黑屏</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">SecondController *controller = [[SecondController alloc]init];</div><div class="line">[self.navigationController <span class="string">pushViewController:</span>controller <span class="string">animated:</span>YES];</div><div class="line"></div><div class="line">使用storyBoard创建的时候已经有了一个viewController实例，不应该在代码里再alloc init另外一个controller，解决方案就是要去storyBoard里面把viewController拿出来</div><div class="line"></div><div class="line"> UIStoryboard *main =[UIStoryboard <span class="string">storyboardWithName:</span>@<span class="string">"LaunchScreen"</span> <span class="string">bundle:</span>nil];</div><div class="line">    SecondController *b = [main <span class="string">instantiateViewControllerWithIdentifier:</span>@<span class="string">"SecondController"</span>];</div><div class="line">    [self.navigationController <span class="string">pushViewController:</span>b <span class="string">animated:</span>YES];</div></pre></td></tr></table></figure>
+<p>7、回调的使用，<br>block<br>定义typeof<br>方法里面写</p>
+<p>8、cocopad的安装使用</p>
+<p>9、当改用cocoapods来管理依赖，<br>编译的时候提示 “ objc ld: library not found for -lPods”<br>这是因为打开的方式不对<br>之前打开的是.xcodeproj<br>用cocoapods后打开的是.xcworkspace</p>
+<p>target -&gt; Build Phases -&gt; Link Binary With Libraries -&gt; 添加.a文件</p>
+<p>10、数据库fmdb-&gt;orm</p>
+<p>11、UITable的使用</p>
+<p>12、storyboard使用xib的自定义view<br>新建一个.h .m文件叫ItemView<br>新建一个.xib文件叫ItemView<br>在xib文件里，设置view customView为空 设置file’s Owner的custionView为ItemView<br>storyboard里拖出一个UIview，custom class指向ItemView<br>在ItemView.m里添加<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIView</span> *view;</div><div class="line"></div><div class="line"><span class="comment">// 初始化CustomView的时候添加xib上的view</span></div><div class="line">- (<span class="keyword">instancetype</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder &#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithCoder:aDecoder];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>)&#123;</div><div class="line">        [<span class="keyword">self</span> addSubview:<span class="keyword">self</span>.view];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 获取xib中的view</span></div><div class="line">- (<span class="built_in">UIView</span> *)view&#123;</div><div class="line">    <span class="keyword">if</span> (!_view) &#123;</div><div class="line">        _view = [[<span class="built_in">NSBundle</span> mainBundle] loadNibNamed:<span class="string">@"ItemView"</span> owner:<span class="keyword">self</span> options:<span class="literal">nil</span>].lastObject;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> _view;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)layoutSubviews&#123;</div><div class="line">    [<span class="keyword">super</span> layoutSubviews];</div><div class="line">    <span class="comment">//设置大小</span></div><div class="line">    <span class="keyword">self</span>.view.frame = <span class="keyword">self</span>.bounds;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>13、给非UiButton的控件加点击事件<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="name">_mIBSetDeviceTime</span> setUserInteractionEnabled:YES]<span class="comment">;</span></div><div class="line">    [<span class="name">_mIBSetDeviceTime</span> addGestureRecognizer:[[<span class="name">UITapGestureRecognizer</span> alloc]initWithTarget:self action:@selector(<span class="name">clickCategory:</span>)]]<span class="comment">;</span></div><div class="line"></div><div class="line">-(<span class="name">void</span>)clickCategory:(<span class="name">UITapGestureRecognizer</span> *)gestureRecognizer &#123;</div><div class="line">    if ([<span class="name">gestureRecognizer</span> view] == _mIBSetDeviceTime) &#123;</div><div class="line">        NSLog(<span class="name">@</span><span class="string">"_mIBSetDeviceTime"</span>)<span class="comment">;//判断是哪个控件的点击</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/15/2018101501/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          项目升级android P注意点点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/29/2018092901/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">模块化</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2018101401" data-title="ios storyboard的入门" data-url="http://ydpzg.github.io/2018/10/14/2018101401/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 dukelight
+    	</div>
+      	<div class="footer-right">
+      		<span id="busuanzi_container_site_uv">
+          本站访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+          <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>       
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
