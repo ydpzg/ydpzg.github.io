@@ -189,6 +189,118 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-20180110802" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/08/20180110802/" class="article-date">
+  	<time datetime="2018-11-08T06:20:55.000Z" itemprop="datePublished">2018-11-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/08/20180110802/">移动base类</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>会涉及到通信，数据中心，网络，一些公共调用方法</p>
+<p>网络改造，涉及到baseModel 里面的retrofitService<br>注入需要改成baseHttpService，<br>httpHelper也要返回封装的baseHttpService</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-20180110801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/08/20180110801/" class="article-date">
+  	<time datetime="2018-11-08T04:09:02.000Z" itemprop="datePublished">2018-11-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/08/20180110801/">ARouter的坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP</p>
+<p>FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。</p>
+<p>在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP）<br>  withFlags 只用一次</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ARouter</span><span class="selector-class">.getInstance</span>()<span class="selector-class">.build</span>(<span class="selector-tag">ARouterPathType</span><span class="selector-class">.MainActivity</span>)</div><div class="line">                        <span class="selector-class">.withFlags</span>(<span class="selector-tag">Intent</span><span class="selector-class">.FLAG_ACTIVITY_CLEAR_TOP</span>)</div><div class="line">                        <span class="selector-class">.navigation</span>(<span class="selector-tag">this</span>);</div></pre></td></tr></table></figure>
+<p>当出现<br>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation();</p>
+<p>会报错<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Caused <span class="keyword">by</span>: android.util.AndroidRuntimeException: Calling startActivity() <span class="built_in">from</span> outside <span class="keyword">of</span> <span class="keyword">an</span> Activity  context requires <span class="keyword">the</span> FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?</div></pre></td></tr></table></figure></p>
+<p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation(this);<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效 建议使用这种</p>
+<p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)<br>.navigation();<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Autowired</span>(name = OpenSourceARouter.DataSetService)</div><div class="line"><span class="variable">@JvmField</span></div><div class="line">internal var <span class="attribute">dataSetService</span>: DataSetService? = null</div></pre></td></tr></table></figure>
+<p>kotlin使用注解要用@jvmField不然会报private不能注解的错误 </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2018110501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -399,6 +511,8 @@
 <p>11、UITable的使用</p>
 <p>12、storyboard使用xib的自定义view<br>新建一个.h .m文件叫ItemView<br>新建一个.xib文件叫ItemView<br>在xib文件里，设置view customView为空 设置file’s Owner的custionView为ItemView<br>storyboard里拖出一个UIview，custom class指向ItemView<br>在ItemView.m里添加<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIView</span> *view;</div><div class="line"></div><div class="line"><span class="comment">// 初始化CustomView的时候添加xib上的view</span></div><div class="line">- (<span class="keyword">instancetype</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder &#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithCoder:aDecoder];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>)&#123;</div><div class="line">        [<span class="keyword">self</span> addSubview:<span class="keyword">self</span>.view];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 获取xib中的view</span></div><div class="line">- (<span class="built_in">UIView</span> *)view&#123;</div><div class="line">    <span class="keyword">if</span> (!_view) &#123;</div><div class="line">        _view = [[<span class="built_in">NSBundle</span> mainBundle] loadNibNamed:<span class="string">@"ItemView"</span> owner:<span class="keyword">self</span> options:<span class="literal">nil</span>].lastObject;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> _view;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)layoutSubviews&#123;</div><div class="line">    [<span class="keyword">super</span> layoutSubviews];</div><div class="line">    <span class="comment">//设置大小</span></div><div class="line">    <span class="keyword">self</span>.view.frame = <span class="keyword">self</span>.bounds;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>13、给非UiButton的控件加点击事件<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="name">_mIBSetDeviceTime</span> setUserInteractionEnabled:YES]<span class="comment">;</span></div><div class="line">    [<span class="name">_mIBSetDeviceTime</span> addGestureRecognizer:[[<span class="name">UITapGestureRecognizer</span> alloc]initWithTarget:self action:@selector(<span class="name">clickCategory:</span>)]]<span class="comment">;</span></div><div class="line"></div><div class="line">-(<span class="name">void</span>)clickCategory:(<span class="name">UITapGestureRecognizer</span> *)gestureRecognizer &#123;</div><div class="line">    if ([<span class="name">gestureRecognizer</span> view] == _mIBSetDeviceTime) &#123;</div><div class="line">        NSLog(<span class="name">@</span><span class="string">"_mIBSetDeviceTime"</span>)<span class="comment">;//判断是哪个控件的点击</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>14、fragment如果要使用kotlin的 apply plugin: ‘kotlin-android-extensions’</p>
+<p>那么必须放在onActivityCreated后才能生效<br>onCreateView里面的是为空的</p>
 
       
     </div>
@@ -455,6 +569,8 @@
 <li>吧utils，constant，公共方法按照module分离，放在该在的模块内，注意通信机制，注意引用</li>
 <li>注意在module中id不是final，switch（id）改成if else，而butterknife要用R2.id.xxx, apply plugin: ‘com.jakewharton.butterknife’</li>
 <li>aroute 里面的path在不同的module要写成不一样的module方式，比如/app/a,/module/bkugo</li>
+<li>apply plugin: ‘com.alibaba.arouter’</li>
+<li>app是否有引用具体的module</li>
 <li>Constant，Eventbus，startActivity</li>
 </ol>
 
@@ -641,122 +757,6 @@
 
 
   
-    <article id="post-20180900701" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/07/20180900701/" class="article-date">
-  	<time datetime="2018-09-07T07:19:01.000Z" itemprop="datePublished">2018-09-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/07/20180900701/">aspectj接入后发现一些问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h3 id="android-aop切面使用aspectj在混淆方面发现比较麻烦的事情"><a href="#android-aop切面使用aspectj在混淆方面发现比较麻烦的事情" class="headerlink" title="android aop切面使用aspectj在混淆方面发现比较麻烦的事情"></a>android aop切面使用aspectj在混淆方面发现比较麻烦的事情</h3></blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">在每一个被hook的文件生成类似下列的代码</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> b ajc$tjp_0 = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">static</span> &#123;</div><div class="line">        ajc$preClinit();</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> void ajc$preClinit() &#123;</div><div class="line">        e eVar = <span class="keyword">new</span> e(<span class="string">"DialogUtils.java"</span>, DialogUtils.class);</div><div class="line">        ajc$tjp_0 = eVar.a(c.a, eVar.a(<span class="string">"9"</span>, <span class="string">"showYesterdayEarningPopup"</span>, <span class="string">"com.kalengo.loan.utils.DialogUtils"</span>, <span class="string">"android.app.Activity:boolean:com.kalengo.loan.bean.UserAssetsInfoBean"</span>, <span class="string">"activity:isNewUser:userAssetsInfoBean"</span>, <span class="string">""</span>, <span class="string">"void"</span>), <span class="number">83</span>);</div><div class="line">        ajc$tjp_1 = eVar.a(c.a, eVar.a(<span class="string">"9"</span>, <span class="string">"showSimpleTipsPopup"</span>, <span class="string">"com.kalengo.loan.utils.DialogUtils"</span>, <span class="string">"android.app.Activity:int:com.kalengo.loan.callback.DoCallback"</span>, <span class="string">"activity:type:callBack"</span>, <span class="string">""</span>, <span class="string">"void"</span>), Opcodes.I2C);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">在被hook的方法插入：</div><div class="line">KAspect.aspectOf().onDialogUtilsMethod(e.a(ajc$tjp_3, <span class="keyword">null</span>, <span class="keyword">null</span>, context));</div></pre></td></tr></table></figure>
-<p>####由此可见，被hook的方法和被hook的类是不能被混淆的，虽然aspectj是编译期间做的植入，但是为了不嵌入代码，使用了反射的方式，这导致混淆会有一定影响。</p>
-<p>后面不打开混淆来检查是否是这样的方式，从代码的跳转看有没有可能直接指定植入代码，否则调研其他aop框架</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018081801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/18/2018081801/" class="article-date">
-  	<time datetime="2018-08-18T04:16:06.000Z" itemprop="datePublished">2018-08-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/18/2018081801/">关于友盟event不能批量处理中文event的问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="友盟https-gateway-open-umeng-com-不能传中文"><a href="#友盟https-gateway-open-umeng-com-不能传中文" class="headerlink" title="友盟https://gateway.open.umeng.com/ 不能传中文"></a>友盟<a href="https://gateway.open.umeng.com/" target="_blank" rel="external">https://gateway.open.umeng.com/</a> 不能传中文</h1></blockquote>
-<ul>
-<li>经过测试，企业的openapi文档可以，<a href="http://api.umeng.com/" target="_blank" rel="external">http://api.umeng.com/</a></li>
-</ul>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">auth_token认证</div><div class="line"><span class="keyword">POST</span> http:<span class="comment">//api.umeng.com/authorize</span></div><div class="line"></div><div class="line">创建事件 <span class="built_in">Group</span></div><div class="line"><span class="keyword">POST</span> /events</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>事件添加网页也可以传eventid中文</li>
-</ul>
-<p><img src="http://pd4ketimy.bkt.clouddn.com/15362247455411.jpg" alt=""></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -770,7 +770,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 dukelight
+    		&copy; 2019 dukelight
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_uv">

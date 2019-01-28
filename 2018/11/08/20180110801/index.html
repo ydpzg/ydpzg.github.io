@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python 2-1如何在列表, 字典, 集合中根据条件筛选数据 | dukelight&#39;s home</title>
+  <title>ARouter的坑 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="列表d = [randint(-10, 10) for _ in range(10)][x for x in d if x &amp;gt;= 0]
-字典dd = {x:randint(60, 100) for x in range(1, 21)}{k:v for k, v in dd.items() if v &amp;gt;= 95}
-集合s = set(d){x for x in s if x &amp;gt;=">
+  <meta name="description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP
+FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。
+在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 2-1如何在列表, 字典, 集合中根据条件筛选数据">
-<meta property="og:url" content="http://ydpzg.github.io/2017/05/16/2017051601/index.html">
+<meta property="og:title" content="ARouter的坑">
+<meta property="og:url" content="http://ydpzg.github.io/2018/11/08/20180110801/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="列表d = [randint(-10, 10) for _ in range(10)][x for x in d if x &amp;gt;= 0]
-字典dd = {x:randint(60, 100) for x in range(1, 21)}{k:v for k, v in dd.items() if v &amp;gt;= 95}
-集合s = set(d){x for x in s if x &amp;gt;=">
-<meta property="og:updated_time" content="2017-05-16T00:27:29.000Z">
+<meta property="og:description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP
+FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。
+在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
+<meta property="og:updated_time" content="2019-01-18T08:06:36.589Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 2-1如何在列表, 字典, 集合中根据条件筛选数据">
-<meta name="twitter:description" content="列表d = [randint(-10, 10) for _ in range(10)][x for x in d if x &amp;gt;= 0]
-字典dd = {x:randint(60, 100) for x in range(1, 21)}{k:v for k, v in dd.items() if v &amp;gt;= 95}
-集合s = set(d){x for x in s if x &amp;gt;=">
+<meta name="twitter:title" content="ARouter的坑">
+<meta name="twitter:description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP
+FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。
+在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -197,11 +197,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2017051601" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20180110801" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/05/16/2017051601/" class="article-date">
-  	<time datetime="2017-05-16T00:21:16.000Z" itemprop="datePublished">2017-05-16</time>
+      <a href="/2018/11/08/20180110801/" class="article-date">
+  	<time datetime="2018-11-08T04:09:02.000Z" itemprop="datePublished">2018-11-08</time>
 </a>
     </div>
   
@@ -214,7 +214,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      python 2-1如何在列表, 字典, 集合中根据条件筛选数据
+      ARouter的坑
     </h1>
   
 
@@ -230,9 +230,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>列表<br>d = [randint(-10, 10) for _ in range(10)]<br>[x for x in d if x &gt;= 0]</p>
-<p>字典<br>dd = {x:randint(60, 100) for x in range(1, 21)}<br>{k:v for k, v in dd.items() if v &gt;= 95}</p>
-<p>集合<br>s = set(d)<br>{x for x in s if x &gt;= 0}</p>
+        <p>navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP</p>
+<p>FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。</p>
+<p>在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP）<br>  withFlags 只用一次</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ARouter</span><span class="selector-class">.getInstance</span>()<span class="selector-class">.build</span>(<span class="selector-tag">ARouterPathType</span><span class="selector-class">.MainActivity</span>)</div><div class="line">                        <span class="selector-class">.withFlags</span>(<span class="selector-tag">Intent</span><span class="selector-class">.FLAG_ACTIVITY_CLEAR_TOP</span>)</div><div class="line">                        <span class="selector-class">.navigation</span>(<span class="selector-tag">this</span>);</div></pre></td></tr></table></figure>
+<p>当出现<br>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation();</p>
+<p>会报错<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Caused <span class="keyword">by</span>: android.util.AndroidRuntimeException: Calling startActivity() <span class="built_in">from</span> outside <span class="keyword">of</span> <span class="keyword">an</span> Activity  context requires <span class="keyword">the</span> FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?</div></pre></td></tr></table></figure></p>
+<p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation(this);<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效 建议使用这种</p>
+<p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)<br>.navigation();<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Autowired</span>(name = OpenSourceARouter.DataSetService)</div><div class="line"><span class="variable">@JvmField</span></div><div class="line">internal var <span class="attribute">dataSetService</span>: DataSetService? = null</div></pre></td></tr></table></figure>
+<p>kotlin使用注解要用@jvmField不然会报private不能注解的错误 </p>
 
       
     </div>
@@ -242,18 +249,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/05/16/2017051601-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/08/20180110802/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          python 2-2如何为元组中的每个元素命名, 提高程序可读性
+          移动base类
         
       </div>
     </a>
   
   
-    <a href="/2017/03/22/2017032201/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">xutils使用post上传base64图片的时候的问题</div>
+    <a href="/2018/11/04/2018110501/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ios os工程调用swift方法</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -282,7 +289,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017051601" data-title="python 2-1如何在列表, 字典, 集合中根据条件筛选数据" data-url="http://ydpzg.github.io/2017/05/16/2017051601/"></div>
+	<div class="ds-thread" data-thread-key="20180110801" data-title="ARouter的坑" data-url="http://ydpzg.github.io/2018/11/08/20180110801/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

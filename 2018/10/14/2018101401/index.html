@@ -15,7 +15,7 @@
 <meta property="og:description" content="0、如何让storyboard的ViewController控件绑定代码的ViewController
 12在storyboard里面创建了一个ViewController后，要在代码那边创建一个自定义Controller去继承UIViewController，然后在storyboard里面选择对应的custom class为自定义Controller，就可以完成关联
 1、如何让storyboar">
-<meta property="og:updated_time" content="2018-10-29T16:59:31.690Z">
+<meta property="og:updated_time" content="2019-01-18T09:21:18.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ios storyboard的入门">
 <meta name="twitter:description" content="0、如何让storyboard的ViewController控件绑定代码的ViewController
@@ -249,6 +249,8 @@
 <p>11、UITable的使用</p>
 <p>12、storyboard使用xib的自定义view<br>新建一个.h .m文件叫ItemView<br>新建一个.xib文件叫ItemView<br>在xib文件里，设置view customView为空 设置file’s Owner的custionView为ItemView<br>storyboard里拖出一个UIview，custom class指向ItemView<br>在ItemView.m里添加<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIView</span> *view;</div><div class="line"></div><div class="line"><span class="comment">// 初始化CustomView的时候添加xib上的view</span></div><div class="line">- (<span class="keyword">instancetype</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder &#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithCoder:aDecoder];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>)&#123;</div><div class="line">        [<span class="keyword">self</span> addSubview:<span class="keyword">self</span>.view];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 获取xib中的view</span></div><div class="line">- (<span class="built_in">UIView</span> *)view&#123;</div><div class="line">    <span class="keyword">if</span> (!_view) &#123;</div><div class="line">        _view = [[<span class="built_in">NSBundle</span> mainBundle] loadNibNamed:<span class="string">@"ItemView"</span> owner:<span class="keyword">self</span> options:<span class="literal">nil</span>].lastObject;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> _view;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)layoutSubviews&#123;</div><div class="line">    [<span class="keyword">super</span> layoutSubviews];</div><div class="line">    <span class="comment">//设置大小</span></div><div class="line">    <span class="keyword">self</span>.view.frame = <span class="keyword">self</span>.bounds;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>13、给非UiButton的控件加点击事件<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="name">_mIBSetDeviceTime</span> setUserInteractionEnabled:YES]<span class="comment">;</span></div><div class="line">    [<span class="name">_mIBSetDeviceTime</span> addGestureRecognizer:[[<span class="name">UITapGestureRecognizer</span> alloc]initWithTarget:self action:@selector(<span class="name">clickCategory:</span>)]]<span class="comment">;</span></div><div class="line"></div><div class="line">-(<span class="name">void</span>)clickCategory:(<span class="name">UITapGestureRecognizer</span> *)gestureRecognizer &#123;</div><div class="line">    if ([<span class="name">gestureRecognizer</span> view] == _mIBSetDeviceTime) &#123;</div><div class="line">        NSLog(<span class="name">@</span><span class="string">"_mIBSetDeviceTime"</span>)<span class="comment">;//判断是哪个控件的点击</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>14、fragment如果要使用kotlin的 apply plugin: ‘kotlin-android-extensions’</p>
+<p>那么必须放在onActivityCreated后才能生效<br>onCreateView里面的是为空的</p>
 
       
     </div>
@@ -326,7 +328,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 dukelight
+    		&copy; 2019 dukelight
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_uv">

@@ -189,6 +189,114 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017112301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/24/2017112301/" class="article-date">
+  	<time datetime="2017-11-24T04:28:11.000Z" itemprop="datePublished">2017-11-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/24/2017112301/">关于使用listview时候的一些坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="关于使用listview时候的一些坑"><a href="#关于使用listview时候的一些坑" class="headerlink" title="关于使用listview时候的一些坑"></a>关于使用listview时候的一些坑</h1></blockquote>
+<p>1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。</p>
+<p>2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到数据更新的那个位置，不让scrollview自己滚动的方法是：focusOn srcollview下面的子view。</p>
+<p>3、listview使用addHeaderView后，导致点击回调的position错乱，解决方法是，回调后去调</p>
+<p>position = (int) listview.getAdapter().getItemId(position);</p>
+<p>而adatper里面要实现</p>
+<p>@Override<br>public long getItemId(int position) {<br>    // TODO Auto-generated method stub<br>    return position;<br>}</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017110301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/03/2017110301/" class="article-date">
+  	<time datetime="2017-11-03T08:17:14.000Z" itemprop="datePublished">2017-11-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/03/2017110301/">七牛使用工具上传可以覆盖同名文件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017103001" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -613,143 +721,6 @@ if (config.fontScale != 1) {
 
 
   
-    <article id="post-2017061401" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/14/2017061401/" class="article-date">
-  	<time datetime="2017-06-14T00:25:07.000Z" itemprop="datePublished">2017-06-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/14/2017061401/">android生成jni的c++部分的坑(集成openssl)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="jni里集成openssl，最好在build-gradle做些处理"><a href="#jni里集成openssl，最好在build-gradle做些处理" class="headerlink" title="jni里集成openssl，最好在build.gradle做些处理"></a>jni里集成openssl，最好在build.gradle做些处理</h4><pre><code>sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir &apos;src/main/jniLibs&apos;
-    }
-</code></pre><h4 id="在android-mk写个dir指向自定义文件夹jniLibs"><a href="#在android-mk写个dir指向自定义文件夹jniLibs" class="headerlink" title="在android.mk写个dir指向自定义文件夹jniLibs"></a>在android.mk写个dir指向自定义文件夹jniLibs</h4><pre><code>NDK_APP_DST_DIR := ../jniLibs/$(TARGET_ARCH_ABI)
-</code></pre><h4 id="c-语法处理部分细节坑"><a href="#c-语法处理部分细节坑" class="headerlink" title="c++语法处理部分细节坑"></a>c++语法处理部分细节坑</h4><pre><code>1、记得无论什么时候，都要对数组初始化，不然多余的数值会对调试生成影响
-memset(a, 0x00, sizeof(a));
-
-2、对字符数组求长度的时候，在c++里遇到0x00或者’\0’的时候strlen会提前结束，导致错误的输出，这点在调试过程中是个问题
-strlen(a)
-
-3、记得字符数组转成16进制后再输出，原因就是字符有些是不可见的
-
-4、从其他地方接收的参数如果是16进制的字符串，记得先转成10进制的字符数组，再参与计算
-
-5、使用PEM_read_bio_PrivateKey可以读取rsa的私钥，而PEM_read_bio_RsaPrivateKey也可以读，不过是两个不同的结果，两种key的类型可以互转
-EVP_PKEY_get1_RSA 
-EVP_PKEY_set1_RSA
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017060201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/02/2017060201/" class="article-date">
-  	<time datetime="2017-06-02T00:28:42.000Z" itemprop="datePublished">2017-06-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/2017060201/">研究root权限</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://blog.csdn.net/hxdanya/article/details/39371759" target="_blank" rel="external">http://blog.csdn.net/hxdanya/article/details/39371759</a></p>
-<p>PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。</p>
-<p>LOCAL_CFLAGS += -pie -fPIE<br>LOCAL<em>LDFLAGS += -pie -fPIE</em></p>
-<p><a href="http://hold-on.iteye.com/blog/1901152" target="_blank" rel="external">http://hold-on.iteye.com/blog/1901152</a></p>
-<p>Android应用程序永久获取root权限方法的基本思路，引入zlsu</p>
-<p><a href="http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966" target="_blank" rel="external">http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966</a></p>
-<p>解决办法：</p>
-<ol>
-<li>最简单的，adb remount</li>
-<li>不行的话，adb shell su之后将文件系统remount为读写权限： mount -o remount rw /system。出于安全考虑，记得完事后remount回只读： mount -o ro,remount /system</li>
-<li><p>和方法2类似，mount -o rw,remount -t ext3 /dev/block/mmcblk1p21 /system</p>
-<p>chown 0:0 /system/bin/su</p>
-</li>
-</ol>
-<p>busybox chown 0:0 /system/bin/su</p>
-<p><a href="http://blog.csdn.net/wan_ing/article/details/53407748" target="_blank" rel="external">http://blog.csdn.net/wan_ing/article/details/53407748</a></p>
-<p>android 版本更新 静默安装及自启动</p>
-<p><a href="http://www.jianshu.com/p/9ece07344630" target="_blank" rel="external">http://www.jianshu.com/p/9ece07344630</a></p>
-<p>Android上app_process启动java进程</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -763,7 +734,7 @@ EVP_PKEY_set1_RSA
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 dukelight
+    		&copy; 2019 dukelight
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_uv">

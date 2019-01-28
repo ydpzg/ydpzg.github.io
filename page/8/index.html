@@ -189,6 +189,136 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016120801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/08/2016120801/" class="article-date">
+  	<time datetime="2016-12-08T06:32:58.000Z" itemprop="datePublished">2016-12-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/08/2016120801/">adb模拟点击某个坐标</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>adb shell input tap 1000 130<br>模拟点击，x， y</p>
+<p>开发者选项-》指针位置-》可以看某个点的x，y</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016120202" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/02/2016120202/" class="article-date">
+  	<time datetime="2016-12-02T14:47:19.000Z" itemprop="datePublished">2016-12-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/02/2016120202/">android连接https web service忽略证书的方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。</p>
+<p>解决方法如下：</p>
+<p>在使用web service之前调用allowAllSSL()就行了。</p>
+<pre><code>public static void allowAllSSL() {  
+javax.net.ssl.HttpsURLConnection  
+        .setDefaultHostnameVerifier(new HostnameVerifier() {  
+            public boolean verify(String hostname, SSLSession session) {  
+                return true;  
+            }  
+        });  
+
+javax.net.ssl.SSLContext context = null;  
+
+if (trustManagers == null) {  
+    trustManagers = new javax.net.ssl.TrustManager[] { new _FakeX509TrustManager() };  
+}  
+
+try {  
+    context = javax.net.ssl.SSLContext.getInstance(&quot;TLS&quot;);  
+    context.init(null, trustManagers, new SecureRandom());  
+} catch (NoSuchAlgorithmException e) {  
+    Log.e(&quot;allowAllSSL&quot;, e.toString());  
+} catch (KeyManagementException e) {  
+    Log.e(&quot;allowAllSSL&quot;, e.toString());  
+}  
+javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context  
+        .getSocketFactory());  
+</code></pre><p>}`</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016120201" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -771,188 +901,6 @@ result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{
 
 
   
-    <article id="post-2016091101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/11/2016091101/" class="article-date">
-  	<time datetime="2016-09-11T06:28:54.000Z" itemprop="datePublished">2016-09-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/11/2016091101/">【开发笔记】高德地图在fragment使用时切换时会黑屏</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction-replace-int-fragment-切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。"><a href="#背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction-replace-int-fragment-切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。" class="headerlink" title="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。"></a>背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。</h1></blockquote>
-<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>1.使用两个FrameLayout</p>
-<p>在activity里使用两个FrameLayout容器，一个叫地图FrameLayout，一个叫普通FrameLayout，有map view的放到地图FrameLayout里面去，统一管理。<br>每次切换的时候先fragment所在的FrameLayout容器先gone掉，再去remove 掉具体的fragment。这时，耗时的ui操作在后台进行，所以就不会看到黑屏的存在，但是，还是有点耗时的时间存在，导致屏幕会有点卡顿。<br>结果是良好的，fragment的生命周期不变。</p>
-<pre><code>BaseFragment mLastBaseFragment;
-// 根据fragment实例去切换activity里的fragment
-public void changeFragment(BaseFragment fragment) {
-    FragmentTransaction fragmentTransaction = fm.beginTransaction();
-    if (mLastBaseFragment != fragment) {
-        if (fragment instanceof MapFragment) { // 区别是不是地图fragment单独处理
-            frameLayout.setVisibility(View.GONE);
-            mapFrameLayout.setVisibility(View.VISIBLE);
-            fragmentTransaction.replace(R.id.mapFrameLayout, fragment);
-        } else {
-            frameLayout.setVisibility(View.VISIBLE);
-            mapFrameLayout.setVisibility(View.GONE);
-            fragmentTransaction.replace(R.id.frameLayout, fragment);
-        }
-        if (mLastBaseFragment != null) {
-            fragmentTransaction.remove(mLastBaseFragment);
-        }
-        fragmentTransaction.commit();
-        mLastBaseFragment = fragment;
-    }
-}
-</code></pre><p>2.将fragment的切换从replace环城show和hide</p>
-<p>使用show和hide，黑屏不见了，原理就是这时fragment不会每次都被重新创建了。但是fragment的生命周期就乱了，具体表现为没有onResume和onPause，这时使用手动的方式模拟这两个fragment.setUserVisibleHint（true), 实际上setUserVisibleHint在fragment与view pager共用的时候才会被调用。</p>
-<pre><code>FragmentTransaction fragmentTransaction = fm.beginTransaction();
-Fragment fragment = fm.findFragmentByTag(type + &quot;&quot;);
-if (mCurFragment != null) {
-    fragmentTransaction.hide(mCurFragment);
-    mCurFragment.setUserVisibleHint(false);
-}
-if (fragment == null) {
-    fragmentTransaction.add(R.id.frameLayout, list.get(type), type + &quot;&quot;);
-} else {
-    fragmentTransaction.show(fragment);
-}
-fragment.setUserVisibleHint(true);
-mCurFragment = list.get(type);
-fragmentTransaction.commit();
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016090301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/03/2016090301/" class="article-date">
-  	<time datetime="2016-09-03T13:24:08.000Z" itemprop="datePublished">2016-09-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/03/2016090301/">android系统USB设备静默获得权限</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。"><a href="#背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。" class="headerlink" title="背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。"></a>背景：在调试一个USB设备的时候，本来已经调通了，但是遇到一个问题，就是每次使用该USB设备的时候总是弹出一个对话框说要获取USB的权限，很烦人，故想方设法去调这个对话框。</h1></blockquote>
-<h4 id="总结了一些，USB设备静默获得权限的条件，有两个"><a href="#总结了一些，USB设备静默获得权限的条件，有两个" class="headerlink" title="总结了一些，USB设备静默获得权限的条件，有两个"></a>总结了一些，USB设备静默获得权限的条件，有两个</h4><ol>
-<li>root</li>
-<li>系统app<br>注意：root手机有风险，需查看各种手机的root攻略；使用“幸运破解器”可以将app安装为系统app，或者将apk复制到/system/app/然后重启手机。</li>
-</ol>
-<h4 id="判断是否为系统app"><a href="#判断是否为系统app" class="headerlink" title="判断是否为系统app"></a>判断是否为系统app</h4><pre><code>public class PermissionUtil {
-    public static boolean isSystemApp(Context context) {
-        return (context.getApplicationInfo().flags &amp; ApplicationInfo.FLAG_SYSTEM) &gt; 0;
-    }
-}
-</code></pre><h4 id="下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。"><a href="#下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。" class="headerlink" title="下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。"></a>下面模拟系统对获取USB权限对话框的“允许”按钮的动作，绕开对话框，然后手动伪造一条广播发出来。</h4><pre><code>if (PermissionUtil.isSystemApp(mContext)) { // 如果是系统应用就执行尝试默默做usb权限
-    Intent intent = new Intent();
-    intent.setAction(ACTION_USB_PERMISSION);
-    intent.putExtra(UsbManager.EXTRA_DEVICE, device);
-    intent.putExtra(UsbManager.EXTRA_PERMISSION_GRANTED, true);
-
-    final PackageManager pm = mContext.getPackageManager();
-    try {
-        ApplicationInfo aInfo = pm.getApplicationInfo(mContext.getPackageName(),
-                0);
-        try {
-            IBinder b = ServiceManager.getService(USB_SERVICE);
-            IUsbManager service = IUsbManager.Stub.asInterface(b);
-            service.grantDevicePermission(device, aInfo.uid);
-        } catch (RemoteException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    } catch (PackageManager.NameNotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-
-    mContext.sendBroadcast(intent);
-}
-</code></pre><p>注意：由于android.hardware.usb.IUsbManager和android.os.ServiceManager是系统层面的代码，本来程序需要在android系统源码里编译，但这样直接复制这两个类的源码集成进项目工程里也可以实现。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/usb/">usb</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
@@ -966,7 +914,7 @@ fragmentTransaction.commit();
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 dukelight
+    		&copy; 2019 dukelight
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_uv">

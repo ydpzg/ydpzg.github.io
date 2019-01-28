@@ -189,6 +189,186 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016070401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/04/2016070401/" class="article-date">
+  	<time datetime="2016-07-04T10:04:55.000Z" itemprop="datePublished">2016-07-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/04/2016070401/">【学习笔记】找蓝牙通讯方法pc与android</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>今天主要是要找一种解决方案，如何让android手机蓝牙连接电脑pc的蓝牙，然后实现文字的通信。</p>
+</blockquote>
+<h4 id="目标很明确，主要是找电脑端的蓝牙相关的调试工具，因为android的自己有把握完成。接下来花了1个半小时找工具。"><a href="#目标很明确，主要是找电脑端的蓝牙相关的调试工具，因为android的自己有把握完成。接下来花了1个半小时找工具。" class="headerlink" title="目标很明确，主要是找电脑端的蓝牙相关的调试工具，因为android的自己有把握完成。接下来花了1个半小时找工具。"></a>目标很明确，主要是找电脑端的蓝牙相关的调试工具，因为android的自己有把握完成。接下来花了1个半小时找工具。</h4><ul>
+<li>找到一个pc蓝牙串口调试助手2.2.3，没有什么用，看起来是那种开发板然后自带串口和蓝牙的设备。</li>
+<li>找到一个【蓝牙软件】BlueCom蓝牙管理，不过在win8.1上装不上，提示说是需要.net2.0,但明明我是.net4.5了，放弃。</li>
+<li><p>最后就是这个蓝牙驱动管理软件 千月 ivtbluesoleil，这个更恶心，还要注册，下载下来测试了一下，发现可以搜到蓝牙，可以连接得上，就是没有发送文本的方法。</p>
+<p>  而发送文件的window系统本身就可以传输，哎，目测是没有什么办法，先研究到这里，以后再看看。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蓝牙通讯，pc与android/">蓝牙通讯，pc与android</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2015062801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/28/2015062801/" class="article-date">
+  	<time datetime="2015-06-28T01:57:35.000Z" itemprop="datePublished">2015-06-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/28/2015062801/">android 控件AutoCompleteTextView实战</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表</p>
+<pre><code>public class MyAutoCompleteTextView extends AutoCompleteTextView {
+
+    public MyAutoCompleteTextView(Context context) {
+        super(context);
+    }
+
+    public MyAutoCompleteTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public MyAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    public boolean enoughToFilter() {
+        return true;
+    }
+}
+</code></pre><p>在layout里定义自定义的AutoCompleteTextView</p>
+<pre><code>&lt;com.dukelight.testandroidm.MyAutoCompleteTextView
+    android:id=&quot;@+id/act_main&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:completionThreshold=&quot;1&quot;
+    android:dropDownHorizontalOffset=&quot;10dp&quot;
+    android:text=&quot;&quot; &gt;
+
+    &lt;requestFocus /&gt;
+&lt;/com.dukelight.testandroidm.MyAutoCompleteTextView&gt;
+</code></pre><p>最后就是Activity里的调用代码</p>
+<pre><code>public class TestAutoCompleteActivity extends Activity {
+
+
+    String[] place = new String[]{&quot;白云&quot;, &quot;广州&quot;, &quot;五山&quot;, &quot;天河&quot;, &quot;越秀&quot;, &quot;二电厂&quot;, &quot;大学城&quot;, &quot;中山&quot;};
+    @InjectView(R.id.act_main)
+    MyAutoCompleteTextView mActMain;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_test_complete);
+        ButterKnife.inject(this);
+
+        ArrayAdapter&lt;String&gt; arrayAdapter = new ArrayAdapter&lt;String&gt;(this,
+                android.R.layout.simple_dropdown_item_1line, place);
+        mActMain.setAdapter(arrayAdapter);
+
+        mActMain.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // 手动向下弹出匹配的菜单        
+                mActMain.showDropDown(); 
+                return false;
+            }
+        });
+    }
+}
+</code></pre><p>最后的最后放上效果图片</p>
+<p><img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100" alt="空字符串显示全部"> <img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062802.png?imageView/2/w/300/q/100" alt="匹配字符串显示"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-AutoCompleteTextView/">android AutoCompleteTextView</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -277,7 +457,7 @@ hexo d
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 dukelight
+    		&copy; 2019 dukelight
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_uv">

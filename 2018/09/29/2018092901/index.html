@@ -17,7 +17,7 @@
 分别换成debugApi,releaseApi,androidTestImplementation,testImplementation
 吧utils，constant，公共方法按照module分离，放在该在的模块内，注意通信机制，注意引用
 注意在module中id不是final，switch（id）改成if else，而butterknife要用R2">
-<meta property="og:updated_time" content="2018-10-23T07:29:28.072Z">
+<meta property="og:updated_time" content="2018-11-08T15:14:29.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模块化">
 <meta name="twitter:description" content="implementation 要换成api
@@ -239,6 +239,8 @@
 <li>吧utils，constant，公共方法按照module分离，放在该在的模块内，注意通信机制，注意引用</li>
 <li>注意在module中id不是final，switch（id）改成if else，而butterknife要用R2.id.xxx, apply plugin: ‘com.jakewharton.butterknife’</li>
 <li>aroute 里面的path在不同的module要写成不一样的module方式，比如/app/a,/module/bkugo</li>
+<li>apply plugin: ‘com.alibaba.arouter’</li>
+<li>app是否有引用具体的module</li>
 <li>Constant，Eventbus，startActivity</li>
 </ol>
 
@@ -318,7 +320,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 dukelight
+    		&copy; 2019 dukelight
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_uv">
