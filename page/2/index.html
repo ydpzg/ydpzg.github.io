@@ -189,6 +189,115 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2018092201" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/22/2018092201/" class="article-date">
+  	<time datetime="2018-09-22T15:40:32.000Z" itemprop="datePublished">2018-09-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/22/2018092201/">gradle-wrapper.properties设置gradle 4.4报错 Connect to d29vzk4ow07wi7.cloudfront.net:443 xxx</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h2 id="gradle-wrapper-properties设置gradle-4-4后报错。。。Connect-to-d29vzk4ow07wi7-cloudfront-net-443"><a href="#gradle-wrapper-properties设置gradle-4-4后报错。。。Connect-to-d29vzk4ow07wi7-cloudfront-net-443" class="headerlink" title="gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443"></a>gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443</h2></blockquote>
+<p>尝试过：<br>1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错<br>2、怀疑是网络问题，从as上下载链接<a href="https://downloads.gradle.org/distributions/gradle-3.3-all.zip来看，直接使用浏览器是可以下载了，并且是不翻墙的情况" target="_blank" rel="external">https://downloads.gradle.org/distributions/gradle-3.3-all.zip来看，直接使用浏览器是可以下载了，并且是不翻墙的情况</a><br>3、尝试过翻墙，设置代理，结果一样报超时</p>
+<p>后来上网找答案，搜索关键词Connect to d29vzk4ow07wi7.cloudfront.net:443，，，<br>有一种解决方案很靠谱，在项目build.gradler 的jcenter()前添加上mavenCentral();<br>尝试了一下，居然解决了问题，看来是访问不到jcenter.</p>
+<p>具体为什么加了mavenCentral()在jcenter()前面就行了，没有深究。后来想通了，as旧版本默认资源放放到mavenCentral，而新版本放到了jcenter()。。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2018091101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/11/2018091101/" class="article-date">
+  	<time datetime="2018-09-11T09:37:01.000Z" itemprop="datePublished">2018-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/11/2018091101/">Charles将指定的请求改为固定返回值,开发调试专用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>####看了之后 <a href="https://blog.csdn.net/u014115673/article/details/54984084" target="_blank" rel="external">https://blog.csdn.net/u014115673/article/details/54984084</a> 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。</p>
+</blockquote>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">方法一：本地映射</div><div class="line">Charles进行抓包</div><div class="line">选择某一个网络请求 &gt; 鼠标右键 <span class="keyword">Save</span> Response...</div><div class="line">如果该请求返回的是一个json串，保存文件时需要保存<span class="keyword">rename</span>.json</div><div class="line">需要更改的请求点击右键 Map <span class="keyword">Local</span>.. 指定到本地保存的<span class="keyword">renam</span>.json.</div><div class="line">通过在本地更改<span class="keyword">rename</span>.json就可以自动的更改请求的返回值。</div><div class="line"></div><div class="line">方法二：打断点</div><div class="line">选择某一个网络请求 &gt; 鼠标右键 Breakpoints</div><div class="line">然后点击 Execute 执行，然后编辑返回值 </div><div class="line">缺点：容易请求超时。还没等你调整完返回数据，<span class="keyword">app</span>那边已经请求超时了。</div><div class="line"></div><div class="line">方法三：远端映射</div><div class="line">将<span class="keyword">App</span>内部的请求映射到远端写好的接口。推荐一个东东 Mocky：http:<span class="comment">//www.mocky.io/。</span></div><div class="line"></div><div class="line">方法四：rewrite</div><div class="line">菜单栏 Tools —&gt; Rewrite</div><div class="line">根据自己的需求重写…。 </div><div class="line">推荐网址：http:<span class="comment">//www.cnblogs.com/wonyun/p/5586746.html</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-20180900701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -658,137 +767,6 @@ onlyif(true, function)
         <p>解决方法：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Change you <span class="class"><span class="keyword">class</span> <span class="title">for</span> <span class="title">an</span> <span class="title">object</span> <span class="title">and</span> <span class="title">add</span> <span class="title">platformStatic</span> <span class="title">to</span> <span class="title">your</span> <span class="title">main</span> <span class="title">method</span></span></div><div class="line"><span class="keyword">object</span> Main &#123;</div><div class="line">  platformStatic <span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span>&#123;</div><div class="line">    println(<span class="string">"Hello kotlin"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">or put your main function outside the <span class="class"><span class="keyword">class</span></span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span>&#123;</div><div class="line">    println(<span class="string">"Hello kotlin"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018062601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/26/2018062601/" class="article-date">
-  	<time datetime="2018-06-26T02:00:11.000Z" itemprop="datePublished">2018-06-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/26/2018062601/">如何实现域名转发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="访问A域名，实现把流量带过去B域名"><a href="#访问A域名，实现把流量带过去B域名" class="headerlink" title="访问A域名，实现把流量带过去B域名"></a>访问A域名，实现把流量带过去B域名</h1></blockquote>
-<p>1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名</p>
-<p>2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发</p>
-<pre><code>server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg.github.io/; 显现转发
-}
-#return       301 http://www.yudapei.cn$request_uri;  重定向，隐性转发
-}
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018062502" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/25/2018062502/" class="article-date">
-  	<time datetime="2018-06-25T06:57:38.000Z" itemprop="datePublished">2018-06-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/2018062502/">更新gradle插件后的出错</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>出现：</p>
-<pre><code>Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
-debugApiElements
-debugRuntimeElements
-releaseApiElements
-releaseRuntimeElements
-All of them match the consumer attributes:
-Configuration &apos;debugApiElements&apos;:
-    Found com.android.build.api.attributes.BuildTypeAttr &apos;debug&apos; but wasn&apos;t required.
-    Found com.android.build.api.attributes.VariantAttr &apos;debug&apos; but wasn&apos;t required.
-    Found com.android.build.gradle.internal.dependency.AndroidTypeAttr &apos;Aar&apos; but wasn&apos;t required.
-    Found org.gradle.usage &apos;java-api&apos; but wasn&apos;t required.
-</code></pre><p>原因是更新了gradle插件，</p>
-<pre><code>classpath &apos;com.android.tools.build:gradle:3.2.0-alpha07&apos;
-</code></pre><p>解决方案：</p>
-<pre><code>compile project(&apos;:UmengSocialSdkLibrary&apos;)
-</code></pre><p>改成：</p>
-<pre><code>compile project(path: &apos;:UmengSocialSdkLibrary&apos;, configuration: &apos;default&apos;)
-</code></pre>
       
     </div>
     

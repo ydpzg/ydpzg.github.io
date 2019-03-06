@@ -3,21 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>移动base类 | dukelight&#39;s home</title>
+  <title>flutter之殇 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="会涉及到通信，数据中心，网络，一些公共调用方法
-网络改造，涉及到baseModel 里面的retrofitService注入需要改成baseHttpService，httpHelper也要返回封装的baseHttpService">
+  <meta name="description" content="跳转url
+url_launch(url, enableJavaScript: true, forceWebView: true)
+SnackBar用法切记snackBar用的context是特snackBar自己的context，不然会报
+1Another exception was thrown: Scaffold.of() called with a context that does no">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动base类">
-<meta property="og:url" content="http://ydpzg.github.io/2018/11/08/20180110802/index.html">
+<meta property="og:title" content="flutter之殇">
+<meta property="og:url" content="http://ydpzg.github.io/2019/02/03/2019020301/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="会涉及到通信，数据中心，网络，一些公共调用方法
-网络改造，涉及到baseModel 里面的retrofitService注入需要改成baseHttpService，httpHelper也要返回封装的baseHttpService">
-<meta property="og:updated_time" content="2018-11-08T07:41:59.495Z">
+<meta property="og:description" content="跳转url
+url_launch(url, enableJavaScript: true, forceWebView: true)
+SnackBar用法切记snackBar用的context是特snackBar自己的context，不然会报
+1Another exception was thrown: Scaffold.of() called with a context that does no">
+<meta property="og:updated_time" content="2019-02-09T05:11:47.278Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动base类">
-<meta name="twitter:description" content="会涉及到通信，数据中心，网络，一些公共调用方法
-网络改造，涉及到baseModel 里面的retrofitService注入需要改成baseHttpService，httpHelper也要返回封装的baseHttpService">
+<meta name="twitter:title" content="flutter之殇">
+<meta name="twitter:description" content="跳转url
+url_launch(url, enableJavaScript: true, forceWebView: true)
+SnackBar用法切记snackBar用的context是特snackBar自己的context，不然会报
+1Another exception was thrown: Scaffold.of() called with a context that does no">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -194,11 +200,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-20180110802" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2019020301" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/08/20180110802/" class="article-date">
-  	<time datetime="2018-11-08T06:20:55.000Z" itemprop="datePublished">2018-11-08</time>
+      <a href="/2019/02/03/2019020301/" class="article-date">
+  	<time datetime="2019-02-03T09:44:36.000Z" itemprop="datePublished">2019-02-03</time>
 </a>
     </div>
   
@@ -211,7 +217,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      移动base类
+      flutter之殇
     </h1>
   
 
@@ -227,8 +233,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>会涉及到通信，数据中心，网络，一些公共调用方法</p>
-<p>网络改造，涉及到baseModel 里面的retrofitService<br>注入需要改成baseHttpService，<br>httpHelper也要返回封装的baseHttpService</p>
+        <p>跳转url</p>
+<p>url_launch(url, enableJavaScript: true, forceWebView: true)</p>
+<p>SnackBar用法<br>切记snackBar用的context是特snackBar自己的context，不然会报</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Another exception was thrown: Scaffold.<span class="keyword">of</span>() called <span class="keyword">with</span> <span class="keyword">a</span> context that does <span class="keyword">not</span> contain <span class="keyword">a</span> Scaffold.</div></pre></td></tr></table></figure>
+<p>代码如下：vl</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="symbol">'package</span>:flutter/material.dart';</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnackBarPage</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</div><div class="line">  <span class="type">BuildContext</span> scaffoldContext;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="type">Widget</span> build(<span class="type">BuildContext</span> context) &#123;</div><div class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></div><div class="line">    <span class="type">Widget</span> body = <span class="type">Center</span> (</div><div class="line">        child: <span class="type">RaisedButton</span>(</div><div class="line">            onPressed: () &#123;</div><div class="line">              <span class="keyword">final</span> snackBar = <span class="type">SnackBar</span>(</div><div class="line">                content: <span class="type">Text</span>(<span class="symbol">'hello</span>! <span class="type">A</span> <span class="type">SnackBar</span>!'),</div><div class="line">                action: <span class="type">SnackBarAction</span>(</div><div class="line">                  label: <span class="symbol">'Und</span>o',</div><div class="line">                  onPressed: () &#123;</div><div class="line">                    <span class="comment">// Some code to undo the change!</span></div><div class="line">                  &#125;,</div><div class="line">                ),</div><div class="line">              );</div><div class="line">              <span class="type">Scaffold</span>.of(scaffoldContext).showSnackBar(snackBar);</div><div class="line">            &#125;,</div><div class="line">            child: <span class="type">Text</span>(<span class="symbol">'tes</span>t')</div><div class="line">        )</div><div class="line">    );</div><div class="line"></div><div class="line">    <span class="keyword">return</span></div><div class="line">      <span class="type">MaterialApp</span>(</div><div class="line">        title: <span class="symbol">'SnackBa</span>r',</div><div class="line">        home: <span class="type">Scaffold</span>(</div><div class="line">          appBar: <span class="type">AppBar</span>(</div><div class="line">            title: <span class="type">Text</span>(<span class="symbol">'SnackBa</span>r')</div><div class="line">          ),</div><div class="line">          body: <span class="type">Builder</span>(builder: (<span class="type">BuildContext</span> context) &#123;</div><div class="line">            scaffoldContext = context;</div><div class="line">            <span class="keyword">return</span> body;</div><div class="line">          &#125;),</div><div class="line">        ),</div><div class="line">      );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -238,18 +248,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/02/03/2019020301/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/06/2019030601/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          flutter之殇
+          vue怎么处理后端返回的换行符&#39;\n&#39;
         
       </div>
     </a>
   
   
-    <a href="/2018/11/08/20180110801/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ARouter的坑</div>
+    <a href="/2018/11/08/20180110802/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动base类</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -278,7 +288,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="20180110802" data-title="移动base类" data-url="http://ydpzg.github.io/2018/11/08/20180110802/"></div>
+	<div class="ds-thread" data-thread-key="2019020301" data-title="flutter之殇" data-url="http://ydpzg.github.io/2019/02/03/2019020301/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
