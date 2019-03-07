@@ -189,6 +189,60 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2018021101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/02/11/2018021101/" class="article-date">
+  	<time datetime="2018-02-11T08:12:46.000Z" itemprop="datePublished">2018-02-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/11/2018021101/">android不使用系统权限调用拨号程序</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####<br>不同与使用Intent.ACTION_CALL，需要系统权限才能调用</p>
+<p><code>String phone = &quot;+34666777888&quot;;
+Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts(&quot;tel&quot;, phone, null));
+startActivity(intent);_</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017122701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -649,59 +703,6 @@ if (config.fontScale != 1) {
 <h1 id="没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。"><a href="#没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。" class="headerlink" title="没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。"></a>没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。</h1></blockquote>
 <p>代码覆盖率：写的单元测试覆盖着类的行数和方法数。方法数是指单元测试覆盖了被测试类的多少个方法，行数是指单元测试覆盖了多少个逻辑分支，例如ifelse。</p>
 <p>idea里如何看代码覆盖率：<br>先写被测试类，写好了以后，按快捷键commant+shift+t，创建一个测试类，写好测试类。在测试类右键点击“run ‘xxx’ with” coverage，运行后，在类右边就可以看到覆盖了多少方法数和行数。<br>在Edit Configurations 里可以选择单元测试的引擎，有idea和jacoco两个选择。<br>所以每次写好类后（尤其是工具类），要写好单元测试，尽量覆盖所有的逻辑分支，而case的质量则影响单元测试的正确性和深度。覆盖率并不能减少所有的错误，但是可以减少逻辑错误。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017090801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/09/08/2017090801/" class="article-date">
-  	<time datetime="2017-09-08T01:47:52.000Z" itemprop="datePublished">2017-09-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/08/2017090801/">不同手机在不同的wifi下的h5 load不出来，api正常</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="昨晚不同手机在不同的wifi下的h5-load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。"><a href="#昨晚不同手机在不同的wifi下的h5-load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。" class="headerlink" title="昨晚不同手机在不同的wifi下的h5 load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。"></a>昨晚不同手机在不同的wifi下的h5 load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。</h1></blockquote>
-<p> 现象就是所有的后台api正常，所有的h5页面load不出来，以前这种现象就要检查代理设置</p>
 
       
     </div>

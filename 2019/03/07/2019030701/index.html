@@ -3,36 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>vue怎么处理后端返回的换行符&#39;\n&#39; | dukelight&#39;s home</title>
+  <title>关于设置adjustResize后webview出现输入框弹出布局错乱问题 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="解决方案有三个，用第三个方案会好一点
-
-1、使用v-html的标签
-
-1234567&amp;lt;p class=&quot;text&quot; v-html=&quot;requestText&quot;&amp;gt;&amp;lt;/p&amp;gt;data()&amp;#123;    return&amp;#123;    requestText:&quot;&quot;    &amp;#125;&amp;#125;str.replace(&apos;ln&apos;, &apos;&amp;lt;br&amp;gt;&apos;);
-
-2、使用v-for">
+  <meta name="description" content="背景：SimpleWebActivity设置windowSoftInputMode=&amp;quot;adjustResize&amp;quot;
+并且加上了沉浸式效果window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+方案1 网上有人说是因为主题设置了这个透明状态的原因，尝试去掉，webview确实正常，但是沉浸式不见了`">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue怎么处理后端返回的换行符'\n'">
-<meta property="og:url" content="http://ydpzg.github.io/2019/03/06/2019030601/index.html">
+<meta property="og:title" content="关于设置adjustResize后webview出现输入框弹出布局错乱问题">
+<meta property="og:url" content="http://ydpzg.github.io/2019/03/07/2019030701/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="解决方案有三个，用第三个方案会好一点
-
-1、使用v-html的标签
-
-1234567&amp;lt;p class=&quot;text&quot; v-html=&quot;requestText&quot;&amp;gt;&amp;lt;/p&amp;gt;data()&amp;#123;    return&amp;#123;    requestText:&quot;&quot;    &amp;#125;&amp;#125;str.replace(&apos;ln&apos;, &apos;&amp;lt;br&amp;gt;&apos;);
-
-2、使用v-for">
-<meta property="og:updated_time" content="2019-03-06T08:28:55.943Z">
+<meta property="og:description" content="背景：SimpleWebActivity设置windowSoftInputMode=&amp;quot;adjustResize&amp;quot;
+并且加上了沉浸式效果window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+方案1 网上有人说是因为主题设置了这个透明状态的原因，尝试去掉，webview确实正常，但是沉浸式不见了`">
+<meta property="og:updated_time" content="2019-03-07T04:35:34.198Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue怎么处理后端返回的换行符'\n'">
-<meta name="twitter:description" content="解决方案有三个，用第三个方案会好一点
-
-1、使用v-html的标签
-
-1234567&amp;lt;p class=&quot;text&quot; v-html=&quot;requestText&quot;&amp;gt;&amp;lt;/p&amp;gt;data()&amp;#123;    return&amp;#123;    requestText:&quot;&quot;    &amp;#125;&amp;#125;str.replace(&apos;ln&apos;, &apos;&amp;lt;br&amp;gt;&apos;);
-
-2、使用v-for">
+<meta name="twitter:title" content="关于设置adjustResize后webview出现输入框弹出布局错乱问题">
+<meta name="twitter:description" content="背景：SimpleWebActivity设置windowSoftInputMode=&amp;quot;adjustResize&amp;quot;
+并且加上了沉浸式效果window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+方案1 网上有人说是因为主题设置了这个透明状态的原因，尝试去掉，webview确实正常，但是沉浸式不见了`">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -209,11 +197,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2019030601" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2019030701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/03/06/2019030601/" class="article-date">
-  	<time datetime="2019-03-06T03:27:12.000Z" itemprop="datePublished">2019-03-06</time>
+      <a href="/2019/03/07/2019030701/" class="article-date">
+  	<time datetime="2019-03-07T04:20:18.000Z" itemprop="datePublished">2019-03-07</time>
 </a>
     </div>
   
@@ -226,7 +214,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vue怎么处理后端返回的换行符&#39;\n&#39;
+      关于设置adjustResize后webview出现输入框弹出布局错乱问题
     </h1>
   
 
@@ -242,19 +230,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>解决方案有三个，用第三个方案会好一点</p>
-<ul>
-<li>1、使用v-html的标签</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;p <span class="class"><span class="keyword">class</span></span>=<span class="string">"text"</span> v-html=<span class="string">"requestText"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">data()&#123;</div><div class="line">    <span class="keyword">return</span>&#123;</div><div class="line">    requestText:<span class="string">""</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">str.replace(<span class="string">'ln'</span>, <span class="string">'&lt;br&gt;'</span>);</div></pre></td></tr></table></figure>
-<ul>
-<li>2、使用v-for循环显示替换后的文本</li>
-</ul>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"line in str.split('\n')"</span>&gt;</span></span><span class="template-variable">&#123;&#123;line&#125;&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<ul>
-<li>3、css加上</li>
-</ul>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">white-<span class="literal">space</span>: pre-<span class="built_in">line</span><span class="comment">;//多个空格会合并成一个空格</span></div><div class="line">white-<span class="literal">space</span>: pre-<span class="keyword">wrap</span><span class="comment">;//多个空格仍然不变</span></div></pre></td></tr></table></figure>
+        <p>背景：<br>SimpleWebActivity设置<br><code>windowSoftInputMode=&quot;adjustResize&quot;</code></p>
+<p>并且加上了沉浸式效果<br><code>window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</code></p>
+<p>方案1 网上有人说是因为主题设置了这个透明状态的原因，尝试去掉，webview确实正常，但是沉浸式不见了<br>`</p>
+<p><item name="android:windowTranslucentStatus">true</item><br>`</p>
+<p>或者把沉浸式效果去掉<br><code>window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</code></p>
+<p>但沉浸式不见了，不是我们想要的效果</p>
+<p>方案2 随手记的经验，在activity的oncreate里面加上这段代码，就是为了把root的layout的inses消费掉，但是我尝试了，没有效果</p>
+<p><code>if (android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layout), new android.support.v4.view.OnApplyWindowInsetsListener() {
+        @Override
+       public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+            return insets.consumeSystemWindowInsets();
+       }
+    });
+}</code></p>
+<p>链接：<a href="https://juejin.im/post/5a25f6146fb9a0452405ad5b" target="_blank" rel="external">https://juejin.im/post/5a25f6146fb9a0452405ad5b</a></p>
+<p>方案3 在SimpleWebActivity根layout加上这一句，问题解决</p>
+<p><code>android:fitsSystemWindows=&quot;true&quot;</code></p>
 
       
     </div>
@@ -264,18 +257,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/03/07/2019030701/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          关于设置adjustResize后webview出现输入框弹出布局错乱问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/03/2019020301/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">flutter之殇</div>
+    <a href="/2019/03/06/2019030601/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue怎么处理后端返回的换行符&#39;\n&#39;</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -304,7 +288,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2019030601" data-title="vue怎么处理后端返回的换行符&#39;\n&#39;" data-url="http://ydpzg.github.io/2019/03/06/2019030601/"></div>
+	<div class="ds-thread" data-thread-key="2019030701" data-title="关于设置adjustResize后webview出现输入框弹出布局错乱问题" data-url="http://ydpzg.github.io/2019/03/07/2019030701/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

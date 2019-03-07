@@ -189,6 +189,59 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017090801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/08/2017090801/" class="article-date">
+  	<time datetime="2017-09-08T01:47:52.000Z" itemprop="datePublished">2017-09-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/08/2017090801/">不同手机在不同的wifi下的h5 load不出来，api正常</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="昨晚不同手机在不同的wifi下的h5-load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。"><a href="#昨晚不同手机在不同的wifi下的h5-load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。" class="headerlink" title="昨晚不同手机在不同的wifi下的h5 load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。"></a>昨晚不同手机在不同的wifi下的h5 load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。</h1></blockquote>
+<p> 现象就是所有的后台api正常，所有的h5页面load不出来，以前这种现象就要检查代理设置</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017090502" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -719,68 +772,6 @@ import re
 result = re.sub(r&apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&apos;, r&apos;\2,\1,\5:\4:\3&apos;, file)
 result = re.sub(r&apos;(?P&lt;day&gt;\d{2}), (?P&lt;year&gt;\d{4}) (?P&lt;hour&gt;\d{2}):(?P&lt;minute&gt;\d{2}):(?P&lt;second&gt;\d{2})&apos;, r&apos;\g&lt;year&gt;,\g&lt;day&gt;,\g&lt;second&gt;:\g&lt;minute&gt;:\g&lt;hour&gt;&apos;, file)
 print(result)
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/25/2017052501/" class="article-date">
-  	<time datetime="2017-05-25T12:25:33.000Z" itemprop="datePublished">2017-05-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/2017052501/">python 4-2如何判断字符串a是否以字符串b开头或结尾</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="主要运用endswith-和startswith-识别字符串开头和结尾"><a href="#主要运用endswith-和startswith-识别字符串开头和结尾" class="headerlink" title="主要运用endswith()和startswith()识别字符串开头和结尾"></a>主要运用endswith()和startswith()识别字符串开头和结尾</h4><pre><code>import os
-os.listdir(&quot;.&quot;)
-[name for name in os.listdir(&apos;.&apos;) if name.endswith(&apos;txt&apos;)]
-os.stat(&apos;./history.txt&apos;)
-ls -l
-os.stat(&apos;./history.txt&apos;).st_mode
-oct[os.stat(&apos;./history.txt&apos;).st_mode]
-import stat
-#设置当前位为1
-os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode | stat.S_IXUSR)
-#设置当前位取反
-os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode ^ stat.S_IXUSR)
 </code></pre>
       
     </div>
