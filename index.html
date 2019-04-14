@@ -189,6 +189,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019041401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/14/2019041401/" class="article-date">
+  	<time datetime="2019-04-14T12:34:47.000Z" itemprop="datePublished">2019-04-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/14/2019041401/">自定义plugin给方法统计时间（插桩）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>####1、创建新project</p>
+</blockquote>
+<p>创建一个新的project，默认创建就行，名字叫testPlugin</p>
+<blockquote>
+<p>####2、使用buildSrc的方式创建自定义plugin</p>
+</blockquote>
+<p>为什么使用buildSrc，因为理解简单，也可以使用其他方法，比如上传到本地repo<br>官网说明了如何自定义plugin<br><a href="https://guides.gradle.org/writing-gradle-plugins/" target="_blank" rel="external">https://guides.gradle.org/writing-gradle-plugins/</a><br><a href="https://docs.gradle.org/current/userguide/custom_plugins.html" target="_blank" rel="external">https://docs.gradle.org/current/userguide/custom_plugins.html</a></p>
+<p>没看懂的看同行的解释，自定义Android Gradle插件的3种方式<br><a href="https://blog.csdn.net/brycegao321/article/details/82754014" target="_blank" rel="external">https://blog.csdn.net/brycegao321/article/details/82754014</a></p>
+<p>另外：自定义plugin可以groovy，java，kotlin语言编写<br>需要在build.gradle引入<br>app plugin: ‘java’<br>app plugin: ‘groovy’<br>app plugin: ‘kotlin’</p>
+<p>试了一下创建一个androidlib，然后在main后面创建一个groovy文件夹，再写一个build.gradle<br><figure class="highlight puppet"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">*****build.gradle*****</div><div class="line"><span class="keyword">buildscript</span> &#123;</div><div class="line">    ext.android_gradle_plugin_version = <span class="string">'3.1.3'</span></div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">        google()</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">dependencies</span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">repositories</span> &#123;</div><div class="line">    jcenter()</div><div class="line">    google()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">apply</span> <span class="keyword">plugin</span>: <span class="string">'java'</span></div><div class="line">apply plugin: <span class="string">'groovy'</span></div><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    implementation gradleApi()</div><div class="line">    implementation localGroovy()</div><div class="line">    implementation <span class="string">"com.android.tools.build:gradle:<span class="variable">$android_gradle_plugin_version</span>"</span></div><div class="line">    implementation <span class="string">"com.android.tools.build:gradle-api:<span class="variable">$android_gradle_plugin_version</span>"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是结束报错了，一堆红色的log</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">block1</span></div><div class="line"><span class="keyword">buildSrc会出现Plugin </span>with id <span class="string">'android-library'</span> not found</div><div class="line">需要 apply plugin: <span class="string">'groovy'</span></div><div class="line"></div><div class="line"><span class="keyword">block2</span></div><div class="line"><span class="keyword">buildSrc也出现Duplicate </span>root element</div><div class="line">直接创建文件夹，不要创建<span class="keyword">android </span>library</div><div class="line"><span class="symbol"></span></div><div class="line">tip: id写法</div><div class="line"><span class="keyword">buildSrc/src/main/resources/META-INF/gradle-plugins/org.example.greeting.properties</span></div><div class="line">放这个映射文件后就可以用id的写法</div></pre></td></tr></table></figure>
+<p>正确的创建buildSrc方法</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、直接创建buildSrc文件夹，</div><div class="line"><span class="number">2</span>、创建src文件夹，</div><div class="line"><span class="number">3</span>、创建main文件夹，</div><div class="line"><span class="number">4</span>、创建groovy文件夹，在这里面写自定义plugin</div><div class="line"><span class="number">5</span>、创建resources文件夹，接着META-INF，接着gradle-plugins，</div><div class="line">在文件夹gradle-plugins里面新建一个com.kalengo.customplugin.properties，里面写名称implementation-class=CustomPlugin</div><div class="line">这两个名称在app的build.gradle引用plugin的时候是两种写法，一种是包名，一种是id</div></pre></td></tr></table></figure>
+<p>buildSrc的目录参考<br><img src="http://pd4ketimy.bkt.clouddn.com/15552465803762.jpg" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019030701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -700,66 +766,6 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 <p>13、给非UiButton的控件加点击事件<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="name">_mIBSetDeviceTime</span> setUserInteractionEnabled:YES]<span class="comment">;</span></div><div class="line">    [<span class="name">_mIBSetDeviceTime</span> addGestureRecognizer:[[<span class="name">UITapGestureRecognizer</span> alloc]initWithTarget:self action:@selector(<span class="name">clickCategory:</span>)]]<span class="comment">;</span></div><div class="line"></div><div class="line">-(<span class="name">void</span>)clickCategory:(<span class="name">UITapGestureRecognizer</span> *)gestureRecognizer &#123;</div><div class="line">    if ([<span class="name">gestureRecognizer</span> view] == _mIBSetDeviceTime) &#123;</div><div class="line">        NSLog(<span class="name">@</span><span class="string">"_mIBSetDeviceTime"</span>)<span class="comment">;//判断是哪个控件的点击</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>14、fragment如果要使用kotlin的 apply plugin: ‘kotlin-android-extensions’</p>
 <p>那么必须放在onActivityCreated后才能生效<br>onCreateView里面的是为空的</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018092901" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/29/2018092901/" class="article-date">
-  	<time datetime="2018-09-29T11:30:35.000Z" itemprop="datePublished">2018-09-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/29/2018092901/">模块化</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>implementation 要换成api</li>
-<li>分别换成debugApi,releaseApi,androidTestImplementation,testImplementation</li>
-<li>吧utils，constant，公共方法按照module分离，放在该在的模块内，注意通信机制，注意引用</li>
-<li>注意在module中id不是final，switch（id）改成if else，而butterknife要用R2.id.xxx, apply plugin: ‘com.jakewharton.butterknife’</li>
-<li>aroute 里面的path在不同的module要写成不一样的module方式，比如/app/a,/module/bkugo</li>
-<li>apply plugin: ‘com.alibaba.arouter’</li>
-<li>app是否有引用具体的module</li>
-<li>Constant，Eventbus，startActivity</li>
-</ol>
 
       
     </div>

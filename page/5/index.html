@@ -189,6 +189,60 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017090901" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/09/2017090901/" class="article-date">
+  	<time datetime="2017-09-09T10:26:13.000Z" itemprop="datePublished">2017-09-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/09/2017090901/">idea使用单元测试并且合理查看代码覆盖率</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。"><a href="#没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。" class="headerlink" title="没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。"></a>没有单元测试的代码是不可靠的，写好类的同时需要些单元测试，尽量保证代码覆盖率高，来保证代码比较高的无故障率。</h1></blockquote>
+<p>代码覆盖率：写的单元测试覆盖着类的行数和方法数。方法数是指单元测试覆盖了被测试类的多少个方法，行数是指单元测试覆盖了多少个逻辑分支，例如ifelse。</p>
+<p>idea里如何看代码覆盖率：<br>先写被测试类，写好了以后，按快捷键commant+shift+t，创建一个测试类，写好测试类。在测试类右键点击“run ‘xxx’ with” coverage，运行后，在类右边就可以看到覆盖了多少方法数和行数。<br>在Edit Configurations 里可以选择单元测试的引擎，有idea和jacoco两个选择。<br>所以每次写好类后（尤其是工具类），要写好单元测试，尽量覆盖所有的逻辑分支，而case的质量则影响单元测试的正确性和深度。覆盖率并不能减少所有的错误，但是可以减少逻辑错误。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017090801" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -717,61 +771,6 @@ s1 + s2
 &quot;&quot;.join([&apos;123&apos;, &apos;444&apos;])
 array = [111, &quot;2323&quot;, dd, &quot;pp&quot;]
 &apos;:&apos;.join(str(x) for x in array)
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052502" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/25/2017052502/" class="article-date">
-  	<time datetime="2017-05-25T14:57:44.000Z" itemprop="datePublished">2017-05-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/2017052502/">python 4-3如何调整字符串中文本的格式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组"><a href="#读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组" class="headerlink" title="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组"></a>读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组</h4><pre><code>file = open(&quot;./catalina.2016-11-02.log&quot;).read()    
-import re 
-result = re.sub(r&apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&apos;, r&apos;\2,\1,\5:\4:\3&apos;, file)
-result = re.sub(r&apos;(?P&lt;day&gt;\d{2}), (?P&lt;year&gt;\d{4}) (?P&lt;hour&gt;\d{2}):(?P&lt;minute&gt;\d{2}):(?P&lt;second&gt;\d{2})&apos;, r&apos;\g&lt;year&gt;,\g&lt;day&gt;,\g&lt;second&gt;:\g&lt;minute&gt;:\g&lt;hour&gt;&apos;, file)
-print(result)
 </code></pre>
       
     </div>
