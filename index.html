@@ -215,7 +215,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>weex<br>在dev的时候默认是使用ip进行访问，，</p>
+        <p>尝试weex<br>在dev构建的时候的时候默认是使用ip进行访问，，</p>
 <p>查到在webpack.dev.conf.js的一句代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ip = <span class="built_in">require</span>(<span class="string">'ip'</span>).address();</div></pre></td></tr></table></figure></p>
 <p>修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了</p>
 <p>后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.0<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devWebpackConfig<span class="selector-class">.devServer</span><span class="selector-class">.host</span> = <span class="string">'0.0.0.0'</span></div></pre></td></tr></table></figure></p>

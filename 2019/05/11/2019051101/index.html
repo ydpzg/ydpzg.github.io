@@ -5,26 +5,26 @@
   
   <title>解决weex或者vue在dev使用ip和localhost | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="weex在dev的时候默认是使用ip进行访问，，
+  <meta name="description" content="尝试weex在dev构建的时候的时候默认是使用ip进行访问，，
 查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
 修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
-后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWebpackCo">
+后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决weex或者vue在dev使用ip和localhost">
 <meta property="og:url" content="http://ydpzg.github.io/2019/05/11/2019051101/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="weex在dev的时候默认是使用ip进行访问，，
+<meta property="og:description" content="尝试weex在dev构建的时候的时候默认是使用ip进行访问，，
 查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
 修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
-后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWebpackCo">
+后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWe">
 <meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg">
-<meta property="og:updated_time" content="2019-05-11T14:50:51.095Z">
+<meta property="og:updated_time" content="2019-05-11T14:52:39.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决weex或者vue在dev使用ip和localhost">
-<meta name="twitter:description" content="weex在dev的时候默认是使用ip进行访问，，
+<meta name="twitter:description" content="尝试weex在dev构建的时候的时候默认是使用ip进行访问，，
 查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
 修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
-后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWebpackCo">
+后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWe">
 <meta name="twitter:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
@@ -235,7 +235,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>weex<br>在dev的时候默认是使用ip进行访问，，</p>
+        <p>尝试weex<br>在dev构建的时候的时候默认是使用ip进行访问，，</p>
 <p>查到在webpack.dev.conf.js的一句代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ip = <span class="built_in">require</span>(<span class="string">'ip'</span>).address();</div></pre></td></tr></table></figure></p>
 <p>修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了</p>
 <p>后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.0<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devWebpackConfig<span class="selector-class">.devServer</span><span class="selector-class">.host</span> = <span class="string">'0.0.0.0'</span></div></pre></td></tr></table></figure></p>
