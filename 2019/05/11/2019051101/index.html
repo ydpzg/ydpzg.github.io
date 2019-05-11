@@ -3,14 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2019 | dukelight&#39;s home</title>
+  <title>解决weex或者vue在dev使用ip和localhost | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/2019/index.html">
+  <meta name="description" content="weex在dev的时候默认是使用ip进行访问，，
+查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
+修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
+后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWebpackCo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决weex或者vue在dev使用ip和localhost">
+<meta property="og:url" content="http://ydpzg.github.io/2019/05/11/2019051101/index.html">
 <meta property="og:site_name" content="dukelight's home">
+<meta property="og:description" content="weex在dev的时候默认是使用ip进行访问，，
+查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
+修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
+后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWebpackCo">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg">
+<meta property="og:updated_time" content="2019-05-11T14:50:51.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="解决weex或者vue在dev使用ip和localhost">
+<meta name="twitter:description" content="weex在dev的时候默认是使用ip进行访问，，
+查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
+修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
+后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWebpackCo">
+<meta name="twitter:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -187,157 +202,103 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2019051101" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2019/05/11/2019051101/" class="article-date">
+  	<time datetime="2019-05-11T14:41:29.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      解决weex或者vue在dev使用ip和localhost
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/11/2019051101/" class="archive-article-date">
-  	<time datetime="2019-05-11T14:41:29.000Z" itemprop="datePublished">May 11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/11/2019051101/">解决weex或者vue在dev使用ip和localhost</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>weex<br>在dev的时候默认是使用ip进行访问，，</p>
+<p>查到在webpack.dev.conf.js的一句代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ip = <span class="built_in">require</span>(<span class="string">'ip'</span>).address();</div></pre></td></tr></table></figure></p>
+<p>修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了</p>
+<p>后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.0<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devWebpackConfig<span class="selector-class">.devServer</span><span class="selector-class">.host</span> = <span class="string">'0.0.0.0'</span></div></pre></td></tr></table></figure></p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg" alt=""></p>
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/14/2019041401/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自定义plugin给方法统计时间（插桩）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/2019041401/" class="archive-article-date">
-  	<time datetime="2019-04-14T12:34:47.000Z" itemprop="datePublished">Apr 14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/2019041401/">自定义plugin给方法统计时间（插桩）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/07/2019030701/" class="archive-article-date">
-  	<time datetime="2019-03-07T04:20:18.000Z" itemprop="datePublished">Mar 7</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/07/2019030701/">关于设置adjustResize后webview出现输入框弹出布局错乱问题</a>
-    </h1>
-  
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/06/2019030601/" class="archive-article-date">
-  	<time datetime="2019-03-06T03:27:12.000Z" itemprop="datePublished">Mar 6</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/06/2019030601/">vue怎么处理后端返回的换行符&#39;\n&#39;</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2019051101" data-title="解决weex或者vue在dev使用ip和localhost" data-url="http://ydpzg.github.io/2019/05/11/2019051101/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/03/2019020301/" class="archive-article-date">
-  	<time datetime="2019-02-03T09:44:36.000Z" itemprop="datePublished">Feb 3</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/03/2019020301/">flutter之殇</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -372,8 +333,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

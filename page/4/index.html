@@ -189,6 +189,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2018032202" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/22/2018032202/" class="article-date">
+  	<time datetime="2018-03-22T08:29:47.000Z" itemprop="datePublished">2018-03-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/22/2018032202/">小程序nodejs</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果是非腾讯云，使用qcloud2的时候要记得把water_xxx的index.js里的90行开始4行注释掉。</p>
+<pre><code>npm install
+npm install xxx —save
+pm2 log
+pm2 start xxx.json
+pm2 stop xxx
+pm2 restart xxx
+npm run start
+npm run initDb
+npm run dev
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2018032201" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -664,62 +724,6 @@ if (config.fontScale != 1) {
     config.fontScale = 1;  
     context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());  
 }</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-20170901501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/09/15/20170901501/" class="article-date">
-  	<time datetime="2017-09-15T01:44:12.000Z" itemprop="datePublished">2017-09-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/15/20170901501/">小米手机在android studio ide上run不了的奇葩问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>instant run会导致一直报有一个新的app在手机里，要卸载</p>
-<p>Error:Execution failed for task ‘:app:transformClassesWithInstantRunForDebug’.</p>
-<blockquote>
-<p>android/hardware/fingerprint/FingerprintManager$AuthenticationCallback</p>
-</blockquote>
-<p>终极方案：<br>关instant run+关miui优化+开usb安装+开未知来源</p>
 
       
     </div>

@@ -189,6 +189,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019051101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/11/2019051101/" class="article-date">
+  	<time datetime="2019-05-11T14:41:29.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/2019051101/">解决weex或者vue在dev使用ip和localhost</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>weex<br>在dev的时候默认是使用ip进行访问，，</p>
+<p>查到在webpack.dev.conf.js的一句代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ip = <span class="built_in">require</span>(<span class="string">'ip'</span>).address();</div></pre></td></tr></table></figure></p>
+<p>修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了</p>
+<p>后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.0<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devWebpackConfig<span class="selector-class">.devServer</span><span class="selector-class">.host</span> = <span class="string">'0.0.0.0'</span></div></pre></td></tr></table></figure></p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019041401" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -727,77 +782,6 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
     <div class="article-entry" itemprop="articleBody">
       
         <p>1、http报错CLEARTEXT communication to host not permitted by network<br><a href="https://blog.csdn.net/qq_18620851/article/details/80617549" target="_blank" rel="external">https://blog.csdn.net/qq_18620851/article/details/80617549</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018101401" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/14/2018101401/" class="article-date">
-  	<time datetime="2018-10-14T05:44:42.000Z" itemprop="datePublished">2018-10-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/2018101401/">ios storyboard的入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>0、如何让storyboard的ViewController控件绑定代码的ViewController</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">在storyboard里面创建了一个ViewController后，要在代码那边创建一个</div><div class="line">自定义Controller去继承UIViewController，然后在storyboard里面选择对应的custom <span class="class"><span class="keyword">class</span>为自定义<span class="title">Controller</span>，就可以完成关联</span></div></pre></td></tr></table></figure>
-<p>1、如何让storyboard与代码进行事件交互。</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">在storyboard里拉出一个label和一个button，然后屏幕调出来两个界面，一个storyboard，一个controller的代码框</div><div class="line">选中storyboard里的label，右键按住，拉到代码框的<span class="variable">@interface</span> <span class="variable">@end</span>中间，就会出现label的定义</div><div class="line">选中storyboard里的button，右键按住，拉到代码框的<span class="variable">@implementation</span> <span class="variable">@end</span>中间，就会出现button的事件定义</div></pre></td></tr></table></figure>
-<p>1、出现Launch screens may not set custom classnames问题</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">图中所画的不要打勾</div><div class="line">!<span class="selector-attr">[]</span>(<span class="attribute">http</span>:<span class="comment">//pd4ketimy.bkt.clouddn.com/15394960479910.jpg)</span></div></pre></td></tr></table></figure>
-<p>4、如何设定storyboard的入口</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">在storyborad的viewController里面设置，如下图，红色那个选项打勾</div><div class="line">!<span class="selector-attr">[]</span>(<span class="attribute">http</span>:<span class="comment">//pd4ketimy.bkt.clouddn.com/15394966538273.jpg)</span></div></pre></td></tr></table></figure>
-<p>5、多个storyBoard，怎么设置特定的storyBoard<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">项目-&gt;<span class="function"><span class="title">info</span>.plist-&gt;</span>Main storyboard file base <span class="keyword">name</span> 设置为指定的storyBoard即可</div></pre></td></tr></table></figure></p>
-<p>6、使用storyBoard生成viewController，关联viewController后，代码pushViewController 黑屏</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">SecondController *controller = [[SecondController alloc]init];</div><div class="line">[self.navigationController <span class="string">pushViewController:</span>controller <span class="string">animated:</span>YES];</div><div class="line"></div><div class="line">使用storyBoard创建的时候已经有了一个viewController实例，不应该在代码里再alloc init另外一个controller，解决方案就是要去storyBoard里面把viewController拿出来</div><div class="line"></div><div class="line"> UIStoryboard *main =[UIStoryboard <span class="string">storyboardWithName:</span>@<span class="string">"LaunchScreen"</span> <span class="string">bundle:</span>nil];</div><div class="line">    SecondController *b = [main <span class="string">instantiateViewControllerWithIdentifier:</span>@<span class="string">"SecondController"</span>];</div><div class="line">    [self.navigationController <span class="string">pushViewController:</span>b <span class="string">animated:</span>YES];</div></pre></td></tr></table></figure>
-<p>7、回调的使用，<br>block<br>定义typeof<br>方法里面写</p>
-<p>8、cocopad的安装使用</p>
-<p>9、当改用cocoapods来管理依赖，<br>编译的时候提示 “ objc ld: library not found for -lPods”<br>这是因为打开的方式不对<br>之前打开的是.xcodeproj<br>用cocoapods后打开的是.xcworkspace</p>
-<p>target -&gt; Build Phases -&gt; Link Binary With Libraries -&gt; 添加.a文件</p>
-<p>10、数据库fmdb-&gt;orm</p>
-<p>11、UITable的使用</p>
-<p>12、storyboard使用xib的自定义view<br>新建一个.h .m文件叫ItemView<br>新建一个.xib文件叫ItemView<br>在xib文件里，设置view customView为空 设置file’s Owner的custionView为ItemView<br>storyboard里拖出一个UIview，custom class指向ItemView<br>在ItemView.m里添加<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIView</span> *view;</div><div class="line"></div><div class="line"><span class="comment">// 初始化CustomView的时候添加xib上的view</span></div><div class="line">- (<span class="keyword">instancetype</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder &#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithCoder:aDecoder];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>)&#123;</div><div class="line">        [<span class="keyword">self</span> addSubview:<span class="keyword">self</span>.view];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 获取xib中的view</span></div><div class="line">- (<span class="built_in">UIView</span> *)view&#123;</div><div class="line">    <span class="keyword">if</span> (!_view) &#123;</div><div class="line">        _view = [[<span class="built_in">NSBundle</span> mainBundle] loadNibNamed:<span class="string">@"ItemView"</span> owner:<span class="keyword">self</span> options:<span class="literal">nil</span>].lastObject;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> _view;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)layoutSubviews&#123;</div><div class="line">    [<span class="keyword">super</span> layoutSubviews];</div><div class="line">    <span class="comment">//设置大小</span></div><div class="line">    <span class="keyword">self</span>.view.frame = <span class="keyword">self</span>.bounds;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>13、给非UiButton的控件加点击事件<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="name">_mIBSetDeviceTime</span> setUserInteractionEnabled:YES]<span class="comment">;</span></div><div class="line">    [<span class="name">_mIBSetDeviceTime</span> addGestureRecognizer:[[<span class="name">UITapGestureRecognizer</span> alloc]initWithTarget:self action:@selector(<span class="name">clickCategory:</span>)]]<span class="comment">;</span></div><div class="line"></div><div class="line">-(<span class="name">void</span>)clickCategory:(<span class="name">UITapGestureRecognizer</span> *)gestureRecognizer &#123;</div><div class="line">    if ([<span class="name">gestureRecognizer</span> view] == _mIBSetDeviceTime) &#123;</div><div class="line">        NSLog(<span class="name">@</span><span class="string">"_mIBSetDeviceTime"</span>)<span class="comment">;//判断是哪个控件的点击</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>14、fragment如果要使用kotlin的 apply plugin: ‘kotlin-android-extensions’</p>
-<p>那么必须放在onActivityCreated后才能生效<br>onCreateView里面的是为空的</p>
 
       
     </div>

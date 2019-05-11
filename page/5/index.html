@@ -189,6 +189,62 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-20170901501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/15/20170901501/" class="article-date">
+  	<time datetime="2017-09-15T01:44:12.000Z" itemprop="datePublished">2017-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/15/20170901501/">小米手机在android studio ide上run不了的奇葩问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>instant run会导致一直报有一个新的app在手机里，要卸载</p>
+<p>Error:Execution failed for task ‘:app:transformClassesWithInstantRunForDebug’.</p>
+<blockquote>
+<p>android/hardware/fingerprint/FingerprintManager$AuthenticationCallback</p>
+</blockquote>
+<p>终极方案：<br>关instant run+关miui优化+开usb安装+开未知来源</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017090901" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -715,62 +771,6 @@ rmax = max(map(len, [str(x) for x in d.values()]))
 rmax
 for x in d:
      print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052601/" class="article-date">
-  	<time datetime="2017-05-26T13:38:54.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052601/">python 4-4如何将多个小字符串拼接成一个大的字符串</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="两种方式：1、使用-号连接；2、使用str-join-做字符串连接"><a href="#两种方式：1、使用-号连接；2、使用str-join-做字符串连接" class="headerlink" title="两种方式：1、使用+号连接；2、使用str.join()做字符串连接"></a>两种方式：1、使用+号连接；2、使用str.join()做字符串连接</h4><pre><code>s1=&quot;123&quot;
-s2=&quot;456&quot;
-s1 + s2
-&quot;&quot;.join([&apos;123&apos;, &apos;444&apos;])
-array = [111, &quot;2323&quot;, dd, &quot;pp&quot;]
-&apos;:&apos;.join(str(x) for x in array)
 </code></pre>
       
     </div>
