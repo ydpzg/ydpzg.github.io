@@ -3,29 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>解决weex或者vue在dev使用ip和localhost | dukelight&#39;s home</title>
+  <title>dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="尝试weex在dev构建的时候的时候默认是使用ip进行访问，，
-查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
-修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
-后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWe">
-<meta property="og:type" content="article">
-<meta property="og:title" content="解决weex或者vue在dev使用ip和localhost">
-<meta property="og:url" content="http://ydpzg.github.io/2019/05/11/2019051101/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="dukelight's home">
+<meta property="og:url" content="http://ydpzg.github.io/page/11/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="尝试weex在dev构建的时候的时候默认是使用ip进行访问，，
-查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
-修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
-后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWe">
-<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg">
-<meta property="og:updated_time" content="2019-05-11T14:52:39.341Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决weex或者vue在dev使用ip和localhost">
-<meta name="twitter:description" content="尝试weex在dev构建的时候的时候默认是使用ip进行访问，，
-查到在webpack.dev.conf.js的一句代码1const ip = require(&apos;ip&apos;).address();
-修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了
-后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.01devWe">
-<meta name="twitter:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg">
+<meta name="twitter:title" content="dukelight's home">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -202,11 +187,13 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2019051101" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
+  
+    <article id="post-2015062601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/05/11/2019051101/" class="article-date">
-  	<time datetime="2019-05-11T14:41:29.000Z" itemprop="datePublished">2019-05-11</time>
+      <a href="/2015/06/26/2015062601/" class="article-date">
+  	<time datetime="2015-06-26T07:01:04.000Z" itemprop="datePublished">2015-06-26</time>
 </a>
     </div>
   
@@ -218,97 +205,70 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      解决weex或者vue在dev使用ip和localhost
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/26/2015062601/">使用hexo搭建博客平台，记录过程</a>
     </h1>
   
 
       </header>
       
-      <div class="article-info article-info-post">
-        
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>尝试weex<br>在dev构建的时候的时候默认是使用ip进行访问，，</p>
-<p>查到在webpack.dev.conf.js的一句代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ip = <span class="built_in">require</span>(<span class="string">'ip'</span>).address();</div></pre></td></tr></table></figure></p>
-<p>修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了</p>
-<p>后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.0<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devWebpackConfig<span class="selector-class">.devServer</span><span class="selector-class">.host</span> = <span class="string">'0.0.0.0'</span></div></pre></td></tr></table></figure></p>
-<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg" alt=""></p>
+        <h4 id="1-在github上创建一个Repository-名字为xx-github-io"><a href="#1-在github上创建一个Repository-名字为xx-github-io" class="headerlink" title="1. 在github上创建一个Repository,名字为xx.github.io"></a>1. 在github上创建一个Repository,名字为xx.github.io</h4><pre><code>Repository 的地址就是 http://www.github.com/id/id.github.io.git
+</code></pre><h4 id="2-配置ssh-keys"><a href="#2-配置ssh-keys" class="headerlink" title="2. 配置ssh keys"></a>2. 配置ssh keys</h4><p>打开github网站，然后找到ssh keys的设置地方，具体网站上有教程。设置完测试一下</p>
+<pre><code>ssh -T git@github.com
+</code></pre><h4 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3. 安装hexo"></a>3. 安装hexo</h4><pre><code>npm install -g hexo
+</code></pre><p>新建一个文件夹来保存<br>    hexo init<br>    npm install</p>
+<p>安装好后，就可以开始了<br>    hexo generate  //可以简写为 hexo g<br>    hexo server    //可以简写为 hexo s</p>
+<p>在浏览器中输入 localhost:4000 查看本地博客    </p>
+<h4 id="4-部署到github上去"><a href="#4-部署到github上去" class="headerlink" title="4. 部署到github上去"></a>4. 部署到github上去</h4><pre><code>npm install hexo-deployer-git --save
+</code></pre><p>打开hexo文件夹的_config.yml ，文件拉到最后，设置deploy的type为git，repository为：<a href="https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）" target="_blank" rel="external">https://github.com/id/id.github.io.git（注意：必须在type和repo后面加上一个空格）</a> </p>
+<pre><code>hexo g
+hexo deploy    //可简写为 hexo d
+</code></pre><h4 id="5-开始用hexo写文章"><a href="#5-开始用hexo写文章" class="headerlink" title="5. 开始用hexo写文章"></a>5. 开始用hexo写文章</h4><p>hexo博客目录里的source/_posts就是放文章的（使用markdown语法编写）,格式是xx.md</p>
+<pre><code>hexo new post &quot;first article&quot;   
+</code></pre><p>会创建一个叫first article.md的文件（使用markdown语法），使用macdown打开找个文件，然后就可以开始写文章，写完后打命令</p>
+<pre><code>hexo g
+hexo s
+hexo d
+</code></pre><h4 id="6-关于文章中的图片问题"><a href="#6-关于文章中的图片问题" class="headerlink" title="6. 关于文章中的图片问题"></a>6. 关于文章中的图片问题</h4><pre><code>使用七牛云存储来保存图片，并换取图片外链. (http://www.qiniu.com)
+</code></pre><blockquote>
+<p>ps: 使用hexo的第三方theme，看起来不错的主题 hexo-theme-yilia，部署后就么么哒~~<br><a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia</a></p>
+</blockquote>
 
       
     </div>
     
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/05/19/2019051901/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          vue的动画应用
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/04/14/2019041401/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">自定义plugin给方法统计时间（插桩）</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github-自搭建/">hexo github 自搭建</a></li></ul>
+	</div>
 
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
   
 </article>
 
 
-<div class="share">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2019051101" data-title="解决weex或者vue在dev使用ip和localhost" data-url="http://ydpzg.github.io/2019/05/11/2019051101/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
 
 
 
 
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span>
+    </nav>
+  
 </div>
       <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
@@ -341,8 +301,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

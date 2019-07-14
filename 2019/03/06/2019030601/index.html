@@ -23,7 +23,7 @@
 1234567&amp;lt;p class=&quot;text&quot; v-html=&quot;requestText&quot;&amp;gt;&amp;lt;/p&amp;gt;data()&amp;#123;    return&amp;#123;    requestText:&quot;&quot;    &amp;#125;&amp;#125;str.replace(&apos;ln&apos;, &apos;&amp;lt;br&amp;gt;&apos;);
 
 2、使用v-for">
-<meta property="og:updated_time" content="2019-03-06T08:28:55.943Z">
+<meta property="og:updated_time" content="2019-06-28T03:34:03.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue怎么处理后端返回的换行符'\n'">
 <meta name="twitter:description" content="解决方案有三个，用第三个方案会好一点
@@ -255,6 +255,7 @@
 <li>3、css加上</li>
 </ul>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">white-<span class="literal">space</span>: pre-<span class="built_in">line</span><span class="comment">;//多个空格会合并成一个空格</span></div><div class="line">white-<span class="literal">space</span>: pre-<span class="keyword">wrap</span><span class="comment">;//多个空格仍然不变</span></div></pre></td></tr></table></figure>
+<p>注意：<br>popupConfig.tip.replace(/\n/g, ‘\n’)<br>popupConfig.tip.replace(/\n/g, ‘<br>‘)</p>
 
       
     </div>

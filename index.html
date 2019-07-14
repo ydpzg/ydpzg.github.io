@@ -189,6 +189,176 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019071401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/14/2019071401/" class="article-date">
+  	<time datetime="2019-07-14T15:39:05.000Z" itemprop="datePublished">2019-07-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/14/2019071401/">关于一个对话框component在vue中的的实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>component的文件形态<br>xxx 文件夹<br>    index.js （封装了createDialog方法，操作了dom树）<br>    index.vue</p>
+<p>1、用法：<br>import xxx from ‘xxx/index.js’<br>let dialog = xxx({ YYY: yyy})</p>
+<p>场景：<br>不需要view层的公共类，只需要script层</p>
+<p>注意：<br>控制对话框显示与隐藏的字段是visible，通过值为true or false来代表对话框的显示与隐藏，因为要操作dom树，dom元素的显示隐藏就是visible</p>
+<p>2、用法：<br>import xxx from ‘xxx/index.vue’</p>
+<xxx v-model="showDialog" :yyy="yyy"></xxx>
+
+<p>场景：<br>普通单页业务，既有view层，又有script层</p>
+<p>注意：<br>控制对话框显示与隐藏的字段是value，通过值为true or false来代表对话框的显示与隐藏，因为使用了v-model</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2019070401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/04/2019070401/" class="article-date">
+  	<time datetime="2019-07-04T01:56:45.000Z" itemprop="datePublished">2019-07-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/04/2019070401/">flutter release后报错 No address associated with hostname, errno = 7</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>权限问题<br>android的AndroidManifest要添加网络权限<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:<span class="built_in">name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2019051901" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/19/2019051901/" class="article-date">
+  	<time datetime="2019-05-19T05:21:31.000Z" itemprop="datePublished">2019-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/19/2019051901/">vue的动画应用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>动画可以使用css动画，也可以用钩子加载js动画</p>
+<p>css动画有个缺点，如果某些动画效果的值需要动态去改变，那只能使用js动画</p>
+<p>如果是多个dom都要连着动画怎么办呢<br>比如需求是一个进度条+小火箭，进度条需要动态的属性是width，小火箭需要动态的属性是margin-left</p>
+<p>那么可以使用transition标签，也可以使用transition-group标签</p>
+<p>使用transition标签，思路是取其中一个dom作为基准，执行js动画，其他dom在基准dom的时间线回调里做属性值的变化，当然，相对于使用transition-group标签，同步的时候那些边界值可能要维护得更多。</p>
+<p>如：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;div ref=<span class="string">"progressRed"</span> class=<span class="string">"head-panel-progress-red"</span> v-<span class="keyword">if</span>=<span class="string">"show"</span> :style=<span class="string">"&#123;'width': `$&#123;marginLeftRocket&#125;`&#125;"</span>  &gt;&lt;/div&gt;</div><div class="line">          &lt;transition v-<span class="keyword">on</span>:enter=<span class="string">"enter"</span></div><div class="line">                      v-<span class="keyword">on</span>:before-enter=<span class="string">"beforeEnter"</span></div><div class="line">                      v-<span class="keyword">on</span>:after-enter=<span class="string">"afterEnter"</span></div><div class="line">                      v-<span class="keyword">on</span>:before-leave=<span class="string">"beforeLeave"</span></div><div class="line">                      :css=<span class="string">"false"</span></div><div class="line">                      name=<span class="string">"animate"</span></div><div class="line">                      <span class="keyword">mode</span>=<span class="string">"in-out"</span>&gt;</div><div class="line">            &lt;img class=<span class="string">"head-panel-progress-rocket"</span> src=<span class="string">"https://qiniu-koala.kaolalicai.cn/app/cash_flow_record/img_progress_rocket.png"</span> v-<span class="keyword">if</span>=<span class="string">"show"</span> :class=<span class="string">"flagClassRocket"</span>&gt;</div><div class="line">          &lt;/transition&gt;</div><div class="line">          </div><div class="line">       </div><div class="line">beforeEnter(<span class="keyword">el</span>) &#123;</div><div class="line">    <span class="keyword">el</span>.style.marginLeft = <span class="string">'0%'</span></div><div class="line">&#125;,          </div><div class="line">enter(<span class="keyword">el</span>, done) &#123;</div><div class="line">    Velocity(<span class="keyword">el</span>, &#123;</div><div class="line">      marginLef<span class="variable">t:</span> `$&#123;this.beatPercent&#125;%`</div><div class="line">    &#125;, &#123;</div><div class="line">      duration: <span class="number">1000</span>,</div><div class="line">      progres<span class="variable">s:</span> () =&gt; &#123;</div><div class="line">        this.marginLeftRocket = <span class="keyword">el</span>.style.marginLeft</div><div class="line">      &#125;,</div><div class="line">      <span class="built_in">complete</span>: () =&gt; &#123;</div><div class="line">        done()</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line">  afterEnter(<span class="keyword">el</span>) &#123;</div><div class="line">    this.marginLeftRocket = <span class="keyword">el</span>.style.marginLeft</div><div class="line">  &#125;,</div><div class="line">  beforeLeave() &#123;</div><div class="line">    this.marginLeftRocket = <span class="string">'0%'</span></div><div class="line">  &#125;,</div></pre></td></tr></table></figure>
+<p>使用transition-group标签，比较简单，n个dom同时执行，动态改变属性值，由系统去维护时间线，完美，可能也有缺点，group的子dom需要统一的标签（这点没验证）。</p>
+<p>如</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;transition-group v-<span class="keyword">on</span>:enter=<span class="string">"enter"</span></div><div class="line">                  v-<span class="keyword">on</span>:before-enter=<span class="string">"beforeEnter"</span></div><div class="line">                  v-<span class="keyword">on</span>:after-enter=<span class="string">"afterEnter"</span></div><div class="line">                  v-<span class="keyword">on</span>:before-leave=<span class="string">"beforeLeave"</span></div><div class="line">                  :css=<span class="string">"false"</span></div><div class="line">                  <span class="keyword">tag</span>=<span class="string">"div"</span></div><div class="line">                  name=<span class="string">"animate"</span></div><div class="line">                  <span class="keyword">mode</span>=<span class="string">"in-out"</span>&gt;</div><div class="line">    &lt;div :key=<span class="string">"'progressRed'"</span></div><div class="line">         :data-name=<span class="string">"'red'"</span></div><div class="line">         class=<span class="string">"head-panel-progress-red"</span></div><div class="line">         v-<span class="keyword">if</span>=<span class="string">"show"</span> &gt;&lt;/div&gt;</div><div class="line">    &lt;div :key=<span class="string">"'progressRocket'"</span></div><div class="line">         :data-name=<span class="string">"'rocket'"</span></div><div class="line">         class=<span class="string">"head-panel-progress-rocket"</span></div><div class="line">         v-<span class="keyword">if</span>=<span class="string">"show"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/transition-group&gt;</div><div class="line"></div><div class="line">enter(<span class="keyword">el</span>, done) &#123;</div><div class="line">        <span class="keyword">let</span> properties = <span class="keyword">el</span>.dataset.name === <span class="string">'rocket'</span> ? &#123; marginLef<span class="variable">t:</span> `$&#123;this.beatPercent&#125;%` &#125; : &#123; width: `$&#123;this.beatPercent&#125;%` &#125;</div><div class="line">        Velocity(<span class="keyword">el</span>, properties, &#123;</div><div class="line">          duration: <span class="number">1000</span>,</div><div class="line">          <span class="built_in">complete</span>: () =&gt; &#123;</div><div class="line">            done()</div><div class="line">          &#125;</div><div class="line">        &#125;)</div><div class="line">      &#125;,</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019051101" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -449,6 +619,7 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 <li>3、css加上</li>
 </ul>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">white-<span class="literal">space</span>: pre-<span class="built_in">line</span><span class="comment">;//多个空格会合并成一个空格</span></div><div class="line">white-<span class="literal">space</span>: pre-<span class="keyword">wrap</span><span class="comment">;//多个空格仍然不变</span></div></pre></td></tr></table></figure>
+<p>注意：<br>popupConfig.tip.replace(/\n/g, ‘\n’)<br>popupConfig.tip.replace(/\n/g, ‘<br>‘)</p>
 
       
     </div>
@@ -505,6 +676,15 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Another exception was thrown: Scaffold.<span class="keyword">of</span>() called <span class="keyword">with</span> <span class="keyword">a</span> context that does <span class="keyword">not</span> contain <span class="keyword">a</span> Scaffold.</div></pre></td></tr></table></figure>
 <p>代码如下：vl</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="symbol">'package</span>:flutter/material.dart';</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnackBarPage</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</div><div class="line">  <span class="type">BuildContext</span> scaffoldContext;</div><div class="line"></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="type">Widget</span> build(<span class="type">BuildContext</span> context) &#123;</div><div class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></div><div class="line">    <span class="type">Widget</span> body = <span class="type">Center</span> (</div><div class="line">        child: <span class="type">RaisedButton</span>(</div><div class="line">            onPressed: () &#123;</div><div class="line">              <span class="keyword">final</span> snackBar = <span class="type">SnackBar</span>(</div><div class="line">                content: <span class="type">Text</span>(<span class="symbol">'hello</span>! <span class="type">A</span> <span class="type">SnackBar</span>!'),</div><div class="line">                action: <span class="type">SnackBarAction</span>(</div><div class="line">                  label: <span class="symbol">'Und</span>o',</div><div class="line">                  onPressed: () &#123;</div><div class="line">                    <span class="comment">// Some code to undo the change!</span></div><div class="line">                  &#125;,</div><div class="line">                ),</div><div class="line">              );</div><div class="line">              <span class="type">Scaffold</span>.of(scaffoldContext).showSnackBar(snackBar);</div><div class="line">            &#125;,</div><div class="line">            child: <span class="type">Text</span>(<span class="symbol">'tes</span>t')</div><div class="line">        )</div><div class="line">    );</div><div class="line"></div><div class="line">    <span class="keyword">return</span></div><div class="line">      <span class="type">MaterialApp</span>(</div><div class="line">        title: <span class="symbol">'SnackBa</span>r',</div><div class="line">        home: <span class="type">Scaffold</span>(</div><div class="line">          appBar: <span class="type">AppBar</span>(</div><div class="line">            title: <span class="type">Text</span>(<span class="symbol">'SnackBa</span>r')</div><div class="line">          ),</div><div class="line">          body: <span class="type">Builder</span>(builder: (<span class="type">BuildContext</span> context) &#123;</div><div class="line">            scaffoldContext = context;</div><div class="line">            <span class="keyword">return</span> body;</div><div class="line">          &#125;),</div><div class="line">        ),</div><div class="line">      );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>打release包，flutter build apk<br>但是发现请求都失败了</p>
+<p>找不到3des加密方法，只能从android和ios分别实现，然后桥接</p>
+<p>如果image出现找不到的情况，不要hot运行，直接重新run</p>
+<p>webdev could not run for this project.<br>The pubspec.yaml file has changed since the pubspec.lock file was generated, please run “pub get” again.</p>
+<p>pub get</p>
+<p>webdev could not run for this project.<br>You must have a dependency on <code>build_web_compilers</code> in <code>pubspec.yaml</code>.</p>
+<p><a href="https://cloud.tencent.com/developer/article/1430689" target="_blank" rel="external">https://cloud.tencent.com/developer/article/1430689</a></p>
+<p>web<br>很多第三方插件都不支持</p>
+<p>No address associated with hostname</p>
 
       
     </div>
@@ -641,174 +821,9 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 
 
   
-    <article id="post-2018110501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/04/2018110501/" class="article-date">
-  	<time datetime="2018-11-04T05:50:57.000Z" itemprop="datePublished">2018-11-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/2018110501/">ios os工程调用swift方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>按照网上的教程</p>
-<p>1、新建一个oc工程</p>
-<p>2、找到工程的embed asset Packs in Product Bundle，设置为Yes<br><img src="http://pd4ketimy.bkt.clouddn.com/15413107425478.jpg" alt=""></p>
-<p>3、新建一个swift文件，类似<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Foundation</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">printLog</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"hello"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>4、在调用处引用头文件<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#import</span> <span class="string">"TestSwiftWifthOc-Swift.h"</span> <span class="comment">//TestSwiftWifthOc为当前工程名字</span></div></pre></td></tr></table></figure></p>
-<p>然后就可以调用了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestSwift *<span class="built_in">test</span>Swift = [[TestSwift alloc]init];</div><div class="line">    [<span class="built_in">test</span>Swift <span class="built_in">print</span>Log];</div></pre></td></tr></table></figure></p>
-<p>5、但是有些xcode创建的工程会报错，比如我的macbook<br><img src="http://pd4ketimy.bkt.clouddn.com/15413110845076.jpg" alt=""></p>
-<p>6、进去TestSwiftWifthOc-Swift.h头文件里面看，系统帮我们创建了TestSwift类，但是没有方法，很奇怪<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SWIFT_CLASS(<span class="string">"_TtC16TestSwiftWifthOc9TestSwift"</span>)</div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span></span></div><div class="line">- (<span class="keyword">nonnull</span> <span class="keyword">instancetype</span>)init OBJC_DESIGNATED_INITIALIZER;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
-<p>7、最后找到了解决方法，在swift方法上加注解@objc，问题解决<br>、、、<br>import Foundation</p>
-<p>public class TestSwift : NSObject {<br>    @objc func printLog() {<br>        print(“hello”)<br>    }<br>}<br>、、、</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018102301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/23/2018102301/" class="article-date">
-  	<time datetime="2018-10-23T07:26:32.000Z" itemprop="datePublished">2018-10-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/23/2018102301/">RxJava多个api的处理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>RxJava多个api的处理</p>
-<p>merge 单独输出，统一结束回调，api同时出去</p>
-<p>zip 封装在一起，最后统一输出和结束回调，api同时出去</p>
-<p>flatMap 一个请求回来再进行下一个请求</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018101501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/15/2018101501/" class="article-date">
-  	<time datetime="2018-10-15T05:59:12.000Z" itemprop="datePublished">2018-10-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/15/2018101501/">项目升级android P注意点点</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、http报错CLEARTEXT communication to host not permitted by network<br><a href="https://blog.csdn.net/qq_18620851/article/details/80617549" target="_blank" rel="external">https://blog.csdn.net/qq_18620851/article/details/80617549</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

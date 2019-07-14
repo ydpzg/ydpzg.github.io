@@ -189,6 +189,165 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017103001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/30/2017103001/" class="article-date">
+  	<time datetime="2017-10-30T08:00:00.000Z" itemprop="datePublished">2017-10-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/30/2017103001/">web view栈手动管理，重载GoBack（）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017102801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/29/2017102801/" class="article-date">
+  	<time datetime="2017-10-28T16:01:36.000Z" itemprop="datePublished">2017-10-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/29/2017102801/">NoScrollListView 跟 android:layerType=&quot;software&quot;，冲突</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>设置了后，画了大概20行就会出现bug，item布局还在，点击事件还在，就是看不到任何东西。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017093001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/30/2017093001/" class="article-date">
+  	<time datetime="2017-09-30T10:01:19.000Z" itemprop="datePublished">2017-09-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/30/2017093001/">防止系统字体大小变化导致app字体大小变化</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"><a href="#大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop" class="headerlink" title="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"></a>大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在2560<em>1440上表现出现是要相对耗时500ms</em>，而xiaop</h4><p><code>Configuration config = context.getResources().getConfiguration();  
+config.fontScale = 1;  
+context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());</code></p>
+<h4 id="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"><a href="#所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现" class="headerlink" title="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"></a>所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现</h4><p><code>Configuration config = context.getResources().getConfiguration();  
+if (config.fontScale != 1) {  
+    config.fontScale = 1;  
+    context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());  
+}</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-20170901501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -591,213 +750,9 @@ EVP_PKEY_set1_RSA
 
 
   
-    <article id="post-2017053101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/31/2017053101/" class="article-date">
-  	<time datetime="2017-05-31T13:48:47.000Z" itemprop="datePublished">2017-05-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/31/2017053101/">python 5-2如何处理二进制文件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="掌握二进制处理方法，比如struct-unpack-file-seek-file-tell-file-readinfo-aray-array"><a href="#掌握二进制处理方法，比如struct-unpack-file-seek-file-tell-file-readinfo-aray-array" class="headerlink" title="掌握二进制处理方法，比如struct.unpack;file.seek();file.tell();file.readinfo();aray.array()"></a>掌握二进制处理方法，比如struct.unpack;file.seek();file.tell();file.readinfo();aray.array()</h4><pre><code>file = open(&apos;&apos;, &apos;rb&apos;)
-info = file.read(44)
-import struct
-struct.unpack(&apos;h&apos;, info[22:24]); #解析字节
- struct.unpack(&apos;i&apos;, info[24:28]);
-
-import array
-file.seek(0,2)#把指针挪到末尾
-file.tell()#指针的位置
-n = (file.tell() - 44) / 2
-buf = array.array(&apos;h&apos;, (0 for _ in range(n)))
-file.seek(44)
-file.readinfo(buf)
-for i in range(n): buf[i] /= 8
-
-f2 = open(&apos;demo2.wav&apos;, &apos;wb&apos;)
-f2.write(info)
-buf.tofile(f2)
-f2.close()
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052603" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052603/" class="article-date">
-  	<time datetime="2017-05-26T15:53:29.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052603/">python 4-6如何去掉字符串中不需要的字符</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="有很多种"><a href="#有很多种" class="headerlink" title="有很多种"></a>有很多种</h4><pre><code>s = &quot;    jjj   ee    &quot;
-s.strip()
-s.lstrip()
-s.rstrip()
-
-s  = &apos;-----abd++++++&apos;
-s.strip(&apos;-+&apos;)
-
-s = &apos;adb:123&apos;
-s[:3] + s[4:]
-
-s = &apos;\tsss\tcvv\ppp&apos;
-s.replace(&apos;\t&apos;, &apos;&apos;)
-
-s = &apos;\tsss\tcvv\tppp\rfdf\rccc&apos;
-import re
-re.sub(&apos;[\t\r]&apos;, &apos;&apos;)
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052602/" class="article-date">
-  	<time datetime="2017-05-26T14:03:18.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052602/">python 4-5如何对字符串进行左, 右, 居中对齐</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
-s.ljust(10, &apos;_&apos;)
-s.rjust(10, &apos;_&apos;)
-s.center(10, &apos;_&apos;)
-format(s, &apos;&lt;10&apos;)
-format(s, &apos;&gt;10&apos;)
-format(s, &apos;^10&apos;)
-
-d ={&apos;a&apos;:100,&apos;adb3dd&apos;:9,&apos;lof&apos;:3444}
-map(len, d.keys())
-list(map(len, d.keys()))
-k = max(map(len, d.keys()))
-for x in d:
-      print(x.ljust(k), &apos;:&apos;, d[x])
-rmax = max(map(len, [str(x) for x in d.values()]))
-rmax
-for x in d:
-     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 </div>
