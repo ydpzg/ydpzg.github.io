@@ -3,27 +3,44 @@
 <head>
   <meta charset="utf-8">
   
-  <title>关于一个对话框component在vue中的的实现 | dukelight&#39;s home</title>
+  <title>android编译插桩 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue
-1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy})
-场景：不需要view层的公共类，只需要script层
-注意：控制对话框显示与隐藏的字段是visible，通过值为true">
+  <meta name="description" content="背景：这一次分享一下关于android编译插桩这个话题，在正常编写代码实现程序的逻辑外，还要使用一点点黑科技，拿起操作代码无所不能的武器。
+
+
+Android常用的能动态改变代码逻辑的方法有两种
+Java hook（反射，动态代理）android是基于java，同时也就有了反射的概念，动态去加载代码，同时动态代理也可以实现，但比较难理解，网络上讲得也很多了，这里就不讲。
+
+插桩（编译插桩，插件化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于一个对话框component在vue中的的实现">
-<meta property="og:url" content="http://ydpzg.github.io/2019/07/14/2019071401/index.html">
+<meta property="og:title" content="android编译插桩">
+<meta property="og:url" content="http://ydpzg.github.io/2019/07/28/2019072801/index.html">
 <meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue
-1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy})
-场景：不需要view层的公共类，只需要script层
-注意：控制对话框显示与隐藏的字段是visible，通过值为true">
-<meta property="og:updated_time" content="2019-07-14T16:02:08.689Z">
+<meta property="og:description" content="背景：这一次分享一下关于android编译插桩这个话题，在正常编写代码实现程序的逻辑外，还要使用一点点黑科技，拿起操作代码无所不能的武器。
+
+
+Android常用的能动态改变代码逻辑的方法有两种
+Java hook（反射，动态代理）android是基于java，同时也就有了反射的概念，动态去加载代码，同时动态代理也可以实现，但比较难理解，网络上讲得也很多了，这里就不讲。
+
+插桩（编译插桩，插件化">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328617/blog/szr5rfwoocyinhckskvp.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328675/blog/hhizmrqmldepmorj5nkl.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328901/blog/zswgrny2n2x9ksbdjcqb.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328971/blog/c1fkyykpuqixuk8hxigr.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328994/blog/osbprhgbn8whvjbukkhe.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1557425055/blog/qjbca6p3bdomicb7i7u4.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1564329556/blog/d8j2ixczfj4vhcr8j9ia.jpg">
+<meta property="og:updated_time" content="2019-07-28T16:20:36.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于一个对话框component在vue中的的实现">
-<meta name="twitter:description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue
-1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy})
-场景：不需要view层的公共类，只需要script层
-注意：控制对话框显示与隐藏的字段是visible，通过值为true">
+<meta name="twitter:title" content="android编译插桩">
+<meta name="twitter:description" content="背景：这一次分享一下关于android编译插桩这个话题，在正常编写代码实现程序的逻辑外，还要使用一点点黑科技，拿起操作代码无所不能的武器。
+
+
+Android常用的能动态改变代码逻辑的方法有两种
+Java hook（反射，动态代理）android是基于java，同时也就有了反射的概念，动态去加载代码，同时动态代理也可以实现，但比较难理解，网络上讲得也很多了，这里就不讲。
+
+插桩（编译插桩，插件化">
+<meta name="twitter:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328617/blog/szr5rfwoocyinhckskvp.jpg">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -200,11 +217,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2019071401" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2019072801" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/07/14/2019071401/" class="article-date">
-  	<time datetime="2019-07-14T15:39:05.000Z" itemprop="datePublished">2019-07-14</time>
+      <a href="/2019/07/28/2019072801/" class="article-date">
+  	<time datetime="2019-07-28T12:44:44.000Z" itemprop="datePublished">2019-07-28</time>
 </a>
     </div>
   
@@ -217,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于一个对话框component在vue中的的实现
+      android编译插桩
     </h1>
   
 
@@ -233,15 +250,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>component的文件形态<br>xxx 文件夹<br>    index.js （封装了createDialog方法，操作了dom树）<br>    index.vue</p>
-<p>1、用法：<br>import xxx from ‘xxx/index.js’<br>let dialog = xxx({ YYY: yyy})</p>
-<p>场景：<br>不需要view层的公共类，只需要script层</p>
-<p>注意：<br>控制对话框显示与隐藏的字段是visible，通过值为true or false来代表对话框的显示与隐藏，因为要操作dom树，dom元素的显示隐藏就是visible</p>
-<p>2、用法：<br>import xxx from ‘xxx/index.vue’</p>
-<xxx v-model="showDialog" :yyy="yyy"></xxx>
-
-<p>场景：<br>普通单页业务，既有view层，又有script层</p>
-<p>注意：<br>控制对话框显示与隐藏的字段是value，通过值为true or false来代表对话框的显示与隐藏，因为使用了v-model</p>
+        <blockquote>
+<p>背景：这一次分享一下关于android编译插桩这个话题，在正常编写代码实现程序的逻辑外，还要使用一点点黑科技，拿起操作代码无所不能的武器。</p>
+</blockquote>
+<hr>
+<h4 id="Android常用的能动态改变代码逻辑的方法有两种"><a href="#Android常用的能动态改变代码逻辑的方法有两种" class="headerlink" title="Android常用的能动态改变代码逻辑的方法有两种"></a>Android常用的能动态改变代码逻辑的方法有两种</h4><ol>
+<li><p>Java hook（反射，动态代理）<br>android是基于java，同时也就有了反射的概念，动态去加载代码，同时动态代理也可以实现，但比较难理解，网络上讲得也很多了，这里就不讲。</p>
+</li>
+<li><p>插桩（编译插桩，插件化插桩）<br>如果是按照插桩时机，在编译时候的就是编译插桩，然而，有些时候需要在程序运行的时候动态加载一些东西。我理解的差异性是插桩的代码是跟原来程序是分开的，在一个特定的时机与原有程序合二为一。</p>
+</li>
+</ol>
+<h4 id="从xposed框架到编译插桩"><a href="#从xposed框架到编译插桩" class="headerlink" title="从xposed框架到编译插桩"></a>从xposed框架到编译插桩</h4><p>记得去年曾经分享过xposed框架的使用，那是在系统层面去hook住方法，不足之处是系统要先刷入框架包，优点是可以对该系统里面所有的app进行hook</p>
+<blockquote>
+<p>是否可以对我们自己的应用进行代码的修改？比如上面提到的有java hook,还有编译插桩：下面是比较流行的框架</p>
+</blockquote>
+<ol>
+<li>aspectJ （面向切面框架）  跟普通代码一样，理解容易</li>
+<li>Asm     （操作字节码框架）需要使用asm字节码，相对复杂</li>
+</ol>
+<p>而插桩的应用场景：apm，无埋点</p>
+<p>####比较一下aspectJ 与asm分别插桩后的代码<br>aspectJ</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328617/blog/szr5rfwoocyinhckskvp.jpg" alt=""></p>
+<p>asm</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328675/blog/hhizmrqmldepmorj5nkl.jpg" alt=""></p>
+<p>通过上面两个图可以看出插桩后的代码还是有所区别，aspectJ采用插入方法的方式，这种代码混淆的时候一定要注意，不然会出现找不到方法名。而asm采用直接把差异代码嵌入原有的方法里，显然执行起来更加高效。</p>
+<p>####asm实现的插桩</p>
+<p>原代码</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328901/blog/zswgrny2n2x9ksbdjcqb.jpg" alt=""></p>
+<p>字节码</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328971/blog/c1fkyykpuqixuk8hxigr.jpg" alt=""></p>
+<p>asm代码</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328994/blog/osbprhgbn8whvjbukkhe.jpg" alt=""></p>
+<p>可以看出代码相对来说是比较复杂的，可能需要工具才能正确去编写asm代码，比如idea插件bytecode outline</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1557425055/blog/qjbca6p3bdomicb7i7u4.jpg" alt=""></p>
+<p>####asm在编译打包的哪个步骤插桩呢</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564329556/blog/d8j2ixczfj4vhcr8j9ia.jpg" alt=""></p>
+<p>如图所示：在编译成.class文件后，执行asm步骤，对class文件进行处理。而后就把各种编译后的文件打包进dex文件的过程。</p>
+<p>####demo-采用asm为某个方法插入代码</p>
+<p>一个简单的demo，对一个方法进行asm插桩</p>
+<p><a href="">https://github.com/ydpzg/TestPlugin</a></p>
+<hr>
+<h4 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h4><p>自定义gradle plugin</p>
+<p><a href="">https://guides.gradle.org/writing-gradle-plugins/
+</a></p>
+<p><a href="">https://docs.gradle.org/current/userguide/custom_plugins.html</a></p>
+<p>Asm 字节码插件：<br><figure class="highlight plain"><figcaption><span>Bytecode Outline```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">java字节码：</div><div class="line">```javac Apple.java javap -verbose Apple.class</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -251,18 +304,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/07/18/2019-07-18/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/04/2019070401/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">flutter release后报错 No address associated with hostname, errno = 7</div>
+    <a href="/2019/07/18/2019-07-18/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -291,7 +335,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2019071401" data-title="关于一个对话框component在vue中的的实现" data-url="http://ydpzg.github.io/2019/07/14/2019071401/"></div>
+	<div class="ds-thread" data-thread-key="2019072801" data-title="android编译插桩" data-url="http://ydpzg.github.io/2019/07/28/2019072801/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

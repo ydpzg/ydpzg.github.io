@@ -189,6 +189,118 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-20180110802" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/08/20180110802/" class="article-date">
+  	<time datetime="2018-11-08T06:20:55.000Z" itemprop="datePublished">2018-11-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/08/20180110802/">移动base类</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>会涉及到通信，数据中心，网络，一些公共调用方法</p>
+<p>网络改造，涉及到baseModel 里面的retrofitService<br>注入需要改成baseHttpService，<br>httpHelper也要返回封装的baseHttpService</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-20180110801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/08/20180110801/" class="article-date">
+  	<time datetime="2018-11-08T04:09:02.000Z" itemprop="datePublished">2018-11-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/08/20180110801/">ARouter的坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP</p>
+<p>FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。</p>
+<p>在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP）<br>  withFlags 只用一次</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ARouter</span><span class="selector-class">.getInstance</span>()<span class="selector-class">.build</span>(<span class="selector-tag">ARouterPathType</span><span class="selector-class">.MainActivity</span>)</div><div class="line">                        <span class="selector-class">.withFlags</span>(<span class="selector-tag">Intent</span><span class="selector-class">.FLAG_ACTIVITY_CLEAR_TOP</span>)</div><div class="line">                        <span class="selector-class">.navigation</span>(<span class="selector-tag">this</span>);</div></pre></td></tr></table></figure>
+<p>当出现<br>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation();</p>
+<p>会报错<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Caused <span class="keyword">by</span>: android.util.AndroidRuntimeException: Calling startActivity() <span class="built_in">from</span> outside <span class="keyword">of</span> <span class="keyword">an</span> Activity  context requires <span class="keyword">the</span> FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?</div></pre></td></tr></table></figure></p>
+<p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation(this);<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效 建议使用这种</p>
+<p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)<br>.navigation();<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Autowired</span>(name = OpenSourceARouter.DataSetService)</div><div class="line"><span class="variable">@JvmField</span></div><div class="line">internal var <span class="attribute">dataSetService</span>: DataSetService? = null</div></pre></td></tr></table></figure>
+<p>kotlin使用注解要用@jvmField不然会报private不能注解的错误 </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2018110501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -621,122 +733,6 @@
 <p>####看了之后 <a href="https://blog.csdn.net/u014115673/article/details/54984084" target="_blank" rel="external">https://blog.csdn.net/u014115673/article/details/54984084</a> 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。</p>
 </blockquote>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">方法一：本地映射</div><div class="line">Charles进行抓包</div><div class="line">选择某一个网络请求 &gt; 鼠标右键 <span class="keyword">Save</span> Response...</div><div class="line">如果该请求返回的是一个json串，保存文件时需要保存<span class="keyword">rename</span>.json</div><div class="line">需要更改的请求点击右键 Map <span class="keyword">Local</span>.. 指定到本地保存的<span class="keyword">renam</span>.json.</div><div class="line">通过在本地更改<span class="keyword">rename</span>.json就可以自动的更改请求的返回值。</div><div class="line"></div><div class="line">方法二：打断点</div><div class="line">选择某一个网络请求 &gt; 鼠标右键 Breakpoints</div><div class="line">然后点击 Execute 执行，然后编辑返回值 </div><div class="line">缺点：容易请求超时。还没等你调整完返回数据，<span class="keyword">app</span>那边已经请求超时了。</div><div class="line"></div><div class="line">方法三：远端映射</div><div class="line">将<span class="keyword">App</span>内部的请求映射到远端写好的接口。推荐一个东东 Mocky：http:<span class="comment">//www.mocky.io/。</span></div><div class="line"></div><div class="line">方法四：rewrite</div><div class="line">菜单栏 Tools —&gt; Rewrite</div><div class="line">根据自己的需求重写…。 </div><div class="line">推荐网址：http:<span class="comment">//www.cnblogs.com/wonyun/p/5586746.html</span></div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-20180900701" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/07/20180900701/" class="article-date">
-  	<time datetime="2018-09-07T07:19:01.000Z" itemprop="datePublished">2018-09-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/07/20180900701/">aspectj接入后发现一些问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h3 id="android-aop切面使用aspectj在混淆方面发现比较麻烦的事情"><a href="#android-aop切面使用aspectj在混淆方面发现比较麻烦的事情" class="headerlink" title="android aop切面使用aspectj在混淆方面发现比较麻烦的事情"></a>android aop切面使用aspectj在混淆方面发现比较麻烦的事情</h3></blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">在每一个被hook的文件生成类似下列的代码</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> b ajc$tjp_0 = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">static</span> &#123;</div><div class="line">        ajc$preClinit();</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> void ajc$preClinit() &#123;</div><div class="line">        e eVar = <span class="keyword">new</span> e(<span class="string">"DialogUtils.java"</span>, DialogUtils.class);</div><div class="line">        ajc$tjp_0 = eVar.a(c.a, eVar.a(<span class="string">"9"</span>, <span class="string">"showYesterdayEarningPopup"</span>, <span class="string">"com.kalengo.loan.utils.DialogUtils"</span>, <span class="string">"android.app.Activity:boolean:com.kalengo.loan.bean.UserAssetsInfoBean"</span>, <span class="string">"activity:isNewUser:userAssetsInfoBean"</span>, <span class="string">""</span>, <span class="string">"void"</span>), <span class="number">83</span>);</div><div class="line">        ajc$tjp_1 = eVar.a(c.a, eVar.a(<span class="string">"9"</span>, <span class="string">"showSimpleTipsPopup"</span>, <span class="string">"com.kalengo.loan.utils.DialogUtils"</span>, <span class="string">"android.app.Activity:int:com.kalengo.loan.callback.DoCallback"</span>, <span class="string">"activity:type:callBack"</span>, <span class="string">""</span>, <span class="string">"void"</span>), Opcodes.I2C);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">在被hook的方法插入：</div><div class="line">KAspect.aspectOf().onDialogUtilsMethod(e.a(ajc$tjp_3, <span class="keyword">null</span>, <span class="keyword">null</span>, context));</div></pre></td></tr></table></figure>
-<p>####由此可见，被hook的方法和被hook的类是不能被混淆的，虽然aspectj是编译期间做的植入，但是为了不嵌入代码，使用了反射的方式，这导致混淆会有一定影响。</p>
-<p>后面不打开混淆来检查是否是这样的方式，从代码的跳转看有没有可能直接指定植入代码，否则调研其他aop框架</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018081801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/18/2018081801/" class="article-date">
-  	<time datetime="2018-08-18T04:16:06.000Z" itemprop="datePublished">2018-08-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/18/2018081801/">关于友盟event不能批量处理中文event的问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="友盟https-gateway-open-umeng-com-不能传中文"><a href="#友盟https-gateway-open-umeng-com-不能传中文" class="headerlink" title="友盟https://gateway.open.umeng.com/ 不能传中文"></a>友盟<a href="https://gateway.open.umeng.com/" target="_blank" rel="external">https://gateway.open.umeng.com/</a> 不能传中文</h1></blockquote>
-<ul>
-<li>经过测试，企业的openapi文档可以，<a href="http://api.umeng.com/" target="_blank" rel="external">http://api.umeng.com/</a></li>
-</ul>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">auth_token认证</div><div class="line"><span class="keyword">POST</span> http:<span class="comment">//api.umeng.com/authorize</span></div><div class="line"></div><div class="line">创建事件 <span class="built_in">Group</span></div><div class="line"><span class="keyword">POST</span> /events</div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>事件添加网页也可以传eventid中文</li>
-</ul>
-<p><img src="http://pd4ketimy.bkt.clouddn.com/15362247455411.jpg" alt=""></p>
 
       
     </div>

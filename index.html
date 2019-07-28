@@ -189,6 +189,142 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019072801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/28/2019072801/" class="article-date">
+  	<time datetime="2019-07-28T12:44:44.000Z" itemprop="datePublished">2019-07-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/28/2019072801/">android编译插桩</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>背景：这一次分享一下关于android编译插桩这个话题，在正常编写代码实现程序的逻辑外，还要使用一点点黑科技，拿起操作代码无所不能的武器。</p>
+</blockquote>
+<hr>
+<h4 id="Android常用的能动态改变代码逻辑的方法有两种"><a href="#Android常用的能动态改变代码逻辑的方法有两种" class="headerlink" title="Android常用的能动态改变代码逻辑的方法有两种"></a>Android常用的能动态改变代码逻辑的方法有两种</h4><ol>
+<li><p>Java hook（反射，动态代理）<br>android是基于java，同时也就有了反射的概念，动态去加载代码，同时动态代理也可以实现，但比较难理解，网络上讲得也很多了，这里就不讲。</p>
+</li>
+<li><p>插桩（编译插桩，插件化插桩）<br>如果是按照插桩时机，在编译时候的就是编译插桩，然而，有些时候需要在程序运行的时候动态加载一些东西。我理解的差异性是插桩的代码是跟原来程序是分开的，在一个特定的时机与原有程序合二为一。</p>
+</li>
+</ol>
+<h4 id="从xposed框架到编译插桩"><a href="#从xposed框架到编译插桩" class="headerlink" title="从xposed框架到编译插桩"></a>从xposed框架到编译插桩</h4><p>记得去年曾经分享过xposed框架的使用，那是在系统层面去hook住方法，不足之处是系统要先刷入框架包，优点是可以对该系统里面所有的app进行hook</p>
+<blockquote>
+<p>是否可以对我们自己的应用进行代码的修改？比如上面提到的有java hook,还有编译插桩：下面是比较流行的框架</p>
+</blockquote>
+<ol>
+<li>aspectJ （面向切面框架）  跟普通代码一样，理解容易</li>
+<li>Asm     （操作字节码框架）需要使用asm字节码，相对复杂</li>
+</ol>
+<p>而插桩的应用场景：apm，无埋点</p>
+<p>####比较一下aspectJ 与asm分别插桩后的代码<br>aspectJ</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328617/blog/szr5rfwoocyinhckskvp.jpg" alt=""></p>
+<p>asm</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328675/blog/hhizmrqmldepmorj5nkl.jpg" alt=""></p>
+<p>通过上面两个图可以看出插桩后的代码还是有所区别，aspectJ采用插入方法的方式，这种代码混淆的时候一定要注意，不然会出现找不到方法名。而asm采用直接把差异代码嵌入原有的方法里，显然执行起来更加高效。</p>
+<p>####asm实现的插桩</p>
+<p>原代码</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328901/blog/zswgrny2n2x9ksbdjcqb.jpg" alt=""></p>
+<p>字节码</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328971/blog/c1fkyykpuqixuk8hxigr.jpg" alt=""></p>
+<p>asm代码</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328994/blog/osbprhgbn8whvjbukkhe.jpg" alt=""></p>
+<p>可以看出代码相对来说是比较复杂的，可能需要工具才能正确去编写asm代码，比如idea插件bytecode outline</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1557425055/blog/qjbca6p3bdomicb7i7u4.jpg" alt=""></p>
+<p>####asm在编译打包的哪个步骤插桩呢</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564329556/blog/d8j2ixczfj4vhcr8j9ia.jpg" alt=""></p>
+<p>如图所示：在编译成.class文件后，执行asm步骤，对class文件进行处理。而后就把各种编译后的文件打包进dex文件的过程。</p>
+<p>####demo-采用asm为某个方法插入代码</p>
+<p>一个简单的demo，对一个方法进行asm插桩</p>
+<p><a href="">https://github.com/ydpzg/TestPlugin</a></p>
+<hr>
+<h4 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h4><p>自定义gradle plugin</p>
+<p><a href="">https://guides.gradle.org/writing-gradle-plugins/
+</a></p>
+<p><a href="">https://docs.gradle.org/current/userguide/custom_plugins.html</a></p>
+<p>Asm 字节码插件：<br><figure class="highlight plain"><figcaption><span>Bytecode Outline```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">java字节码：</div><div class="line">```javac Apple.java javap -verbose Apple.class</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2019-07-18" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/18/2019-07-18/" class="article-date">
+  	<time datetime="2019-07-18T11:32:04.345Z" itemprop="datePublished">2019-07-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#<br>vue里面的component css冲突问题</p>
+<p>添加一个scoped<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span> <span class="attr">scoped</span>=<span class="string">"Terms"</span>&gt;</span><span class="undefined"></span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019071401" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -685,118 +821,8 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 <p><a href="https://cloud.tencent.com/developer/article/1430689" target="_blank" rel="external">https://cloud.tencent.com/developer/article/1430689</a></p>
 <p>web<br>很多第三方插件都不支持</p>
 <p>No address associated with hostname</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-20180110802" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/08/20180110802/" class="article-date">
-  	<time datetime="2018-11-08T06:20:55.000Z" itemprop="datePublished">2018-11-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/08/20180110802/">移动base类</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>会涉及到通信，数据中心，网络，一些公共调用方法</p>
-<p>网络改造，涉及到baseModel 里面的retrofitService<br>注入需要改成baseHttpService，<br>httpHelper也要返回封装的baseHttpService</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-20180110801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/08/20180110801/" class="article-date">
-  	<time datetime="2018-11-08T04:09:02.000Z" itemprop="datePublished">2018-11-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/08/20180110801/">ARouter的坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP</p>
-<p>FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。</p>
-<p>在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP）<br>  withFlags 只用一次</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ARouter</span><span class="selector-class">.getInstance</span>()<span class="selector-class">.build</span>(<span class="selector-tag">ARouterPathType</span><span class="selector-class">.MainActivity</span>)</div><div class="line">                        <span class="selector-class">.withFlags</span>(<span class="selector-tag">Intent</span><span class="selector-class">.FLAG_ACTIVITY_CLEAR_TOP</span>)</div><div class="line">                        <span class="selector-class">.navigation</span>(<span class="selector-tag">this</span>);</div></pre></td></tr></table></figure>
-<p>当出现<br>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation();</p>
-<p>会报错<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Caused <span class="keyword">by</span>: android.util.AndroidRuntimeException: Calling startActivity() <span class="built_in">from</span> outside <span class="keyword">of</span> <span class="keyword">an</span> Activity  context requires <span class="keyword">the</span> FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?</div></pre></td></tr></table></figure></p>
-<p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation(this);<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效 建议使用这种</p>
-<p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)<br>.navigation();<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Autowired</span>(name = OpenSourceARouter.DataSetService)</div><div class="line"><span class="variable">@JvmField</span></div><div class="line">internal var <span class="attribute">dataSetService</span>: DataSetService? = null</div></pre></td></tr></table></figure>
-<p>kotlin使用注解要用@jvmField不然会报private不能注解的错误 </p>
+<p>ui适配问题（大屏幕和小屏幕手机问题）</p>
+<p>BottomNavigationBar保留不了状态问题（切换tab的时候重新构建了页面），<br>1、body: widget<br>2、<br>3、PageView</p>
 
       
     </div>

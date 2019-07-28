@@ -189,6 +189,127 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2018062501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/25/2018062501/" class="article-date">
+  	<time datetime="2018-06-25T03:09:33.000Z" itemprop="datePublished">2018-06-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/25/2018062501/">编译出现Error:In \&lt;declare-styleable\&gt; FontFamilyFont, unable to find</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="加入kotlin的辅助库androidx-core-core-ktx-0-3，结果编译出现FontFamilyF可能是引入的新版ont的error"><a href="#加入kotlin的辅助库androidx-core-core-ktx-0-3，结果编译出现FontFamilyF可能是引入的新版ont的error" class="headerlink" title="加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyF可能是引入的新版ont的error"></a>加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyF可能是引入的新版ont的error</h1></blockquote>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>可能是引入的新版本的appcompat的库</p>
+<h3 id="先列出本工程的所有依赖关系，命令"><a href="#先列出本工程的所有依赖关系，命令" class="headerlink" title="先列出本工程的所有依赖关系，命令"></a>先列出本工程的所有依赖关系，命令</h3><pre><code>gradle :app:dependencies --configuration compile
+</code></pre><h3 id="工程的依赖关系"><a href="#工程的依赖关系" class="headerlink" title="工程的依赖关系"></a>工程的依赖关系</h3><pre><code>…
++--- com.android.support:appcompat-v7:25.3.1
++--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.30
+|    +--- org.jetbrains.kotlin:kotlin-stdlib:1.2.30 -&gt; 1.2.31
+|    |    \--- org.jetbrains:annotations:13.0
+|    \--- org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.30
+|         \--- org.jetbrains.kotlin:kotlin-stdlib:1.2.30 -&gt; 1.2.31 (*)
+\--- androidx.core:core-ktx:0.3
+     +--- com.android.support:support-annotations:27.1.0
+     +--- org.jetbrains.kotlin:kotlin-stdlib:1.2.31 (*)
+     \--- com.android.support:support-compat:27.1.0 (*)*
+</code></pre><blockquote>
+<p>发现core-ktx引入的27.1.0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27.1.0，问题就解决了。</p>
+</blockquote>
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><pre><code>compile (&quot;androidx.core:core-ktx:0.3&quot;) {
+exclude group: &apos;com.android.support&apos;, module: &apos;support-compat&apos;
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2018053101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/05/31/2018053101/" class="article-date">
+  	<time datetime="2018-05-31T02:33:40.000Z" itemprop="datePublished">2018-05-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/31/2018053101/">MpAndroidChart的使用心得</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2018050301" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -960,114 +1081,6 @@ startActivity(intent);_</code></p>
 <p>popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);</p>
 <p>在华为荣耀7android5.0上测试通过</p>
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017112301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/11/24/2017112301/" class="article-date">
-  	<time datetime="2017-11-24T04:28:11.000Z" itemprop="datePublished">2017-11-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/24/2017112301/">关于使用listview时候的一些坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="关于使用listview时候的一些坑"><a href="#关于使用listview时候的一些坑" class="headerlink" title="关于使用listview时候的一些坑"></a>关于使用listview时候的一些坑</h1></blockquote>
-<p>1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。</p>
-<p>2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到数据更新的那个位置，不让scrollview自己滚动的方法是：focusOn srcollview下面的子view。</p>
-<p>3、listview使用addHeaderView后，导致点击回调的position错乱，解决方法是，回调后去调</p>
-<p>position = (int) listview.getAdapter().getItemId(position);</p>
-<p>而adatper里面要实现</p>
-<p>@Override<br>public long getItemId(int position) {<br>    // TODO Auto-generated method stub<br>    return position;<br>}</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017110301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/11/03/2017110301/" class="article-date">
-  	<time datetime="2017-11-03T08:17:14.000Z" itemprop="datePublished">2017-11-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/03/2017110301/">七牛使用工具上传可以覆盖同名文件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
       
     </div>
     
