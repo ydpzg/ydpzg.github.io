@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>python 4-5如何对字符串进行左, 右, 居中对齐 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="字符串对齐使用ljust,ojust,center或者format的’\&amp;lt;‘’&amp;gt;’’^’三个字符s = &amp;apos;abd&amp;apos;
-s.ljust(10, &amp;apos;_&amp;apos;)
-s.rjust(10, &amp;apos;_&amp;apos;)
-s.center(10, &amp;apos;_&amp;apos;)
-format(s, &amp;apos;&amp;lt;10&amp;apos;)
-format(s, &amp;apos;&amp;">
+  <meta name="description" content="字符串对齐使用ljust,ojust,center或者format的’&amp;lt;‘’&amp;gt;’’^’三个字符s = &amp;apos;abd&amp;apos; s.ljust(10, &amp;apos;_&amp;apos;) s.rjust(10, &amp;apos;_&amp;apos;) s.center(10, &amp;apos;_&amp;apos;) format(s, &amp;apos;&amp;lt;10&amp;apos;) format(s, &amp;apos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 4-5如何对字符串进行左, 右, 居中对齐">
 <meta property="og:url" content="http://ydpzg.github.io/2017/05/26/2017052602/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="字符串对齐使用ljust,ojust,center或者format的’\&amp;lt;‘’&amp;gt;’’^’三个字符s = &amp;apos;abd&amp;apos;
-s.ljust(10, &amp;apos;_&amp;apos;)
-s.rjust(10, &amp;apos;_&amp;apos;)
-s.center(10, &amp;apos;_&amp;apos;)
-format(s, &amp;apos;&amp;lt;10&amp;apos;)
-format(s, &amp;apos;&amp;">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="字符串对齐使用ljust,ojust,center或者format的’&amp;lt;‘’&amp;gt;’’^’三个字符s = &amp;apos;abd&amp;apos; s.ljust(10, &amp;apos;_&amp;apos;) s.rjust(10, &amp;apos;_&amp;apos;) s.center(10, &amp;apos;_&amp;apos;) format(s, &amp;apos;&amp;lt;10&amp;apos;) format(s, &amp;apos">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-05-26T14:07:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 4-5如何对字符串进行左, 右, 居中对齐">
-<meta name="twitter:description" content="字符串对齐使用ljust,ojust,center或者format的’\&amp;lt;‘’&amp;gt;’’^’三个字符s = &amp;apos;abd&amp;apos;
-s.ljust(10, &amp;apos;_&amp;apos;)
-s.rjust(10, &amp;apos;_&amp;apos;)
-s.center(10, &amp;apos;_&amp;apos;)
-format(s, &amp;apos;&amp;lt;10&amp;apos;)
-format(s, &amp;apos;&amp;">
+<meta name="twitter:description" content="字符串对齐使用ljust,ojust,center或者format的’&amp;lt;‘’&amp;gt;’’^’三个字符s = &amp;apos;abd&amp;apos; s.ljust(10, &amp;apos;_&amp;apos;) s.rjust(10, &amp;apos;_&amp;apos;) s.center(10, &amp;apos;_&amp;apos;) format(s, &amp;apos;&amp;lt;10&amp;apos;) format(s, &amp;apos">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -37,7 +23,7 @@ format(s, &amp;apos;&amp;">
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -239,7 +225,7 @@ format(s, &amp;apos;&amp;">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
+        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-gt-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-gt-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’&lt;‘’&gt;’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’&lt;‘’&gt;’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
 s.ljust(10, &apos;_&apos;)
 s.rjust(10, &apos;_&apos;)
 s.center(10, &apos;_&apos;)
@@ -256,8 +242,7 @@ for x in d:
 rmax = max(map(len, [str(x) for x in d.values()]))
 rmax
 for x in d:
-     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))
-</code></pre>
+     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))</code></pre>
       
     </div>
     

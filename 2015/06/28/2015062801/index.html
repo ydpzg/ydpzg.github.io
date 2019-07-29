@@ -1,34 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>android 控件AutoCompleteTextView实战 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表
-public class MyAutoCompleteTextView extends AutoCompleteTextView {
-
-    public MyAutoCompleteTextView(Context context) {
-        super(context">
+  <meta name="description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表 public class MyAutoCompleteTextView extends AutoCompleteTextView {      public MyAutoCompleteTextView(Context context) {         super(context">
+<meta name="keywords" content="android AutoCompleteTextView">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android 控件AutoCompleteTextView实战">
 <meta property="og:url" content="http://ydpzg.github.io/2015/06/28/2015062801/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表
-public class MyAutoCompleteTextView extends AutoCompleteTextView {
-
-    public MyAutoCompleteTextView(Context context) {
-        super(context">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表 public class MyAutoCompleteTextView extends AutoCompleteTextView {      public MyAutoCompleteTextView(Context context) {         super(context">
+<meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100">
 <meta property="og:image" content="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062802.png?imageView/2/w/300/q/100">
 <meta property="og:updated_time" content="2016-08-16T18:36:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android 控件AutoCompleteTextView实战">
-<meta name="twitter:description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表
-public class MyAutoCompleteTextView extends AutoCompleteTextView {
-
-    public MyAutoCompleteTextView(Context context) {
-        super(context">
+<meta name="twitter:description" content="首先自定义一个AutoCompleteTextView，目的就是为了解决在一开始没有输入任何字符的时候提示整个列表 public class MyAutoCompleteTextView extends AutoCompleteTextView {      public MyAutoCompleteTextView(Context context) {         super(context">
 <meta name="twitter:image" content="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
@@ -37,7 +27,7 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -262,8 +252,7 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
     public boolean enoughToFilter() {
         return true;
     }
-}
-</code></pre><p>在layout里定义自定义的AutoCompleteTextView</p>
+}</code></pre><p>在layout里定义自定义的AutoCompleteTextView</p>
 <pre><code>&lt;com.dukelight.testandroidm.MyAutoCompleteTextView
     android:id=&quot;@+id/act_main&quot;
     android:layout_width=&quot;match_parent&quot;
@@ -273,8 +262,7 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
     android:text=&quot;&quot; &gt;
 
     &lt;requestFocus /&gt;
-&lt;/com.dukelight.testandroidm.MyAutoCompleteTextView&gt;
-</code></pre><p>最后就是Activity里的调用代码</p>
+&lt;/com.dukelight.testandroidm.MyAutoCompleteTextView&gt;</code></pre><p>最后就是Activity里的调用代码</p>
 <pre><code>public class TestAutoCompleteActivity extends Activity {
 
 
@@ -302,8 +290,7 @@ public class MyAutoCompleteTextView extends AutoCompleteTextView {
             }
         });
     }
-}
-</code></pre><p>最后的最后放上效果图片</p>
+}</code></pre><p>最后的最后放上效果图片</p>
 <p><img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062801.png?imageView/2/w/300/q/100" alt="空字符串显示全部"> <img src="http://7vzq3x.com1.z0.glb.clouddn.com/blog_2015062802.png?imageView/2/w/300/q/100" alt="匹配字符串显示"></p>
 
       

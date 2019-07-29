@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>ARouter的坑 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP
-FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。
-在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
+  <meta name="description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。 在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ARouter的坑">
 <meta property="og:url" content="http://ydpzg.github.io/2018/11/08/20180110801/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP
-FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。
-在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。 在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2019-01-18T08:06:36.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARouter的坑">
-<meta name="twitter:description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP
-FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。
-在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
+<meta name="twitter:description" content="navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。 在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.F">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@ FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用�
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -233,12 +228,17 @@ FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用�
         <p>navigation()是使用application的context去发起跳转的，有些场景要注意特别是使用Intent.FLAG_ACTIVITY_CLEAR_TOP</p>
 <p>FLAG_ACTIVITY_NEW_TASK要慎用，要结合上下环境，因为等于是使用了新 task，导致很多变量的值都消失了。</p>
 <p>在ARouter里还是使用navigation(this)靠谱， 并且withFlags（Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP）<br>  withFlags 只用一次</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ARouter</span><span class="selector-class">.getInstance</span>()<span class="selector-class">.build</span>(<span class="selector-tag">ARouterPathType</span><span class="selector-class">.MainActivity</span>)</div><div class="line">                        <span class="selector-class">.withFlags</span>(<span class="selector-tag">Intent</span><span class="selector-class">.FLAG_ACTIVITY_CLEAR_TOP</span>)</div><div class="line">                        <span class="selector-class">.navigation</span>(<span class="selector-tag">this</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ARouter</span><span class="selector-class">.getInstance</span>()<span class="selector-class">.build</span>(<span class="selector-tag">ARouterPathType</span><span class="selector-class">.MainActivity</span>)</span><br><span class="line">                        <span class="selector-class">.withFlags</span>(<span class="selector-tag">Intent</span><span class="selector-class">.FLAG_ACTIVITY_CLEAR_TOP</span>)</span><br><span class="line">                        <span class="selector-class">.navigation</span>(<span class="selector-tag">this</span>);</span><br></pre></td></tr></table></figure>
+
 <p>当出现<br>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation();</p>
-<p>会报错<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Caused <span class="keyword">by</span>: android.util.AndroidRuntimeException: Calling startActivity() <span class="built_in">from</span> outside <span class="keyword">of</span> <span class="keyword">an</span> Activity  context requires <span class="keyword">the</span> FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?</div></pre></td></tr></table></figure></p>
+<p>会报错</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused <span class="keyword">by</span>: android.util.AndroidRuntimeException: Calling startActivity() <span class="built_in">from</span> outside <span class="keyword">of</span> <span class="keyword">an</span> Activity  context requires <span class="keyword">the</span> FLAG_ACTIVITY_NEW_TASK flag. Is this really what you want?</span><br></pre></td></tr></table></figure>
+
 <p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)<br>.navigation(this);<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效 建议使用这种</p>
 <p>.withFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)<br>.navigation();<br>正常，Intent.FLAG_ACTIVITY_CLEAR_TOP生效</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Autowired</span>(name = OpenSourceARouter.DataSetService)</div><div class="line"><span class="variable">@JvmField</span></div><div class="line">internal var <span class="attribute">dataSetService</span>: DataSetService? = null</div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Autowired</span>(name = OpenSourceARouter.DataSetService)</span><br><span class="line"><span class="variable">@JvmField</span></span><br><span class="line">internal var <span class="attribute">dataSetService</span>: DataSetService? = null</span><br></pre></td></tr></table></figure>
+
+
 <p>kotlin使用注解要用@jvmField不然会报private不能注解的错误 </p>
 
       

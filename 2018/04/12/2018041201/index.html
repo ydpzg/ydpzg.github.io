@@ -1,38 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>gradle task一些实践 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。
-task的调用，怎么运行1、taskname.execute()2、gradle taskname
-比如一个简单的例子
-task task1 &amp;lt;&amp;lt; { 
-     println &amp;quot;Hello&amp;quot; 
-} 
-task task2 &amp;lt;&amp;">
+  <meta name="description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。 task的调用，怎么运行1、taskname.execute()2、gradle taskname 比如一个简单的例子 task task1 &amp;lt;&amp;lt; {       println &amp;quot;Hello&amp;quot;  }  task task2 &amp;lt;&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gradle task一些实践">
 <meta property="og:url" content="http://ydpzg.github.io/2018/04/12/2018041201/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。
-task的调用，怎么运行1、taskname.execute()2、gradle taskname
-比如一个简单的例子
-task task1 &amp;lt;&amp;lt; { 
-     println &amp;quot;Hello&amp;quot; 
-} 
-task task2 &amp;lt;&amp;">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。 task的调用，怎么运行1、taskname.execute()2、gradle taskname 比如一个简单的例子 task task1 &amp;lt;&amp;lt; {       println &amp;quot;Hello&amp;quot;  }  task task2 &amp;lt;&amp;">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2018-04-12T03:34:02.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle task一些实践">
-<meta name="twitter:description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。
-task的调用，怎么运行1、taskname.execute()2、gradle taskname
-比如一个简单的例子
-task task1 &amp;lt;&amp;lt; { 
-     println &amp;quot;Hello&amp;quot; 
-} 
-task task2 &amp;lt;&amp;">
+<meta name="twitter:description" content="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。 task的调用，怎么运行1、taskname.execute()2、gradle taskname 比如一个简单的例子 task task1 &amp;lt;&amp;lt; {       println &amp;quot;Hello&amp;quot;  }  task task2 &amp;lt;&amp;">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -40,7 +23,7 @@ task task2 &amp;lt;&amp;">
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -259,30 +242,24 @@ task task3dependency &lt;&lt; {
     println &quot;Duke&quot; 
 } 
 task tests(dependsOn: [&apos;task1&apos;, &apos;task2&apos;, &apos;task3&apos;]) {
-}
-</code></pre><p>输出的是<br>Hello World Duke Yu<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
+}</code></pre><p>输出的是<br>Hello World Duke Yu<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
 <pre><code>task tests &lt;&lt; { 
     task1.execute()
     task2.execute() 
     task3.execute() 
-}
-</code></pre><p>是没法确定结果的，因为闭包是异步的。</p>
+}</code></pre><p>是没法确定结果的，因为闭包是异步的。</p>
 <p>再比如，假设我们要在assembleDebug后加一个task（runTask），<br>可以这样做，利用gradle.taskGraph.afterTask找到task，执行命令<br>gradle assembleDebug</p>
 <pre><code>gradle.taskGraph.afterTask { task -&gt;
     if (task.name == &apos;assembleDebug&apos;) {
         runTask.execute()
     }
-}
-</code></pre><p>实际上跑的命令是</p>
+}</code></pre><p>实际上跑的命令是</p>
 <pre><code>assembleDebug
-runTask
-</code></pre><p>或者 定义一个task（runTask）依赖于assembleDebug，执行命令<br>gradle runTask</p>
+runTask</code></pre><p>或者 定义一个task（runTask）依赖于assembleDebug，执行命令<br>gradle runTask</p>
 <pre><code>task runTask(dependsOn: &apos;assembleDebug&apos;) {
-}
-</code></pre><p>实际上跑的命令是</p>
+}</code></pre><p>实际上跑的命令是</p>
 <pre><code>assembleDebug
-runTask
-</code></pre><h3 id="关于copy"><a href="#关于copy" class="headerlink" title="关于copy"></a>关于copy</h3><p>可以在task里直接写copy，比如</p>
+runTask</code></pre><h3 id="关于copy"><a href="#关于copy" class="headerlink" title="关于copy"></a>关于copy</h3><p>可以在task里直接写copy，比如</p>
 <pre><code>gradle.taskGraph.afterTask { task -&gt;
     if (task.name == &apos;assembleDebug&apos;) {
         copy {
@@ -293,8 +270,7 @@ runTask
             }
         }
     }
-}
-</code></pre><p>也可以写一个copy类型的task</p>
+}</code></pre><p>也可以写一个copy类型的task</p>
 <pre><code>task copyApk(typy: copy)  {
     from &quot;${project.buildDir}/outputs/apk/app-debug.apk &quot;
     into &quot;${project.buildDir}/outputs/apk/&quot;
@@ -302,8 +278,7 @@ runTask
         String fileName -&gt;
         fileName.replace(&quot;app-debug.apk&quot;, “test.apk”)
     }
-}
-</code></pre>
+}</code></pre>
       
     </div>
     

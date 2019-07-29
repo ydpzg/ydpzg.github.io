@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>python 4-2如何判断字符串a是否以字符串b开头或结尾 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要运用endswith()和startswith()识别字符串开头和结尾import os
-os.listdir(&amp;quot;.&amp;quot;)
-[name for name in os.listdir(&amp;apos;.&amp;apos;) if name.endswith(&amp;apos;txt&amp;apos;)]
-os.stat(&amp;apos;./history.txt&amp;apos;)
-ls -l
-os.stat">
+  <meta name="description" content="主要运用endswith()和startswith()识别字符串开头和结尾import os os.listdir(&amp;quot;.&amp;quot;) [name for name in os.listdir(&amp;apos;.&amp;apos;) if name.endswith(&amp;apos;txt&amp;apos;)] os.stat(&amp;apos;./history.txt&amp;apos;) ls -l os.stat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 4-2如何判断字符串a是否以字符串b开头或结尾">
 <meta property="og:url" content="http://ydpzg.github.io/2017/05/25/2017052501/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="主要运用endswith()和startswith()识别字符串开头和结尾import os
-os.listdir(&amp;quot;.&amp;quot;)
-[name for name in os.listdir(&amp;apos;.&amp;apos;) if name.endswith(&amp;apos;txt&amp;apos;)]
-os.stat(&amp;apos;./history.txt&amp;apos;)
-ls -l
-os.stat">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="主要运用endswith()和startswith()识别字符串开头和结尾import os os.listdir(&amp;quot;.&amp;quot;) [name for name in os.listdir(&amp;apos;.&amp;apos;) if name.endswith(&amp;apos;txt&amp;apos;)] os.stat(&amp;apos;./history.txt&amp;apos;) ls -l os.stat">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-05-25T12:30:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 4-2如何判断字符串a是否以字符串b开头或结尾">
-<meta name="twitter:description" content="主要运用endswith()和startswith()识别字符串开头和结尾import os
-os.listdir(&amp;quot;.&amp;quot;)
-[name for name in os.listdir(&amp;apos;.&amp;apos;) if name.endswith(&amp;apos;txt&amp;apos;)]
-os.stat(&amp;apos;./history.txt&amp;apos;)
-ls -l
-os.stat">
+<meta name="twitter:description" content="主要运用endswith()和startswith()识别字符串开头和结尾import os os.listdir(&amp;quot;.&amp;quot;) [name for name in os.listdir(&amp;apos;.&amp;apos;) if name.endswith(&amp;apos;txt&amp;apos;)] os.stat(&amp;apos;./history.txt&amp;apos;) ls -l os.stat">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -37,7 +23,7 @@ os.stat">
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -250,8 +236,7 @@ import stat
 #设置当前位为1
 os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode | stat.S_IXUSR)
 #设置当前位取反
-os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode ^ stat.S_IXUSR)
-</code></pre>
+os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode ^ stat.S_IXUSR)</code></pre>
       
     </div>
     

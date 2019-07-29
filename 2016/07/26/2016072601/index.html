@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>android开发板上做debug，不是用usb线连接 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如何在android开发板上做debug，没有插口，只能无线遇到一个问题，如何在android系统上开机运行几行shell指令。解决方案：android开发板上运行app，app监听系统广播自动启动，然后运行shell指令，前提是已经取得root权限。
-String  wifiStrings = new String {
-        &amp;quot;su -c &amp;apos;setprop serv">
+  <meta name="description" content="如何在android开发板上做debug，没有插口，只能无线遇到一个问题，如何在android系统上开机运行几行shell指令。解决方案：android开发板上运行app，app监听系统广播自动启动，然后运行shell指令，前提是已经取得root权限。 String  wifiStrings = new String {         &amp;quot;su -c &amp;apos;setprop serv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android开发板上做debug，不是用usb线连接">
 <meta property="og:url" content="http://ydpzg.github.io/2016/07/26/2016072601/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="如何在android开发板上做debug，没有插口，只能无线遇到一个问题，如何在android系统上开机运行几行shell指令。解决方案：android开发板上运行app，app监听系统广播自动启动，然后运行shell指令，前提是已经取得root权限。
-String  wifiStrings = new String {
-        &amp;quot;su -c &amp;apos;setprop serv">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="如何在android开发板上做debug，没有插口，只能无线遇到一个问题，如何在android系统上开机运行几行shell指令。解决方案：android开发板上运行app，app监听系统广播自动启动，然后运行shell指令，前提是已经取得root权限。 String  wifiStrings = new String {         &amp;quot;su -c &amp;apos;setprop serv">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2016-07-26T09:06:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android开发板上做debug，不是用usb线连接">
-<meta name="twitter:description" content="如何在android开发板上做debug，没有插口，只能无线遇到一个问题，如何在android系统上开机运行几行shell指令。解决方案：android开发板上运行app，app监听系统广播自动启动，然后运行shell指令，前提是已经取得root权限。
-String  wifiStrings = new String {
-        &amp;quot;su -c &amp;apos;setprop serv">
+<meta name="twitter:description" content="如何在android开发板上做debug，没有插口，只能无线遇到一个问题，如何在android系统上开机运行几行shell指令。解决方案：android开发板上运行app，app监听系统广播自动启动，然后运行shell指令，前提是已经取得root权限。 String  wifiStrings = new String {         &amp;quot;su -c &amp;apos;setprop serv">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@ String  wifiStrings = new String {
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -236,13 +231,11 @@ String  wifiStrings = new String {
         &quot;su -c &apos;stop adbd&apos;&quot;,
         &quot;su -c &apos;start adbd&apos;&quot;
 };
-CommandExecution.execCommand(wifiStrings, false);
-</code></pre><p>android开发板跟pc要在同一个局域网里。然后运行下面的命令。</p>
+CommandExecution.execCommand(wifiStrings, false);</code></pre><p>android开发板跟pc要在同一个局域网里。然后运行下面的命令。</p>
 <pre><code>adb devices
 adb disconnect
 adb connect 192.168.31.171
-adb -s 192.168.31.171:5555 shell
-</code></pre>
+adb -s 192.168.31.171:5555 shell</code></pre>
       
     </div>
     

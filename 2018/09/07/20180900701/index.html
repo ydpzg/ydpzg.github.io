@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>aspectj接入后发现一些问题 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="android aop切面使用aspectj在混淆方面发现比较麻烦的事情
-12345678910111213141516在每一个被hook的文件生成类似下列的代码private static final b ajc$tjp_0 = null;static &amp;#123;        ajc$preClinit();&amp;#125; private static void ajc$preClinit(">
+  <meta name="description" content="android aop切面使用aspectj在混淆方面发现比较麻烦的事情 12345678910111213141516在每一个被hook的文件生成类似下列的代码private static final b ajc$tjp_0 = null;static &amp;#123;        ajc$preClinit();&amp;#125; private static void ajc$preClinit(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="aspectj接入后发现一些问题">
 <meta property="og:url" content="http://ydpzg.github.io/2018/09/07/20180900701/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="android aop切面使用aspectj在混淆方面发现比较麻烦的事情
-12345678910111213141516在每一个被hook的文件生成类似下列的代码private static final b ajc$tjp_0 = null;static &amp;#123;        ajc$preClinit();&amp;#125; private static void ajc$preClinit(">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="android aop切面使用aspectj在混淆方面发现比较麻烦的事情 12345678910111213141516在每一个被hook的文件生成类似下列的代码private static final b ajc$tjp_0 = null;static &amp;#123;        ajc$preClinit();&amp;#125; private static void ajc$preClinit(">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2018-09-07T07:25:27.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="aspectj接入后发现一些问题">
-<meta name="twitter:description" content="android aop切面使用aspectj在混淆方面发现比较麻烦的事情
-12345678910111213141516在每一个被hook的文件生成类似下列的代码private static final b ajc$tjp_0 = null;static &amp;#123;        ajc$preClinit();&amp;#125; private static void ajc$preClinit(">
+<meta name="twitter:description" content="android aop切面使用aspectj在混淆方面发现比较麻烦的事情 12345678910111213141516在每一个被hook的文件生成类似下列的代码private static final b ajc$tjp_0 = null;static &amp;#123;        ajc$preClinit();&amp;#125; private static void ajc$preClinit(">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -25,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -229,7 +227,8 @@
       
         <blockquote>
 <h3 id="android-aop切面使用aspectj在混淆方面发现比较麻烦的事情"><a href="#android-aop切面使用aspectj在混淆方面发现比较麻烦的事情" class="headerlink" title="android aop切面使用aspectj在混淆方面发现比较麻烦的事情"></a>android aop切面使用aspectj在混淆方面发现比较麻烦的事情</h3></blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">在每一个被hook的文件生成类似下列的代码</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> b ajc$tjp_0 = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">static</span> &#123;</div><div class="line">        ajc$preClinit();</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"> <span class="keyword">private</span> <span class="keyword">static</span> void ajc$preClinit() &#123;</div><div class="line">        e eVar = <span class="keyword">new</span> e(<span class="string">"DialogUtils.java"</span>, DialogUtils.class);</div><div class="line">        ajc$tjp_0 = eVar.a(c.a, eVar.a(<span class="string">"9"</span>, <span class="string">"showYesterdayEarningPopup"</span>, <span class="string">"com.kalengo.loan.utils.DialogUtils"</span>, <span class="string">"android.app.Activity:boolean:com.kalengo.loan.bean.UserAssetsInfoBean"</span>, <span class="string">"activity:isNewUser:userAssetsInfoBean"</span>, <span class="string">""</span>, <span class="string">"void"</span>), <span class="number">83</span>);</div><div class="line">        ajc$tjp_1 = eVar.a(c.a, eVar.a(<span class="string">"9"</span>, <span class="string">"showSimpleTipsPopup"</span>, <span class="string">"com.kalengo.loan.utils.DialogUtils"</span>, <span class="string">"android.app.Activity:int:com.kalengo.loan.callback.DoCallback"</span>, <span class="string">"activity:type:callBack"</span>, <span class="string">""</span>, <span class="string">"void"</span>), Opcodes.I2C);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">在被hook的方法插入：</div><div class="line">KAspect.aspectOf().onDialogUtilsMethod(e.a(ajc$tjp_3, <span class="keyword">null</span>, <span class="keyword">null</span>, context));</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">在每一个被hook的文件生成类似下列的代码</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> b ajc$tjp_0 = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">        ajc$preClinit();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span> <span class="keyword">static</span> void ajc$preClinit() &#123;</span><br><span class="line">        e eVar = <span class="keyword">new</span> e(<span class="string">"DialogUtils.java"</span>, DialogUtils.class);</span><br><span class="line">        ajc$tjp_0 = eVar.a(c.a, eVar.a(<span class="string">"9"</span>, <span class="string">"showYesterdayEarningPopup"</span>, <span class="string">"com.kalengo.loan.utils.DialogUtils"</span>, <span class="string">"android.app.Activity:boolean:com.kalengo.loan.bean.UserAssetsInfoBean"</span>, <span class="string">"activity:isNewUser:userAssetsInfoBean"</span>, <span class="string">""</span>, <span class="string">"void"</span>), <span class="number">83</span>);</span><br><span class="line">        ajc$tjp_1 = eVar.a(c.a, eVar.a(<span class="string">"9"</span>, <span class="string">"showSimpleTipsPopup"</span>, <span class="string">"com.kalengo.loan.utils.DialogUtils"</span>, <span class="string">"android.app.Activity:int:com.kalengo.loan.callback.DoCallback"</span>, <span class="string">"activity:type:callBack"</span>, <span class="string">""</span>, <span class="string">"void"</span>), Opcodes.I2C);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在被hook的方法插入：</span><br><span class="line">KAspect.aspectOf().onDialogUtilsMethod(e.a(ajc$tjp_3, <span class="keyword">null</span>, <span class="keyword">null</span>, context));</span><br></pre></td></tr></table></figure>
+
 <p>####由此可见，被hook的方法和被hook的类是不能被混淆的，虽然aspectj是编译期间做的植入，但是为了不嵌入代码，使用了反射的方式，这导致混淆会有一定影响。</p>
 <p>后面不打开混淆来检查是否是这样的方式，从代码的跳转看有没有可能直接指定植入代码，否则调研其他aop框架</p>
 

@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。
-调用主要看 testApple这个类，会有几种不同的值。
-
-{ } object型">
+  <meta name="description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。 调用主要看 testApple这个类，会有几种不同的值。  { } object型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理">
 <meta property="og:url" content="http://ydpzg.github.io/2016/09/11/2016091102/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。
-调用主要看 testApple这个类，会有几种不同的值。
-
-{ } object型">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。 调用主要看 testApple这个类，会有几种不同的值。  { } object型">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2016-09-11T10:43:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【开发笔记】使用gson对一个json实体会出现object或者array不规则返回的处理">
-<meta name="twitter:description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。
-调用主要看 testApple这个类，会有几种不同的值。
-
-{ } object型">
+<meta name="twitter:description" content="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。 调用主要看 testApple这个类，会有几种不同的值。  { } object型">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -31,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -237,9 +229,10 @@
 <h1 id="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。"><a href="#背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。" class="headerlink" title="背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。"></a>背景：聚合网址的免费天气，当有数据的时候是object，没数据的时候是array，对于这种情况，习惯于使用retrofit来说都是很痛苦的。通常我们习惯于接口数据必须是规则的，要么只是object，要么只是array。对于这种不规则的返回，还是有办法去解决的，在使用gson的条件下。解决的核心代码在最后面。</h1></blockquote>
 <h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><p>主要看 testApple这个类，会有几种不同的值。</p>
 <ol>
-<li><a href="">{ }</a> object型  </li>
-<li><p><a href="">[] </a> array型</p>
-<p> Gson gson = new GsonBuilder().registerTypeAdapter(TestPeople.class, new MyDeserializer()).create();<br> String ssArray = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:[]}}”;<br> System.out.println(ssArray);<br> String ssArray2 = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:[{\”name\”:\”111\”,\”id\”:\”9\”}]}}”;<br> System.out.println(ssArray2);<br> String ssObject = “{\”name\”:\”333\”,\”id\”:\”18\”,\”testPeople\”:{\”name\”:\”222\”,\”testApple\”:{\”name\”:\”111\”,\”id\”:\”9\”}}}”;<br> System.out.println(ssObject);<br> TestHouse testHouseArray = gson.fromJson(ssArray, TestHouse.class);<br> TestHouse testHouseArray2 = gson.fromJson(ssArray2, TestHouse.class);<br> TestHouse testHouseObject = gson.fromJson(ssObject, TestHouse.class);<br> System.out.println(“result=” + testHouseArray.toString());<br> System.out.println(“result=” + testHouseArray2.toString());<br> System.out.println(“result=” + testHouseObject.toString());</p>
+<li><p><a href>{ }</a> object型  </p>
+</li>
+<li><p><a href>[] </a> array型</p>
+<p> Gson gson = new GsonBuilder().registerTypeAdapter(TestPeople.class, new MyDeserializer()).create();<br> String ssArray = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[]}}”;<br> System.out.println(ssArray);<br> String ssArray2 = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}]}}”;<br> System.out.println(ssArray2);<br> String ssObject = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}}}”;<br> System.out.println(ssObject);<br> TestHouse testHouseArray = gson.fromJson(ssArray, TestHouse.class);<br> TestHouse testHouseArray2 = gson.fromJson(ssArray2, TestHouse.class);<br> TestHouse testHouseObject = gson.fromJson(ssObject, TestHouse.class);<br> System.out.println(“result=” + testHouseArray.toString());<br> System.out.println(“result=” + testHouseArray2.toString());<br> System.out.println(“result=” + testHouseObject.toString());</p>
 </li>
 </ol>
 <h4 id="输出内容"><a href="#输出内容" class="headerlink" title="输出内容"></a>输出内容</h4><p>根据testApple可以看到，确实可以根据不同的输入正确解析出来。</p>
@@ -248,8 +241,7 @@
 {&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}}}
 result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=null}}
 result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}
-result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}
-</code></pre><h4 id="最外层实体"><a href="#最外层实体" class="headerlink" title="最外层实体"></a>最外层实体</h4><p>为了演示用，构造了一个最外层的实体。</p>
+result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{name=&apos;222&apos;, testApple=TestApple{name=&apos;111&apos;, id=&apos;9&apos;}}}</code></pre><h4 id="最外层实体"><a href="#最外层实体" class="headerlink" title="最外层实体"></a>最外层实体</h4><p>为了演示用，构造了一个最外层的实体。</p>
 <pre><code>public class TestHouse {
     private String name;
     private String id;
@@ -293,8 +285,7 @@ result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{
                 &quot;, testPeople=&quot; + testPeople +
                 &apos;}&apos;;
     }
-}
-</code></pre><h4 id="第二层实体"><a href="#第二层实体" class="headerlink" title="第二层实体"></a>第二层实体</h4><p>为了演示用，构造了一个第二层的实体。这里就直接涉及到不规则实体的容器了。</p>
+}</code></pre><h4 id="第二层实体"><a href="#第二层实体" class="headerlink" title="第二层实体"></a>第二层实体</h4><p>为了演示用，构造了一个第二层的实体。这里就直接涉及到不规则实体的容器了。</p>
 <pre><code>public class TestPeople {
     private String name;
     private TestApple testApple;
@@ -330,8 +321,7 @@ result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{
                 &quot;, testApple=&quot; + testApple +
                 &apos;}&apos;;
     }
-}
-</code></pre><h4 id="最内层实体"><a href="#最内层实体" class="headerlink" title="最内层实体"></a>最内层实体</h4><p>不规则值的实体，有可能是object，也有可能是array。</p>
+}</code></pre><h4 id="最内层实体"><a href="#最内层实体" class="headerlink" title="最内层实体"></a>最内层实体</h4><p>不规则值的实体，有可能是object，也有可能是array。</p>
 <pre><code>public class TestApple {
     private String name;
     private String id;
@@ -365,8 +355,7 @@ result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{
                 &quot;, id=&apos;&quot; + id + &apos;\&apos;&apos; +
                 &apos;}&apos;;
     }
-}
-</code></pre><h4 id="自定义的JsonDeserializer"><a href="#自定义的JsonDeserializer" class="headerlink" title="自定义的JsonDeserializer"></a>自定义的JsonDeserializer</h4><p>主要是为了解析有争议的实体，针对不同的情况去做相关的处理，最后输出同一个最外层实体。</p>
+}</code></pre><h4 id="自定义的JsonDeserializer"><a href="#自定义的JsonDeserializer" class="headerlink" title="自定义的JsonDeserializer"></a>自定义的JsonDeserializer</h4><p>主要是为了解析有争议的实体，针对不同的情况去做相关的处理，最后输出同一个最外层实体。</p>
 <pre><code>public class MyDeserializer implements JsonDeserializer&lt;TestPeople&gt; {
     @Override
     public TestPeople deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
@@ -391,8 +380,7 @@ result=TestHouse{name=&apos;333&apos;, id=&apos;18&apos;, testPeople=TestPeople{
             return testPeople;
         }
     }
-}
-</code></pre>
+}</code></pre>
       
     </div>
     

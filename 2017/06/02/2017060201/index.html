@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>研究root权限 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="http://blog.csdn.net/hxdanya/article/details/39371759
-PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。
-LO">
+  <meta name="description" content="http://blog.csdn.net/hxdanya/article/details/39371759 PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。 LO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="研究root权限">
 <meta property="og:url" content="http://ydpzg.github.io/2017/06/02/2017060201/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="http://blog.csdn.net/hxdanya/article/details/39371759
-PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。
-LO">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="http://blog.csdn.net/hxdanya/article/details/39371759 PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。 LO">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-06-02T00:56:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="研究root权限">
-<meta name="twitter:description" content="http://blog.csdn.net/hxdanya/article/details/39371759
-PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。
-LO">
+<meta name="twitter:description" content="http://blog.csdn.net/hxdanya/article/details/39371759 PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。 LO">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@ LO">
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -230,24 +225,26 @@ LO">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://blog.csdn.net/hxdanya/article/details/39371759" target="_blank" rel="external">http://blog.csdn.net/hxdanya/article/details/39371759</a></p>
+        <p><a href="http://blog.csdn.net/hxdanya/article/details/39371759" target="_blank" rel="noopener">http://blog.csdn.net/hxdanya/article/details/39371759</a></p>
 <p>PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。</p>
-<p>LOCAL_CFLAGS += -pie -fPIE<br>LOCAL<em>LDFLAGS += -pie -fPIE</em></p>
-<p><a href="http://hold-on.iteye.com/blog/1901152" target="_blank" rel="external">http://hold-on.iteye.com/blog/1901152</a></p>
+<p>LOCAL_CFLAGS += -pie -fPIE<br>LOCAL_LDFLAGS += -pie -fPIE_</p>
+<p><a href="http://hold-on.iteye.com/blog/1901152" target="_blank" rel="noopener">http://hold-on.iteye.com/blog/1901152</a></p>
 <p>Android应用程序永久获取root权限方法的基本思路，引入zlsu</p>
-<p><a href="http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966" target="_blank" rel="external">http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966</a></p>
+<p><a href="http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966" target="_blank" rel="noopener">http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966</a></p>
 <p>解决办法：</p>
 <ol>
-<li>最简单的，adb remount</li>
-<li>不行的话，adb shell su之后将文件系统remount为读写权限： mount -o remount rw /system。出于安全考虑，记得完事后remount回只读： mount -o ro,remount /system</li>
+<li><p>最简单的，adb remount</p>
+</li>
+<li><p>不行的话，adb shell su之后将文件系统remount为读写权限： mount -o remount rw /system。出于安全考虑，记得完事后remount回只读： mount -o ro,remount /system</p>
+</li>
 <li><p>和方法2类似，mount -o rw,remount -t ext3 /dev/block/mmcblk1p21 /system</p>
 <p>chown 0:0 /system/bin/su</p>
 </li>
 </ol>
 <p>busybox chown 0:0 /system/bin/su</p>
-<p><a href="http://blog.csdn.net/wan_ing/article/details/53407748" target="_blank" rel="external">http://blog.csdn.net/wan_ing/article/details/53407748</a></p>
+<p><a href="http://blog.csdn.net/wan_ing/article/details/53407748" target="_blank" rel="noopener">http://blog.csdn.net/wan_ing/article/details/53407748</a></p>
 <p>android 版本更新 静默安装及自启动</p>
-<p><a href="http://www.jianshu.com/p/9ece07344630" target="_blank" rel="external">http://www.jianshu.com/p/9ece07344630</a></p>
+<p><a href="http://www.jianshu.com/p/9ece07344630" target="_blank" rel="noopener">http://www.jianshu.com/p/9ece07344630</a></p>
 <p>Android上app_process启动java进程</p>
 
       

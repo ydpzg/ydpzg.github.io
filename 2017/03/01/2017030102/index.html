@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>利用BitmapShader来降低自定义view动画效果的难度 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。
-
-代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
+  <meta name="description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。  代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用BitmapShader来降低自定义view动画效果的难度">
 <meta property="og:url" content="http://ydpzg.github.io/2017/03/01/2017030102/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。
-
-代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。  代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-03-01T15:44:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用BitmapShader来降低自定义view动画效果的难度">
-<meta name="twitter:description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。
-
-代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
+<meta name="twitter:description" content="基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。  代码如下：Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -246,8 +241,7 @@ Matrix shaderMaxtrix = new Matrix();//矩阵
 shaderMaxtrix.postTranslate(dx, 0);
 mWaveShader.setLocalMatrix(shaderMaxtrix); //变换
 
-canvas.drawRect(0, 0, 1440, 300, mViewPaint);
-</code></pre>
+canvas.drawRect(0, 0, 1440, 300, mViewPaint);</code></pre>
       
     </div>
     

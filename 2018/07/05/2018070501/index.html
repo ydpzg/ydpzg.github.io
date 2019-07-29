@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>命令行让gradle下载新的库的奇怪问题 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="发现改成gradle3.0后直接gradle xxx，找不到google
-1Could not find method google() for arguments []() on repository container.
-1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync project">
+  <meta name="description" content="发现改成gradle3.0后直接gradle xxx，找不到google 1Could not find method google() for arguments []() on repository container.  1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync projec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="命令行让gradle下载新的库的奇怪问题">
 <meta property="og:url" content="http://ydpzg.github.io/2018/07/05/2018070501/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="发现改成gradle3.0后直接gradle xxx，找不到google
-1Could not find method google() for arguments []() on repository container.
-1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync project">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="发现改成gradle3.0后直接gradle xxx，找不到google 1Could not find method google() for arguments []() on repository container.  1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync projec">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2018-09-06T09:11:39.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="命令行让gradle下载新的库的奇怪问题">
-<meta name="twitter:description" content="发现改成gradle3.0后直接gradle xxx，找不到google
-1Could not find method google() for arguments []() on repository container.
-1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync project">
+<meta name="twitter:description" content="发现改成gradle3.0后直接gradle xxx，找不到google 1Could not find method google() for arguments []() on repository container.  1背景：原来旧项目采用gradle3.3，后面升级后改成了gradle4.4，结果gradle没法自己下载，如果在android studio，使用sync projec">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -232,15 +227,19 @@
       
         <blockquote>
 <h3 id="发现改成gradle3-0后直接gradle-xxx，找不到google"><a href="#发现改成gradle3-0后直接gradle-xxx，找不到google" class="headerlink" title="发现改成gradle3.0后直接gradle xxx，找不到google"></a>发现改成gradle3.0后直接gradle xxx，找不到google</h3></blockquote>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Could <span class="keyword">not</span> find <span class="function"><span class="keyword">method</span> <span class="title">google</span><span class="params">()</span> <span class="title">for</span> <span class="title">arguments</span> []<span class="params">()</span> <span class="title">on</span> <span class="title">repository</span> <span class="title">container</span>.</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">背景：原来旧项目采用<span class="selector-tag">gradle3</span><span class="selector-class">.3</span>，后面升级后改成了<span class="selector-tag">gradle4</span><span class="selector-class">.4</span>，结果<span class="selector-tag">gradle</span>没法自己下载，如果在<span class="selector-tag">android</span> <span class="selector-tag">studio</span>，使用<span class="selector-tag">sync</span> <span class="selector-tag">project</span> <span class="selector-tag">with</span> <span class="selector-tag">gradle</span> <span class="selector-tag">files</span>，但命令没有。</div></pre></td></tr></table></figure>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could <span class="keyword">not</span> find <span class="function"><span class="keyword">method</span> <span class="title">google</span><span class="params">()</span> <span class="title">for</span> <span class="title">arguments</span> []<span class="params">()</span> <span class="title">on</span> <span class="title">repository</span> <span class="title">container</span>.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">背景：原来旧项目采用<span class="selector-tag">gradle3</span><span class="selector-class">.3</span>，后面升级后改成了<span class="selector-tag">gradle4</span><span class="selector-class">.4</span>，结果<span class="selector-tag">gradle</span>没法自己下载，如果在<span class="selector-tag">android</span> <span class="selector-tag">studio</span>，使用<span class="selector-tag">sync</span> <span class="selector-tag">project</span> <span class="selector-tag">with</span> <span class="selector-tag">gradle</span> <span class="selector-tag">files</span>，但命令没有。</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>解决方案</li>
-<li><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew</div></pre></td></tr></table></figure>
+<li><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./gradlew</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>而不是使用</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradle <span class="built_in">clean</span> build</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gradle clean build</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>

@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>￼ 【开发笔记】 ￼如何将svn 回滚old revision到head revision | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。
-解决方案：1.checkout ，project update2.找到head revision版本号3.找到目标revision 版本号4.在当前project里执行 “   svn merge -r 10551:101">
+  <meta name="description" content="背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。 解决方案：1.checkout ，project update2.找到head revision版本号3.找到目标revision 版本号4.在当前project里执行 “   svn merge -r 10551:101">
 <meta property="og:type" content="article">
 <meta property="og:title" content="￼ 【开发笔记】 ￼如何将svn 回滚old revision到head revision">
 <meta property="og:url" content="http://ydpzg.github.io/2016/09/19/2016091801/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。
-解决方案：1.checkout ，project update2.找到head revision版本号3.找到目标revision 版本号4.在当前project里执行 “   svn merge -r 10551:101">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。 解决方案：1.checkout ，project update2.找到head revision版本号3.找到目标revision 版本号4.在当前project里执行 “   svn merge -r 10551:101">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2016-09-18T16:52:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="￼ 【开发笔记】 ￼如何将svn 回滚old revision到head revision">
-<meta name="twitter:description" content="背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。
-解决方案：1.checkout ，project update2.找到head revision版本号3.找到目标revision 版本号4.在当前project里执行 “   svn merge -r 10551:101">
+<meta name="twitter:description" content="背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。 解决方案：1.checkout ，project update2.找到head revision版本号3.找到目标revision 版本号4.在当前project里执行 “   svn merge -r 10551:101">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -25,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -230,7 +228,7 @@
         <blockquote>
 <h1 id="背景需求：-有些时候错误地提交了代码到trunk-head-revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head-revision上。"><a href="#背景需求：-有些时候错误地提交了代码到trunk-head-revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head-revision上。" class="headerlink" title="背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。"></a>背景需求： 有些时候错误地提交了代码到trunk head revision上，后面需要将这个错误的revision回滚掉，把正确的代码重新放到head revision上。</h1></blockquote>
 <h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>1.checkout ，project update<br>2.找到head revision版本号<br>3.找到目标revision 版本号<br>4.在当前project里执行 “   svn merge -r 10551:10197 ./     “<br>注：（10551是head revision，10197是需要回滚的目标revision  ./是当前workplace copy）（这步做完多了diff）<br>5.commit </p>
-<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a href="http://blog.sina.com.cn/s/blog_5432f2730100vmz4.h" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_5432f2730100vmz4.h</a></p>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a href="http://blog.sina.com.cn/s/blog_5432f2730100vmz4.h" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_5432f2730100vmz4.h</a></p>
 
       
     </div>

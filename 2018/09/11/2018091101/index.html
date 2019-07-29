@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>Charles将指定的请求改为固定返回值,开发调试专用 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。
-
-12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
+  <meta name="description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。  12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Charles将指定的请求改为固定返回值,开发调试专用">
 <meta property="og:url" content="http://ydpzg.github.io/2018/09/11/2018091101/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。
-
-12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。  12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2018-09-11T09:41:12.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Charles将指定的请求改为固定返回值,开发调试专用">
-<meta name="twitter:description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。
-
-12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
+<meta name="twitter:description" content="####看了之后 https://blog.csdn.net/u014115673/article/details/54984084 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。  12345678910111213141516171819方法一：本地映射Charles进行抓包选择某一个网络请求 &amp;gt; 鼠标右键 Save Response...如果该请求返回">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -231,9 +226,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>####看了之后 <a href="https://blog.csdn.net/u014115673/article/details/54984084" target="_blank" rel="external">https://blog.csdn.net/u014115673/article/details/54984084</a> 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。</p>
+<p>####看了之后 <a href="https://blog.csdn.net/u014115673/article/details/54984084" target="_blank" rel="noopener">https://blog.csdn.net/u014115673/article/details/54984084</a> 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。</p>
 </blockquote>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">方法一：本地映射</div><div class="line">Charles进行抓包</div><div class="line">选择某一个网络请求 &gt; 鼠标右键 <span class="keyword">Save</span> Response...</div><div class="line">如果该请求返回的是一个json串，保存文件时需要保存<span class="keyword">rename</span>.json</div><div class="line">需要更改的请求点击右键 Map <span class="keyword">Local</span>.. 指定到本地保存的<span class="keyword">renam</span>.json.</div><div class="line">通过在本地更改<span class="keyword">rename</span>.json就可以自动的更改请求的返回值。</div><div class="line"></div><div class="line">方法二：打断点</div><div class="line">选择某一个网络请求 &gt; 鼠标右键 Breakpoints</div><div class="line">然后点击 Execute 执行，然后编辑返回值 </div><div class="line">缺点：容易请求超时。还没等你调整完返回数据，<span class="keyword">app</span>那边已经请求超时了。</div><div class="line"></div><div class="line">方法三：远端映射</div><div class="line">将<span class="keyword">App</span>内部的请求映射到远端写好的接口。推荐一个东东 Mocky：http:<span class="comment">//www.mocky.io/。</span></div><div class="line"></div><div class="line">方法四：rewrite</div><div class="line">菜单栏 Tools —&gt; Rewrite</div><div class="line">根据自己的需求重写…。 </div><div class="line">推荐网址：http:<span class="comment">//www.cnblogs.com/wonyun/p/5586746.html</span></div></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">方法一：本地映射</span><br><span class="line">Charles进行抓包</span><br><span class="line">选择某一个网络请求 &gt; 鼠标右键 <span class="keyword">Save</span> Response...</span><br><span class="line">如果该请求返回的是一个json串，保存文件时需要保存<span class="keyword">rename</span>.json</span><br><span class="line">需要更改的请求点击右键 Map <span class="keyword">Local</span>.. 指定到本地保存的<span class="keyword">renam</span>.json.</span><br><span class="line">通过在本地更改<span class="keyword">rename</span>.json就可以自动的更改请求的返回值。</span><br><span class="line"></span><br><span class="line">方法二：打断点</span><br><span class="line">选择某一个网络请求 &gt; 鼠标右键 Breakpoints</span><br><span class="line">然后点击 Execute 执行，然后编辑返回值 </span><br><span class="line">缺点：容易请求超时。还没等你调整完返回数据，<span class="keyword">app</span>那边已经请求超时了。</span><br><span class="line"></span><br><span class="line">方法三：远端映射</span><br><span class="line">将<span class="keyword">App</span>内部的请求映射到远端写好的接口。推荐一个东东 Mocky：http:<span class="comment">//www.mocky.io/。</span></span><br><span class="line"></span><br><span class="line">方法四：rewrite</span><br><span class="line">菜单栏 Tools —&gt; Rewrite</span><br><span class="line">根据自己的需求重写…。 </span><br><span class="line">推荐网址：http:<span class="comment">//www.cnblogs.com/wonyun/p/5586746.html</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>

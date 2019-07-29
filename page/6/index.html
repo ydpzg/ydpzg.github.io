@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
+<meta property="og:title" content="dukelight&#39;s home">
 <meta property="og:url" content="http://ydpzg.github.io/page/6/index.html">
-<meta property="og:site_name" content="dukelight's home">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:locale" content="Chinese">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="dukelight&#39;s home">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -18,7 +19,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -218,9 +219,7 @@
         <h4 id="jni里集成openssl，最好在build-gradle做些处理"><a href="#jni里集成openssl，最好在build-gradle做些处理" class="headerlink" title="jni里集成openssl，最好在build.gradle做些处理"></a>jni里集成openssl，最好在build.gradle做些处理</h4><pre><code>sourceSets.main {
         jni.srcDirs = []
         jniLibs.srcDir &apos;src/main/jniLibs&apos;
-    }
-</code></pre><h4 id="在android-mk写个dir指向自定义文件夹jniLibs"><a href="#在android-mk写个dir指向自定义文件夹jniLibs" class="headerlink" title="在android.mk写个dir指向自定义文件夹jniLibs"></a>在android.mk写个dir指向自定义文件夹jniLibs</h4><pre><code>NDK_APP_DST_DIR := ../jniLibs/$(TARGET_ARCH_ABI)
-</code></pre><h4 id="c-语法处理部分细节坑"><a href="#c-语法处理部分细节坑" class="headerlink" title="c++语法处理部分细节坑"></a>c++语法处理部分细节坑</h4><pre><code>1、记得无论什么时候，都要对数组初始化，不然多余的数值会对调试生成影响
+    }</code></pre><h4 id="在android-mk写个dir指向自定义文件夹jniLibs"><a href="#在android-mk写个dir指向自定义文件夹jniLibs" class="headerlink" title="在android.mk写个dir指向自定义文件夹jniLibs"></a>在android.mk写个dir指向自定义文件夹jniLibs</h4><pre><code>NDK_APP_DST_DIR := ../jniLibs/$(TARGET_ARCH_ABI)</code></pre><h4 id="c-语法处理部分细节坑"><a href="#c-语法处理部分细节坑" class="headerlink" title="c++语法处理部分细节坑"></a>c++语法处理部分细节坑</h4><pre><code>1、记得无论什么时候，都要对数组初始化，不然多余的数值会对调试生成影响
 memset(a, 0x00, sizeof(a));
 
 2、对字符数组求长度的时候，在c++里遇到0x00或者’\0’的时候strlen会提前结束，导致错误的输出，这点在调试过程中是个问题
@@ -232,8 +231,7 @@ strlen(a)
 
 5、使用PEM_read_bio_PrivateKey可以读取rsa的私钥，而PEM_read_bio_RsaPrivateKey也可以读，不过是两个不同的结果，两种key的类型可以互转
 EVP_PKEY_get1_RSA 
-EVP_PKEY_set1_RSA
-</code></pre>
+EVP_PKEY_set1_RSA</code></pre>
       
     </div>
     
@@ -283,24 +281,26 @@ EVP_PKEY_set1_RSA
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://blog.csdn.net/hxdanya/article/details/39371759" target="_blank" rel="external">http://blog.csdn.net/hxdanya/article/details/39371759</a></p>
+        <p><a href="http://blog.csdn.net/hxdanya/article/details/39371759" target="_blank" rel="noopener">http://blog.csdn.net/hxdanya/article/details/39371759</a></p>
 <p>PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。</p>
-<p>LOCAL_CFLAGS += -pie -fPIE<br>LOCAL<em>LDFLAGS += -pie -fPIE</em></p>
-<p><a href="http://hold-on.iteye.com/blog/1901152" target="_blank" rel="external">http://hold-on.iteye.com/blog/1901152</a></p>
+<p>LOCAL_CFLAGS += -pie -fPIE<br>LOCAL_LDFLAGS += -pie -fPIE_</p>
+<p><a href="http://hold-on.iteye.com/blog/1901152" target="_blank" rel="noopener">http://hold-on.iteye.com/blog/1901152</a></p>
 <p>Android应用程序永久获取root权限方法的基本思路，引入zlsu</p>
-<p><a href="http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966" target="_blank" rel="external">http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966</a></p>
+<p><a href="http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966" target="_blank" rel="noopener">http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966</a></p>
 <p>解决办法：</p>
 <ol>
-<li>最简单的，adb remount</li>
-<li>不行的话，adb shell su之后将文件系统remount为读写权限： mount -o remount rw /system。出于安全考虑，记得完事后remount回只读： mount -o ro,remount /system</li>
+<li><p>最简单的，adb remount</p>
+</li>
+<li><p>不行的话，adb shell su之后将文件系统remount为读写权限： mount -o remount rw /system。出于安全考虑，记得完事后remount回只读： mount -o ro,remount /system</p>
+</li>
 <li><p>和方法2类似，mount -o rw,remount -t ext3 /dev/block/mmcblk1p21 /system</p>
 <p>chown 0:0 /system/bin/su</p>
 </li>
 </ol>
 <p>busybox chown 0:0 /system/bin/su</p>
-<p><a href="http://blog.csdn.net/wan_ing/article/details/53407748" target="_blank" rel="external">http://blog.csdn.net/wan_ing/article/details/53407748</a></p>
+<p><a href="http://blog.csdn.net/wan_ing/article/details/53407748" target="_blank" rel="noopener">http://blog.csdn.net/wan_ing/article/details/53407748</a></p>
 <p>android 版本更新 静默安装及自启动</p>
-<p><a href="http://www.jianshu.com/p/9ece07344630" target="_blank" rel="external">http://www.jianshu.com/p/9ece07344630</a></p>
+<p><a href="http://www.jianshu.com/p/9ece07344630" target="_blank" rel="noopener">http://www.jianshu.com/p/9ece07344630</a></p>
 <p>Android上app_process启动java进程</p>
 
       
@@ -370,8 +370,7 @@ for i in range(n): buf[i] /= 8
 f2 = open(&apos;demo2.wav&apos;, &apos;wb&apos;)
 f2.write(info)
 buf.tofile(f2)
-f2.close()
-</code></pre>
+f2.close()</code></pre>
       
     </div>
     
@@ -437,8 +436,7 @@ s.replace(&apos;\t&apos;, &apos;&apos;)
 
 s = &apos;\tsss\tcvv\tppp\rfdf\rccc&apos;
 import re
-re.sub(&apos;[\t\r]&apos;, &apos;&apos;)
-</code></pre>
+re.sub(&apos;[\t\r]&apos;, &apos;&apos;)</code></pre>
       
     </div>
     
@@ -488,7 +486,7 @@ re.sub(&apos;[\t\r]&apos;, &apos;&apos;)
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’\&lt;‘’>’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
+        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-gt-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-gt-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’&lt;‘’&gt;’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’&lt;‘’&gt;’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
 s.ljust(10, &apos;_&apos;)
 s.rjust(10, &apos;_&apos;)
 s.center(10, &apos;_&apos;)
@@ -505,8 +503,7 @@ for x in d:
 rmax = max(map(len, [str(x) for x in d.values()]))
 rmax
 for x in d:
-     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))
-</code></pre>
+     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))</code></pre>
       
     </div>
     
@@ -561,8 +558,7 @@ s2=&quot;456&quot;
 s1 + s2
 &quot;&quot;.join([&apos;123&apos;, &apos;444&apos;])
 array = [111, &quot;2323&quot;, dd, &quot;pp&quot;]
-&apos;:&apos;.join(str(x) for x in array)
-</code></pre>
+&apos;:&apos;.join(str(x) for x in array)</code></pre>
       
     </div>
     
@@ -616,8 +612,7 @@ array = [111, &quot;2323&quot;, dd, &quot;pp&quot;]
 import re 
 result = re.sub(r&apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&apos;, r&apos;\2,\1,\5:\4:\3&apos;, file)
 result = re.sub(r&apos;(?P&lt;day&gt;\d{2}), (?P&lt;year&gt;\d{4}) (?P&lt;hour&gt;\d{2}):(?P&lt;minute&gt;\d{2}):(?P&lt;second&gt;\d{2})&apos;, r&apos;\g&lt;year&gt;,\g&lt;day&gt;,\g&lt;second&gt;:\g&lt;minute&gt;:\g&lt;hour&gt;&apos;, file)
-print(result)
-</code></pre>
+print(result)</code></pre>
       
     </div>
     
@@ -678,8 +673,7 @@ import stat
 #设置当前位为1
 os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode | stat.S_IXUSR)
 #设置当前位取反
-os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode ^ stat.S_IXUSR)
-</code></pre>
+os.chmod(&apos;./history.txt&apos;, os.stat(&apos;./history.txt&apos;).st_mode ^ stat.S_IXUSR)</code></pre>
       
     </div>
     
@@ -747,8 +741,7 @@ print(mySplit(s, &apos;=!+-=;:^%$\\&apos;))
 
 #使用re正则表达式分割字符串
 import re
-print(re.split(r&apos;[=!+-=;:^%$\\]+&apos;, s))
-</code></pre>
+print(re.split(r&apos;[=!+-=;:^%$\\]+&apos;, s))</code></pre>
       
     </div>
     
@@ -804,8 +797,7 @@ for x in zip(e1, e2):
    ...:     print(x)
 from itertools import chain
 for x in chain(e1, e2):
-    ...:     print(x)
-</code></pre><h4 id="结果是"><a href="#结果是" class="headerlink" title="结果是"></a>结果是</h4><pre><code>zip并行的输出是
+    ...:     print(x)</code></pre><h4 id="结果是"><a href="#结果是" class="headerlink" title="结果是"></a>结果是</h4><pre><code>zip并行的输出是
 (1, 9)
 (2, 8)
 (3, 7)
@@ -819,8 +811,7 @@ chain串行的输出是
 9
 8
 7
-6
-</code></pre>
+6</code></pre>
       
     </div>
     

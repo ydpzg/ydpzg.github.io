@@ -1,38 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>更新gradle插件后的出错 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="出现：
-Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
-debugApiElements
-debugRuntimeElements
-releaseApiElements
-releaseRuntimeElements
-All of them match the consumer">
+  <meta name="description" content="出现： Cannot choose between the following configurations of project :UmengSocialSdkLibrary: debugApiElements debugRuntimeElements releaseApiElements releaseRuntimeElements All of them match the consumer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="更新gradle插件后的出错">
 <meta property="og:url" content="http://ydpzg.github.io/2018/06/25/2018062502/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="出现：
-Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
-debugApiElements
-debugRuntimeElements
-releaseApiElements
-releaseRuntimeElements
-All of them match the consumer">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="出现： Cannot choose between the following configurations of project :UmengSocialSdkLibrary: debugApiElements debugRuntimeElements releaseApiElements releaseRuntimeElements All of them match the consumer">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2018-06-25T11:50:26.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="更新gradle插件后的出错">
-<meta name="twitter:description" content="出现：
-Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
-debugApiElements
-debugRuntimeElements
-releaseApiElements
-releaseRuntimeElements
-All of them match the consumer">
+<meta name="twitter:description" content="出现： Cannot choose between the following configurations of project :UmengSocialSdkLibrary: debugApiElements debugRuntimeElements releaseApiElements releaseRuntimeElements All of them match the consumer">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -40,7 +23,7 @@ All of them match the consumer">
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -253,14 +236,10 @@ Configuration &apos;debugApiElements&apos;:
     Found com.android.build.api.attributes.BuildTypeAttr &apos;debug&apos; but wasn&apos;t required.
     Found com.android.build.api.attributes.VariantAttr &apos;debug&apos; but wasn&apos;t required.
     Found com.android.build.gradle.internal.dependency.AndroidTypeAttr &apos;Aar&apos; but wasn&apos;t required.
-    Found org.gradle.usage &apos;java-api&apos; but wasn&apos;t required.
-</code></pre><p>原因是更新了gradle插件，</p>
-<pre><code>classpath &apos;com.android.tools.build:gradle:3.2.0-alpha07&apos;
-</code></pre><p>解决方案：</p>
-<pre><code>compile project(&apos;:UmengSocialSdkLibrary&apos;)
-</code></pre><p>改成：</p>
-<pre><code>compile project(path: &apos;:UmengSocialSdkLibrary&apos;, configuration: &apos;default&apos;)
-</code></pre>
+    Found org.gradle.usage &apos;java-api&apos; but wasn&apos;t required.</code></pre><p>原因是更新了gradle插件，</p>
+<pre><code>classpath &apos;com.android.tools.build:gradle:3.2.0-alpha07&apos;</code></pre><p>解决方案：</p>
+<pre><code>compile project(&apos;:UmengSocialSdkLibrary&apos;)</code></pre><p>改成：</p>
+<pre><code>compile project(path: &apos;:UmengSocialSdkLibrary&apos;, configuration: &apos;default&apos;)</code></pre>
       
     </div>
     

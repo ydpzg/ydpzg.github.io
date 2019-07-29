@@ -1,32 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>android生成jni的c++部分的坑(集成openssl) | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;
-    }
-在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TAR">
+  <meta name="description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {         jni.srcDirs = []         jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;     }在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TARG">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android生成jni的c++部分的坑(集成openssl)">
 <meta property="og:url" content="http://ydpzg.github.io/2017/06/14/2017061401/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;
-    }
-在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TAR">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {         jni.srcDirs = []         jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;     }在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TARG">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-06-14T00:53:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android生成jni的c++部分的坑(集成openssl)">
-<meta name="twitter:description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;
-    }
-在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TAR">
+<meta name="twitter:description" content="jni里集成openssl，最好在build.gradle做些处理sourceSets.main {         jni.srcDirs = []         jniLibs.srcDir &amp;apos;src/main/jniLibs&amp;apos;     }在android.mk写个dir指向自定义文件夹jniLibsNDK_APP_DST_DIR := ../jniLibs/$(TARG">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -34,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -239,9 +228,7 @@
         <h4 id="jni里集成openssl，最好在build-gradle做些处理"><a href="#jni里集成openssl，最好在build-gradle做些处理" class="headerlink" title="jni里集成openssl，最好在build.gradle做些处理"></a>jni里集成openssl，最好在build.gradle做些处理</h4><pre><code>sourceSets.main {
         jni.srcDirs = []
         jniLibs.srcDir &apos;src/main/jniLibs&apos;
-    }
-</code></pre><h4 id="在android-mk写个dir指向自定义文件夹jniLibs"><a href="#在android-mk写个dir指向自定义文件夹jniLibs" class="headerlink" title="在android.mk写个dir指向自定义文件夹jniLibs"></a>在android.mk写个dir指向自定义文件夹jniLibs</h4><pre><code>NDK_APP_DST_DIR := ../jniLibs/$(TARGET_ARCH_ABI)
-</code></pre><h4 id="c-语法处理部分细节坑"><a href="#c-语法处理部分细节坑" class="headerlink" title="c++语法处理部分细节坑"></a>c++语法处理部分细节坑</h4><pre><code>1、记得无论什么时候，都要对数组初始化，不然多余的数值会对调试生成影响
+    }</code></pre><h4 id="在android-mk写个dir指向自定义文件夹jniLibs"><a href="#在android-mk写个dir指向自定义文件夹jniLibs" class="headerlink" title="在android.mk写个dir指向自定义文件夹jniLibs"></a>在android.mk写个dir指向自定义文件夹jniLibs</h4><pre><code>NDK_APP_DST_DIR := ../jniLibs/$(TARGET_ARCH_ABI)</code></pre><h4 id="c-语法处理部分细节坑"><a href="#c-语法处理部分细节坑" class="headerlink" title="c++语法处理部分细节坑"></a>c++语法处理部分细节坑</h4><pre><code>1、记得无论什么时候，都要对数组初始化，不然多余的数值会对调试生成影响
 memset(a, 0x00, sizeof(a));
 
 2、对字符数组求长度的时候，在c++里遇到0x00或者’\0’的时候strlen会提前结束，导致错误的输出，这点在调试过程中是个问题
@@ -253,8 +240,7 @@ strlen(a)
 
 5、使用PEM_read_bio_PrivateKey可以读取rsa的私钥，而PEM_read_bio_RsaPrivateKey也可以读，不过是两个不同的结果，两种key的类型可以互转
 EVP_PKEY_get1_RSA 
-EVP_PKEY_set1_RSA
-</code></pre>
+EVP_PKEY_set1_RSA</code></pre>
       
     </div>
     

@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>【开发笔记】高德地图在fragment使用时切换时会黑屏 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。
-解决方案：1.使用两个FrameLayout
-在activity里使用两个FrameLayout容器，">
+  <meta name="description" content="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。 解决方案：1.使用两个FrameLayout 在activity里使用两个FrameLayout容器，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【开发笔记】高德地图在fragment使用时切换时会黑屏">
 <meta property="og:url" content="http://ydpzg.github.io/2016/09/11/2016091101/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。
-解决方案：1.使用两个FrameLayout
-在activity里使用两个FrameLayout容器，">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。 解决方案：1.使用两个FrameLayout 在activity里使用两个FrameLayout容器，">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2016-09-11T07:13:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【开发笔记】高德地图在fragment使用时切换时会黑屏">
-<meta name="twitter:description" content="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。
-解决方案：1.使用两个FrameLayout
-在activity里使用两个FrameLayout容器，">
+<meta name="twitter:description" content="背景：fragment，使用FrameLayout作为容器，切换fragment的时候使用fragmentTransaction.replace(int, fragment); 切换的时候黑屏，看样子是高德的bug，mapView在fragment的摧毁的时候释放时间太久，导致ui部分黑屏了。 解决方案：1.使用两个FrameLayout 在activity里使用两个FrameLayout容器，">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -254,8 +249,7 @@ public void changeFragment(BaseFragment fragment) {
         fragmentTransaction.commit();
         mLastBaseFragment = fragment;
     }
-}
-</code></pre><p>2.将fragment的切换从replace环城show和hide</p>
+}</code></pre><p>2.将fragment的切换从replace环城show和hide</p>
 <p>使用show和hide，黑屏不见了，原理就是这时fragment不会每次都被重新创建了。但是fragment的生命周期就乱了，具体表现为没有onResume和onPause，这时使用手动的方式模拟这两个fragment.setUserVisibleHint（true), 实际上setUserVisibleHint在fragment与view pager共用的时候才会被调用。</p>
 <pre><code>FragmentTransaction fragmentTransaction = fm.beginTransaction();
 Fragment fragment = fm.findFragmentByTag(type + &quot;&quot;);
@@ -270,8 +264,7 @@ if (fragment == null) {
 }
 fragment.setUserVisibleHint(true);
 mCurFragment = list.get(type);
-fragmentTransaction.commit();
-</code></pre>
+fragmentTransaction.commit();</code></pre>
       
     </div>
     

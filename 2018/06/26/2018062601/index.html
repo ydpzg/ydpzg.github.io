@@ -1,44 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>如何实现域名转发 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
+  <meta name="description" content="访问A域名，实现把流量带过去B域名 1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名 2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发 server { listen 80; server_name yudapei.cn www.yudapei.cn;  location / { proxy_pass http://ydpzg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何实现域名转发">
 <meta property="og:url" content="http://ydpzg.github.io/2018/06/26/2018062601/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="访问A域名，实现把流量带过去B域名 1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名 2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发 server { listen 80; server_name yudapei.cn www.yudapei.cn;  location / { proxy_pass http://ydpzg">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2018-09-06T09:12:08.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何实现域名转发">
-<meta name="twitter:description" content="访问A域名，实现把流量带过去B域名
-1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名
-2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发
-server {
-listen 80;
-server_name yudapei.cn www.yudapei.cn;
-
-location / {
-proxy_pass http://ydpzg">
+<meta name="twitter:description" content="访问A域名，实现把流量带过去B域名 1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名 2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发 server { listen 80; server_name yudapei.cn www.yudapei.cn;  location / { proxy_pass http://ydpzg">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -46,7 +23,7 @@ proxy_pass http://ydpzg">
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -250,8 +227,8 @@ proxy_pass http://ydpzg">
       
         <blockquote>
 <h1 id="访问A域名，实现把流量带过去B域名"><a href="#访问A域名，实现把流量带过去B域名" class="headerlink" title="访问A域名，实现把流量带过去B域名"></a>访问A域名，实现把流量带过去B域名</h1></blockquote>
-<p>1、进去域名万网后台配置，A.com转到www.A.com，设置CNAME，指定跳转的域名</p>
-<p>2、在www.A.com的主机上安装nginx，通过nginx进行域名的转发</p>
+<p>1、进去域名万网后台配置，A.com转到<a href="http://www.A.com，设置CNAME，指定跳转的域名" target="_blank" rel="noopener">www.A.com，设置CNAME，指定跳转的域名</a></p>
+<p>2、在<a href="http://www.A.com的主机上安装nginx，通过nginx进行域名的转发" target="_blank" rel="noopener">www.A.com的主机上安装nginx，通过nginx进行域名的转发</a></p>
 <pre><code>server {
 listen 80;
 server_name yudapei.cn www.yudapei.cn;
@@ -260,8 +237,7 @@ location / {
 proxy_pass http://ydpzg.github.io/; 显现转发
 }
 #return       301 http://www.yudapei.cn$request_uri;  重定向，隐性转发
-}
-</code></pre>
+}</code></pre>
       
     </div>
     

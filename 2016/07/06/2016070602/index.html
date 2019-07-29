@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>【学习笔记】android安全机制相关 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="android安全机制之秘钥交换 
-
-1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢 
-实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
+  <meta name="description" content="android安全机制之秘钥交换   1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢  实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
+<meta name="keywords" content="rsa HMac hash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】android安全机制相关">
 <meta property="og:url" content="http://ydpzg.github.io/2016/07/06/2016070602/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="android安全机制之秘钥交换 
-
-1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢 
-实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="android安全机制之秘钥交换   1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢  实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2016-07-06T09:25:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】android安全机制相关">
-<meta name="twitter:description" content="android安全机制之秘钥交换 
-
-1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢 
-实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
+<meta name="twitter:description" content="android安全机制之秘钥交换   1、非对称秘钥安全性足够高2、没有密钥交换的问题3、效率低，对于大数据加密很慢  实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。Diffie-Hellman密钥交换协议甲 ：A，                                        乙：B甲 ：（A，keyX）  -&amp;gt; MsgA">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -31,7 +24,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -241,7 +234,7 @@
 <p>android安全机制之秘钥交换 </p>
 </blockquote>
 <p>1、非对称秘钥安全性足够高<br>2、没有密钥交换的问题<br>3、效率低，对于大数据加密很慢 </p>
-<p>实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。<br>Diffie-Hellman密钥交换协议<br>甲 ：A，                                        乙：B<br>甲 ：（A，keyX）  -> MsgA                 乙：（B，keyY） -> MsgB<br>甲 ：（keyX，MsgB）        =                乙：（keyY，MsgA）<br>最后的变换结果都是一样的，结果作为sessionKey </p>
+<p>实时产生的sessionkey，通过加一层rsa安全传输到对方，然后就可以用对称密钥去加密传输。<br>Diffie-Hellman密钥交换协议<br>甲 ：A，                                        乙：B<br>甲 ：（A，keyX）  -&gt; MsgA                 乙：（B，keyY） -&gt; MsgB<br>甲 ：（keyX，MsgB）        =                乙：（keyY，MsgA）<br>最后的变换结果都是一样的，结果作为sessionKey </p>
 <blockquote>
 <p>android安全机制之消息摘要 </p>
 </blockquote>

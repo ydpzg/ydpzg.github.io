@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>android连接https web service忽略证书的方法 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
-解决方法如下：
-在使用web service之前调用allowAllSSL()就行了。
-public static void allowAllSSL() {  
-javax.net.ssl.HttpsURLConnection  
-        .setDefa">
+  <meta name="description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。 解决方法如下： 在使用web service之前调用allowAllSSL()就行了。 public static void allowAllSSL() {   javax.net.ssl.HttpsURLConnection           .setDefa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android连接https web service忽略证书的方法">
 <meta property="og:url" content="http://ydpzg.github.io/2016/12/02/2016120202/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
-解决方法如下：
-在使用web service之前调用allowAllSSL()就行了。
-public static void allowAllSSL() {  
-javax.net.ssl.HttpsURLConnection  
-        .setDefa">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。 解决方法如下： 在使用web service之前调用allowAllSSL()就行了。 public static void allowAllSSL() {   javax.net.ssl.HttpsURLConnection           .setDefa">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-03-01T15:43:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android连接https web service忽略证书的方法">
-<meta name="twitter:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。
-解决方法如下：
-在使用web service之前调用allowAllSSL()就行了。
-public static void allowAllSSL() {  
-javax.net.ssl.HttpsURLConnection  
-        .setDefa">
+<meta name="twitter:description" content="如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。 解决方法如下： 在使用web service之前调用allowAllSSL()就行了。 public static void allowAllSSL() {   javax.net.ssl.HttpsURLConnection           .setDefa">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -37,7 +23,7 @@ javax.net.ssl.HttpsURLConnection
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -265,8 +251,7 @@ try {
     Log.e(&quot;allowAllSSL&quot;, e.toString());  
 }  
 javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context  
-        .getSocketFactory());  
-</code></pre><p>}`</p>
+        .getSocketFactory());  </code></pre><p>}`</p>
 
       
     </div>

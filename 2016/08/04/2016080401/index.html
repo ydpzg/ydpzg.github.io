@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>android 开发板操作出现“Read-only file system” | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。找了一下终于找到解决方案打相应的命令：
-1、su 
-2、mount  
-可以查到这个android开发板的设备块">
+  <meta name="description" content="对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。找了一下终于找到解决方案打相应的命令： 1、su  2、mount  可以查到这个android开发板的设备块名">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android 开发板操作出现“Read-only file system”">
 <meta property="og:url" content="http://ydpzg.github.io/2016/08/04/2016080401/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。找了一下终于找到解决方案打相应的命令：
-1、su 
-2、mount  
-可以查到这个android开发板的设备块">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。找了一下终于找到解决方案打相应的命令： 1、su  2、mount  可以查到这个android开发板的设备块名">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2016-08-04T06:52:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android 开发板操作出现“Read-only file system”">
-<meta name="twitter:description" content="对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。找了一下终于找到解决方案打相应的命令：
-1、su 
-2、mount  
-可以查到这个android开发板的设备块">
+<meta name="twitter:description" content="对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。找了一下终于找到解决方案打相应的命令： 1、su  2、mount  可以查到这个android开发板的设备块名">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -31,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -235,8 +227,7 @@
       
         <p>对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。<br>找了一下终于找到解决方案<br>打相应的命令：</p>
 <pre><code>1、su 
-2、mount  
-</code></pre><p>可以查到这个android开发板的设备块名称是/dev/block/by-name/system</p>
+2、mount  </code></pre><p>可以查到这个android开发板的设备块名称是/dev/block/by-name/system</p>
 <pre><code>root@octopus-perf:/ # su          ----------1
 root@octopus-perf:/ # mount         ---------2
 rootfs / rootfs rw,relatime 0 0
@@ -258,11 +249,9 @@ debugfs /sys/kernel/debug debugfs rw,relatime 0 0
 none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
 /dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
 /dev/block/vold/179:25 /mnt/extsd vfat rw,dirsync,nosuid,nodev,noexec,relatime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=cp437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
-/dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
-</code></pre><p>打命令：</p>
+/dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0</code></pre><p>打命令：</p>
 <pre><code>1、mount -o remount /dev/block/by-name/system /system
-2、mount
-</code></pre><p>得到下面的结果</p>
+2、mount</code></pre><p>得到下面的结果</p>
 <pre><code>root@octopus-perf:/ # mount -o remount /dev/block/by-name/system /system              ----------------1
 root@octopus-perf:/ # mount            -------------2                                             
 rootfs / rootfs rw,relatime 0 0
@@ -284,10 +273,8 @@ debugfs /sys/kernel/debug debugfs rw,relatime 0 0
 none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
 /dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
 /dev/block/vold/179:25 /mnt/extsd vfat rw,dirsync,nosuid,nodev,noexec,relatime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=cp437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
-/dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
-</code></pre><p>最后使用完后要还原回来（设置为只读状态）：</p>
-<pre><code>1、mount -o remount,r /dev/block/by-name/system /system
-</code></pre><p>参考：<br><a href="http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054" target="_blank" rel="external">http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054</a></p>
+/dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0</code></pre><p>最后使用完后要还原回来（设置为只读状态）：</p>
+<pre><code>1、mount -o remount,r /dev/block/by-name/system /system</code></pre><p>参考：<br><a href="http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054" target="_blank" rel="noopener">http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054</a></p>
 
       
     </div>

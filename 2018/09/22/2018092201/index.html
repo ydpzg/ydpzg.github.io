@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>gradle-wrapper.properties设置gradle 4.4报错 Connect to d29vzk4ow07wi7.cloudfront.net:443 xxx | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443
-尝试过：1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错2、怀疑是网络问题，从as上下载链接https://downloads.gradle.org/distribution">
+  <meta name="description" content="gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443 尝试过：1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错2、怀疑是网络问题，从as上下载链接https://downloads.gradle.org/distribution">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gradle-wrapper.properties设置gradle 4.4报错 Connect to d29vzk4ow07wi7.cloudfront.net:443 xxx">
 <meta property="og:url" content="http://ydpzg.github.io/2018/09/22/2018092201/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443
-尝试过：1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错2、怀疑是网络问题，从as上下载链接https://downloads.gradle.org/distribution">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443 尝试过：1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错2、怀疑是网络问题，从as上下载链接https://downloads.gradle.org/distribution">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2018-09-22T15:55:29.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle-wrapper.properties设置gradle 4.4报错 Connect to d29vzk4ow07wi7.cloudfront.net:443 xxx">
-<meta name="twitter:description" content="gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443
-尝试过：1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错2、怀疑是网络问题，从as上下载链接https://downloads.gradle.org/distribution">
+<meta name="twitter:description" content="gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443 尝试过：1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错2、怀疑是网络问题，从as上下载链接https://downloads.gradle.org/distribution">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -25,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -229,7 +227,7 @@
       
         <blockquote>
 <h2 id="gradle-wrapper-properties设置gradle-4-4后报错。。。Connect-to-d29vzk4ow07wi7-cloudfront-net-443"><a href="#gradle-wrapper-properties设置gradle-4-4后报错。。。Connect-to-d29vzk4ow07wi7-cloudfront-net-443" class="headerlink" title="gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443"></a>gradle-wrapper.properties设置gradle 4.4后报错。。。Connect to d29vzk4ow07wi7.cloudfront.net:443</h2></blockquote>
-<p>尝试过：<br>1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错<br>2、怀疑是网络问题，从as上下载链接<a href="https://downloads.gradle.org/distributions/gradle-3.3-all.zip来看，直接使用浏览器是可以下载了，并且是不翻墙的情况" target="_blank" rel="external">https://downloads.gradle.org/distributions/gradle-3.3-all.zip来看，直接使用浏览器是可以下载了，并且是不翻墙的情况</a><br>3、尝试过翻墙，设置代理，结果一样报超时</p>
+<p>尝试过：<br>1、本来是想下gradle3.3，然后一直gradle下载不了，改成gradle4.4后发现报错<br>2、怀疑是网络问题，从as上下载链接<a href="https://downloads.gradle.org/distributions/gradle-3.3-all.zip来看，直接使用浏览器是可以下载了，并且是不翻墙的情况" target="_blank" rel="noopener">https://downloads.gradle.org/distributions/gradle-3.3-all.zip来看，直接使用浏览器是可以下载了，并且是不翻墙的情况</a><br>3、尝试过翻墙，设置代理，结果一样报超时</p>
 <p>后来上网找答案，搜索关键词Connect to d29vzk4ow07wi7.cloudfront.net:443，，，<br>有一种解决方案很靠谱，在项目build.gradler 的jcenter()前添加上mavenCentral();<br>尝试了一下，居然解决了问题，看来是访问不到jcenter.</p>
 <p>具体为什么加了mavenCentral()在jcenter()前面就行了，没有深究。后来想通了，as旧版本默认资源放放到mavenCentral，而新版本放到了jcenter()。。</p>
 

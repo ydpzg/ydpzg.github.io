@@ -1,32 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>python 2-5如何快速找到多个字典中的公共键(key) | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="from random import randint, sample
-sample(&amp;apos;abcxyz&amp;apos;, 4)
-sample(&amp;apos;abcxyz&amp;apos;, randint(3, 5)
-得到初始序列s1 = {x: randint(1,4) for x in sample(&amp;apos;abcxyz&amp;apos;, randint(4,6))}
-s2 = {x: randin">
+  <meta name="description" content="from random import randint, sample sample(&amp;apos;abcxyz&amp;apos;, 4) sample(&amp;apos;abcxyz&amp;apos;, randint(3, 5)得到初始序列s1 = {x: randint(1,4) for x in sample(&amp;apos;abcxyz&amp;apos;, randint(4,6))} s2 = {x: randint">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 2-5如何快速找到多个字典中的公共键(key)">
 <meta property="og:url" content="http://ydpzg.github.io/2017/05/17/2017051701/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="from random import randint, sample
-sample(&amp;apos;abcxyz&amp;apos;, 4)
-sample(&amp;apos;abcxyz&amp;apos;, randint(3, 5)
-得到初始序列s1 = {x: randint(1,4) for x in sample(&amp;apos;abcxyz&amp;apos;, randint(4,6))}
-s2 = {x: randin">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="from random import randint, sample sample(&amp;apos;abcxyz&amp;apos;, 4) sample(&amp;apos;abcxyz&amp;apos;, randint(3, 5)得到初始序列s1 = {x: randint(1,4) for x in sample(&amp;apos;abcxyz&amp;apos;, randint(4,6))} s2 = {x: randint">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-05-17T14:29:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 2-5如何快速找到多个字典中的公共键(key)">
-<meta name="twitter:description" content="from random import randint, sample
-sample(&amp;apos;abcxyz&amp;apos;, 4)
-sample(&amp;apos;abcxyz&amp;apos;, randint(3, 5)
-得到初始序列s1 = {x: randint(1,4) for x in sample(&amp;apos;abcxyz&amp;apos;, randint(4,6))}
-s2 = {x: randin">
+<meta name="twitter:description" content="from random import randint, sample sample(&amp;apos;abcxyz&amp;apos;, 4) sample(&amp;apos;abcxyz&amp;apos;, randint(3, 5)得到初始序列s1 = {x: randint(1,4) for x in sample(&amp;apos;abcxyz&amp;apos;, randint(4,6))} s2 = {x: randint">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -34,7 +23,7 @@ s2 = {x: randin">
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -238,19 +227,14 @@ s2 = {x: randin">
       
         <pre><code>from random import randint, sample
 sample(&apos;abcxyz&apos;, 4)
-sample(&apos;abcxyz&apos;, randint(3, 5)
-</code></pre><h4 id="得到初始序列"><a href="#得到初始序列" class="headerlink" title="得到初始序列"></a>得到初始序列</h4><pre><code>s1 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
+sample(&apos;abcxyz&apos;, randint(3, 5)</code></pre><h4 id="得到初始序列"><a href="#得到初始序列" class="headerlink" title="得到初始序列"></a>得到初始序列</h4><pre><code>s1 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
 s2 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
-s3 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}
-</code></pre><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><pre><code>for k in s1:
+s3 = {x: randint(1,4) for x in sample(&apos;abcxyz&apos;, randint(4,6))}</code></pre><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><pre><code>for k in s1:
 ...     if k in s2 and k in s3:
-...             res.append(k)
-</code></pre><h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><pre><code>s1.keys()
-s1.keys() &amp; s2.keys() &amp; s3.keys()
-</code></pre><h4 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h4><pre><code>map(dict.keys, [s1, s2, s3])
+...             res.append(k)</code></pre><h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><pre><code>s1.keys()
+s1.keys() &amp; s2.keys() &amp; s3.keys()</code></pre><h4 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h4><pre><code>map(dict.keys, [s1, s2, s3])
 from functools import reduce
-reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))
-</code></pre>
+reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))</code></pre>
       
     </div>
     

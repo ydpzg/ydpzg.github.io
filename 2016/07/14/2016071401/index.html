@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>【学习笔记】使用idea自带生成webservice客户端client的问题 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="导入web service的证书到本地jdk的证书库里
-
-报错com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names pr">
+  <meta name="description" content="导入web service的证书到本地jdk的证书库里  报错com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names pr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【学习笔记】使用idea自带生成webservice客户端client的问题">
 <meta property="og:url" content="http://ydpzg.github.io/2016/07/14/2016071401/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="导入web service的证书到本地jdk的证书库里
-
-报错com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names pr">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="导入web service的证书到本地jdk的证书库里  报错com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names pr">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2016-07-16T03:28:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【学习笔记】使用idea自带生成webservice客户端client的问题">
-<meta name="twitter:description" content="导入web service的证书到本地jdk的证书库里
-
-报错com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names pr">
+<meta name="twitter:description" content="导入web service的证书到本地jdk的证书库里  报错com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names pr">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -233,9 +228,9 @@
         <blockquote>
 <p>导入web service的证书到本地jdk的证书库里</p>
 </blockquote>
-<p>报错<br>com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names present<br>原因<br>ip的问题，如果是域名就没问题。<br>解决方案<br>jdk1.8 的话<br>在代码里面加入HttpsURLConnection.setDefaultHostnameVerifier((hostname, session) -> hostname.equals(“10.173.235.52”));</p>
-<p>解决的链接<br><a href="http://stackoverflow.com/questions/10258101/sslhandshakeexception-no-subject-alternative-names-present" target="_blank" rel="external">http://stackoverflow.com/questions/10258101/sslhandshakeexception-no-subject-alternative-names-present</a></p>
-<p>报错<br>由于 accessExternalSchema 属性设置的限制而不允许 ‘file’ 访问, 因此无法读取方案文档 ‘xjc.xsd’。<br>解决方案<br>Create a file named jaxp.properties (if it doesn’t exist) under /path/to/jdk1.8.0/jre/lib and then write this line in it:<br>javax.xml.accessExternalSchema = all<br>解决的链接<br><a href="http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8" target="_blank" rel="external">http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8</a></p>
+<p>报错<br>com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names present<br>原因<br>ip的问题，如果是域名就没问题。<br>解决方案<br>jdk1.8 的话<br>在代码里面加入HttpsURLConnection.setDefaultHostnameVerifier((hostname, session) -&gt; hostname.equals(“10.173.235.52”));</p>
+<p>解决的链接<br><a href="http://stackoverflow.com/questions/10258101/sslhandshakeexception-no-subject-alternative-names-present" target="_blank" rel="noopener">http://stackoverflow.com/questions/10258101/sslhandshakeexception-no-subject-alternative-names-present</a></p>
+<p>报错<br>由于 accessExternalSchema 属性设置的限制而不允许 ‘file’ 访问, 因此无法读取方案文档 ‘xjc.xsd’。<br>解决方案<br>Create a file named jaxp.properties (if it doesn’t exist) under /path/to/jdk1.8.0/jre/lib and then write this line in it:<br>javax.xml.accessExternalSchema = all<br>解决的链接<br><a href="http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8" target="_blank" rel="noopener">http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8</a></p>
 
       
     </div>

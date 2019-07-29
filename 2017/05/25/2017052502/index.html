@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>python 4-3如何调整字符串中文本的格式 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组file = open(&amp;quot;./catalina.2016-11-02.log&amp;quot;).read()    
-import re 
-result = re.sub(r&amp;apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&amp;apos;, r&amp;apos;\2,\1,\5">
+  <meta name="description" content="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组file = open(&amp;quot;./catalina.2016-11-02.log&amp;quot;).read()     import re  result = re.sub(r&amp;apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&amp;apos;, r&amp;apos;\2,\1,\5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 4-3如何调整字符串中文本的格式">
 <meta property="og:url" content="http://ydpzg.github.io/2017/05/25/2017052502/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组file = open(&amp;quot;./catalina.2016-11-02.log&amp;quot;).read()    
-import re 
-result = re.sub(r&amp;apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&amp;apos;, r&amp;apos;\2,\1,\5">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组file = open(&amp;quot;./catalina.2016-11-02.log&amp;quot;).read()     import re  result = re.sub(r&amp;apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&amp;apos;, r&amp;apos;\2,\1,\5">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-05-25T15:03:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 4-3如何调整字符串中文本的格式">
-<meta name="twitter:description" content="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组file = open(&amp;quot;./catalina.2016-11-02.log&amp;quot;).read()    
-import re 
-result = re.sub(r&amp;apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&amp;apos;, r&amp;apos;\2,\1,\5">
+<meta name="twitter:description" content="读入一个日志文件，把里面的时间格式换成另外一种格式，用到了re模块正则表达式的分组file = open(&amp;quot;./catalina.2016-11-02.log&amp;quot;).read()     import re  result = re.sub(r&amp;apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&amp;apos;, r&amp;apos;\2,\1,\5">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -28,7 +23,7 @@ result = re.sub(r&amp;apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&amp;apos;, r
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -234,8 +229,7 @@ result = re.sub(r&amp;apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&amp;apos;, r
 import re 
 result = re.sub(r&apos;(\d{2}), (\d{4}) (\d{2}):(\d{2}):(\d{2})&apos;, r&apos;\2,\1,\5:\4:\3&apos;, file)
 result = re.sub(r&apos;(?P&lt;day&gt;\d{2}), (?P&lt;year&gt;\d{4}) (?P&lt;hour&gt;\d{2}):(?P&lt;minute&gt;\d{2}):(?P&lt;second&gt;\d{2})&apos;, r&apos;\g&lt;year&gt;,\g&lt;day&gt;,\g&lt;second&gt;:\g&lt;minute&gt;:\g&lt;hour&gt;&apos;, file)
-print(result)
-</code></pre>
+print(result)</code></pre>
       
     </div>
     

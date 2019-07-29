@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight's home">
+<meta property="og:title" content="dukelight&#39;s home">
 <meta property="og:url" content="http://ydpzg.github.io/page/4/index.html">
-<meta property="og:site_name" content="dukelight's home">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:locale" content="Chinese">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight's home">
+<meta name="twitter:title" content="dukelight&#39;s home">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -18,7 +19,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -218,8 +219,7 @@
         <blockquote>
 <h1 id="加入kotlin的辅助库androidx-core-core-ktx-0-3，结果编译出现FontFamilyF可能是引入的新版ont的error"><a href="#加入kotlin的辅助库androidx-core-core-ktx-0-3，结果编译出现FontFamilyF可能是引入的新版ont的error" class="headerlink" title="加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyF可能是引入的新版ont的error"></a>加入kotlin的辅助库androidx.core:core-ktx:0.3，结果编译出现FontFamilyF可能是引入的新版ont的error</h1></blockquote>
 <h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>可能是引入的新版本的appcompat的库</p>
-<h3 id="先列出本工程的所有依赖关系，命令"><a href="#先列出本工程的所有依赖关系，命令" class="headerlink" title="先列出本工程的所有依赖关系，命令"></a>先列出本工程的所有依赖关系，命令</h3><pre><code>gradle :app:dependencies --configuration compile
-</code></pre><h3 id="工程的依赖关系"><a href="#工程的依赖关系" class="headerlink" title="工程的依赖关系"></a>工程的依赖关系</h3><pre><code>…
+<h3 id="先列出本工程的所有依赖关系，命令"><a href="#先列出本工程的所有依赖关系，命令" class="headerlink" title="先列出本工程的所有依赖关系，命令"></a>先列出本工程的所有依赖关系，命令</h3><pre><code>gradle :app:dependencies --configuration compile</code></pre><h3 id="工程的依赖关系"><a href="#工程的依赖关系" class="headerlink" title="工程的依赖关系"></a>工程的依赖关系</h3><pre><code>…
 +--- com.android.support:appcompat-v7:25.3.1
 +--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.30
 |    +--- org.jetbrains.kotlin:kotlin-stdlib:1.2.30 -&gt; 1.2.31
@@ -229,14 +229,12 @@
 \--- androidx.core:core-ktx:0.3
      +--- com.android.support:support-annotations:27.1.0
      +--- org.jetbrains.kotlin:kotlin-stdlib:1.2.31 (*)
-     \--- com.android.support:support-compat:27.1.0 (*)*
-</code></pre><blockquote>
+     \--- com.android.support:support-compat:27.1.0 (*)*</code></pre><blockquote>
 <p>发现core-ktx引入的27.1.0的compat库，所以只要把这个compat去掉，或者更新我们项目资金的compat到27.1.0，问题就解决了。</p>
 </blockquote>
 <h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><pre><code>compile (&quot;androidx.core:core-ktx:0.3&quot;) {
 exclude group: &apos;com.android.support&apos;, module: &apos;support-compat&apos;
-}
-</code></pre>
+}</code></pre>
       
     </div>
     
@@ -407,30 +405,24 @@ task task3dependency &lt;&lt; {
     println &quot;Duke&quot; 
 } 
 task tests(dependsOn: [&apos;task1&apos;, &apos;task2&apos;, &apos;task3&apos;]) {
-}
-</code></pre><p>输出的是<br>Hello World Duke Yu<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
+}</code></pre><p>输出的是<br>Hello World Duke Yu<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
 <pre><code>task tests &lt;&lt; { 
     task1.execute()
     task2.execute() 
     task3.execute() 
-}
-</code></pre><p>是没法确定结果的，因为闭包是异步的。</p>
+}</code></pre><p>是没法确定结果的，因为闭包是异步的。</p>
 <p>再比如，假设我们要在assembleDebug后加一个task（runTask），<br>可以这样做，利用gradle.taskGraph.afterTask找到task，执行命令<br>gradle assembleDebug</p>
 <pre><code>gradle.taskGraph.afterTask { task -&gt;
     if (task.name == &apos;assembleDebug&apos;) {
         runTask.execute()
     }
-}
-</code></pre><p>实际上跑的命令是</p>
+}</code></pre><p>实际上跑的命令是</p>
 <pre><code>assembleDebug
-runTask
-</code></pre><p>或者 定义一个task（runTask）依赖于assembleDebug，执行命令<br>gradle runTask</p>
+runTask</code></pre><p>或者 定义一个task（runTask）依赖于assembleDebug，执行命令<br>gradle runTask</p>
 <pre><code>task runTask(dependsOn: &apos;assembleDebug&apos;) {
-}
-</code></pre><p>实际上跑的命令是</p>
+}</code></pre><p>实际上跑的命令是</p>
 <pre><code>assembleDebug
-runTask
-</code></pre><h3 id="关于copy"><a href="#关于copy" class="headerlink" title="关于copy"></a>关于copy</h3><p>可以在task里直接写copy，比如</p>
+runTask</code></pre><h3 id="关于copy"><a href="#关于copy" class="headerlink" title="关于copy"></a>关于copy</h3><p>可以在task里直接写copy，比如</p>
 <pre><code>gradle.taskGraph.afterTask { task -&gt;
     if (task.name == &apos;assembleDebug&apos;) {
         copy {
@@ -441,8 +433,7 @@ runTask
             }
         }
     }
-}
-</code></pre><p>也可以写一个copy类型的task</p>
+}</code></pre><p>也可以写一个copy类型的task</p>
 <pre><code>task copyApk(typy: copy)  {
     from &quot;${project.buildDir}/outputs/apk/app-debug.apk &quot;
     into &quot;${project.buildDir}/outputs/apk/&quot;
@@ -450,8 +441,7 @@ runTask
         String fileName -&gt;
         fileName.replace(&quot;app-debug.apk&quot;, “test.apk”)
     }
-}
-</code></pre>
+}</code></pre>
       
     </div>
     
@@ -503,8 +493,7 @@ runTask
       
         <blockquote>
 <h1 id="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"><a href="#日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa-qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4" class="headerlink" title="日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4"></a>日前有一个项目，是小程序项目，需要加入日志进行监控。小程序采用koa+qcloud2架构，准备使用log4js来做日志管理。基于项目的架构，就引入了koa-log4</h1></blockquote>
-<h3 id="首先安装koa-log4"><a href="#首先安装koa-log4" class="headerlink" title="首先安装koa-log4"></a>首先安装koa-log4</h3><pre><code>npm install koa-log4 —save
-</code></pre><h3 id="log4js-v2-x的配置："><a href="#log4js-v2-x的配置：" class="headerlink" title="log4js v2.x的配置："></a>log4js v2.x的配置：</h3><pre><code>{
+<h3 id="首先安装koa-log4"><a href="#首先安装koa-log4" class="headerlink" title="首先安装koa-log4"></a>首先安装koa-log4</h3><pre><code>npm install koa-log4 —save</code></pre><h3 id="log4js-v2-x的配置："><a href="#log4js-v2-x的配置：" class="headerlink" title="log4js v2.x的配置："></a>log4js v2.x的配置：</h3><pre><code>{
   &quot;appenders&quot;: {
 &quot;access&quot;: {
   &quot;type&quot;: &quot;dateFile&quot;,
@@ -560,9 +549,7 @@ runTask
   &quot;level&quot;: &quot;info&quot;
 }
   }
-}
-</code></pre><h3 id="ps"><a href="#ps" class="headerlink" title="ps:"></a>ps:</h3><h3 id="appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。"><a href="#appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。" class="headerlink" title="appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。"></a>appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。</h3><pre><code>获取配置的代码  log4js.getLogger(&quot;resLogger&quot;)
-</code></pre><h3 id="log4js的使用："><a href="#log4js的使用：" class="headerlink" title="log4js的使用："></a>log4js的使用：</h3><h3 id="一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。"><a href="#一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。" class="headerlink" title="一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。"></a>一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。</h3><h3 id="so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。"><a href="#so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。" class="headerlink" title="so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。"></a>so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。</h3><pre><code>const debug = require(&apos;debug&apos;)(&apos;koa-weapp-demo&apos;)
+}</code></pre><h3 id="ps"><a href="#ps" class="headerlink" title="ps:"></a>ps:</h3><h3 id="appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。"><a href="#appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。" class="headerlink" title="appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。"></a>appenders配置的是具体的策略，分别有console、file。而categories主要是针对多种情况所做的配置，可以对不同的场景配置不同的策略，比如error日志对应rule-error的策略单独放到error的文件，info日志放到普通文件，这样就可以区分错误和普通日志。</h3><pre><code>获取配置的代码  log4js.getLogger(&quot;resLogger&quot;)</code></pre><h3 id="log4js的使用："><a href="#log4js的使用：" class="headerlink" title="log4js的使用："></a>log4js的使用：</h3><h3 id="一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。"><a href="#一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。" class="headerlink" title="一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。"></a>一般来说我们要求统一加日志，要把接口的输入和输出都记录下来，而不用手动去为每个接口去加日志，那样太麻烦了。并且要记录错误日志，在发生问题的时候可以清楚我们的系统究竟出了什么问题，快速定位问题并解决问题。</h3><h3 id="so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。"><a href="#so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。" class="headerlink" title="so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。"></a>so，我们基本锁定中间件的方案，加一个中间件，在接口的响应部分包上一层，并且统一捕捉异常。统一处理接口日志和错误日志。也方便将错误替换成其他提示返回给前端。</h3><pre><code>const debug = require(&apos;debug&apos;)(&apos;koa-weapp-demo&apos;)
 const logUtil = require(&apos;../tools/logUtil.js&apos;)
 
 /**
@@ -611,8 +598,7 @@ ctx.body = {
 
 const response = require(&apos;./middlewares/response&apos;)
 // 使用响应处理中间件
-app.use(response)
-</code></pre><h3 id="而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力"><a href="#而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力" class="headerlink" title="而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力"></a>而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力</h3><h3 id="logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（-root-logs），所以引用log4js会导致测试环境跑不了，切记https-www-cnblogs-com-smartsensor-p-7838169-html"><a href="#logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（-root-logs），所以引用log4js会导致测试环境跑不了，切记https-www-cnblogs-com-smartsensor-p-7838169-html" class="headerlink" title="logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（/root/logs），所以引用log4js会导致测试环境跑不了，切记https://www.cnblogs.com/smartsensor/p/7838169.html"></a>logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（/root/logs），所以引用log4js会导致测试环境跑不了，切记<a href="https://www.cnblogs.com/smartsensor/p/7838169.html" target="_blank" rel="external">https://www.cnblogs.com/smartsensor/p/7838169.html</a></h3><pre><code>/**
+app.use(response)</code></pre><h3 id="而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力"><a href="#而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力" class="headerlink" title="而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力"></a>而log4js需要自己封装成一个工具类，除了要具备能将响应记录在文件里外，还要有能将普通日志和错误信息写进文件的能力</h3><h3 id="logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（-root-logs），所以引用log4js会导致测试环境跑不了，切记https-www-cnblogs-com-smartsensor-p-7838169-html"><a href="#logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（-root-logs），所以引用log4js会导致测试环境跑不了，切记https-www-cnblogs-com-smartsensor-p-7838169-html" class="headerlink" title="logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（/root/logs），所以引用log4js会导致测试环境跑不了，切记https://www.cnblogs.com/smartsensor/p/7838169.html"></a>logUtil我引用这里，感觉写得很好，对我很有帮助，在这个基础上我做了修改，小程序在腾讯云上没有更多的写入权限（/root/logs），所以引用log4js会导致测试环境跑不了，切记<a href="https://www.cnblogs.com/smartsensor/p/7838169.html" target="_blank" rel="noopener">https://www.cnblogs.com/smartsensor/p/7838169.html</a></h3><pre><code>/**
 使用方法：
 logUtil.resLogger.info(&apos;test&apos;)
 logUtil.errorLogger.error(&apos;test&apos;)
@@ -784,11 +770,8 @@ return logText
   logUtil.logInfo = function (info) {
   }
   module.exports = logUtil
-}
-</code></pre><h3 id="可以将console-log重定向到log4js统一管理，如下："><a href="#可以将console-log重定向到log4js统一管理，如下：" class="headerlink" title="可以将console.log重定向到log4js统一管理，如下："></a>可以将console.log重定向到log4js统一管理，如下：</h3><pre><code>console.log = resLogger.info.bind(resLogger)
-</code></pre><h3 id="使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下"><a href="#使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下" class="headerlink" title="使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下"></a>使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下</h3><pre><code>const log4js = require(&apos;koa-log4&apos;)
-app.use(log4js.koaLogger(log4js.getLogger(&quot;http&quot;), { level: &apos;auto&apos; }))
-</code></pre><h3 id="到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。"><a href="#到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。" class="headerlink" title="到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。"></a>到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。</h3>
+}</code></pre><h3 id="可以将console-log重定向到log4js统一管理，如下："><a href="#可以将console-log重定向到log4js统一管理，如下：" class="headerlink" title="可以将console.log重定向到log4js统一管理，如下："></a>可以将console.log重定向到log4js统一管理，如下：</h3><pre><code>console.log = resLogger.info.bind(resLogger)</code></pre><h3 id="使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下"><a href="#使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下" class="headerlink" title="使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下"></a>使用koa-log4中间件直接记录log，我没有研究到什么有用的东西，记录的日志也不是有用的。如下</h3><pre><code>const log4js = require(&apos;koa-log4&apos;)
+app.use(log4js.koaLogger(log4js.getLogger(&quot;http&quot;), { level: &apos;auto&apos; }))</code></pre><h3 id="到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。"><a href="#到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。" class="headerlink" title="到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。"></a>到这里就可以看log4js的威力，基本上可以满足我小程序的日志需求，使用起来挺方便的。</h3>
       
     </div>
     
@@ -847,8 +830,7 @@ pm2 stop xxx
 pm2 restart xxx
 npm run start
 npm run initDb
-npm run dev
-</code></pre>
+npm run dev</code></pre>
       
     </div>
     
@@ -908,16 +890,16 @@ npm run dev
 <p>4、剔除不需要和重复的库<br>使用gradle :app:dependencies –configuration compile可以分析出该项目的所有第三方包的依赖，<br>使用 debugCompile和exclude来减少不需要和重复的库<br>compile(‘com.android.support:support-fragment:25.3.1’) {<br>exclude group: ‘com.android.support’, module: ‘support-media-compat’<br>exclude group: ‘com.android.support’, module: ‘support-annotations’<br>}</p>
 <p>5、开发阶段将minSdk设置为21，发布或者调试兼容性的时候将minSdk设置回14<br>minSdk 14 ———— 1m16s<br>minSdk 21 ———— 24s </p>
 <p>风险：设置后IDE会认为项目默认是支持最低21，导致一些兼容性友好的提示消失了，开发完必须要做低版本的测试。</p>
-<p>6、去掉lint步骤<br>tasks.whenTaskAdded { task -><br>if (task.name.equals(“lint”) || (task.name.contains(“lintVital”) &amp;&amp; task.name.contains(“Release”))) {<br>task.enabled = false<br>}<br>}</p>
+<p>6、去掉lint步骤<br>tasks.whenTaskAdded { task -&gt;<br>if (task.name.equals(“lint”) || (task.name.contains(“lintVital”) &amp;&amp; task.name.contains(“Release”))) {<br>task.enabled = false<br>}<br>}</p>
 <p>在考拉项目里省去了5*n秒的lint时间(n为Flavors数量)</p>
 <p>7、采用可商用的多渠道打包方案<br>VasDolly 腾讯<br>Walle 美团  （考拉接入）</p>
 <p>原理都差不多，都是找到不被app签名校验的地方（某个文件空间，某个文件），用来记录一些信息，而不破坏之前app的签名，不能重新打包，所以，可以认为这部分信息是不需要被保护的，比如渠道标识。</p>
-<p>旧打包方式是采用productFlavors，每打一个渠道包都要重新编译一次，简单计算时间<br>n * t (60s \&lt; t \&lt; 90s, n为渠道包数量)</p>
-<p>walle采用的是在打包完成后加渠道，简单计算就是打包一个apk的时间，<br>t + n * t1 (60s \&lt; t \&lt; 90s, 0s \&lt; t1 \&lt; 0.2s, n为渠道包数量)<br>特点：需求是所有的渠道包除了“渠道”这种标识性信息外，其他的信息都必须一致，比如app名字都必须一致。</p>
-<p>采用Walle需要解决的问题<br>1)、解决个性apk名字的问题<br>区分普通渠道包和定制渠道包，定义n个productFlavors，一个叫genenal，其他的是渠道名，比如oppo等，时间变成<br>t <em> m + n </em> t1 (60s \&lt; t \&lt; 90s, 0s \&lt; t1 \&lt; 0.2s, n为渠道包数量，m为需要定制的渠道包数量+1)<br>2)、360应用宝加固channel失效的问题<br> 先加固再重新使用walle加渠道标识</p>
-<p>walle与jenkins结合<br>release流程：（发包）<br>->打包（productFlavors）<br>->walle写入渠道<br>->360加固，应用宝加固（应用宝加固需要手动）<br>->360，应用宝walle写入渠道<br>->渠道包上传七牛<br>->把渠道包和mapping文件传到共享盘</p>
+<p>旧打包方式是采用productFlavors，每打一个渠道包都要重新编译一次，简单计算时间<br>n * t (60s &lt; t &lt; 90s, n为渠道包数量)</p>
+<p>walle采用的是在打包完成后加渠道，简单计算就是打包一个apk的时间，<br>t + n * t1 (60s &lt; t &lt; 90s, 0s &lt; t1 &lt; 0.2s, n为渠道包数量)<br>特点：需求是所有的渠道包除了“渠道”这种标识性信息外，其他的信息都必须一致，比如app名字都必须一致。</p>
+<p>采用Walle需要解决的问题<br>1)、解决个性apk名字的问题<br>区分普通渠道包和定制渠道包，定义n个productFlavors，一个叫genenal，其他的是渠道名，比如oppo等，时间变成<br>t * m + n * t1 (60s &lt; t &lt; 90s, 0s &lt; t1 &lt; 0.2s, n为渠道包数量，m为需要定制的渠道包数量+1)<br>2)、360应用宝加固channel失效的问题<br> 先加固再重新使用walle加渠道标识</p>
+<p>walle与jenkins结合<br>release流程：（发包）<br>-&gt;打包（productFlavors）<br>-&gt;walle写入渠道<br>-&gt;360加固，应用宝加固（应用宝加固需要手动）<br>-&gt;360，应用宝walle写入渠道<br>-&gt;渠道包上传七牛<br>-&gt;把渠道包和mapping文件传到共享盘</p>
 <p>整个过程大约需要15分钟</p>
-<p>debug 流程 ：（给内部人员提供测试版本下载）<br>-> 打包<br>->上传蒲公英<br>->展示二维码</p>
+<p>debug 流程 ：（给内部人员提供测试版本下载）<br>-&gt; 打包<br>-&gt;上传蒲公英<br>-&gt;展示二维码</p>
 <p>整个过程大约需要4分钟</p>
 
       

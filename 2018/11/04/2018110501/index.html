@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>ios os工程调用swift方法 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="按照网上的教程
-1、新建一个oc工程
-2、找到工程的embed asset Packs in Product Bundle，设置为Yes
-3、新建一个swift文件，类似1234567import Foundationpublic class TestSwift : NSObject &amp;#123;    func printLog() &amp;#123;        print(&quot;hello&quot;)">
+  <meta name="description" content="按照网上的教程 1、新建一个oc工程 2、找到工程的embed asset Packs in Product Bundle，设置为Yes 3、新建一个swift文件，类似 1234567import Foundationpublic class TestSwift : NSObject &amp;#123;    func printLog() &amp;#123;        print(&quot;hello&quot;)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ios os工程调用swift方法">
 <meta property="og:url" content="http://ydpzg.github.io/2018/11/04/2018110501/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="按照网上的教程
-1、新建一个oc工程
-2、找到工程的embed asset Packs in Product Bundle，设置为Yes
-3、新建一个swift文件，类似1234567import Foundationpublic class TestSwift : NSObject &amp;#123;    func printLog() &amp;#123;        print(&quot;hello&quot;)">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="按照网上的教程 1、新建一个oc工程 2、找到工程的embed asset Packs in Product Bundle，设置为Yes 3、新建一个swift文件，类似 1234567import Foundationpublic class TestSwift : NSObject &amp;#123;    func printLog() &amp;#123;        print(&quot;hello&quot;)">
+<meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://pd4ketimy.bkt.clouddn.com/15413107425478.jpg">
 <meta property="og:image" content="http://pd4ketimy.bkt.clouddn.com/15413110845076.jpg">
 <meta property="og:updated_time" content="2018-11-04T06:00:32.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ios os工程调用swift方法">
-<meta name="twitter:description" content="按照网上的教程
-1、新建一个oc工程
-2、找到工程的embed asset Packs in Product Bundle，设置为Yes
-3、新建一个swift文件，类似1234567import Foundationpublic class TestSwift : NSObject &amp;#123;    func printLog() &amp;#123;        print(&quot;hello&quot;)">
+<meta name="twitter:description" content="按照网上的教程 1、新建一个oc工程 2、找到工程的embed asset Packs in Product Bundle，设置为Yes 3、新建一个swift文件，类似 1234567import Foundationpublic class TestSwift : NSObject &amp;#123;    func printLog() &amp;#123;        print(&quot;hello&quot;)">
 <meta name="twitter:image" content="http://pd4ketimy.bkt.clouddn.com/15413107425478.jpg">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
@@ -34,7 +26,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -238,12 +230,20 @@
       
         <p>按照网上的教程</p>
 <p>1、新建一个oc工程</p>
-<p>2、找到工程的embed asset Packs in Product Bundle，设置为Yes<br><img src="http://pd4ketimy.bkt.clouddn.com/15413107425478.jpg" alt=""></p>
-<p>3、新建一个swift文件，类似<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Foundation</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">printLog</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"hello"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>4、在调用处引用头文件<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#import</span> <span class="string">"TestSwiftWifthOc-Swift.h"</span> <span class="comment">//TestSwiftWifthOc为当前工程名字</span></div></pre></td></tr></table></figure></p>
-<p>然后就可以调用了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestSwift *<span class="built_in">test</span>Swift = [[TestSwift alloc]init];</div><div class="line">    [<span class="built_in">test</span>Swift <span class="built_in">print</span>Log];</div></pre></td></tr></table></figure></p>
-<p>5、但是有些xcode创建的工程会报错，比如我的macbook<br><img src="http://pd4ketimy.bkt.clouddn.com/15413110845076.jpg" alt=""></p>
-<p>6、进去TestSwiftWifthOc-Swift.h头文件里面看，系统帮我们创建了TestSwift类，但是没有方法，很奇怪<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SWIFT_CLASS(<span class="string">"_TtC16TestSwiftWifthOc9TestSwift"</span>)</div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span></span></div><div class="line">- (<span class="keyword">nonnull</span> <span class="keyword">instancetype</span>)init OBJC_DESIGNATED_INITIALIZER;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure></p>
+<p>2、找到工程的embed asset Packs in Product Bundle，设置为Yes<br><img src="http://pd4ketimy.bkt.clouddn.com/15413107425478.jpg" alt></p>
+<p>3、新建一个swift文件，类似</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">printLog</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"hello"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、在调用处引用头文件</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> <span class="string">"TestSwiftWifthOc-Swift.h"</span> <span class="comment">//TestSwiftWifthOc为当前工程名字</span></span><br></pre></td></tr></table></figure>
+
+<p>然后就可以调用了</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TestSwift *testSwift = <span class="comment">[<span class="comment">[TestSwift alloc]</span>init]</span>;</span><br><span class="line">    <span class="comment">[testSwift printLog]</span>;</span><br></pre></td></tr></table></figure>
+
+<p>5、但是有些xcode创建的工程会报错，比如我的macbook<br><img src="http://pd4ketimy.bkt.clouddn.com/15413110845076.jpg" alt></p>
+<p>6、进去TestSwiftWifthOc-Swift.h头文件里面看，系统帮我们创建了TestSwift类，但是没有方法，很奇怪</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SWIFT_CLASS(<span class="string">"_TtC16TestSwiftWifthOc9TestSwift"</span>)</span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span></span></span><br><span class="line">- (<span class="keyword">nonnull</span> <span class="keyword">instancetype</span>)init OBJC_DESIGNATED_INITIALIZER;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
 <p>7、最后找到了解决方法，在swift方法上加注解@objc，问题解决<br>、、、<br>import Foundation</p>
 <p>public class TestSwift : NSObject {<br>    @objc func printLog() {<br>        print(“hello”)<br>    }<br>}<br>、、、</p>
 

@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>关于一个对话框component在vue中的的实现 | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue
-1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy})
-场景：不需要view层的公共类，只需要script层
-注意：控制对话框显示与隐藏的字段是visible，通过值为true">
+  <meta name="description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue 1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy}) 场景：不需要view层的公共类，只需要script层 注意：控制对话框显示与隐藏的字段是visible，通过值为true">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于一个对话框component在vue中的的实现">
 <meta property="og:url" content="http://ydpzg.github.io/2019/07/14/2019071401/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue
-1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy})
-场景：不需要view层的公共类，只需要script层
-注意：控制对话框显示与隐藏的字段是visible，通过值为true">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue 1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy}) 场景：不需要view层的公共类，只需要script层 注意：控制对话框显示与隐藏的字段是visible，通过值为true">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2019-07-14T16:02:08.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于一个对话框component在vue中的的实现">
-<meta name="twitter:description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue
-1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy})
-场景：不需要view层的公共类，只需要script层
-注意：控制对话框显示与隐藏的字段是visible，通过值为true">
+<meta name="twitter:description" content="component的文件形态xxx 文件夹    index.js （封装了createDialog方法，操作了dom树）    index.vue 1、用法：import xxx from ‘xxx/index.js’let dialog = xxx({ YYY: yyy}) 场景：不需要view层的公共类，只需要script层 注意：控制对话框显示与隐藏的字段是visible，通过值为true">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -31,7 +23,7 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -237,9 +229,7 @@
 <p>1、用法：<br>import xxx from ‘xxx/index.js’<br>let dialog = xxx({ YYY: yyy})</p>
 <p>场景：<br>不需要view层的公共类，只需要script层</p>
 <p>注意：<br>控制对话框显示与隐藏的字段是visible，通过值为true or false来代表对话框的显示与隐藏，因为要操作dom树，dom元素的显示隐藏就是visible</p>
-<p>2、用法：<br>import xxx from ‘xxx/index.vue’</p>
-<xxx v-model="showDialog" :yyy="yyy"></xxx>
-
+<p>2、用法：<br>import xxx from ‘xxx/index.vue’<br><xxx v-model="showDialog" :yyy="yyy"></xxx></p>
 <p>场景：<br>普通单页业务，既有view层，又有script层</p>
 <p>注意：<br>控制对话框显示与隐藏的字段是value，通过值为true or false来代表对话框的显示与隐藏，因为使用了v-model</p>
 

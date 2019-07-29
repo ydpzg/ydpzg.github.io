@@ -1,56 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>python 3-2如何实现可迭代对象和迭代器对象(2) | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="实现可迭代对象和迭代器对象。
-先定义一个Iterator实现next
-再定义一个weatherIterable实现iter
-最后使用for in 遍历解决
-
-import requests
-from collections.abc import Iterable, Iterator
-
-
-class weatherIterator(Iterator):
-    index = 0
-
-    def">
+  <meta name="description" content="实现可迭代对象和迭代器对象。 先定义一个Iterator实现next 再定义一个weatherIterable实现iter 最后使用for in 遍历解决  import requests from collections.abc import Iterable, Iterator   class weatherIterator(Iterator):     index = 0      def">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 3-2如何实现可迭代对象和迭代器对象(2)">
 <meta property="og:url" content="http://ydpzg.github.io/2017/05/22/2017052201/index.html">
-<meta property="og:site_name" content="dukelight's home">
-<meta property="og:description" content="实现可迭代对象和迭代器对象。
-先定义一个Iterator实现next
-再定义一个weatherIterable实现iter
-最后使用for in 遍历解决
-
-import requests
-from collections.abc import Iterable, Iterator
-
-
-class weatherIterator(Iterator):
-    index = 0
-
-    def">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="实现可迭代对象和迭代器对象。 先定义一个Iterator实现next 再定义一个weatherIterable实现iter 最后使用for in 遍历解决  import requests from collections.abc import Iterable, Iterator   class weatherIterator(Iterator):     index = 0      def">
+<meta property="og:locale" content="Chinese">
 <meta property="og:updated_time" content="2017-05-22T03:42:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 3-2如何实现可迭代对象和迭代器对象(2)">
-<meta name="twitter:description" content="实现可迭代对象和迭代器对象。
-先定义一个Iterator实现next
-再定义一个weatherIterable实现iter
-最后使用for in 遍历解决
-
-import requests
-from collections.abc import Iterable, Iterator
-
-
-class weatherIterator(Iterator):
-    index = 0
-
-    def">
+<meta name="twitter:description" content="实现可迭代对象和迭代器对象。 先定义一个Iterator实现next 再定义一个weatherIterable实现iter 最后使用for in 遍历解决  import requests from collections.abc import Iterable, Iterator   class weatherIterator(Iterator):     index = 0      def">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -58,7 +23,7 @@ class weatherIterator(Iterator):
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css">
-</head>
+</head></html>
 <body>
   <div id="container">
     <div class="left-col">
@@ -303,8 +268,7 @@ class weatherIterable(Iterable):
 # 先定义一个Iterator实现__next__，再定义一个weatherIterable实现__iter__，最后使用for in 遍历解决
 cities = [&apos;北京&apos;, &apos;上海&apos;, &apos;广州&apos;]
 for x in weatherIterable(cities):
-    print(x)
-</code></pre>
+    print(x)</code></pre>
       
     </div>
     
