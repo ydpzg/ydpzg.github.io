@@ -33,7 +33,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="http://7vzq3x.com1.z0.glb.clouddn.com/33342.jpg" class="js-avatar">
+			<img lazy-src="http://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
 			
 		</a>
 
@@ -159,7 +159,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img lazy-src="http://7vzq3x.com1.z0.glb.clouddn.com/33342.jpg" class="js-avatar">
+				<img lazy-src="http://avatar.csdn.net/9/A/0/1_ydpzg.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author">dukelight</h1>
@@ -308,8 +308,7 @@ hexo d</code></pre><h4 id="6-关于文章中的图片问题"><a href="#6-关于�
 
 
 </div>
-      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer id="footer">
   
   <div class="outer">
@@ -318,13 +317,13 @@ hexo d</code></pre><h4 id="6-关于文章中的图片问题"><a href="#6-关于�
     		&copy; 2019 dukelight
     	</div>
       	<div class="footer-right">
-      		<span id="busuanzi_container_site_uv">
-          本站访客数<span id="busuanzi_value_site_uv"></span>人次
-          </span>
-          <span id="busuanzi_container_site_pv">
-            本站总访问量<span id="busuanzi_value_site_pv"></span>次
-          </span>       
-      	</div>
+			{% if theme.footer.counter %}
+			    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+			    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			    <span class="post-meta-divider">|</span>
+			    <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人</span>
+			{% endif %}
+        </div>
     </div>
   </div>
 </footer>
