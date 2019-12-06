@@ -190,61 +190,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-2017122101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/21/2017122101/" class="article-date">
-  	<time datetime="2017-12-21T09:45:14.000Z" itemprop="datePublished">2017-12-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/21/2017122101/">Android 5.0以上虚拟按键适配Popupwindow</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"><a href="#在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。" class="headerlink" title="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"></a>在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。</h1></blockquote>
-<p>解决方案：<br>给自定义的popupwindow设置属性然后弹出来：</p>
-<p>popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);</p>
-<p>在华为荣耀7android5.0上测试通过</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-2017112301" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -702,6 +647,58 @@ if (config.fontScale != 1) {
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="在开启Appsee-start-后，出现的，属于appsee本身sdk的bug"><a href="#在开启Appsee-start-后，出现的，属于appsee本身sdk的bug" class="headerlink" title="在开启Appsee.start()后，出现的，属于appsee本身sdk的bug"></a>在开启Appsee.start()后，出现的，属于appsee本身sdk的bug</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017090501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/05/2017090501/" class="article-date">
+  	<time datetime="2017-09-05T01:48:45.000Z" itemprop="datePublished">2017-09-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/05/2017090501/">android颜色的一个坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="在使用android-xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为-99ffffff的透明颜色值。"><a href="#在使用android-xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为-99ffffff的透明颜色值。" class="headerlink" title="在使用android xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为#99ffffff的透明颜色值。"></a>在使用android xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为#99ffffff的透明颜色值。</h4><p>现象：下面的这个layout如果加了shape的圆角，会发现四个角有问题，查了好久，还以为是shape的问题，结果发现是上面这个透明view的问题，虽然是透明，但是还是有值，所以会看到四个角有颜色，而不是全部是圆角。</p>
+<p>解决方案：透明层也要加shape圆角。。</p>
+
       
     </div>
     

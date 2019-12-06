@@ -390,49 +390,6 @@
 
 
   
-    <article id="post-2019-07-18" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/18/2019-07-18/" class="article-date">
-  	<time datetime="2019-07-18T11:32:04.345Z" itemprop="datePublished">2019-07-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#<br>vue里面的component css冲突问题</p>
-<p>添加一个scoped</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style <span class="attribute">lang</span>=<span class="string">"less"</span> <span class="attribute">scoped</span>=<span class="string">"Terms"</span>&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-2019071401" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -896,6 +853,81 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">white-<span class="literal">space</span>: pre-<span class="built_in">line</span><span class="comment">;//多个空格会合并成一个空格</span></span><br><span class="line">white-<span class="literal">space</span>: pre-<span class="keyword">wrap</span><span class="comment">;//多个空格仍然不变</span></span><br></pre></td></tr></table></figure>
 
 <p>注意：<br>popupConfig.tip.replace(/\n/g, ‘\n’)<br>popupConfig.tip.replace(/\n/g, ‘<br>‘)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2019020301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/03/2019020301/" class="article-date">
+  	<time datetime="2019-02-03T09:44:36.000Z" itemprop="datePublished">2019-02-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/03/2019020301/">flutter之殇</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>跳转url</p>
+<p>url_launch(url, enableJavaScript: true, forceWebView: true)</p>
+<p>SnackBar用法<br>切记snackBar用的context是特snackBar自己的context，不然会报</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Another exception was thrown: Scaffold.<span class="keyword">of</span>() called <span class="keyword">with</span> <span class="keyword">a</span> context that does <span class="keyword">not</span> contain <span class="keyword">a</span> Scaffold.</span><br></pre></td></tr></table></figure>
+
+<p>代码如下：vl</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="symbol">'package</span>:flutter/material.dart';</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnackBarPage</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="type">BuildContext</span> scaffoldContext;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="type">Widget</span> build(<span class="type">BuildContext</span> context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="type">Widget</span> body = <span class="type">Center</span> (</span><br><span class="line">        child: <span class="type">RaisedButton</span>(</span><br><span class="line">            onPressed: () &#123;</span><br><span class="line">              <span class="keyword">final</span> snackBar = <span class="type">SnackBar</span>(</span><br><span class="line">                content: <span class="type">Text</span>(<span class="symbol">'hello</span>! <span class="type">A</span> <span class="type">SnackBar</span>!'),</span><br><span class="line">                action: <span class="type">SnackBarAction</span>(</span><br><span class="line">                  label: <span class="symbol">'Und</span>o',</span><br><span class="line">                  onPressed: () &#123;</span><br><span class="line">                    <span class="comment">// Some code to undo the change!</span></span><br><span class="line">                  &#125;,</span><br><span class="line">                ),</span><br><span class="line">              );</span><br><span class="line">              <span class="type">Scaffold</span>.of(scaffoldContext).showSnackBar(snackBar);</span><br><span class="line">            &#125;,</span><br><span class="line">            child: <span class="type">Text</span>(<span class="symbol">'tes</span>t')</span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">      <span class="type">MaterialApp</span>(</span><br><span class="line">        title: <span class="symbol">'SnackBa</span>r',</span><br><span class="line">        home: <span class="type">Scaffold</span>(</span><br><span class="line">          appBar: <span class="type">AppBar</span>(</span><br><span class="line">            title: <span class="type">Text</span>(<span class="symbol">'SnackBa</span>r')</span><br><span class="line">          ),</span><br><span class="line">          body: <span class="type">Builder</span>(builder: (<span class="type">BuildContext</span> context) &#123;</span><br><span class="line">            scaffoldContext = context;</span><br><span class="line">            <span class="keyword">return</span> body;</span><br><span class="line">          &#125;),</span><br><span class="line">        ),</span><br><span class="line">      );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打release包，flutter build apk<br>但是发现请求都失败了</p>
+<p>找不到3des加密方法，只能从android和ios分别实现，然后桥接</p>
+<p>如果image出现找不到的情况，不要hot运行，直接重新run</p>
+<p>webdev could not run for this project.<br>The pubspec.yaml file has changed since the pubspec.lock file was generated, please run “pub get” again.</p>
+<p>pub get</p>
+<p>webdev could not run for this project.<br>You must have a dependency on <code>build_web_compilers</code> in <code>pubspec.yaml</code>.</p>
+<p><a href="https://cloud.tencent.com/developer/article/1430689" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1430689</a></p>
+<p>web<br>很多第三方插件都不支持</p>
+<p>No address associated with hostname</p>
+<p>ui适配问题（大屏幕和小屏幕手机问题）</p>
+<p>BottomNavigationBar保留不了状态问题（切换tab的时候重新构建了页面），<br>1、body: widget<br>2、<br>3、PageView</p>
+<p>PageView的坑<br><a href="https://juejin.im/post/5b73c3b3f265da27d701473a" target="_blank" rel="noopener">https://juejin.im/post/5b73c3b3f265da27d701473a</a></p>
+<p>路由跳转有点坑，需要沉淀</p>
+<p>bloc响应式</p>
+<p>子模块bloc在使用上不要嵌套会有问题，并列的就没问题。</p>
+<p>appBloc.appEventStream.listen(eventHandle);<br>监听器的使用</p>
+<p><a href="http://www.uxxsn.com/8599.html" target="_blank" rel="noopener">http://www.uxxsn.com/8599.html</a></p>
 
       
     </div>
