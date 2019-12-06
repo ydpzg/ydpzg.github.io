@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Activity-intent-flag/" style="font-size: 10px;">Activity intent flag</a> <a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/cordova-plugin/" style="font-size: 10px;">cordova plugin</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/usb/" style="font-size: 10px;">usb</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/印象笔记/" style="font-size: 10px;">印象笔记</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
+						<a href="/tags/Activity-intent-flag/" style="font-size: 10px;">Activity intent flag</a> <a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/cordova-plugin/" style="font-size: 10px;">cordova plugin</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/usb/" style="font-size: 10px;">usb</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/印象笔记/" style="font-size: 10px;">印象笔记</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
 					</div>
 				</section>
 				
@@ -189,6 +189,70 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2018062502" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/25/2018062502/" class="article-date">
+  	<time datetime="2018-06-25T06:57:38.000Z" itemprop="datePublished">2018-06-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/25/2018062502/">更新gradle插件后的出错</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>出现：</p>
+<pre><code>Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
+debugApiElements
+debugRuntimeElements
+releaseApiElements
+releaseRuntimeElements
+All of them match the consumer attributes:
+Configuration &apos;debugApiElements&apos;:
+    Found com.android.build.api.attributes.BuildTypeAttr &apos;debug&apos; but wasn&apos;t required.
+    Found com.android.build.api.attributes.VariantAttr &apos;debug&apos; but wasn&apos;t required.
+    Found com.android.build.gradle.internal.dependency.AndroidTypeAttr &apos;Aar&apos; but wasn&apos;t required.
+    Found org.gradle.usage &apos;java-api&apos; but wasn&apos;t required.</code></pre><p>原因是更新了gradle插件，</p>
+<pre><code>classpath &apos;com.android.tools.build:gradle:3.2.0-alpha07&apos;</code></pre><p>解决方案：</p>
+<pre><code>compile project(&apos;:UmengSocialSdkLibrary&apos;)</code></pre><p>改成：</p>
+<pre><code>compile project(path: &apos;:UmengSocialSdkLibrary&apos;, configuration: &apos;default&apos;)</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-2018062501" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1007,61 +1071,6 @@ startActivity(intent);_</code></p>
       
         <p>过程比较久，要有耐心</p>
 <p><code>1、云备份，本地备份</code><br><code>2、如果recovery和system都进不了，卡米了，那就用miflash线刷，注意右下角选择“保留所有数据”</code><br><code>3、进去bootloader，用fastboot命令</code><br><code>fastboot flash recovery twrp-3.0.2-3-gemini.img</code><br><code>进去第三方recovery，先双清，然后adb线刷模式</code><br><code>adb sideload SuperSU-v2.79-SR4-支持7.1.1.zip</code><br><code>adb sideload xposed-v88.2-sdk24%26Android7.0X-arm64-test5.zip</code><br><code>4、启动到system_，miui9欢迎你，此时看到已经root了</code><br><code>adb install XposedInstaller_3.1.2.apk</code><br><code>5、恢复备份，起飞</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017122101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/21/2017122101/" class="article-date">
-  	<time datetime="2017-12-21T09:45:14.000Z" itemprop="datePublished">2017-12-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/21/2017122101/">Android 5.0以上虚拟按键适配Popupwindow</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h1 id="在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"><a href="#在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。" class="headerlink" title="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"></a>在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。</h1></blockquote>
-<p>解决方案：<br>给自定义的popupwindow设置属性然后弹出来：</p>
-<p>popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);</p>
-<p>在华为荣耀7android5.0上测试通过</p>
 
       
     </div>

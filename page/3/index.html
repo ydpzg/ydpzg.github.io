@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Activity-intent-flag/" style="font-size: 10px;">Activity intent flag</a> <a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/cordova-plugin/" style="font-size: 10px;">cordova plugin</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/usb/" style="font-size: 10px;">usb</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/印象笔记/" style="font-size: 10px;">印象笔记</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
+						<a href="/tags/Activity-intent-flag/" style="font-size: 10px;">Activity intent flag</a> <a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/cordova-plugin/" style="font-size: 10px;">cordova plugin</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/usb/" style="font-size: 10px;">usb</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/印象笔记/" style="font-size: 10px;">印象笔记</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
 					</div>
 				</section>
 				
@@ -189,6 +189,61 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2018091101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/11/2018091101/" class="article-date">
+  	<time datetime="2018-09-11T09:37:01.000Z" itemprop="datePublished">2018-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/11/2018091101/">Charles将指定的请求改为固定返回值,开发调试专用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>####看了之后 <a href="https://blog.csdn.net/u014115673/article/details/54984084" target="_blank" rel="noopener">https://blog.csdn.net/u014115673/article/details/54984084</a> 发现确实是经验之谈，不用自己写在代码里，直接连上手机代理，懒就直接复制过来了。</p>
+</blockquote>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">方法一：本地映射</span><br><span class="line">Charles进行抓包</span><br><span class="line">选择某一个网络请求 &gt; 鼠标右键 <span class="keyword">Save</span> Response...</span><br><span class="line">如果该请求返回的是一个json串，保存文件时需要保存<span class="keyword">rename</span>.json</span><br><span class="line">需要更改的请求点击右键 Map <span class="keyword">Local</span>.. 指定到本地保存的<span class="keyword">renam</span>.json.</span><br><span class="line">通过在本地更改<span class="keyword">rename</span>.json就可以自动的更改请求的返回值。</span><br><span class="line"></span><br><span class="line">方法二：打断点</span><br><span class="line">选择某一个网络请求 &gt; 鼠标右键 Breakpoints</span><br><span class="line">然后点击 Execute 执行，然后编辑返回值 </span><br><span class="line">缺点：容易请求超时。还没等你调整完返回数据，<span class="keyword">app</span>那边已经请求超时了。</span><br><span class="line"></span><br><span class="line">方法三：远端映射</span><br><span class="line">将<span class="keyword">App</span>内部的请求映射到远端写好的接口。推荐一个东东 Mocky：http:<span class="comment">//www.mocky.io/。</span></span><br><span class="line"></span><br><span class="line">方法四：rewrite</span><br><span class="line">菜单栏 Tools —&gt; Rewrite</span><br><span class="line">根据自己的需求重写…。 </span><br><span class="line">推荐网址：http:<span class="comment">//www.cnblogs.com/wonyun/p/5586746.html</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-20180900701" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -739,70 +794,6 @@ proxy_pass http://ydpzg.github.io/; 显现转发
 }
 #return       301 http://www.yudapei.cn$request_uri;  重定向，隐性转发
 }</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018062502" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/25/2018062502/" class="article-date">
-  	<time datetime="2018-06-25T06:57:38.000Z" itemprop="datePublished">2018-06-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/2018062502/">更新gradle插件后的出错</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>出现：</p>
-<pre><code>Cannot choose between the following configurations of project :UmengSocialSdkLibrary:
-debugApiElements
-debugRuntimeElements
-releaseApiElements
-releaseRuntimeElements
-All of them match the consumer attributes:
-Configuration &apos;debugApiElements&apos;:
-    Found com.android.build.api.attributes.BuildTypeAttr &apos;debug&apos; but wasn&apos;t required.
-    Found com.android.build.api.attributes.VariantAttr &apos;debug&apos; but wasn&apos;t required.
-    Found com.android.build.gradle.internal.dependency.AndroidTypeAttr &apos;Aar&apos; but wasn&apos;t required.
-    Found org.gradle.usage &apos;java-api&apos; but wasn&apos;t required.</code></pre><p>原因是更新了gradle插件，</p>
-<pre><code>classpath &apos;com.android.tools.build:gradle:3.2.0-alpha07&apos;</code></pre><p>解决方案：</p>
-<pre><code>compile project(&apos;:UmengSocialSdkLibrary&apos;)</code></pre><p>改成：</p>
-<pre><code>compile project(path: &apos;:UmengSocialSdkLibrary&apos;, configuration: &apos;default&apos;)</code></pre>
       
     </div>
     
