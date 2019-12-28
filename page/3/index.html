@@ -190,6 +190,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2018092901" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/29/2018092901/" class="article-date">
+  	<time datetime="2018-09-29T11:30:35.000Z" itemprop="datePublished">2018-09-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/29/2018092901/">模块化</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>implementation 要换成api</li>
+<li>分别换成debugApi,releaseApi,androidTestImplementation,testImplementation</li>
+<li>吧utils，constant，公共方法按照module分离，放在该在的模块内，注意通信机制，注意引用</li>
+<li>注意在module中id不是final，switch（id）改成if else，而butterknife要用R2.id.xxx, apply plugin: ‘com.jakewharton.butterknife’</li>
+<li>aroute 里面的path在不同的module要写成不一样的module方式，比如/app/a,/module/bkugo</li>
+<li>apply plugin: ‘com.alibaba.arouter’</li>
+<li>app是否有引用具体的module</li>
+<li>Constant，Eventbus，startActivity</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2018092301" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -718,71 +778,6 @@ onlyif(true, function)  </code></pre><p>}</p>
 <p><a href="https://blog.csdn.net/yhaolpz/article/details/78527803" target="_blank" rel="noopener">https://blog.csdn.net/yhaolpz/article/details/78527803</a></p>
 <p><a href="https://github.com/yhaolpz/FloatWindow" target="_blank" rel="noopener">https://github.com/yhaolpz/FloatWindow</a></p>
 <figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"> final WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">        WindowManager.LayoutParams <span class="built_in">param</span> = new WindowManager.LayoutParams();</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line">            <span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.N)&#123;</span><br><span class="line">            <span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_PHONE;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_TOAST;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">param</span>.<span class="built_in">format</span> = PixelFormat.TRANSLUCENT;</span><br><span class="line">        <span class="built_in">param</span>.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL; <span class="comment">// 不能抢占聚焦点</span></span><br><span class="line">        <span class="built_in">param</span>.flags = <span class="built_in">param</span>.flags | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;</span><br><span class="line">        <span class="built_in">param</span>.flags = <span class="built_in">param</span>.flags | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS; <span class="comment">// 排版不受限制</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">param</span>.alpha = <span class="number">1</span>f;</span><br><span class="line">        <span class="built_in">param</span>.gravity = Gravity.CENTER;   <span class="comment">//调整悬浮窗口至左上角</span></span><br><span class="line">        <span class="built_in">param</span>.x = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">param</span>.y = <span class="number">0</span>;</span><br><span class="line">        final View v = LayoutInflater.<span class="keyword">from</span>(context).inflate(R.layout.dialog_buy_share, null);</span><br><span class="line"></span><br><span class="line">        Button btnPopup = (Button) v.findViewById(R.id.confirm_btn);</span><br><span class="line">        Button btnCancel = (Button) v.findViewById(R.id.cancel_btn);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!TextUtils.isEmpty(bean.getButtonText())) &#123;</span><br><span class="line">            btnPopup.<span class="built_in">setText</span>(bean.getButtonText());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        btnPopup.setOnClickListener(new OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                StatisticsUtils.statisticsEvent(context, <span class="string">"购买成功页popup_点击_分享"</span>, <span class="string">"活动名称"</span>, <span class="string">"邀请"</span>);</span><br><span class="line">                windowManager.removeView(v);</span><br><span class="line">                <span class="keyword">if</span> (bean != null &amp;&amp; ActivityManager.getInstance().currentActivity() != null) &#123;</span><br><span class="line">                    RedirectActivityUtils.redirectPage(ActivityManager.getInstance().currentActivity(), bean);</span><br><span class="line"><span class="comment">//                    ActivityMapManager.finishActivity(InvestSuccessActivity.class.getSimpleName());</span></span><br><span class="line"><span class="comment">//                    ActivityMapManager.finishActivity(BuyFixResultCountDownActivity.class.getSimpleName());</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        btnCancel.setOnClickListener(new OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">              windowManager.removeView(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span> (windowManager != null) &#123;</span><br><span class="line">            windowManager.addView(v, <span class="built_in">param</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018070501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/05/2018070501/" class="article-date">
-  	<time datetime="2018-07-05T04:04:01.000Z" itemprop="datePublished">2018-07-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/2018070501/">命令行让gradle下载新的库的奇怪问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h3 id="发现改成gradle3-0后直接gradle-xxx，找不到google"><a href="#发现改成gradle3-0后直接gradle-xxx，找不到google" class="headerlink" title="发现改成gradle3.0后直接gradle xxx，找不到google"></a>发现改成gradle3.0后直接gradle xxx，找不到google</h3></blockquote>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could <span class="keyword">not</span> find <span class="function"><span class="keyword">method</span> <span class="title">google</span><span class="params">()</span> <span class="title">for</span> <span class="title">arguments</span> []<span class="params">()</span> <span class="title">on</span> <span class="title">repository</span> <span class="title">container</span>.</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">背景：原来旧项目采用<span class="selector-tag">gradle3</span><span class="selector-class">.3</span>，后面升级后改成了<span class="selector-tag">gradle4</span><span class="selector-class">.4</span>，结果<span class="selector-tag">gradle</span>没法自己下载，如果在<span class="selector-tag">android</span> <span class="selector-tag">studio</span>，使用<span class="selector-tag">sync</span> <span class="selector-tag">project</span> <span class="selector-tag">with</span> <span class="selector-tag">gradle</span> <span class="selector-tag">files</span>，但命令没有。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>解决方案</li>
-<li><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./gradlew</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>而不是使用</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gradle clean build</span></span><br></pre></td></tr></table></figure>
 
 
       

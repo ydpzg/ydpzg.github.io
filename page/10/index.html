@@ -190,6 +190,57 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016100801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/08/2016100801/" class="article-date">
+  	<time datetime="2016-10-08T00:26:28.000Z" itemprop="datePublished">2016-10-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/08/2016100801/">centos上的nginx转ghost的时候出现502</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不是nginx本身的问题，有可能是转发过去的服务有问题。<br>最后解决方案：ghost的config.js里把外部访问的地址写成了ip，所以当nginx转发的时候ghost服务不通。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016100701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1051,66 +1102,6 @@ none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
 /dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0</code></pre><p>最后使用完后要还原回来（设置为只读状态）：</p>
 <pre><code>1、mount -o remount,r /dev/block/by-name/system /system</code></pre><p>参考：<br><a href="http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054" target="_blank" rel="noopener">http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054</a></p>
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016072601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/26/2016072601/" class="article-date">
-  	<time datetime="2016-07-26T05:47:15.000Z" itemprop="datePublished">2016-07-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/26/2016072601/">android开发板上做debug，不是用usb线连接</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如何在android开发板上做debug，没有插口，只能无线<br>遇到一个问题，如何在android系统上开机运行几行shell指令。<br>解决方案：<br>android开发板上运行app，app监听系统广播自动启动，然后运行shell指令，前提是已经取得root权限。</p>
-<pre><code>String  wifiStrings = new String {
-        &quot;su -c &apos;setprop service.adb.tcp.port 5555&apos;&quot;,
-        &quot;su -c &apos;stop adbd&apos;&quot;,
-        &quot;su -c &apos;start adbd&apos;&quot;
-};
-CommandExecution.execCommand(wifiStrings, false);</code></pre><p>android开发板跟pc要在同一个局域网里。然后运行下面的命令。</p>
-<pre><code>adb devices
-adb disconnect
-adb connect 192.168.31.171
-adb -s 192.168.31.171:5555 shell</code></pre>
       
     </div>
     
