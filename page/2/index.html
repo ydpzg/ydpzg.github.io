@@ -190,6 +190,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019030701" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/03/07/2019030701/" class="article-date">
+  	<time datetime="2019-03-07T04:20:18.000Z" itemprop="datePublished">2019-03-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/07/2019030701/">关于设置adjustResize后webview出现输入框弹出布局错乱问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>背景：<br>SimpleWebActivity设置<br><code>windowSoftInputMode=&quot;adjustResize&quot;</code></p>
+<p>并且加上了沉浸式效果<br><code>window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</code></p>
+<p>方案1 网上有人说是因为主题设置了这个透明状态的原因，尝试去掉，webview确实正常，但是沉浸式不见了<br><code>&lt;item name=&quot;android:windowTranslucentStatus&quot;&gt;true&lt;/item&gt;</code></p>
+<p>或者把沉浸式效果去掉<br><code>window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</code></p>
+<p>但沉浸式不见了，不是我们想要的效果</p>
+<p>方案2 随手记的经验，在activity的oncreate里面加上这段代码，就是为了把root的layout的inses消费掉，但是我尝试了，没有效果</p>
+<p><code>if (android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layout), new android.support.v4.view.OnApplyWindowInsetsListener() {
+        @Override
+       public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+            return insets.consumeSystemWindowInsets();
+       }
+    });
+}</code></p>
+<p>链接：<a href="https://juejin.im/post/5a25f6146fb9a0452405ad5b" target="_blank" rel="noopener">https://juejin.im/post/5a25f6146fb9a0452405ad5b</a></p>
+<p>方案3 在SimpleWebActivity根layout加上这一句，问题解决</p>
+<p><code>android:fitsSystemWindows=&quot;true&quot;</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019030601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -742,57 +809,6 @@
 <li>app是否有引用具体的module</li>
 <li>Constant，Eventbus，startActivity</li>
 </ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018092301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/23/2018092301/" class="article-date">
-  	<time datetime="2018-09-23T15:29:37.000Z" itemprop="datePublished">2018-09-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/23/2018092301/">关于在闲鱼上被骗的经历</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、一定不能使用微信或者支付宝单独支付，要用闲鱼上交易，因为即使发生问题，也有订单号等交易痕迹<br>2、面交测试实物时要淡定，尽量拖时间测试，如果对方要求尽快面交，这其中多半是有问题，如果对方不同意花多时间测试，那就取消交易<br>3、面交前要先做功课，尽量用现场能看到的东西，比如id号，imei码等识别出这机器是什么类型的机器<br>4、搜索东西的时候一定是要信用高，并且是自用的，能提供购买渠道或者检测图证据为先，如果以各种理由塘塞的，建议取消交易<br>5、尽量在交谈中留下对方电话号码，微信号，淘宝号等可以证明身份的东西，以便后面出了问题追溯</p>
 
       
     </div>

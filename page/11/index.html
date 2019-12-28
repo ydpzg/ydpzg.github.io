@@ -190,6 +190,62 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016071401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/14/2016071401/" class="article-date">
+  	<time datetime="2016-07-14T03:02:18.000Z" itemprop="datePublished">2016-07-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/14/2016071401/">【学习笔记】使用idea自带生成webservice客户端client的问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>导入web service的证书到本地jdk的证书库里</p>
+</blockquote>
+<p>报错<br>com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names present<br>原因<br>ip的问题，如果是域名就没问题。<br>解决方案<br>jdk1.8 的话<br>在代码里面加入HttpsURLConnection.setDefaultHostnameVerifier((hostname, session) -&gt; hostname.equals(“10.173.235.52”));</p>
+<p>解决的链接<br><a href="http://stackoverflow.com/questions/10258101/sslhandshakeexception-no-subject-alternative-names-present" target="_blank" rel="noopener">http://stackoverflow.com/questions/10258101/sslhandshakeexception-no-subject-alternative-names-present</a></p>
+<p>报错<br>由于 accessExternalSchema 属性设置的限制而不允许 ‘file’ 访问, 因此无法读取方案文档 ‘xjc.xsd’。<br>解决方案<br>Create a file named jaxp.properties (if it doesn’t exist) under /path/to/jdk1.8.0/jre/lib and then write this line in it:<br>javax.xml.accessExternalSchema = all<br>解决的链接<br><a href="http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8" target="_blank" rel="noopener">http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016070602" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

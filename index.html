@@ -190,6 +190,81 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019122802" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/28/2019122802/" class="article-date">
+  	<time datetime="2019-12-28T09:39:07.000Z" itemprop="datePublished">2019-12-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/28/2019122802/">android扫描手机里的图片位置信息和exif信息</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>手机拍照的照片有一个叫Exif的东西，记录着图片拍摄时候的一些信息。正因为如此，很多人的隐私会暴露。</p>
+</blockquote>
+<h4 id="图片位置信息哪里来的呢"><a href="#图片位置信息哪里来的呢" class="headerlink" title="图片位置信息哪里来的呢"></a>图片位置信息哪里来的呢</h4><p>新手机在打开摄像头app的时候会提示，拍的照片是否要记录位置信息，一般的人在有了新手机后迫不及待自拍的都会选择是。后面拍照都会记录位置信息到照片中，这就很危险了，一些app获取这些位置信息就可以知道你的活动范围在哪里。。。</p>
+<h4 id="exif里面有什么信息呢"><a href="#exif里面有什么信息呢" class="headerlink" title="exif里面有什么信息呢"></a>exif里面有什么信息呢</h4><pre><code>常用的Exif支持的tag有:
+TAG_APERTURE：光圈值
+TAG_DATETIME：拍摄时间
+TAG_EXPOSURE_TIME：曝光时间
+TAG_FLASH：闪光灯
+TAG_FOCAL_LENGTH：焦距
+TAG_IMAGE_LENGTH：图片高度
+TAG_IMAGE_WIDTH：图片宽度
+TAG_ISO：ISO
+TAG_MAKE：设备
+TAG_MODEL：设备型号
+TAG_ORIENTATION：旋转角度</code></pre><h4 id="android如何读取exif"><a href="#android如何读取exif" class="headerlink" title="android如何读取exif"></a>android如何读取exif</h4><p>老规则，开源库走起，github找了一会，发现有轻量的，有重的，从中选择了一个轻量的，如下</p>
+<pre><code>https://github.com/sephiroth74/Android-Exif-Extended</code></pre><p>其实google有提供了exif类，全部的tag这一个文件</p>
+<pre><code>https://android.googlesource.com/platform/packages/apps/Camera2/+/master/src/com/android/camera/exif/ExifInterface.java</code></pre><p>实战一下，获取拍照路径下面的图片，进行遍历获取exif信息</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> Context.<span class="title">getPicExifInfo</span><span class="params">(startTime: <span class="type">Long</span> = <span class="number">0</span>, endTime: <span class="type">Long</span> = TimeUtils.getNowMills()</span></span>): List&lt;PicExifInfo&gt; &#123;</span><br><span class="line">    <span class="keyword">val</span> list = mutableListOf&lt;PicExifInfo&gt;()</span><br><span class="line">    <span class="keyword">val</span> cursor = contentResolver.query(</span><br><span class="line">        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,</span><br><span class="line">        <span class="literal">null</span>, <span class="string">"<span class="subst">$&#123;MediaStore.Images.Media.DATE_ADDED&#125;</span> &gt; ? and <span class="subst">$&#123;MediaStore.Images.Media.DATE_ADDED&#125;</span> &lt;= ?"</span>,</span><br><span class="line">        arrayOf((startTime / <span class="number">1000</span>).toString(), (endTime / <span class="number">1000</span>).toString()),</span><br><span class="line">        MediaStore.Images.Media.DATE_ADDED</span><br><span class="line">    )</span><br><span class="line">    cursor?.let &#123;</span><br><span class="line">        <span class="keyword">while</span> (cursor.moveToNext()) &#123;</span><br><span class="line">            <span class="keyword">val</span> path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA))</span><br><span class="line">            <span class="keyword">val</span> title = cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.TITLE))</span><br><span class="line">            <span class="keyword">val</span> width = cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.WIDTH))</span><br><span class="line">            <span class="keyword">val</span> height = cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.HEIGHT))</span><br><span class="line">            <span class="keyword">val</span> exif = ExifInterface()</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                exif.readExif(path, ExifInterface.Options.OPTION_ALL)</span><br><span class="line">                <span class="keyword">val</span> latLon = exif.latLongAsDoubles</span><br><span class="line">                <span class="keyword">if</span> (latLon != <span class="literal">null</span> &amp;&amp; latLon.size &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">val</span> latitude = String.format(<span class="string">"%.6f"</span>, latLon[<span class="number">0</span>])</span><br><span class="line">                    <span class="keyword">val</span> longitude = String.format(<span class="string">"%.6f"</span>, latLon[<span class="number">1</span>])</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">val</span> model = exif.getTag(ExifInterface.TAG_MODEL)?.valueAsString?.trim(<span class="number">0</span>.toChar()) ?: <span class="string">""</span></span><br><span class="line">                <span class="keyword">val</span> make = exif.getTag(ExifInterface.TAG_MAKE)?.valueAsString?.trim(<span class="number">0</span>.toChar()) ?: <span class="string">""</span></span><br><span class="line">                <span class="keyword">val</span> temp = exif.getTag(ExifInterface.TAG_DATE_TIME)?.valueAsString?.trim(<span class="number">0</span>.toChar())</span><br><span class="line">                <span class="keyword">val</span> time = temp?.let &#123; TimeUtils.string2Millis(it, <span class="string">"yyyy:MM:dd HH:mm:ss"</span>).toString() &#125; ?: <span class="string">""</span></span><br><span class="line">                 <span class="keyword">val</span> exifInfo = PicExifInfo(title, width, height, latitude, longitude, make, model, time)</span><br><span class="line">                list.add(exifInfo)</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: IOException) &#123;</span><br><span class="line">                e.printStackTrace()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cursor?.close()</span><br><span class="line">    <span class="keyword">return</span> list</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有一个要注意的</p>
+<p>kotlin里面如果byte数据后面全是0，转换成string要显示，要这样处理</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">string</span>?<span class="selector-class">.trim</span>(0<span class="selector-class">.toChar</span>())</span><br></pre></td></tr></table></figure>
+
+<h4 id="ps："><a href="#ps：" class="headerlink" title="ps："></a>ps：</h4><p>是不是可以做一个显示自己什么时候去过哪里的app，加上现在有各种存储云，无论多久以前的照片都会在会端拉回到手机。是不是很可怕的app。权限只需要读存储权限。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019122801" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -841,73 +916,6 @@ rewarded unitId: ca-app-pub-3940256099942544/5224354917</code></pre><p>测试的
 <p>最后，运行一下,结果出来了。</p>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">04</span>-<span class="number">14</span> <span class="number">19</span>:<span class="number">50</span>:<span class="number">30.503</span> <span class="number">4162</span>-<span class="number">4162</span>/com.kalengo.testplugin I/System.out: <span class="function"><span class="keyword">method</span>:</span> test time <span class="number">367.292</span> ms</span><br><span class="line"><span class="number">04</span>-<span class="number">14</span> <span class="number">19</span>:<span class="number">50</span>:<span class="number">30.503</span> <span class="number">4162</span>-<span class="number">4162</span>/com.kalengo.testplugin I/System.out: <span class="function"><span class="keyword">method</span>:</span> test2 time <span class="number">26.041</span> ms</span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2019030701" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/03/07/2019030701/" class="article-date">
-  	<time datetime="2019-03-07T04:20:18.000Z" itemprop="datePublished">2019-03-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/07/2019030701/">关于设置adjustResize后webview出现输入框弹出布局错乱问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>背景：<br>SimpleWebActivity设置<br><code>windowSoftInputMode=&quot;adjustResize&quot;</code></p>
-<p>并且加上了沉浸式效果<br><code>window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</code></p>
-<p>方案1 网上有人说是因为主题设置了这个透明状态的原因，尝试去掉，webview确实正常，但是沉浸式不见了<br><code>&lt;item name=&quot;android:windowTranslucentStatus&quot;&gt;true&lt;/item&gt;</code></p>
-<p>或者把沉浸式效果去掉<br><code>window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</code></p>
-<p>但沉浸式不见了，不是我们想要的效果</p>
-<p>方案2 随手记的经验，在activity的oncreate里面加上这段代码，就是为了把root的layout的inses消费掉，但是我尝试了，没有效果</p>
-<p><code>if (android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
-ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layout), new android.support.v4.view.OnApplyWindowInsetsListener() {
-        @Override
-       public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
-            return insets.consumeSystemWindowInsets();
-       }
-    });
-}</code></p>
-<p>链接：<a href="https://juejin.im/post/5a25f6146fb9a0452405ad5b" target="_blank" rel="noopener">https://juejin.im/post/5a25f6146fb9a0452405ad5b</a></p>
-<p>方案3 在SimpleWebActivity根layout加上这一句，问题解决</p>
-<p><code>android:fitsSystemWindows=&quot;true&quot;</code></p>
 
       
     </div>
