@@ -190,6 +190,113 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017122701" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/27/2017122701/" class="article-date">
+  	<time datetime="2017-12-27T06:59:22.000Z" itemprop="datePublished">2017-12-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/27/2017122701/">关于小米5 miui9刷xp框架的问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>过程比较久，要有耐心</p>
+<p><code>1、云备份，本地备份</code><br><code>2、如果recovery和system都进不了，卡米了，那就用miflash线刷，注意右下角选择“保留所有数据”</code><br><code>3、进去bootloader，用fastboot命令</code><br><code>fastboot flash recovery twrp-3.0.2-3-gemini.img</code><br><code>进去第三方recovery，先双清，然后adb线刷模式</code><br><code>adb sideload SuperSU-v2.79-SR4-支持7.1.1.zip</code><br><code>adb sideload xposed-v88.2-sdk24%26Android7.0X-arm64-test5.zip</code><br><code>4、启动到system_，miui9欢迎你，此时看到已经root了</code><br><code>adb install XposedInstaller_3.1.2.apk</code><br><code>5、恢复备份，起飞</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017122101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/21/2017122101/" class="article-date">
+  	<time datetime="2017-12-21T09:45:14.000Z" itemprop="datePublished">2017-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/21/2017122101/">Android 5.0以上虚拟按键适配Popupwindow</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"><a href="#在android5-0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。" class="headerlink" title="在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。"></a>在android5.0以上虚拟按键的机器上弹出自定义的软键盘的时候（popupwindow），被虚拟按键覆盖了，导致软键盘一部分地方按不了。</h1></blockquote>
+<p>解决方案：<br>给自定义的popupwindow设置属性然后弹出来：</p>
+<p>popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);_mPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);</p>
+<p>在华为荣耀7android5.0上测试通过</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017112301" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -596,108 +703,6 @@ if (config.fontScale != 1) {
         <blockquote>
 <h1 id="昨晚不同手机在不同的wifi下的h5-load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。"><a href="#昨晚不同手机在不同的wifi下的h5-load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。" class="headerlink" title="昨晚不同手机在不同的wifi下的h5 load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。"></a>昨晚不同手机在不同的wifi下的h5 load不出来，是因为手机对某个wifi设置了代理，代理不存在导致。</h1></blockquote>
 <p> 现象就是所有的后台api正常，所有的h5页面load不出来，以前这种现象就要检查代理设置</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017090502" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/09/05/2017090502/" class="article-date">
-  	<time datetime="2017-09-05T01:48:50.000Z" itemprop="datePublished">2017-09-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/05/2017090502/">关于网页文字抖动的问题，输入框弹出后更明显</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="在开启Appsee-start-后，出现的，属于appsee本身sdk的bug"><a href="#在开启Appsee-start-后，出现的，属于appsee本身sdk的bug" class="headerlink" title="在开启Appsee.start()后，出现的，属于appsee本身sdk的bug"></a>在开启Appsee.start()后，出现的，属于appsee本身sdk的bug</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017090501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/09/05/2017090501/" class="article-date">
-  	<time datetime="2017-09-05T01:48:45.000Z" itemprop="datePublished">2017-09-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/05/2017090501/">android颜色的一个坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="在使用android-xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为-99ffffff的透明颜色值。"><a href="#在使用android-xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为-99ffffff的透明颜色值。" class="headerlink" title="在使用android xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为#99ffffff的透明颜色值。"></a>在使用android xml的背景颜色值的时候，有个需求，有两种不同的case，一种是选中，一种是不选中，不选中表现为整体透明，方案为在layout上加一个view，然后这view的颜色值为#99ffffff的透明颜色值。</h4><p>现象：下面的这个layout如果加了shape的圆角，会发现四个角有问题，查了好久，还以为是shape的问题，结果发现是上面这个透明view的问题，虽然是透明，但是还是有值，所以会看到四个角有颜色，而不是全部是圆角。</p>
-<p>解决方案：透明层也要加shape圆角。。</p>
 
       
     </div>

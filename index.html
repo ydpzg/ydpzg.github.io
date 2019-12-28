@@ -190,6 +190,130 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019122801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/28/2019122801/" class="article-date">
+  	<time datetime="2019-12-28T09:05:44.000Z" itemprop="datePublished">2019-12-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/28/2019122801/">android集成google AdMob</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="申请AdMob账号"><a href="#申请AdMob账号" class="headerlink" title="申请AdMob账号"></a>申请AdMob账号</h4><p>先有google账号，然后可以直接申请AdMob账号<br><a href="https://apps.admob.com/signup" target="_blank" rel="noopener">https://apps.admob.com/signup</a></p>
+<h4 id="集成AdMob到项目中"><a href="#集成AdMob到项目中" class="headerlink" title="集成AdMob到项目中"></a>集成AdMob到项目中</h4><p><a href="https://developers.google.cn/admob/android/quick-start" target="_blank" rel="noopener">https://developers.google.cn/admob/android/quick-start</a><br>一共有4种广告形式</p>
+<pre><code>横幅（banner）
+插页式（Interstitial）
+原生（native）
+激励视频（rewarded）</code></pre><h4 id="调试，测试unitId和线上unidId"><a href="#调试，测试unitId和线上unidId" class="headerlink" title="调试，测试unitId和线上unidId"></a>调试，测试unitId和线上unidId</h4><p>测试unitId 如下</p>
+<pre><code>banner unitId: ca-app-pub-3940256099942544/6300978111
+Interstitial unitId: ca-app-pub-3940256099942544/1033173712
+native unitId: ca-app-pub-3940256099942544/2247696110
+rewarded unitId: ca-app-pub-3940256099942544/5224354917</code></pre><p>测试的时候请用测试unitId，最后要上线的以后务必要用线上unitId 测试一下有没有广告，切记<br>这里需要注意的地方，如果需要多个马甲包，然后admob只上其中一个，那么请注意做</p>
+<p>在build.gradle里面</p>
+<figure class="highlight flix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">    release &#123;</span><br><span class="line">        ...</span><br><span class="line">        buildConfigField(<span class="string">"String"</span>, <span class="string">"BANNER_AD_UNIT_ID"</span>, getBannerAdUnitId(<span class="string">"release"</span>))</span><br><span class="line">        buildConfigField(<span class="string">"String"</span>, <span class="string">"INTERSTITIAL_AD_UNIT_ID"</span>, getInterstitialAdUnitId(<span class="string">"release"</span>))</span><br><span class="line">        buildConfigField(<span class="string">"String"</span>, <span class="string">"NATIVE_AD_UNIT_ID"</span>, getNativeAdUnitId(<span class="string">"release"</span>))</span><br><span class="line">        buildConfigField(<span class="string">"String"</span>, <span class="string">"REWARDED_AD_UNIT_ID"</span>, getRewardedAdUnitId(<span class="string">"release"</span>))</span><br><span class="line">    &#125;</span><br><span class="line">    debug &#123;</span><br><span class="line">       ...</span><br><span class="line">        buildConfigField(<span class="string">"String"</span>, <span class="string">"BANNER_AD_UNIT_ID"</span>, getBannerAdUnitId(<span class="string">"debug"</span>))</span><br><span class="line">        buildConfigField(<span class="string">"String"</span>, <span class="string">"INTERSTITIAL_AD_UNIT_ID"</span>, getInterstitialAdUnitId(<span class="string">"debug"</span>))</span><br><span class="line">        buildConfigField(<span class="string">"String"</span>, <span class="string">"NATIVE_AD_UNIT_ID"</span>, getNativeAdUnitId(<span class="string">"debug"</span>))</span><br><span class="line">        buildConfigField(<span class="string">"String"</span>, <span class="string">"REWARDED_AD_UNIT_ID"</span>, getRewardedAdUnitId(<span class="string">"debug"</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getBannerAdUnitId</span></span>(<span class="keyword">type</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unitId</span> </span>= '<span class="string">""</span>'</span><br><span class="line">    <span class="keyword">switch</span> (getCurrentFlavorName()) &#123;</span><br><span class="line">        <span class="keyword">case</span> “majiabao<span class="string">":</span></span><br><span class="line"><span class="string">            if (type == "</span>release<span class="string">") unitId = ‘“..."</span>'</span><br><span class="line">            <span class="keyword">else</span> unitId = '<span class="string">"ca-app-pub-3940256099942544/6300978111"</span>'</span><br><span class="line">            break</span><br><span class="line">    &#125;</span><br><span class="line">    return unitId</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getInterstitialAdUnitId</span></span>(<span class="keyword">type</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unitId</span> </span>= '<span class="string">""</span>'</span><br><span class="line">    <span class="keyword">switch</span> (getCurrentFlavorName()) &#123;</span><br><span class="line">        <span class="keyword">case</span> “majiabao<span class="string">":</span></span><br><span class="line"><span class="string">            if (type == "</span>release<span class="string">") unitId = ‘“…"</span>'</span><br><span class="line">            <span class="keyword">else</span> unitId = '<span class="string">"ca-app-pub-3940256099942544/1033173712"</span>'</span><br><span class="line">            break</span><br><span class="line">    &#125;</span><br><span class="line">    return unitId</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getNativeAdUnitId</span></span>(<span class="keyword">type</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unitId</span> </span>= '<span class="string">""</span>'</span><br><span class="line">    <span class="keyword">switch</span> (getCurrentFlavorName()) &#123;</span><br><span class="line">        <span class="keyword">case</span> “majiabao<span class="string">":</span></span><br><span class="line"><span class="string">            if (type == "</span>release<span class="string">") unitId = ‘“..."</span>'</span><br><span class="line">            <span class="keyword">else</span> unitId = '<span class="string">"ca-app-pub-3940256099942544/2247696110"</span>'</span><br><span class="line">            break</span><br><span class="line">    &#125;</span><br><span class="line">    return unitId</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getRewardedAdUnitId</span></span>(<span class="keyword">type</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unitId</span> </span>= '<span class="string">""</span>'</span><br><span class="line">    <span class="keyword">switch</span> (getCurrentFlavorName()) &#123;</span><br><span class="line">        <span class="keyword">case</span> “majiabao<span class="string">":</span></span><br><span class="line"><span class="string">            if (type == "</span>release<span class="string">") unitId = ‘“..."</span>'</span><br><span class="line">            <span class="keyword">else</span> unitId = '<span class="string">"ca-app-pub-3940256099942544/5224354917"</span>'</span><br><span class="line">            break</span><br><span class="line">    &#125;</span><br><span class="line">    return unitId</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getGoogleAdApplicationId</span></span>() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">appId</span> </span>= <span class="string">"ca-app-pub-1111111111111111~1111111111"</span></span><br><span class="line">    <span class="keyword">switch</span> (getCurrentFlavorName()) &#123;</span><br><span class="line">        <span class="keyword">case</span> “majiabao<span class="string">":</span></span><br><span class="line"><span class="string">            appId = “..."</span></span><br><span class="line">            break</span><br><span class="line">    &#125;</span><br><span class="line">    return appId</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCurrentFlavorName</span></span>() &#123;</span><br><span class="line">    Gradle gradle = getGradle()</span><br><span class="line">    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()</span><br><span class="line">    println(tskReqStr)</span><br><span class="line">    <span class="comment">//里面需要把tskReqStr解析出majiabao，这个字符串处理一下</span></span><br><span class="line">   return tskReqStr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h4><p>换成线上unidId后发现返回的errorCode=0</p>
+<ol>
+<li>经查明，需要在AdMob账号上面填写收款信息，AdMob账号首页会提示红框要填写收款信息，填写后需要审核，大概半天时间。</li>
+<li>再次调用线上unidId，发现没有返回errorCode=0的情况，此时有广告出现了，但有时会返回errorCode=3，表示暂时没有合适的广告</li>
+<li>记得加混淆代码，不然广告在release版本是没效果的。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2019122001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/20/2019122001/" class="article-date">
+  	<time datetime="2019-12-20T07:36:11.000Z" itemprop="datePublished">2019-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/20/2019122001/">电话拨打相关监听</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mi6 双卡<br>拨打10086</p>
+<p>Receiver：<br>第一次进来：android.intent.action.NEW_OUTGOING_CALL<br>getResultData：电话号码，例如10086<br>Intent.EXTRA_PHONE_NUMBER：电话号码，例如10086</p>
+<p>第二次进来：android.intent.action.PHONE_STATE<br>getResultData：null<br>TelephonyManager.EXTRA_STATE：OFFHOOK<br>TelephonyManager.EXTRA_INCOMING_NUMBER：电话号码，例如10086</p>
+<p>挂断：<br>第一次进来：action: android.intent.action.PHONE_STATE<br>getResultData：null<br>TelephonyManager.EXTRA_STATE：IDLE<br>TelephonyManager.EXTRA_INCOMING_NUMBER：null</p>
+<p>第二次进来：action: android.intent.action.PHONE_STATE<br>getResultData：null<br>TelephonyManager.EXTRA_STATE：IDLE<br>TelephonyManager.EXTRA_INCOMING_NUMBER：10086</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019120601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -784,150 +908,6 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 <p>链接：<a href="https://juejin.im/post/5a25f6146fb9a0452405ad5b" target="_blank" rel="noopener">https://juejin.im/post/5a25f6146fb9a0452405ad5b</a></p>
 <p>方案3 在SimpleWebActivity根layout加上这一句，问题解决</p>
 <p><code>android:fitsSystemWindows=&quot;true&quot;</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2019030601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/03/06/2019030601/" class="article-date">
-  	<time datetime="2019-03-06T03:27:12.000Z" itemprop="datePublished">2019-03-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/06/2019030601/">vue怎么处理后端返回的换行符&#39;\n&#39;</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>解决方案有三个，用第三个方案会好一点</p>
-<ul>
-<li>1、使用v-html的标签</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;p <span class="class"><span class="keyword">class</span></span>=<span class="string">"text"</span> v-html=<span class="string">"requestText"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">    requestText:<span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">str.replace(<span class="string">'ln'</span>, <span class="string">'&lt;br&gt;'</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>2、使用v-for循环显示替换后的文本</li>
-</ul>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"line in str.split('\n')"</span>&gt;</span></span><span class="template-variable">&#123;&#123;line&#125;&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3、css加上</li>
-</ul>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">white-<span class="literal">space</span>: pre-<span class="built_in">line</span><span class="comment">;//多个空格会合并成一个空格</span></span><br><span class="line">white-<span class="literal">space</span>: pre-<span class="keyword">wrap</span><span class="comment">;//多个空格仍然不变</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：<br>popupConfig.tip.replace(/\n/g, ‘\n’)<br>popupConfig.tip.replace(/\n/g, ‘<br>‘)</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2019020301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/02/03/2019020301/" class="article-date">
-  	<time datetime="2019-02-03T09:44:36.000Z" itemprop="datePublished">2019-02-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/03/2019020301/">flutter之殇</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>跳转url</p>
-<p>url_launch(url, enableJavaScript: true, forceWebView: true)</p>
-<p>SnackBar用法<br>切记snackBar用的context是特snackBar自己的context，不然会报</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Another exception was thrown: Scaffold.<span class="keyword">of</span>() called <span class="keyword">with</span> <span class="keyword">a</span> context that does <span class="keyword">not</span> contain <span class="keyword">a</span> Scaffold.</span><br></pre></td></tr></table></figure>
-
-<p>代码如下：vl</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="symbol">'package</span>:flutter/material.dart';</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SnackBarPage</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="type">BuildContext</span> scaffoldContext;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="type">Widget</span> build(<span class="type">BuildContext</span> context) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> implement build</span></span><br><span class="line">    <span class="type">Widget</span> body = <span class="type">Center</span> (</span><br><span class="line">        child: <span class="type">RaisedButton</span>(</span><br><span class="line">            onPressed: () &#123;</span><br><span class="line">              <span class="keyword">final</span> snackBar = <span class="type">SnackBar</span>(</span><br><span class="line">                content: <span class="type">Text</span>(<span class="symbol">'hello</span>! <span class="type">A</span> <span class="type">SnackBar</span>!'),</span><br><span class="line">                action: <span class="type">SnackBarAction</span>(</span><br><span class="line">                  label: <span class="symbol">'Und</span>o',</span><br><span class="line">                  onPressed: () &#123;</span><br><span class="line">                    <span class="comment">// Some code to undo the change!</span></span><br><span class="line">                  &#125;,</span><br><span class="line">                ),</span><br><span class="line">              );</span><br><span class="line">              <span class="type">Scaffold</span>.of(scaffoldContext).showSnackBar(snackBar);</span><br><span class="line">            &#125;,</span><br><span class="line">            child: <span class="type">Text</span>(<span class="symbol">'tes</span>t')</span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">      <span class="type">MaterialApp</span>(</span><br><span class="line">        title: <span class="symbol">'SnackBa</span>r',</span><br><span class="line">        home: <span class="type">Scaffold</span>(</span><br><span class="line">          appBar: <span class="type">AppBar</span>(</span><br><span class="line">            title: <span class="type">Text</span>(<span class="symbol">'SnackBa</span>r')</span><br><span class="line">          ),</span><br><span class="line">          body: <span class="type">Builder</span>(builder: (<span class="type">BuildContext</span> context) &#123;</span><br><span class="line">            scaffoldContext = context;</span><br><span class="line">            <span class="keyword">return</span> body;</span><br><span class="line">          &#125;),</span><br><span class="line">        ),</span><br><span class="line">      );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>打release包，flutter build apk<br>但是发现请求都失败了</p>
-<p>找不到3des加密方法，只能从android和ios分别实现，然后桥接</p>
-<p>如果image出现找不到的情况，不要hot运行，直接重新run</p>
-<p>webdev could not run for this project.<br>The pubspec.yaml file has changed since the pubspec.lock file was generated, please run “pub get” again.</p>
-<p>pub get</p>
-<p>webdev could not run for this project.<br>You must have a dependency on <code>build_web_compilers</code> in <code>pubspec.yaml</code>.</p>
-<p><a href="https://cloud.tencent.com/developer/article/1430689" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1430689</a></p>
-<p>web<br>很多第三方插件都不支持</p>
-<p>No address associated with hostname</p>
-<p>ui适配问题（大屏幕和小屏幕手机问题）</p>
-<p>BottomNavigationBar保留不了状态问题（切换tab的时候重新构建了页面），<br>1、body: widget<br>2、<br>3、PageView</p>
-<p>PageView的坑<br><a href="https://juejin.im/post/5b73c3b3f265da27d701473a" target="_blank" rel="noopener">https://juejin.im/post/5b73c3b3f265da27d701473a</a></p>
-<p>路由跳转有点坑，需要沉淀</p>
-<p>bloc响应式</p>
-<p>子模块bloc在使用上不要嵌套会有问题，并列的就没问题。</p>
-<p>appBloc.appEventStream.listen(eventHandle);<br>监听器的使用</p>
-<p><a href="http://www.uxxsn.com/8599.html" target="_blank" rel="noopener">http://www.uxxsn.com/8599.html</a></p>
 
       
     </div>

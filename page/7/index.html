@@ -190,6 +190,144 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017052401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/24/2017052401/" class="article-date">
+  	<time datetime="2017-05-24T13:38:38.000Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/24/2017052401/">python 4-1如何拆分含有多种分隔符的字符串</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="如果是对字符串做一个字符的分割，用str-split-分割效率比较高；如果是多个字符的分割，用re-split-分割效率比较高"><a href="#如果是对字符串做一个字符的分割，用str-split-分割效率比较高；如果是多个字符的分割，用re-split-分割效率比较高" class="headerlink" title="如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高"></a>如果是对字符串做一个字符的分割，用str.split()分割效率比较高；如果是多个字符的分割，用re.split()分割效率比较高</h4><pre><code>def strSplit(x, d):
+    return x.split(d)
+
+def mySplit(s, ds):
+    res = [s]
+    for d in ds:
+        t = []
+        #对二维数据降成一维数组
+        map(lambda x: t.extend(x.split(d)), res)
+        res = t
+
+    return [x for x in res if x]
+
+s = &apos;ab;dd:fdfd\dfsa+ddf=vfv%dfdf&apos;
+print(mySplit(s, &apos;=!+-=;:^%$\\&apos;))
+
+#使用re正则表达式分割字符串
+import re
+print(re.split(r&apos;[=!+-=;:^%$\\]+&apos;, s))</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017052304" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/23/2017052304/" class="article-date">
+  	<time datetime="2017-05-23T14:32:28.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/23/2017052304/">python 3-6如何在一个for语句中迭代多个可迭代对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="主要是使用了zip和chain分别对迭代器的串行和并行处理"><a href="#主要是使用了zip和chain分别对迭代器的串行和并行处理" class="headerlink" title="主要是使用了zip和chain分别对迭代器的串行和并行处理"></a>主要是使用了zip和chain分别对迭代器的串行和并行处理</h4><pre><code>e1 = [1, 2, 3, 4]
+e2 = [9, 8, 7, 6]
+for x in zip(e1, e2):
+   ...:     print(x)
+from itertools import chain
+for x in chain(e1, e2):
+    ...:     print(x)</code></pre><h4 id="结果是"><a href="#结果是" class="headerlink" title="结果是"></a>结果是</h4><pre><code>zip并行的输出是
+(1, 9)
+(2, 8)
+(3, 7)
+(4, 6)
+
+chain串行的输出是
+1
+2
+3
+4
+9
+8
+7
+6</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052303" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -730,109 +868,6 @@ reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))</code></pre>
       
         <p>from random import randint<br>data = {x: randinx(80, 100) for x in ‘abcxyz’}<br>zipresult = zip(data.values(), data.keys())<br>sorted(zipresult)<br>list(zipresult)</p>
 <p>data.items()<br>sorted(data.items(), key=lambda x: x[1])<br>sorted(data.items(), key=lambda x: x[1], reverse=True)</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017051602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/16/2017051602/" class="article-date">
-  	<time datetime="2017-05-16T14:57:15.000Z" itemprop="datePublished">2017-05-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/16/2017051602/">python 2-3如何统计序列中元素的出现频度</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>from random import randint<br>data = [randint(1, 10) for _ in range(20)]<br>d = dict.fromkeys(data, 0)<br>d<br>for x in data:<br>…     d[x] += 1<br>d</p>
-<p>from collections import Counter<br>c = Counter(data)<br>c.most_common()<br>c.most_common(1)<br>c.most_common(2)<br>file = open(“/Users/dukelight/project/EasyPR/LICENSE”, “r”).read()<br>words = re.split(“\W+”, file)<br>wordsCounter = Counter(words)<br>wordsCounter.most_common(10)</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017051601-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/16/2017051601-1/" class="article-date">
-  	<time datetime="2017-05-16T14:17:10.000Z" itemprop="datePublished">2017-05-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/16/2017051601-1/">python 2-2如何为元组中的每个元素命名, 提高程序可读性</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>r = range(4)<br>form collections import nameturple<br>Student = namedtuple(“Student”, (“name”, “age”, “sex”, “addr”))<br>ss = Student(1, 2, 3, 4)<br>ss = Student(name=1, age=2, sex=3, addr=4)<br>ss.name<br>ss.age<br>ss isinstance tuple</p>
 
       
     </div>
