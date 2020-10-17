@@ -190,59 +190,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-2019070401" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/04/2019070401/" class="article-date">
-  	<time datetime="2019-07-04T01:56:45.000Z" itemprop="datePublished">2019-07-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019070401/">flutter release后报错 No address associated with hostname, errno = 7</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>权限问题<br>android的AndroidManifest要添加网络权限</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:<span class="attribute">name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-2019051901" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -856,6 +803,60 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 
 <p>7、最后找到了解决方法，在swift方法上加注解@objc，问题解决<br>、、、<br>import Foundation</p>
 <p>public class TestSwift : NSObject {<br>    @objc func printLog() {<br>        print(“hello”)<br>    }<br>}<br>、、、</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2018102301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/23/2018102301/" class="article-date">
+  	<time datetime="2018-10-23T07:26:32.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/23/2018102301/">RxJava多个api的处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>RxJava多个api的处理</p>
+<p>merge 单独输出，统一结束回调，api同时出去</p>
+<p>zip 封装在一起，最后统一输出和结束回调，api同时出去</p>
+<p>flatMap 一个请求回来再进行下一个请求</p>
 
       
     </div>

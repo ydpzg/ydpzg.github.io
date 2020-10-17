@@ -190,78 +190,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-2017030101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/01/2017030101/" class="article-date">
-  	<time datetime="2017-03-01T15:17:33.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/2017030101/">自定义view用到的几种定时刷新方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用"><a href="#1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用" class="headerlink" title="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用"></a>1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用</h4><p><code>Timer timer = new Timer();  
-        TimerTask timerTask = new TimerTask() {  
-            @Override  
-            public void run() {  
-                //具体处理代码  
-                postInvalidate();  
-            }  
-        };  
-timer.schedule(timerTask, 0, 50);</code></p>
-<h4 id="2、使用view内部的延迟刷新方法"><a href="#2、使用view内部的延迟刷新方法" class="headerlink" title="2、使用view内部的延迟刷新方法"></a>2、使用view内部的延迟刷新方法</h4><p><code>public void draw(Canvas canvas) {</code><br><code>postDelayed(new Runnable() {  
-    @Override  
-    public void run() {  
-        //具体处理代码  
-        postInvalidate();  
-    }  
-}, 50);</code><br><code>super.draw(canvas);</code><br><code>}</code></p>
-<h4 id="3、利用属性动画对view里的某个属性进行赋值来实现动画效果"><a href="#3、利用属性动画对view里的某个属性进行赋值来实现动画效果" class="headerlink" title="3、利用属性动画对view里的某个属性进行赋值来实现动画效果"></a>3、利用属性动画对view里的某个属性进行赋值来实现动画效果</h4><p><code>ObjectAnimator waveShiftAnim = ObjectAnimator.ofFloat(  
-        mWaveView, &quot;waveShiftRatio&quot;, 0f, 1f);  
-waveShiftAnim.setRepeatCount(ValueAnimator.INFINITE);  
-waveShiftAnim.setDuration(1000);  
-waveShiftAnim.setInterpolator(new LinearInterpolator());  
-animators.add(waveShiftAnim);</code>  </p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-2017022001" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -761,6 +689,63 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
         <p>在adb 打命令  am broadcast 发广播的时候，正常返回数据。<br>但是android里面使用Runtime.getRuntime().exec()运行命令的时候，发现报错了，如下</p>
 <p><code>Permission Denial: broadcast asks to run as user -1 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL or android.permission.INTERACT_ACROSS_USERS_</code></p>
 <p>解决方案：<br>在命令里面加个参数  - - user 0，即 am broadcast  - - user 0，此时在android里面就可以正常返回了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016111001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/10/2016111001/" class="article-date">
+  	<time datetime="2016-11-10T12:10:26.000Z" itemprop="datePublished">2016-11-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/10/2016111001/">mac下如何通过vpn连接公司的svn</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。</p>
+<p>1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。</p>
+<p>2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。</p>
+<p>3、        </p>
+<p><code>#!/bin/sh</code><br><code>/sbin/route add -net x.x.x -interface ppp0</code></p>
+<p>注：ppp0不要修改它，上述例子中需要将x.x.x替换成10.11.12</p>
+<p>4、试试打开公司svn的外网地址，是不是可以访问了。</p>
 
       
     </div>

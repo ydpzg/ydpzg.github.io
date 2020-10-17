@@ -190,57 +190,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-2018080602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/06/2018080602/" class="article-date">
-  	<time datetime="2018-08-06T09:54:19.000Z" itemprop="datePublished">2018-08-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/06/2018080602/">上传到maven</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用自定义gradle插件</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-2018080601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -802,6 +751,109 @@ exclude group: &apos;com.android.support&apos;, module: &apos;support-compat&apo
 <p>WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE<br>//这样的话被加入的view不能被点击,屏幕上其它的地方可以获得焦点</p>
 <p>创建队列实现toast队列</p>
 
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2018041201" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/12/2018041201/" class="article-date">
+  	<time datetime="2018-04-12T03:03:03.000Z" itemprop="datePublished">2018-04-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/12/2018041201/">gradle task一些实践</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="在使用jenkins与walle结合的时候，需要用到gradle-task的一些功能，使用task来做一些事情，就有了一些实践。"><a href="#在使用jenkins与walle结合的时候，需要用到gradle-task的一些功能，使用task来做一些事情，就有了一些实践。" class="headerlink" title="在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。"></a>在使用jenkins与walle结合的时候，需要用到gradle task的一些功能，使用task来做一些事情，就有了一些实践。</h1></blockquote>
+<h3 id="task的调用，怎么运行"><a href="#task的调用，怎么运行" class="headerlink" title="task的调用，怎么运行"></a>task的调用，怎么运行</h3><p>1、taskname.execute()<br>2、gradle taskname</p>
+<p>比如一个简单的例子</p>
+<pre><code>task task1 &lt;&lt; { 
+     println &quot;Hello&quot; 
+} 
+task task2 &lt;&lt; { 
+    println &quot;World&quot; 
+} 
+task task3(dependsOn: &apos;task3dependency&apos;) &lt;&lt; { 
+    println &quot;Yu&quot; 
+} 
+task task3dependency &lt;&lt; { 
+    println &quot;Duke&quot; 
+} 
+task tests(dependsOn: [&apos;task1&apos;, &apos;task2&apos;, &apos;task3&apos;]) {
+}</code></pre><p>输出的是<br>Hello World Duke Yu<br>这种写法是顺序执行，另外有一种写法是异步执行，如</p>
+<pre><code>task tests &lt;&lt; { 
+    task1.execute()
+    task2.execute() 
+    task3.execute() 
+}</code></pre><p>是没法确定结果的，因为闭包是异步的。</p>
+<p>再比如，假设我们要在assembleDebug后加一个task（runTask），<br>可以这样做，利用gradle.taskGraph.afterTask找到task，执行命令<br>gradle assembleDebug</p>
+<pre><code>gradle.taskGraph.afterTask { task -&gt;
+    if (task.name == &apos;assembleDebug&apos;) {
+        runTask.execute()
+    }
+}</code></pre><p>实际上跑的命令是</p>
+<pre><code>assembleDebug
+runTask</code></pre><p>或者 定义一个task（runTask）依赖于assembleDebug，执行命令<br>gradle runTask</p>
+<pre><code>task runTask(dependsOn: &apos;assembleDebug&apos;) {
+}</code></pre><p>实际上跑的命令是</p>
+<pre><code>assembleDebug
+runTask</code></pre><h3 id="关于copy"><a href="#关于copy" class="headerlink" title="关于copy"></a>关于copy</h3><p>可以在task里直接写copy，比如</p>
+<pre><code>gradle.taskGraph.afterTask { task -&gt;
+    if (task.name == &apos;assembleDebug&apos;) {
+        copy {
+            from &quot;${project.buildDir}/outputs/apk/app-debug.apk &quot;
+            into &quot;${project.buildDir}/outputs/apk/&quot;
+            rename { String fileName -&gt;
+                fileName.replace(&quot;app-debug.apk&quot;, “test.apk”)
+            }
+        }
+    }
+}</code></pre><p>也可以写一个copy类型的task</p>
+<pre><code>task copyApk(typy: copy)  {
+    from &quot;${project.buildDir}/outputs/apk/app-debug.apk &quot;
+    into &quot;${project.buildDir}/outputs/apk/&quot;
+    rename { 
+        String fileName -&gt;
+        fileName.replace(&quot;app-debug.apk&quot;, “test.apk”)
+    }
+}</code></pre>
       
     </div>
     

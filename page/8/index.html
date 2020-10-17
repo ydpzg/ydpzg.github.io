@@ -190,99 +190,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-2017052201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/22/2017052201/" class="article-date">
-  	<time datetime="2017-05-22T00:13:27.000Z" itemprop="datePublished">2017-05-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/2017052201/">python 3-2如何实现可迭代对象和迭代器对象(2)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="实现可迭代对象和迭代器对象。"><a href="#实现可迭代对象和迭代器对象。" class="headerlink" title="实现可迭代对象和迭代器对象。"></a>实现可迭代对象和迭代器对象。</h4><ol>
-<li>先定义一个Iterator实现<strong>next</strong></li>
-<li>再定义一个weatherIterable实现<strong>iter</strong></li>
-<li>最后使用for in 遍历解决</li>
-</ol>
-<pre><code>import requests
-from collections.abc import Iterable, Iterator
-
-
-class weatherIterator(Iterator):
-    index = 0
-
-    def __init__(self, cities):
-        self.cities = cities
-
-    def __next__(self):
-        if self.index == len(self.cities):
-            raise StopIteration
-        city = self.cities[self.index]
-        self.index = self.index + 1
-        return self.getweather(city)
-
-    #获取天气接口API
-    def getweather(self, s):
-        cities = {&apos;北京&apos;: &apos;CH010100&apos;, &apos;上海&apos;: &apos;CH020100&apos;, &apos;广州&apos;: &apos;CH280101&apos;}
-        # 北京：CH010100 上海：CH020100 广州：CH280101
-        # CH280101 http://api.yytianqi.com/forecast7d?city=CH280101&amp;key=rsdo40081gvhnecf
-        r = requests.get(&quot;http://api.yytianqi.com/forecast7d?city=%s&amp;key=rsdo40081gvhnecf&quot; % cities[s])
-        data = r.json()[&apos;data&apos;][&apos;list&apos;][0]
-        return &quot;%s: 白天气温 %s ℃, 夜间气温 %s ℃&quot; % (s, data[&apos;qw1&apos;], data[&apos;qw2&apos;])
-
-
-class weatherIterable(Iterable):
-    def __init__(self, cities):
-        self.cities = cities
-
-    def __iter__(self):
-        return weatherIterator(self.cities)
-
-
-# 先定义一个Iterator实现__next__，再定义一个weatherIterable实现__iter__，最后使用for in 遍历解决
-cities = [&apos;北京&apos;, &apos;上海&apos;, &apos;广州&apos;]
-for x in weatherIterable(cities):
-    print(x)</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-2017052001" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -816,6 +723,78 @@ shaderMaxtrix.postTranslate(dx, 0);
 mWaveShader.setLocalMatrix(shaderMaxtrix); //变换
 
 canvas.drawRect(0, 0, 1440, 300, mViewPaint);</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017030101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/01/2017030101/" class="article-date">
+  	<time datetime="2017-03-01T15:17:33.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/2017030101/">自定义view用到的几种定时刷新方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用"><a href="#1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用" class="headerlink" title="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用"></a>1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用</h4><p><code>Timer timer = new Timer();  
+        TimerTask timerTask = new TimerTask() {  
+            @Override  
+            public void run() {  
+                //具体处理代码  
+                postInvalidate();  
+            }  
+        };  
+timer.schedule(timerTask, 0, 50);</code></p>
+<h4 id="2、使用view内部的延迟刷新方法"><a href="#2、使用view内部的延迟刷新方法" class="headerlink" title="2、使用view内部的延迟刷新方法"></a>2、使用view内部的延迟刷新方法</h4><p><code>public void draw(Canvas canvas) {</code><br><code>postDelayed(new Runnable() {  
+    @Override  
+    public void run() {  
+        //具体处理代码  
+        postInvalidate();  
+    }  
+}, 50);</code><br><code>super.draw(canvas);</code><br><code>}</code></p>
+<h4 id="3、利用属性动画对view里的某个属性进行赋值来实现动画效果"><a href="#3、利用属性动画对view里的某个属性进行赋值来实现动画效果" class="headerlink" title="3、利用属性动画对view里的某个属性进行赋值来实现动画效果"></a>3、利用属性动画对view里的某个属性进行赋值来实现动画效果</h4><p><code>ObjectAnimator waveShiftAnim = ObjectAnimator.ofFloat(  
+        mWaveView, &quot;waveShiftRatio&quot;, 0f, 1f);  
+waveShiftAnim.setRepeatCount(ValueAnimator.INFINITE);  
+waveShiftAnim.setDuration(1000);  
+waveShiftAnim.setInterpolator(new LinearInterpolator());  
+animators.add(waveShiftAnim);</code>  </p>
+
       
     </div>
     
