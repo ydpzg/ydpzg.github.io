@@ -190,6 +190,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017053101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/31/2017053101/" class="article-date">
+  	<time datetime="2017-05-31T13:48:47.000Z" itemprop="datePublished">2017-05-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/31/2017053101/">python 5-2如何处理二进制文件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="掌握二进制处理方法，比如struct-unpack-file-seek-file-tell-file-readinfo-aray-array"><a href="#掌握二进制处理方法，比如struct-unpack-file-seek-file-tell-file-readinfo-aray-array" class="headerlink" title="掌握二进制处理方法，比如struct.unpack;file.seek();file.tell();file.readinfo();aray.array()"></a>掌握二进制处理方法，比如struct.unpack;file.seek();file.tell();file.readinfo();aray.array()</h4><pre><code>file = open(&apos;&apos;, &apos;rb&apos;)
+info = file.read(44)
+import struct
+struct.unpack(&apos;h&apos;, info[22:24]); #解析字节
+ struct.unpack(&apos;i&apos;, info[24:28]);
+
+import array
+file.seek(0,2)#把指针挪到末尾
+file.tell()#指针的位置
+n = (file.tell() - 44) / 2
+buf = array.array(&apos;h&apos;, (0 for _ in range(n)))
+file.seek(44)
+file.readinfo(buf)
+for i in range(n): buf[i] /= 8
+
+f2 = open(&apos;demo2.wav&apos;, &apos;wb&apos;)
+f2.write(info)
+buf.tofile(f2)
+f2.close()</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052603" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -755,78 +823,9 @@ for x in reversed(FloatRange(1.0, 4.0, 0.5)):
 
 
   
-    <article id="post-2017052301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/23/2017052301/" class="article-date">
-  	<time datetime="2017-05-23T13:42:28.000Z" itemprop="datePublished">2017-05-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/23/2017052301/">python 3-3如何使用生成器函数实现可迭代对象</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值"><a href="#重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值" class="headerlink" title="重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值"></a>重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值</h4><pre><code>class PrimeNum:
-    def __init__(self, start, end):
-        self.start = start
-        self.end = end
-
-    def isPrime(self, k):
-        if k &lt; 2:
-            return False
-        for x in range(2, k):
-            if k % x == 0:
-                return False
-        return True
-
-    def __iter__(self):
-        for x in range(self.start, self.end + 1):
-            if self.isPrime(x):
-                yield x
-
-for x in PrimeNum(1, 100):
-    print(x)</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
   
 </div>

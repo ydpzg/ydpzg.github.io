@@ -190,6 +190,63 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019071401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/14/2019071401/" class="article-date">
+  	<time datetime="2019-07-14T15:39:05.000Z" itemprop="datePublished">2019-07-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/14/2019071401/">关于一个对话框component在vue中的的实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>component的文件形态<br>xxx 文件夹<br>    index.js （封装了createDialog方法，操作了dom树）<br>    index.vue</p>
+<p>1、用法：<br>import xxx from ‘xxx/index.js’<br>let dialog = xxx({ YYY: yyy})</p>
+<p>场景：<br>不需要view层的公共类，只需要script层</p>
+<p>注意：<br>控制对话框显示与隐藏的字段是visible，通过值为true or false来代表对话框的显示与隐藏，因为要操作dom树，dom元素的显示隐藏就是visible</p>
+<p>2、用法：<br>import xxx from ‘xxx/index.vue’<br><xxx v-model="showDialog" :yyy="yyy"></xxx></p>
+<p>场景：<br>普通单页业务，既有view层，又有script层</p>
+<p>注意：<br>控制对话框显示与隐藏的字段是value，通过值为true or false来代表对话框的显示与隐藏，因为使用了v-model</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019070401" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -812,77 +869,9 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 
 
   
-    <article id="post-2018110501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/04/2018110501/" class="article-date">
-  	<time datetime="2018-11-04T05:50:57.000Z" itemprop="datePublished">2018-11-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/2018110501/">ios os工程调用swift方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>按照网上的教程</p>
-<p>1、新建一个oc工程</p>
-<p>2、找到工程的embed asset Packs in Product Bundle，设置为Yes<br><img src="http://pd4ketimy.bkt.clouddn.com/15413107425478.jpg" alt></p>
-<p>3、新建一个swift文件，类似</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">printLog</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"hello"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4、在调用处引用头文件</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> <span class="string">"TestSwiftWifthOc-Swift.h"</span> <span class="comment">//TestSwiftWifthOc为当前工程名字</span></span><br></pre></td></tr></table></figure>
-
-<p>然后就可以调用了</p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TestSwift *testSwift = <span class="comment">[<span class="comment">[TestSwift alloc]</span>init]</span>;</span><br><span class="line">    <span class="comment">[testSwift printLog]</span>;</span><br></pre></td></tr></table></figure>
-
-<p>5、但是有些xcode创建的工程会报错，比如我的macbook<br><img src="http://pd4ketimy.bkt.clouddn.com/15413110845076.jpg" alt></p>
-<p>6、进去TestSwiftWifthOc-Swift.h头文件里面看，系统帮我们创建了TestSwift类，但是没有方法，很奇怪</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SWIFT_CLASS(<span class="string">"_TtC16TestSwiftWifthOc9TestSwift"</span>)</span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span></span></span><br><span class="line">- (<span class="keyword">nonnull</span> <span class="keyword">instancetype</span>)init OBJC_DESIGNATED_INITIALIZER;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-
-<p>7、最后找到了解决方法，在swift方法上加注解@objc，问题解决<br>、、、<br>import Foundation</p>
-<p>public class TestSwift : NSObject {<br>    @objc func printLog() {<br>        print(“hello”)<br>    }<br>}<br>、、、</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>

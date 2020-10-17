@@ -190,6 +190,101 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2020101702" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/17/2020101702/" class="article-date">
+  	<time datetime="2020-10-17T15:39:53.000Z" itemprop="datePublished">2020-10-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/17/2020101702/">android反抓包</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####一开始以为很简单</p>
+<p>Android7.0以下<br>第一步<br><a href="https://juejin.im/post/5cb98386e51d456e2c24851d" target="_blank" rel="noopener">https://juejin.im/post/5cb98386e51d456e2c24851d</a><br>client = new OkHttpClient.Builder() .proxy(Proxy.NO_PROXY) .connectTimeout(10, TimeUnit.SECONDS) .readTimeout(10, TimeUnit.SECONDS) .build();</p>
+<p>第二步<br> public static boolean isWifiProxy(Context context) {<br>        final boolean IS_ICS_OR_LATER = Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.ICE_CREAM_SANDWICH;<br>        String proxyAddress;<br>        int proxyPort;<br>        if (IS_ICS_OR_LATER) {<br>            proxyAddress = System.getProperty(“http.proxyHost”);<br>            String portStr = System.getProperty(“http.proxyPort”);<br>            proxyPort = Integer.parseInt((portStr != null ? portStr : “-1”));<br>        } else {<br>            proxyAddress = android.net.Proxy.getHost(context);<br>            proxyPort = android.net.Proxy.getPort(context);<br>        }<br>        return (!TextUtils.isEmpty(proxyAddress)) &amp;&amp; (proxyPort != -1);<br>    }</p>
+<p>android7.0以上<br><a href="https://blog.csdn.net/alcoholdi/article/details/106455192" target="_blank" rel="noopener">https://blog.csdn.net/alcoholdi/article/details/106455192</a></p>
+<p>####然而，抓包却可以使用drony破掉，drony代理了手机所有的流量</p>
+<p>第三步：<br>自带证书走起<br>从运维得到 xxxxx.pem<br>然后使用openssl转换成cer证书<br>openssl x509 -outform der -in xxxxx.pem -out ClientCertificate.cer<br>打印cer证书得到字符串<br>keytool -printcert -rfc -file ClientCertificate.cer    </p>
+<p>链接参考：<br>android设置反抓包：<br><a href="https://juejin.im/post/5d8c593ee51d45783544b9ac" target="_blank" rel="noopener">https://juejin.im/post/5d8c593ee51d45783544b9ac</a><br><a href="https://www.jianshu.com/p/cc7ae2f96b64" target="_blank" rel="noopener">https://www.jianshu.com/p/cc7ae2f96b64</a><br>转换证书：<br><a href="https://www.anquanke.com/post/id/201219" target="_blank" rel="noopener">https://www.anquanke.com/post/id/201219</a></p>
+<p>目的是让客户端验证服务端的https证书<br>最后会报网络错误<br>java.security.cert.CertPathValidatorException: Trust anchor for certification path not found.</p>
+<p>####最后：</p>
+<p>####哈哈，抓包如果还想破也是可以的，需要反编译app，然后找到cer证书，在charles上设置该证书，所以要把cer证书藏得深一点。</p>
+<p>####flutter上的做法<br>charles 只要开了ssl后：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">client2.findProxy = (uri) &#123;</span><br><span class="line">  return <span class="string">"PROXY 10.10.18.4:8888; PROXY 10.10.21.6:8888;"</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[DioErrorType.DEFAULT]: HandshakeException: Handshake <span class="builtin-name">error</span> <span class="keyword">in</span><span class="built_in"> client </span>(OS Error: </span><br><span class="line">CERTIFICATE_VERIFY_FAILED: self signed certificate <span class="keyword">in</span> certificate chain(handshake.cc:354))</span><br></pre></td></tr></table></figure>
+
+<p>加以下的true后，可以抓到包</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">client2.badCertificateCallback = (X509Certificate cert, <span class="built_in">String</span> host, <span class="built_in">int</span> port)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="comment">;</span></span><br><span class="line">client2.badCertificateCallback = (X509Certificate cert, <span class="built_in">String</span> host, <span class="built_in">int</span> port)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>[DioErrorType.DEFAULT]: HandshakeException: Handshake error in client (OS Error:<br>CERTIFICATE_VERIFY_FAILED: self signed certificate in certificate chain(handshake.cc:354))</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;HttpClient&gt; getHttpClient() async &#123;</span><br><span class="line">    <span class="keyword">ByteData </span>data = await rootBundle.load(<span class="string">'images/ClientCertificate.pem'</span>)<span class="comment">;</span></span><br><span class="line">    SecurityContext <span class="built_in">context</span> = SecurityContext.defaultContext<span class="comment">;</span></span><br><span class="line">    <span class="built_in">context</span>.setTrustedCertificatesBytes(data.<span class="keyword">buffer.asUint8List());</span></span><br><span class="line"><span class="keyword"> </span>   HttpClient httpClient = new HttpClient(<span class="built_in">context</span>: <span class="built_in">context</span>)<span class="comment">;</span></span><br><span class="line">    return httpClient<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用的地方<br>…<br>dio = Dio(options);<br>HttpClient client2 = await getHttpClient();<br>(dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate  = (client) {<br>  client2.findProxy = (uri) {<br>    return “PROXY 10.10.18.4:8888; PROXY 10.10.21.6:8888;”;<br>  };<br>  client2.badCertificateCallback = (X509Certificate cert, String host, int port){<br>    return false;<br>  };<br>  return client2;<br>};</p>
+<p>完整</p>
+<p>####最后验证了，如果不开proxy，怎么设置都可以顺利请求数据</p>
+<p><a href="https://book.flutterchina.club/chapter10/http.html" target="_blank" rel="noopener">https://book.flutterchina.club/chapter10/http.html</a><br>证书校验<br>Https中为了防止通过伪造证书而发起的中间人攻击，客户端应该对自签名或非CA颁发的证书进行校验。HttpClient对证书校验的逻辑如下：</p>
+<ol>
+<li>如果请求的Https证书是可信CA颁发的，并且访问host包含在证书的domain列表中(或者符合通配规则)并且证书未过期，则验证通过。</li>
+<li>如果第一步验证失败，但在创建HttpClient时，已经通过SecurityContext将证书添加到证书信任链中，那么当服务器返回的证书在信任链中的话，则验证通过。</li>
+<li>如果1、2验证都失败了，如果用户提供了badCertificateCallback回调，则会调用它，如果回调返回true，则允许继续链接，如果返回false，则终止链接。<br>综上所述，我们的证书校验其实就是提供一个badCertificateCallback回调，下面通过一个示例来说明。<br>上面几句话验证过正确<br>其实，如果要防抓包的话直接一句代码就好，正常请求是可以work，只要代理并且尝试用ssl proxying，那么都禁止即可<br>client2.badCertificateCallback = (X509Certificate cert, String host, int port){<br>return false;<br>};</li>
+</ol>
+<p>最后保险再加一道<br>import ‘package:http_certificate_pinning/http_certificate_pinning.dart’;<br>http_certificate_pinning: ^1.0.3<br>List<string> allowedSHAFingerprints = [‘24:AE:ED:0F:06:35:A9:D5:77:C4:A9:66:D9:56:33:27:97:87:36:4C:83:DF:96:55:FE:8E:A6:04:26:D4:8C:1E’].toList();<br>dio.interceptors.add(CertificatePinningInterceptor(allowedSHAFingerprints));<br>这种方式不好，原因如下</string></p>
+<p>#####最新实验出来的 flutter</p>
+<p>#####这种会导致https线上跑的时候卡顿，原因是每个api接口都去请求一次服务器验证，很慢，1s或者2s时间</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Application.baseUrl.startsWith(<span class="string">'https'</span>)) &#123;</span><br><span class="line">        dio.interceptors.<span class="keyword">add</span>(CertificatePinningInterceptor([Application.HTTPS_FINGERPRINT].toList()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>//防抓包  用dio本身的方式，实际上跟okhttp做法一致</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">getHttpClient().then((<span class="keyword">value</span>) =&gt; &#123;</span><br><span class="line">  (dio.httpClientAdapter <span class="keyword">as</span> DefaultHttpClientAdapter).onHttpClientCreate  = (client) &#123;</span><br><span class="line">    HttpClient httpClient = <span class="keyword">value</span>;</span><br><span class="line">    <span class="keyword">return</span> httpClient;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//获取httpClient</span></span><br><span class="line"><span class="function">Future&lt;HttpClient&gt; <span class="title">getHttpClient</span>(<span class="params"></span>) <span class="keyword">async</span></span> &#123;</span><br><span class="line">  SecurityContext context = SecurityContext();</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    ByteData data = <span class="keyword">await</span> getCert();</span><br><span class="line">    context.setTrustedCertificatesBytes(data.buffer.asUint8List());</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  HttpClient httpClient = HttpClient(context: context);</span><br><span class="line">  <span class="keyword">return</span> httpClient;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>//获取证书</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Future&lt;ByteData&gt; <span class="title">getCert</span>(<span class="params"></span>) <span class="keyword">async</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> rootBundle.load(<span class="string">'images/ClientCertificate.pem'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种防抓包只要攻击者设置了代理抓包，就会报错CERTIFICATE_VERIFY_FAILED，原因对方没我们的cert</p>
+<p>####kotlin版本</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">builder.proxy(Proxy.NO_PROXY);</span><br><span class="line"></span><br><span class="line">X509TrustManager trustManager = HttpTrustManager.createTrustManager();        builder.sslSocketFactory(HttpTrustManager.createSslSocketFactory(trustManager)</span><br><span class="line">, trustManager);</span><br><span class="line">OkHttpClient<span class="built_in"> client </span>= builder.build();</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2020101701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -870,66 +965,9 @@ rewarded unitId: ca-app-pub-3940256099942544/5224354917</code></pre><p>测试的
 
 
   
-    <article id="post-2019071401" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/14/2019071401/" class="article-date">
-  	<time datetime="2019-07-14T15:39:05.000Z" itemprop="datePublished">2019-07-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/2019071401/">关于一个对话框component在vue中的的实现</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>component的文件形态<br>xxx 文件夹<br>    index.js （封装了createDialog方法，操作了dom树）<br>    index.vue</p>
-<p>1、用法：<br>import xxx from ‘xxx/index.js’<br>let dialog = xxx({ YYY: yyy})</p>
-<p>场景：<br>不需要view层的公共类，只需要script层</p>
-<p>注意：<br>控制对话框显示与隐藏的字段是visible，通过值为true or false来代表对话框的显示与隐藏，因为要操作dom树，dom元素的显示隐藏就是visible</p>
-<p>2、用法：<br>import xxx from ‘xxx/index.vue’<br><xxx v-model="showDialog" :yyy="yyy"></xxx></p>
-<p>场景：<br>普通单页业务，既有view层，又有script层</p>
-<p>注意：<br>控制对话框显示与隐藏的字段是value，通过值为true or false来代表对话框的显示与隐藏，因为使用了v-model</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

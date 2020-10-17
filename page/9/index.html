@@ -190,6 +190,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017030102" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/01/2017030102/" class="article-date">
+  	<time datetime="2017-03-01T15:17:36.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/2017030102/">利用BitmapShader来降低自定义view动画效果的难度</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。</p>
+</blockquote>
+<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+Canvas canvas = new Canvas(bitmap);
+
+//…把简单元素画进bitmap变成复杂元素
+
+BitmapShader
+ mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
+Paint mViewPaint.setShader(mWaveShader);
+
+Matrix shaderMaxtrix = new Matrix();//矩阵
+shaderMaxtrix.postTranslate(dx, 0);
+mWaveShader.setLocalMatrix(shaderMaxtrix); //变换
+
+canvas.drawRect(0, 0, 1440, 300, mViewPaint);</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017030101" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -732,62 +798,9 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
 
 
   
-    <article id="post-2016120201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/02/2016120201/" class="article-date">
-  	<time datetime="2016-12-02T14:47:15.000Z" itemprop="datePublished">2016-12-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/2016120201/">android里面使用linux命令的时候报permission.INTERACT_ACROSS_USERS_FULL</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在adb 打命令  am broadcast 发广播的时候，正常返回数据。<br>但是android里面使用Runtime.getRuntime().exec()运行命令的时候，发现报错了，如下</p>
-<p><code>Permission Denial: broadcast asks to run as user -1 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL or android.permission.INTERACT_ACROSS_USERS_</code></p>
-<p>解决方案：<br>在命令里面加个参数  - - user 0，即 am broadcast  - - user 0，此时在android里面就可以正常返回了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
     </nav>
   
 </div>

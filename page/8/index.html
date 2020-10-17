@@ -190,6 +190,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017052301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/23/2017052301/" class="article-date">
+  	<time datetime="2017-05-23T13:42:28.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/23/2017052301/">python 3-3如何使用生成器函数实现可迭代对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值"><a href="#重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值" class="headerlink" title="重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值"></a>重点是yield的使用，传说中的生成器，主要看yield后面的值，就是遍历输出的值</h4><pre><code>class PrimeNum:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def isPrime(self, k):
+        if k &lt; 2:
+            return False
+        for x in range(2, k):
+            if k % x == 0:
+                return False
+        return True
+
+    def __iter__(self):
+        for x in range(self.start, self.end + 1):
+            if self.isPrime(x):
+                yield x
+
+for x in PrimeNum(1, 100):
+    print(x)</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052201" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -773,75 +842,9 @@ reduce(lambda a, b : a &amp; b, map(dict.keys, [s1, s2, s3]))</code></pre>
 
 
   
-    <article id="post-2017030102" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/01/2017030102/" class="article-date">
-  	<time datetime="2017-03-01T15:17:36.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/2017030102/">利用BitmapShader来降低自定义view动画效果的难度</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>基本思路：当遇到某个复杂的动画（基础图片是重复元素）的时候，先分解，把静态的东西写进bitmap，然后利用bitmap生成BitmapShader。此时，可以使用matrix对这个bitmap进行变换，同时也有利于合成更复杂的动画。</p>
-</blockquote>
-<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-Canvas canvas = new Canvas(bitmap);
-
-//…把简单元素画进bitmap变成复杂元素
-
-BitmapShader
- mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
-Paint mViewPaint.setShader(mWaveShader);
-
-Matrix shaderMaxtrix = new Matrix();//矩阵
-shaderMaxtrix.postTranslate(dx, 0);
-mWaveShader.setLocalMatrix(shaderMaxtrix); //变换
-
-canvas.drawRect(0, 0, 1440, 300, mViewPaint);</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 </div>
