@@ -190,6 +190,344 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2016081601" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/16/2016081601/" class="article-date">
+  	<time datetime="2016-08-16T15:30:24.000Z" itemprop="datePublished">2016-08-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/16/2016081601/">购买nexus5，nexus6后应该对机器做的事情</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="前言：对于开发者而言，拥有一台google的亲儿子是多么棒的事情啊，原因就是可以很轻易的安装最新的原生系统，最快的体验到当前最新系统的最新体验。故无论如何也要入手一部可以安装最新系统的手机，当然，土豪多买几台也是好的。不管是去哪里买的手机，到手后检查是否是正品后就可以折腾了。"><a href="#前言：对于开发者而言，拥有一台google的亲儿子是多么棒的事情啊，原因就是可以很轻易的安装最新的原生系统，最快的体验到当前最新系统的最新体验。故无论如何也要入手一部可以安装最新系统的手机，当然，土豪多买几台也是好的。不管是去哪里买的手机，到手后检查是否是正品后就可以折腾了。" class="headerlink" title="前言：对于开发者而言，拥有一台google的亲儿子是多么棒的事情啊，原因就是可以很轻易的安装最新的原生系统，最快的体验到当前最新系统的最新体验。故无论如何也要入手一部可以安装最新系统的手机，当然，土豪多买几台也是好的。不管是去哪里买的手机，到手后检查是否是正品后就可以折腾了。"></a>前言：对于开发者而言，拥有一台google的亲儿子是多么棒的事情啊，原因就是可以很轻易的安装最新的原生系统，最快的体验到当前最新系统的最新体验。故无论如何也要入手一部可以安装最新系统的手机，当然，土豪多买几台也是好的。不管是去哪里买的手机，到手后检查是否是正品后就可以折腾了。</h1></blockquote>
+<h4 id="刷最新的原生系统"><a href="#刷最新的原生系统" class="headerlink" title="刷最新的原生系统"></a>刷最新的原生系统</h4><p>不建议用其他大神优化过的rom，这样不利于开发排除问题，建议直接从官网下载对应手机的rom，然后安装。</p>
+<pre><code>https://developers.google.com/android/nexus/images~</code></pre><p>进去后对最后的提醒进行打钩就可以看到所有nexus设备的工厂镜像了。把对应的nexus最新系统镜像下载下来。如nexus6，就下载”shamu” for Nexus 6的6.0.1 (MOB30W)，下载到本地后是一个zip文件，解压，里面有几个img文件和几个shell文件，其中有一个叫flash-all.sh，待会要用到。<br>把nexus设备关机，然后按住“音量-”键，同时按住电源键，大概2秒后进入bootloader，此时用数据线连接nexus设备和电脑，然后打开电脑的终端。输入命令fastboot devices看看有没有识别到设备，如果有东西显示出来，证明已经识别到nexus设备。<br>用终端定位到nexus镜像的文件夹，输入命令</p>
+<pre><code>./flash_all.sh     </code></pre><p>此时看到终端里不断闪着英文，大概意思就是说清空用户数据，分析nexus设备的存储空间分布清空，然后就依次刷入几个img镜像文件，只要等待完成后nexus设备自动重启。</p>
+<p>涉及到的命令有</p>
+<pre><code>fastboot devices
+fastboot flash xxx  xxx.img</code></pre><h4 id="刷完进去系统的波折"><a href="#刷完进去系统的波折" class="headerlink" title="刷完进去系统的波折"></a>刷完进去系统的波折</h4><p>nexus设备重启后看说明下一步，该忽略的忽略，有个主意的地方是连接wifi，该地方跳过的按钮是灰色的，如果是可以点的，那么选择跳过是最好的选择，但偏偏就是灰色不能点。此时可以连接附近的wifi，但是wifi始终提示是没有连接。猜想是因为没有三清，就去三清，（具体操作为：关机状态“音量-”+电源键，进去bootloader后按音量键选择recovery mode，发现出来一只残了的机器人，此时先按住电源键，再按一下音量+，马上就进去recovery mode，点相关三清的选项就可以了）。三清后还是一样，就猜想是需要翻墙，准备用wifi里设置sock5的shadowsocks，但是一直没有成功，最后使用http的代理，还是在连接的wifi里填同一个局域网的http代理（在mac里用sock5转的http代理），然后就连接上去了，一路next，之后进入系统原生界面。</p>
+<h4 id="原生系统的设置"><a href="#原生系统的设置" class="headerlink" title="原生系统的设置"></a>原生系统的设置</h4><p>设置界面里打开“开发者选项”（在关于手机-&gt;版本号上面点击n下就出现）、“系统界面调谐器”（在导航栏下拉后右上角有个齿轮，按住10秒后出现）。在“安全”里打开“未知来源”、在“开发者选项”里打开“USB调试”。<br>安装一个shadowsocks 的android客户端，下载地址在github上的 shadowsocks项目的wiki里可以找到。翻墙后系统的软件就会自动更新。</p>
+<h4 id="系统的root"><a href="#系统的root" class="headerlink" title="系统的root"></a>系统的root</h4><p>nexus 5和6 root都好简单，只要先刷入第三方的recovery，然后再刷入superSU就可以完成root。<br>在网上找到类似 twrp-2.8.7.1-shamu.img 的twrp第三方recovery，刷入的方法是在bootloader模式下输入命令</p>
+<pre><code>fastboot flash recovery twrp-2.8.7.1-shamu.img</code></pre><p>在网上找到类似 BETA-SuperSU-v2.64-20151220185127.zip 的superSU包，输入的方法是进入twrp第三方recovery （关机状态按音量+和电源键），点击install按钮，选择superSU 的zip包，刷入即可，关于把zip包放到手机sdcard里的步骤如下</p>
+<pre><code>先让手机处于twrp第三方recovery下~
+输入命令 adb push BETA-SuperSU-v2.64-20151220185127.zip /sdcard/</code></pre><h4 id="系统刷入xposed框架"><a href="#系统刷入xposed框架" class="headerlink" title="系统刷入xposed框架"></a>系统刷入xposed框架</h4><p>1、在豌豆荚里找到Xposed 3.0 alpha 4 ，然后进行安装。5.0以上的系统都需要Xposed 3.0。<br>2、刷入Xposed的系统核心包，得在xposed官网下载，选择对应的sdk版本，选择好cpu的位数，高通805以下都是32位，然后下载最新版本的核心包即可，比如nexus6就下载xposed-v86-sdk23-arm.zip，下载地址为</p>
+<pre><code>http://dl-xda.xposed.info/framework/~</code></pre><p>刷入的方法如上面刷superSU一样，同样是zip包，同样也需要在recovery里刷入。然后重启，稍微有点久，进入系统后打开xposed install app，检查是否安装成功，如没有提示异常，则安装成功。</p>
+<p><strong>PS:</strong><br>至此，nexus设备前期应该做的都做完了。该冲浪的冲浪，该码字的码字，该开发的开发，该约会的约会。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nexus/">nexus</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016080901" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/08/2016080901/" class="article-date">
+  	<time datetime="2016-08-08T15:48:37.000Z" itemprop="datePublished">2016-08-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/08/2016080901/">cordova自定义插件入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h1 id="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。-而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。"><a href="#前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。-而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。" class="headerlink" title="前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。"></a>前言：该文章是自定义插件的入门，记录了从零到一的自定义插件的创建过程。 而后面创建的类的名字都是奇奇怪怪的，为的就是不重复，从而让读者更加清楚的理解每个字符串对应的地方。</h1></blockquote>
+<ul>
+<li>创建一个插件文件夹</li>
+</ul>
+<pre><code>mkdir pluginExample2 </code></pre><ul>
+<li>创建android插件里面需要的文件夹和文件</li>
+</ul>
+<pre><code>mkdir pluginExample2 
+mkdir src
+mkdir www
+touch plugin.xml
+cd www
+touch pinging.js
+cd ..
+cd src 
+mkdir android
+cd android
+touch Pinging11.java</code></pre><ul>
+<li>编辑插件的配置文件，让后续cordova项目可以根据配置文件去完成跨平台代码的搬移。（./plugin.xml）</li>
+</ul>
+<p>以下是plugin.xml的代码片段 </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;plugin xmlns=&quot;http://apache.org/cordova/ns/plugins/1.0&quot;
+        id=&quot;com.example.cordova.plugin.pinging&quot; version=&quot;0.0.1&quot;&gt;      ------&lt;1&gt;
+    &lt;name&gt;pinging&lt;/name&gt;        ------&lt;2&gt;
+    &lt;description&gt;example pinging&lt;/description&gt;
+    &lt;license&gt;Apache 2.0&lt;/license&gt;
+    &lt;keywords&gt;cordova,pinging&lt;/keywords&gt;
+    &lt;js-module src=&quot;www/pinging.js&quot; name=&quot;pinging&quot;&gt;      ------&lt;3&gt;
+        &lt;clobbers target=&quot;com.example.cordova.plugin.Pinging22&quot; /&gt;      ------&lt;4&gt;
+    &lt;/js-module&gt;
+    &lt;platform name=&quot;android&quot;&gt;
+        &lt;config-file target=&quot;res/xml/config.xml&quot; parent=&quot;/*&quot;&gt;       ------&lt;5&gt;
+            &lt;feature name=&quot;pinging22&quot;&gt;         ------&lt;6&gt;
+                &lt;param name=&quot;android-package&quot; value=&quot;com.example.cordova.plugin.Pinging11&quot;/&gt;       ------&lt;7&gt;
+            &lt;/feature&gt;
+        &lt;/config-file&gt;
+       &lt;source-file src=&quot;src/android/Pinging11.java&quot; target-dir=&quot;src/com/example/cordova/plugin&quot; /&gt;         ------&lt;8&gt;
+    &lt;/platform&gt;
+&lt;/plugin&gt;</code></pre><p>&lt;1&gt;:该插件的id和版本，类似maven的包名和版本，后续会出现在项目的cordova_plugins.js文件的module.exports.metadata里。<br>&lt;2&gt;:该插件的名字<br>&lt;3&gt;:该插件定义的js接口，主要是指定了文件的路径，属性name貌似没有什么作用<br>&lt;4&gt;:该插件的js调用的命名空间，后续在项目js调用该插件时使用，如com.example.cordova.plugin.Pinging22.init()<br>&lt;5&gt;:指定特定平台的配置文件位置。<br>&lt;6&gt;:该插件某一个模块的名称，后续在www/pinging.js里js调用native类时候出现。如cordova.exec(success, error, ‘pinging22’, ‘init’, <a href></a>);<br>&lt;7&gt;:该插件生成的native文件所在的包名，故native类里必须以这个包名去写代码<br>&lt; 8&gt;:声明该插件使用到的所有源文件，插件存在的文件路径和未来要放置到该平台的包完整路径。</p>
+<ul>
+<li>插件的js接口声明，目的是为了简化js应用层的调用，所有有关native的信息全都封装在这里。</li>
+</ul>
+<p>以下是 pinging.js的代码片段</p>
+<pre><code>var cordova = require(&apos;cordova&apos;);       ------&lt;1&gt;
+var pinging = function() {};       ------&lt;2&gt;
+
+pinging.prototype.init = function(success, error) {       ------&lt;3&gt;
+    cordova.exec(success, error, &apos;pinging22&apos;, &apos;init&apos;, []);        ------&lt;4&gt;
+};
+
+module.exports = new pinging();       ------&lt;5&gt;</code></pre><p>&lt;1&gt;:引入cordova库<br>&lt;2&gt;:声明一个空白类<br>&lt;3&gt;:在类里创建一个叫init的方法<br>&lt;4&gt;:使用exec调用pinging22这个feature里的init方法<br>&lt;5&gt;:导出到cordova里，让其他代码可以调用该文件的内容。</p>
+<ul>
+<li>插件的特定平台android类，提供给js调用的所有方法</li>
+</ul>
+<p> 以下是 Pinging11.java 的代码片段</p>
+<pre><code>package com.example.cordova.plugin;
+
+import android.util.Log;
+import android.widget.Toast;
+
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONException;
+
+import java.util.List;
+
+
+public class Pinging11 extends CordovaPlugin {
+    @Override
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);         ------&lt;1&gt;
+      }
+
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        if (&quot;init&quot;.equals(action)) {            ------&lt;2&gt;
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put(&quot;test&quot;, &quot;test&quot;);
+            callbackContext.success(jsonObject);         ------&lt;3&gt;
+            Toast.makeText(cordova.getActivity().getApplicationContext(), &quot;Pinging11-&gt;init()&quot;, Toast.LENGTH_LONG).show();
+            return true;
+        }
+        return false;
+    }
+}</code></pre><p>&lt;1&gt;: CordovaPlugin的生命周期里的初始化插件<br>&lt;2&gt;:通过判断不同的action，处理不同的方法<br>&lt;3&gt;:方法执行成功后返回成功给前端js调用方</p>
+<ul>
+<li>使用cordova命令生成cordova项目，并添加自定义的插件</li>
+</ul>
+<pre><code>cordova create cordovaExample2 
+cd cordovaExample2
+cordova platform add android
+cordova platform add browser
+cordova plugin add ../pluginExample2</code></pre><p>此时，插件的代码被搬运到具体的平台里去</p>
+<ul>
+<li>在index.js-&gt;onDeviceReady里面写业务代码，在需要调用插件的地方写上调用插件的代码。如下</li>
+</ul>
+<pre><code>com.example.cordova.plugin.Pinging22.init(function() {
+    alert(&quot;success&quot;);
+}, function() {
+    alert(&quot;failed&quot;);
+});</code></pre><ul>
+<li>最后，运行工程，看看效果。</li>
+</ul>
+<pre><code>cordova build android
+cordova run android</code></pre><p>如果发生报错，在使用build命令的时候就会打印出错误日志。</p>
+<p>附上参考网址：</p>
+<blockquote>
+<p><a href="http://cordova.apache.org/docs/en/6.x/plugin_ref/spec.html" target="_blank" rel="noopener">http://cordova.apache.org/docs/en/6.x/plugin_ref/spec.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cordova-plugin/">cordova plugin</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2016080401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/04/2016080401/" class="article-date">
+  	<time datetime="2016-08-04T03:50:21.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/04/2016080401/">android 开发板操作出现“Read-only file system”</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对开发板进行命令行操作，准备对/system/下的东西进行操作，后面出现Read-only file system，需要挂载文件系统后才能可以操作，否则就仅仅制度的权限。在android系统里面使用app Re文件管理器可以挂载文件系统为可读可写，故可以进去操作，前提是需要root权限。<br>找了一下终于找到解决方案<br>打相应的命令：</p>
+<pre><code>1、su 
+2、mount  </code></pre><p>可以查到这个android开发板的设备块名称是/dev/block/by-name/system</p>
+<pre><code>root@octopus-perf:/ # su          ----------1
+root@octopus-perf:/ # mount         ---------2
+rootfs / rootfs rw,relatime 0 0
+tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
+devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
+proc /proc proc rw,relatime 0 0
+sysfs /sys sysfs rw,seclabel,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0
+none /acct cgroup rw,relatime,cpuacct 0 0
+none /sys/fs/cgroup tmpfs rw,seclabel,relatime,mode=750,gid=1000 0 0
+tmpfs /mnt/secure tmpfs rw,seclabel,relatime,mode=700 0 0
+tmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+tmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+none /dev/cpuctl cgroup rw,relatime,cpu 0 0
+debugfs /sys/kernel/debug debugfs rw,relatime 0 0
+/dev/block/by-name/system /system ext4 ro,seclabel,relatime,data=ordered 0 0       ---------------*
+/dev/block/by-name/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,data=ordered 0 0
+/dev/block/by-name/UDISK /data ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,noauto_da_alloc,data=ordered 0 0
+none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
+/dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+/dev/block/vold/179:25 /mnt/extsd vfat rw,dirsync,nosuid,nodev,noexec,relatime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=cp437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
+/dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0</code></pre><p>打命令：</p>
+<pre><code>1、mount -o remount /dev/block/by-name/system /system
+2、mount</code></pre><p>得到下面的结果</p>
+<pre><code>root@octopus-perf:/ # mount -o remount /dev/block/by-name/system /system              ----------------1
+root@octopus-perf:/ # mount            -------------2                                             
+rootfs / rootfs rw,relatime 0 0
+tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
+devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
+proc /proc proc rw,relatime 0 0
+sysfs /sys sysfs rw,seclabel,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0
+none /acct cgroup rw,relatime,cpuacct 0 0
+none /sys/fs/cgroup tmpfs rw,seclabel,relatime,mode=750,gid=1000 0 0
+tmpfs /mnt/secure tmpfs rw,seclabel,relatime,mode=700 0 0
+tmpfs /mnt/asec tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+tmpfs /mnt/obb tmpfs rw,seclabel,relatime,mode=755,gid=1000 0 0
+none /dev/cpuctl cgroup rw,relatime,cpu 0 0
+debugfs /sys/kernel/debug debugfs rw,relatime 0 0
+/dev/block/by-name/system /system ext4 rw,seclabel,relatime,data=ordered 0 0            ---------------*
+/dev/block/by-name/cache /cache ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,data=ordered 0 0
+/dev/block/by-name/UDISK /data ext4 rw,seclabel,nosuid,nodev,noatime,nomblk_io_submit,noauto_da_alloc,data=ordered 0 0
+none /proc/bus/usb usbfs rw,relatime,devmode=666 0 0
+/dev/fuse /mnt/shell/emulated fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0
+/dev/block/vold/179:25 /mnt/extsd vfat rw,dirsync,nosuid,nodev,noexec,relatime,uid=1023,gid=1023,fmask=0007,dmask=0007,allow_utime=0020,codepage=cp437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
+/dev/fuse /storage/extsd fuse rw,nosuid,nodev,relatime,user_id=1023,group_id=1023,default_permissions,allow_other 0 0</code></pre><p>最后使用完后要还原回来（设置为只读状态）：</p>
+<pre><code>1、mount -o remount,r /dev/block/by-name/system /system</code></pre><p>参考：<br><a href="http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054" target="_blank" rel="noopener">http://wojiushiwolxw.spaces.eepw.com.cn/articles/article/item/97054</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2016072601" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -748,7 +1086,7 @@ hexo d</code></pre><h4 id="6-关于文章中的图片问题"><a href="#6-关于�
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 dukelight
+    		&copy; 2020 dukelight
     	</div>
       	<div class="footer-right">
 		    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

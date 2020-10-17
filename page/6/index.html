@@ -190,6 +190,171 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017102801" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/29/2017102801/" class="article-date">
+  	<time datetime="2017-10-28T16:01:36.000Z" itemprop="datePublished">2017-10-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/29/2017102801/">NoScrollListView 跟 android:layerType=&#34;software&#34;，冲突</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>设置了后，画了大概20行就会出现bug，item布局还在，点击事件还在，就是看不到任何东西。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017093001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/30/2017093001/" class="article-date">
+  	<time datetime="2017-09-30T10:01:19.000Z" itemprop="datePublished">2017-09-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/30/2017093001/">防止系统字体大小变化导致app字体大小变化</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"><a href="#大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop" class="headerlink" title="大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在25601440上表现出现是要相对耗时500ms，而xiaop"></a>大屏手机，防止系统字体大小变化导致app字体大小变化。本来是这样写的，但是在2560<em>1440上表现出现是要相对耗时500ms</em>，而xiaop</h4><p><code>Configuration config = context.getResources().getConfiguration();  
+config.fontScale = 1;  
+context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());</code></p>
+<h4 id="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"><a href="#所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现" class="headerlink" title="所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现"></a>所以，改成下面的写法，当fontScale不等于1的时候，设置fontScale等于1，就不会对ui有耗时的表现</h4><p><code>Configuration config = context.getResources().getConfiguration();  
+if (config.fontScale != 1) {  
+    config.fontScale = 1;  
+    context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());  
+}</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-20170901501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/09/15/20170901501/" class="article-date">
+  	<time datetime="2017-09-15T01:44:12.000Z" itemprop="datePublished">2017-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/15/20170901501/">小米手机在android studio ide上run不了的奇葩问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>instant run会导致一直报有一个新的app在手机里，要卸载</p>
+<p>Error:Execution failed for task ‘:app:transformClassesWithInstantRunForDebug’.</p>
+<blockquote>
+<p>android/hardware/fingerprint/FingerprintManager$AuthenticationCallback</p>
+</blockquote>
+<p>终极方案：<br>关instant run+关miui优化+开usb安装+开未知来源</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017090901" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -603,194 +768,6 @@ f2.close()</code></pre>
 
 
   
-    <article id="post-2017052603" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052603/" class="article-date">
-  	<time datetime="2017-05-26T15:53:29.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052603/">python 4-6如何去掉字符串中不需要的字符</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="有很多种"><a href="#有很多种" class="headerlink" title="有很多种"></a>有很多种</h4><pre><code>s = &quot;    jjj   ee    &quot;
-s.strip()
-s.lstrip()
-s.rstrip()
-
-s  = &apos;-----abd++++++&apos;
-s.strip(&apos;-+&apos;)
-
-s = &apos;adb:123&apos;
-s[:3] + s[4:]
-
-s = &apos;\tsss\tcvv\ppp&apos;
-s.replace(&apos;\t&apos;, &apos;&apos;)
-
-s = &apos;\tsss\tcvv\tppp\rfdf\rccc&apos;
-import re
-re.sub(&apos;[\t\r]&apos;, &apos;&apos;)</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052602/" class="article-date">
-  	<time datetime="2017-05-26T14:03:18.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052602/">python 4-5如何对字符串进行左, 右, 居中对齐</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-gt-’’-’三个字符"><a href="#字符串对齐使用ljust-ojust-center或者format的’-lt-‘’-gt-’’-’三个字符" class="headerlink" title="字符串对齐使用ljust,ojust,center或者format的’&lt;‘’&gt;’’^’三个字符"></a>字符串对齐使用ljust,ojust,center或者format的’&lt;‘’&gt;’’^’三个字符</h4><pre><code>s = &apos;abd&apos;
-s.ljust(10, &apos;_&apos;)
-s.rjust(10, &apos;_&apos;)
-s.center(10, &apos;_&apos;)
-format(s, &apos;&lt;10&apos;)
-format(s, &apos;&gt;10&apos;)
-format(s, &apos;^10&apos;)
-
-d ={&apos;a&apos;:100,&apos;adb3dd&apos;:9,&apos;lof&apos;:3444}
-map(len, d.keys())
-list(map(len, d.keys()))
-k = max(map(len, d.keys()))
-for x in d:
-      print(x.ljust(k), &apos;:&apos;, d[x])
-rmax = max(map(len, [str(x) for x in d.values()]))
-rmax
-for x in d:
-     print(x.ljust(k), &apos;:&apos;, str(d[x]).rjust(rmax))</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/26/2017052601/" class="article-date">
-  	<time datetime="2017-05-26T13:38:54.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/2017052601/">python 4-4如何将多个小字符串拼接成一个大的字符串</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="两种方式：1、使用-号连接；2、使用str-join-做字符串连接"><a href="#两种方式：1、使用-号连接；2、使用str-join-做字符串连接" class="headerlink" title="两种方式：1、使用+号连接；2、使用str.join()做字符串连接"></a>两种方式：1、使用+号连接；2、使用str.join()做字符串连接</h4><pre><code>s1=&quot;123&quot;
-s2=&quot;456&quot;
-s1 + s2
-&quot;&quot;.join([&apos;123&apos;, &apos;444&apos;])
-array = [111, &quot;2323&quot;, dd, &quot;pp&quot;]
-&apos;:&apos;.join(str(x) for x in array)</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -803,7 +780,7 @@ array = [111, &quot;2323&quot;, dd, &quot;pp&quot;]
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 dukelight
+    		&copy; 2020 dukelight
     	</div>
       	<div class="footer-right">
 		    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

@@ -190,6 +190,204 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2020-06-10" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/06/10/2020-06-10/" class="article-date">
+  	<time datetime="2020-06-10T05:37:03.074Z" itemprop="datePublished">2020-06-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2020050701" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/07/2020050701/" class="article-date">
+  	<time datetime="2020-05-07T08:35:34.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/07/2020050701/">2020050701</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>背景：需要在某个闭包里面写对应的productFlavor的对应实现闭包。动态赋值，<br>猜想</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、</span><br><span class="line"><span class="comment">//最终目标，但实现不了，原因看完全文</span></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="string">'123'</span> &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="string">'456'</span> &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">2</span>、这样也实现不了，原因是xxx不是顶层，扩展类实现不了</span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    xxx( </span><br><span class="line">        <span class="string">'123'</span> &#123;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="string">'456'</span> &#123;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">3</span>、只能这样实现, xxx是一个方法来的</span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    xxx(<span class="string">'123'</span>) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    xxx(<span class="string">'456'</span>) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1、<br>build.gradle 如果要实现在root写上，如下，但解决不了问题</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class">xxx </span>&#123; <span class="comment">//自定义</span></span><br><span class="line">    <span class="class">yyy </span>&#123;</span><br><span class="line">        <span class="string">"123"</span> &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="string">"456"</span> &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class">android </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class">dependencies </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法如下：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">YYYObj</span> &#123;</span><br><span class="line"></span><br><span class="line">    String name</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">XXXObj</span>(<span class="params">String name</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个扩展</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">YYYExtension</span> &#123;</span><br><span class="line"></span><br><span class="line">    NamedDomainObjectContainer&lt;YYYObj&gt; testDomains</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">YYYExtension</span>(<span class="params">Project project</span>)</span> &#123;</span><br><span class="line">        NamedDomainObjectContainer&lt;YYYObj&gt; domainObjs = project.container(YYYObj)</span><br><span class="line">        testDomains = domainObjs</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//让其支持 Gradle DSL 语法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">yyy</span>(<span class="params">Action&lt;NamedDomainObjectContainer&lt;YYYObj&gt;&gt; action</span>)</span> &#123;</span><br><span class="line">        action.execute(testDomains)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getExtensions().create(<span class="string">"xxx"</span>, YYYExtension, project)   <span class="comment">//这句话是实现在root有一个xxx的关键，这个名字不能是已经存在的，如dependencies，android等</span></span><br><span class="line"></span><br><span class="line">xxx &#123;</span><br><span class="line">    yyy &#123;</span><br><span class="line">        <span class="string">"123"</span> &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="string">"456"</span> &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、下面这种写法解决了我的问题，并且优雅还过得去</p>
+<figure class="highlight flix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">以下两个写法等价</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">equalCurrentFlavorRun</span> </span>= &#123;</span><br><span class="line">    flavor, closure -&gt;</span><br><span class="line">    <span class="keyword">if</span> (getCurrentFlavorName().toLowerCase() == flavor.toLowerCase()) &#123;</span><br><span class="line">        closure(flavor)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">equalCurrentFlavorRun</span></span>(String flavor, Closure closure) &#123;</span><br><span class="line">    <span class="keyword">if</span> (getCurrentFlavorName().toLowerCase() == flavor.toLowerCase()) &#123;</span><br><span class="line">        closure(flavor)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前的flavor名字，得到小写的flavor</span></span><br><span class="line"><span class="keyword">def</span> getCurrentFlavorName() &#123;</span><br><span class="line">    Gradle gradle = getGradle()</span><br><span class="line">    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()</span><br><span class="line">    Pattern pattern</span><br><span class="line">    <span class="keyword">if</span> (tskReqStr.contains(<span class="string">"assemble"</span>))</span><br><span class="line">        pattern = Pattern.<span class="keyword">compile</span>(<span class="string">"assemble(\\w+)(Release|Debug)"</span>)</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (tskReqStr.contains(<span class="string">"channel"</span>))</span><br><span class="line">        pattern = Pattern.<span class="keyword">compile</span>(<span class="string">"channel(\\w+)(Release|Debug)"</span>)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        pattern = Pattern.<span class="keyword">compile</span>(<span class="string">"generate(\\w+)(Release|Debug)"</span>)</span><br><span class="line"></span><br><span class="line">    Matcher matcher = pattern.matcher(tskReqStr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (matcher.<span class="keyword">find</span>())</span><br><span class="line">        <span class="keyword">return</span> matcher.<span class="keyword">group</span>(<span class="number">1</span>).toLowerCase()</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>后面实现就是这样 </p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="comment">//公共的写在这里</span></span><br><span class="line">    testImplementation <span class="string">'junit:junit:4.12'</span></span><br><span class="line">    equalCurrentFlavorRun(<span class="string">"xxx"</span>) &#123;</span><br><span class="line">        <span class="comment">//xxx马甲包单独的</span></span><br><span class="line">        <span class="keyword">implementation</span> <span class="string">'androidx.core:core-ktx:1.1.0'</span></span><br><span class="line">    &#125;</span><br><span class="line">    equalCurrentFlavorRun(<span class="string">"yyy"</span>) &#123;</span><br><span class="line">        <span class="comment">//yyy马甲包单独的</span></span><br><span class="line">        <span class="keyword">implementation</span> <span class="string">'androidx.core:core-ktx:1.0.2'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2020041501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/15/2020041501/" class="article-date">
+  	<time datetime="2020-04-15T01:35:53.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/15/2020041501/">记第一个flutter上线过程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####flutter上gp</p>
+<p>使用app bundle上传google后台，然后google会使用key生成不同架构的app，显示app大小7M<br>~8M这样。<br>优势是从gp下载会自动匹配手机，下载的apk包会比较小。缺点是从gp上下一个apk，但这个包不会是一个完整架构的apk，这个包是不能拿去其他渠道推广的。推广包最好重新打一个具备全部架构的apk包。</p>
+<p>使用apk上传的话是要14M。</p>
+<p><code>上传bundle包给google出现
+Your app bundle targets the following unrecognised languages: fb. The list of supported language codes can be found in the IANA registry. Invalid languages caused by third-party libraries can be excluded using the resConfigs Gradle property.</code><br>需要在app/build.gradle里加下面的代码</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">defaultConfig</span> &#123;</span><br><span class="line">    <span class="attribute">resConfigs</span> <span class="string">"en"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>切记不要在google做实验性的传包，google后台是对包做唯一性的，维度有packageName，versionCode</code></p>
+<p><code>上传自己的key到google后台，这个有坑，注意看清楚在下一步</code></p>
+<p>切记慎点continue，google推荐的第一个方式是google自己生成的key，生成后就改不了，也导不出key以后供其他渠道使用。</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1586916725/blog/fvxn6oliifjegyambqxn.jpg" alt></p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1586916819/blog/d5do1jtm6rithczy6wzi.jpg" alt></p>
+<p>####配置阶段<br>需要在android工程上配置的有：</p>
+<p><code>Androidmanifest.xml</code></p>
+<p>权限： </p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:<span class="attribute">name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>图标+应用名称</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">android:</span>label=<span class="string">"MoneyTopic"</span>   </span><br><span class="line"><span class="symbol">android:</span>icon=<span class="string">"@mipmap/ic_launcher"</span></span><br></pre></td></tr></table></figure>
+
+<p><code>build.gradle</code></p>
+<p>签名：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">signingConfigs</span> &#123;</span><br><span class="line">    <span class="section">release</span> &#123;</span><br><span class="line">        <span class="attribute">storeFile</span> file(<span class="string">'xxx.jks'</span>)</span><br><span class="line">        storePassword <span class="string">''</span></span><br><span class="line">        keyAlias <span class="string">''</span></span><br><span class="line">        keyPassword <span class="string">''</span></span><br><span class="line">        v1SigningEnabled <span class="literal">true</span></span><br><span class="line">        v2SigningEnabled <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">buildTypes &#123;</span><br><span class="line">    <span class="section">release</span> &#123;</span><br><span class="line">        <span class="attribute">signingConfig</span> signingConfigs.release</span><br><span class="line">        minifyEnabled <span class="literal">true</span></span><br><span class="line">        useProguard <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">注意混淆文件proguard-rules.pro的规则</span><br></pre></td></tr></table></figure>
+
+<p>app version 在pubspec.yaml</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">version</span>: 1.0.0+100   <span class="string">//versionName</span>+<span class="keyword">version</span>Code</span><br></pre></td></tr></table></figure>
+
+<p>firebase：使用</p>
+<p>#输入法问题<br><code>解决方案</code><br>需要背景图片</p>
+<ul>
+<li>SingleChildScrollView外包一层Stack<br>不需要背景图片</li>
+<li>包一层SingleChildScrollView</li>
+</ul>
+<p>#点击事件问题<br>onPressed: testAction() 页面加载完会自动进入方法一次</p>
+<p>onPressed: () =&gt; testAction()  正常，页面加载结束不会进入方法</p>
+<p>#try catch 不到问题</p>
+<p>await语法块里面才能呗try catch</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> api.xxx()</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">print</span>(e);  <span class="comment">//才能捕捉到xx里面的报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果await的方法报错，该方法不会执行后面的代码</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">run() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        test();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="built_in">print</span>(e);  <span class="comment">//捕捉不到test里面api的错误，</span></span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"3"</span>);  <span class="comment">//无论如何都会走，不管是报错，还是正确 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Future test() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"1"</span>)  <span class="comment">//跑这个</span></span><br><span class="line">    <span class="keyword">await</span> api.xxx()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"2"</span>)   <span class="comment">//如果报错，不会跑这个</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019122803" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -701,180 +899,6 @@ rewarded unitId: ca-app-pub-3940256099942544/5224354917</code></pre><p>测试的
 
 
   
-    <article id="post-2019070401" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/04/2019070401/" class="article-date">
-  	<time datetime="2019-07-04T01:56:45.000Z" itemprop="datePublished">2019-07-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019070401/">flutter release后报错 No address associated with hostname, errno = 7</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>权限问题<br>android的AndroidManifest要添加网络权限</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:<span class="attribute">name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2019051901" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/05/19/2019051901/" class="article-date">
-  	<time datetime="2019-05-19T05:21:31.000Z" itemprop="datePublished">2019-05-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/19/2019051901/">vue的动画应用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>动画可以使用css动画，也可以用钩子加载js动画</p>
-<p>css动画有个缺点，如果某些动画效果的值需要动态去改变，那只能使用js动画</p>
-<p>如果是多个dom都要连着动画怎么办呢<br>比如需求是一个进度条+小火箭，进度条需要动态的属性是width，小火箭需要动态的属性是margin-left</p>
-<p>那么可以使用transition标签，也可以使用transition-group标签</p>
-<p>使用transition标签，思路是取其中一个dom作为基准，执行js动画，其他dom在基准dom的时间线回调里做属性值的变化，当然，相对于使用transition-group标签，同步的时候那些边界值可能要维护得更多。</p>
-<p>如：</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="keyword">ref</span>=<span class="string">"progressRed"</span> <span class="keyword">class</span>=<span class="string">"head-panel-progress-red"</span> v-<span class="keyword">if</span>=<span class="string">"show"</span> :style=<span class="string">"&#123;'width': `$&#123;marginLeftRocket&#125;`&#125;"</span>  &gt;&lt;/div&gt;</span><br><span class="line">          &lt;transition v-<span class="keyword">on</span>:enter=<span class="string">"enter"</span></span><br><span class="line">                      v-<span class="keyword">on</span>:before-enter=<span class="string">"beforeEnter"</span></span><br><span class="line">                      v-<span class="keyword">on</span>:after-enter=<span class="string">"afterEnter"</span></span><br><span class="line">                      v-<span class="keyword">on</span>:before-leave=<span class="string">"beforeLeave"</span></span><br><span class="line">                      :css=<span class="string">"false"</span></span><br><span class="line">                      name=<span class="string">"animate"</span></span><br><span class="line">                      mode=<span class="string">"in-out"</span>&gt;</span><br><span class="line">            &lt;img <span class="keyword">class</span>=<span class="string">"head-panel-progress-rocket"</span> src=<span class="string">"https://qiniu-koala.kaolalicai.cn/app/cash_flow_record/img_progress_rocket.png"</span> v-<span class="keyword">if</span>=<span class="string">"show"</span> :<span class="keyword">class</span>=<span class="string">"flagClassRocket"</span>&gt;</span><br><span class="line">          &lt;/transition&gt;</span><br><span class="line">          </span><br><span class="line">       </span><br><span class="line">beforeEnter(el) &#123;</span><br><span class="line">    el.style.marginLeft = <span class="string">'0%'</span></span><br><span class="line">&#125;,          </span><br><span class="line">enter(el, done) &#123;</span><br><span class="line">    Velocity(el, &#123;</span><br><span class="line">      marginLeft: `$&#123;<span class="keyword">this</span>.beatPercent&#125;%`</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      duration: <span class="number">1000</span>,</span><br><span class="line">      progress: () =&gt; &#123;</span><br><span class="line">        <span class="keyword">this</span>.marginLeftRocket = el.style.marginLeft</span><br><span class="line">      &#125;,</span><br><span class="line">      complete: () =&gt; &#123;</span><br><span class="line">        done()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  afterEnter(el) &#123;</span><br><span class="line">    <span class="keyword">this</span>.marginLeftRocket = el.style.marginLeft</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeLeave() &#123;</span><br><span class="line">    <span class="keyword">this</span>.marginLeftRocket = <span class="string">'0%'</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>使用transition-group标签，比较简单，n个dom同时执行，动态改变属性值，由系统去维护时间线，完美，可能也有缺点，group的子dom需要统一的标签（这点没验证）。</p>
-<p>如</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;transition-<span class="keyword">group</span> v-<span class="keyword">on</span>:enter=<span class="string">"enter"</span></span><br><span class="line">                  v-<span class="keyword">on</span>:before-enter=<span class="string">"beforeEnter"</span></span><br><span class="line">                  v-<span class="keyword">on</span>:after-enter=<span class="string">"afterEnter"</span></span><br><span class="line">                  v-<span class="keyword">on</span>:before-leave=<span class="string">"beforeLeave"</span></span><br><span class="line">                  :css=<span class="string">"false"</span></span><br><span class="line">                  tag=<span class="string">"div"</span></span><br><span class="line">                  name=<span class="string">"animate"</span></span><br><span class="line">                  mode=<span class="string">"in-out"</span>&gt;</span><br><span class="line">    &lt;div :key=<span class="string">"'progressRed'"</span></span><br><span class="line">         :data-name=<span class="string">"'red'"</span></span><br><span class="line">         <span class="keyword">class</span>=<span class="string">"head-panel-progress-red"</span></span><br><span class="line">         v-<span class="keyword">if</span>=<span class="string">"show"</span> &gt;&lt;/div&gt;</span><br><span class="line">    &lt;div :key=<span class="string">"'progressRocket'"</span></span><br><span class="line">         :data-name=<span class="string">"'rocket'"</span></span><br><span class="line">         <span class="keyword">class</span>=<span class="string">"head-panel-progress-rocket"</span></span><br><span class="line">         v-<span class="keyword">if</span>=<span class="string">"show"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/transition-<span class="keyword">group</span>&gt;</span><br><span class="line"></span><br><span class="line">enter(el, done) &#123;</span><br><span class="line">        <span class="keyword">let</span> properties = el.dataset.name === <span class="string">'rocket'</span> ? &#123; marginLeft: `$&#123;<span class="keyword">this</span>.beatPercent&#125;%` &#125; : &#123; width: `$&#123;<span class="keyword">this</span>.beatPercent&#125;%` &#125;</span><br><span class="line">        Velocity(el, properties, &#123;</span><br><span class="line">          duration: <span class="number">1000</span>,</span><br><span class="line">          complete: () =&gt; &#123;</span><br><span class="line">            done()</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2019051101" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/05/11/2019051101/" class="article-date">
-  	<time datetime="2019-05-11T14:41:29.000Z" itemprop="datePublished">2019-05-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/2019051101/">解决weex或者vue在dev使用ip和localhost</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>尝试weex<br>在dev构建的时候的时候默认是使用ip进行访问，，</p>
-<p>查到在webpack.dev.conf.js的一句代码</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">const ip</span> = require(<span class="string">'ip'</span>).address();</span><br></pre></td></tr></table></figure>
-
-<p>修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了</p>
-<p>后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.0</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devWebpackConfig<span class="selector-class">.devServer</span><span class="selector-class">.host</span> = <span class="string">'0.0.0.0'</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -887,7 +911,7 @@ rewarded unitId: ca-app-pub-3940256099942544/5224354917</code></pre><p>测试的
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 dukelight
+    		&copy; 2020 dukelight
     	</div>
       	<div class="footer-right">
 		    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

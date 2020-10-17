@@ -190,6 +190,180 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2019070401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/04/2019070401/" class="article-date">
+  	<time datetime="2019-07-04T01:56:45.000Z" itemprop="datePublished">2019-07-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/04/2019070401/">flutter release后报错 No address associated with hostname, errno = 7</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>权限问题<br>android的AndroidManifest要添加网络权限</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:<span class="attribute">name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2019051901" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/19/2019051901/" class="article-date">
+  	<time datetime="2019-05-19T05:21:31.000Z" itemprop="datePublished">2019-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/19/2019051901/">vue的动画应用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>动画可以使用css动画，也可以用钩子加载js动画</p>
+<p>css动画有个缺点，如果某些动画效果的值需要动态去改变，那只能使用js动画</p>
+<p>如果是多个dom都要连着动画怎么办呢<br>比如需求是一个进度条+小火箭，进度条需要动态的属性是width，小火箭需要动态的属性是margin-left</p>
+<p>那么可以使用transition标签，也可以使用transition-group标签</p>
+<p>使用transition标签，思路是取其中一个dom作为基准，执行js动画，其他dom在基准dom的时间线回调里做属性值的变化，当然，相对于使用transition-group标签，同步的时候那些边界值可能要维护得更多。</p>
+<p>如：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="keyword">ref</span>=<span class="string">"progressRed"</span> <span class="keyword">class</span>=<span class="string">"head-panel-progress-red"</span> v-<span class="keyword">if</span>=<span class="string">"show"</span> :style=<span class="string">"&#123;'width': `$&#123;marginLeftRocket&#125;`&#125;"</span>  &gt;&lt;/div&gt;</span><br><span class="line">          &lt;transition v-<span class="keyword">on</span>:enter=<span class="string">"enter"</span></span><br><span class="line">                      v-<span class="keyword">on</span>:before-enter=<span class="string">"beforeEnter"</span></span><br><span class="line">                      v-<span class="keyword">on</span>:after-enter=<span class="string">"afterEnter"</span></span><br><span class="line">                      v-<span class="keyword">on</span>:before-leave=<span class="string">"beforeLeave"</span></span><br><span class="line">                      :css=<span class="string">"false"</span></span><br><span class="line">                      name=<span class="string">"animate"</span></span><br><span class="line">                      mode=<span class="string">"in-out"</span>&gt;</span><br><span class="line">            &lt;img <span class="keyword">class</span>=<span class="string">"head-panel-progress-rocket"</span> src=<span class="string">"https://qiniu-koala.kaolalicai.cn/app/cash_flow_record/img_progress_rocket.png"</span> v-<span class="keyword">if</span>=<span class="string">"show"</span> :<span class="keyword">class</span>=<span class="string">"flagClassRocket"</span>&gt;</span><br><span class="line">          &lt;/transition&gt;</span><br><span class="line">          </span><br><span class="line">       </span><br><span class="line">beforeEnter(el) &#123;</span><br><span class="line">    el.style.marginLeft = <span class="string">'0%'</span></span><br><span class="line">&#125;,          </span><br><span class="line">enter(el, done) &#123;</span><br><span class="line">    Velocity(el, &#123;</span><br><span class="line">      marginLeft: `$&#123;<span class="keyword">this</span>.beatPercent&#125;%`</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      duration: <span class="number">1000</span>,</span><br><span class="line">      progress: () =&gt; &#123;</span><br><span class="line">        <span class="keyword">this</span>.marginLeftRocket = el.style.marginLeft</span><br><span class="line">      &#125;,</span><br><span class="line">      complete: () =&gt; &#123;</span><br><span class="line">        done()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  afterEnter(el) &#123;</span><br><span class="line">    <span class="keyword">this</span>.marginLeftRocket = el.style.marginLeft</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeLeave() &#123;</span><br><span class="line">    <span class="keyword">this</span>.marginLeftRocket = <span class="string">'0%'</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>使用transition-group标签，比较简单，n个dom同时执行，动态改变属性值，由系统去维护时间线，完美，可能也有缺点，group的子dom需要统一的标签（这点没验证）。</p>
+<p>如</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;transition-<span class="keyword">group</span> v-<span class="keyword">on</span>:enter=<span class="string">"enter"</span></span><br><span class="line">                  v-<span class="keyword">on</span>:before-enter=<span class="string">"beforeEnter"</span></span><br><span class="line">                  v-<span class="keyword">on</span>:after-enter=<span class="string">"afterEnter"</span></span><br><span class="line">                  v-<span class="keyword">on</span>:before-leave=<span class="string">"beforeLeave"</span></span><br><span class="line">                  :css=<span class="string">"false"</span></span><br><span class="line">                  tag=<span class="string">"div"</span></span><br><span class="line">                  name=<span class="string">"animate"</span></span><br><span class="line">                  mode=<span class="string">"in-out"</span>&gt;</span><br><span class="line">    &lt;div :key=<span class="string">"'progressRed'"</span></span><br><span class="line">         :data-name=<span class="string">"'red'"</span></span><br><span class="line">         <span class="keyword">class</span>=<span class="string">"head-panel-progress-red"</span></span><br><span class="line">         v-<span class="keyword">if</span>=<span class="string">"show"</span> &gt;&lt;/div&gt;</span><br><span class="line">    &lt;div :key=<span class="string">"'progressRocket'"</span></span><br><span class="line">         :data-name=<span class="string">"'rocket'"</span></span><br><span class="line">         <span class="keyword">class</span>=<span class="string">"head-panel-progress-rocket"</span></span><br><span class="line">         v-<span class="keyword">if</span>=<span class="string">"show"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;/transition-<span class="keyword">group</span>&gt;</span><br><span class="line"></span><br><span class="line">enter(el, done) &#123;</span><br><span class="line">        <span class="keyword">let</span> properties = el.dataset.name === <span class="string">'rocket'</span> ? &#123; marginLeft: `$&#123;<span class="keyword">this</span>.beatPercent&#125;%` &#125; : &#123; width: `$&#123;<span class="keyword">this</span>.beatPercent&#125;%` &#125;</span><br><span class="line">        Velocity(el, properties, &#123;</span><br><span class="line">          duration: <span class="number">1000</span>,</span><br><span class="line">          complete: () =&gt; &#123;</span><br><span class="line">            done()</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2019051101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/11/2019051101/" class="article-date">
+  	<time datetime="2019-05-11T14:41:29.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/2019051101/">解决weex或者vue在dev使用ip和localhost</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>尝试weex<br>在dev构建的时候的时候默认是使用ip进行访问，，</p>
+<p>查到在webpack.dev.conf.js的一句代码</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">const ip</span> = require(<span class="string">'ip'</span>).address();</span><br></pre></td></tr></table></figure>
+
+<p>修改成 ip = ‘127.0.0.1’ 后发现dev的时候可以使用localhost访问了，但ip却不行了</p>
+<p>后来网上找了解决方案，发现在配置server的时候，需要配个host，即0.0.0.0</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devWebpackConfig<span class="selector-class">.devServer</span><span class="selector-class">.host</span> = <span class="string">'0.0.0.0'</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1557586227/blog/dqdly0vj6hnqcccttlya.jpg" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2019041401" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -706,193 +880,6 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
 
 
   
-    <article id="post-2018102301" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/23/2018102301/" class="article-date">
-  	<time datetime="2018-10-23T07:26:32.000Z" itemprop="datePublished">2018-10-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/23/2018102301/">RxJava多个api的处理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>RxJava多个api的处理</p>
-<p>merge 单独输出，统一结束回调，api同时出去</p>
-<p>zip 封装在一起，最后统一输出和结束回调，api同时出去</p>
-<p>flatMap 一个请求回来再进行下一个请求</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018101501" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/15/2018101501/" class="article-date">
-  	<time datetime="2018-10-15T05:59:12.000Z" itemprop="datePublished">2018-10-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/15/2018101501/">项目升级android P注意点点</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、http报错CLEARTEXT communication to host not permitted by network<br><a href="https://blog.csdn.net/qq_18620851/article/details/80617549" target="_blank" rel="noopener">https://blog.csdn.net/qq_18620851/article/details/80617549</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018101401" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/14/2018101401/" class="article-date">
-  	<time datetime="2018-10-14T05:44:42.000Z" itemprop="datePublished">2018-10-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/2018101401/">ios storyboard的入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>0、如何让storyboard的ViewController控件绑定代码的ViewController</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在storyboard里面创建了一个ViewController后，要在代码那边创建一个</span><br><span class="line">自定义Controller去继承UIViewController，然后在storyboard里面选择对应的custom <span class="class"><span class="keyword">class</span>为自定义<span class="title">Controller</span>，就可以完成关联</span></span><br></pre></td></tr></table></figure>
-
-<p>1、如何让storyboard与代码进行事件交互。</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在storyboard里拉出一个<span class="keyword">label</span>和一个button，然后屏幕调出来两个界面，一个storyboard，一个controller的代码框</span><br><span class="line">选中storyboard里的<span class="keyword">label</span>，右键按住，拉到代码框的@<span class="keyword">interface</span> @<span class="keyword">end</span>中间，就会出现<span class="keyword">label</span>的定义</span><br><span class="line">选中storyboard里的button，右键按住，拉到代码框的@<span class="keyword">implementation</span> @<span class="keyword">end</span>中间，就会出现button的事件定义</span><br></pre></td></tr></table></figure>
-
-<p>1、出现Launch screens may not set custom classnames问题</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">图中所画的不要打勾</span><br><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">http</span>:<span class="comment">//pd4ketimy.bkt.clouddn.com/15394960479910.jpg)</span></span><br></pre></td></tr></table></figure>
-
-<p>4、如何设定storyboard的入口</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在<span class="selector-tag">storyborad</span>的<span class="selector-tag">viewController</span>里面设置，如下图，红色那个选项打勾</span><br><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">http</span>:<span class="comment">//pd4ketimy.bkt.clouddn.com/15394966538273.jpg)</span></span><br></pre></td></tr></table></figure>
-
-<p>5、多个storyBoard，怎么设置特定的storyBoard</p>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目-&gt;<span class="function"><span class="title">info</span>.plist-&gt;</span>Main storyboard file base <span class="keyword">name</span> 设置为指定的storyBoard即可</span><br></pre></td></tr></table></figure>
-
-<p>6、使用storyBoard生成viewController，关联viewController后，代码pushViewController 黑屏</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">SecondController</span> <span class="meta">*controller</span> <span class="string">=</span> <span class="string">[[SecondController</span> <span class="string">alloc]init];</span></span><br><span class="line"><span class="string">[self.navigationController</span> <span class="attr">pushViewController:controller</span> <span class="attr">animated:YES];</span></span><br><span class="line"></span><br><span class="line"><span class="string">使用storyBoard创建的时候已经有了一个viewController实例，不应该在代码里再alloc</span> <span class="string">init另外一个controller，解决方案就是要去storyBoard里面把viewController拿出来</span></span><br><span class="line"></span><br><span class="line"> <span class="string">UIStoryboard</span> <span class="meta">*main</span> <span class="string">=[UIStoryboard</span> <span class="attr">storyboardWithName:@"LaunchScreen"</span> <span class="attr">bundle:nil];</span></span><br><span class="line">    <span class="string">SecondController</span> <span class="meta">*b</span> <span class="string">=</span> <span class="string">[main</span> <span class="attr">instantiateViewControllerWithIdentifier:@"SecondController"];</span></span><br><span class="line">    <span class="string">[self.navigationController</span> <span class="attr">pushViewController:b</span> <span class="attr">animated:YES];</span></span><br></pre></td></tr></table></figure>
-
-<p>7、回调的使用，<br>block<br>定义typeof<br>方法里面写</p>
-<p>8、cocopad的安装使用</p>
-<p>9、当改用cocoapods来管理依赖，<br>编译的时候提示 “ objc ld: library not found for -lPods”<br>这是因为打开的方式不对<br>之前打开的是.xcodeproj<br>用cocoapods后打开的是.xcworkspace</p>
-<p>target -&gt; Build Phases -&gt; Link Binary With Libraries -&gt; 添加.a文件</p>
-<p>10、数据库fmdb-&gt;orm</p>
-<p>11、UITable的使用</p>
-<p>12、storyboard使用xib的自定义view<br>新建一个.h .m文件叫ItemView<br>新建一个.xib文件叫ItemView<br>在xib文件里，设置view customView为空 设置file’s Owner的custionView为ItemView<br>storyboard里拖出一个UIview，custom class指向ItemView<br>在ItemView.m里添加</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIView</span> *view;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化CustomView的时候添加xib上的view</span></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder &#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithCoder:aDecoder];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>)&#123;</span><br><span class="line">        [<span class="keyword">self</span> addSubview:<span class="keyword">self</span>.view];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取xib中的view</span></span><br><span class="line">- (<span class="built_in">UIView</span> *)view&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_view) &#123;</span><br><span class="line">        _view = [[<span class="built_in">NSBundle</span> mainBundle] loadNibNamed:<span class="string">@"ItemView"</span> owner:<span class="keyword">self</span> options:<span class="literal">nil</span>].lastObject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _view;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)layoutSubviews&#123;</span><br><span class="line">    [<span class="keyword">super</span> layoutSubviews];</span><br><span class="line">    <span class="comment">//设置大小</span></span><br><span class="line">    <span class="keyword">self</span>.view.frame = <span class="keyword">self</span>.bounds;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>13、给非UiButton的控件加点击事件</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[_mIBSetDeviceTime <span class="string">setUserInteractionEnabled:</span>YES];</span><br><span class="line">    [_mIBSetDeviceTime <span class="string">addGestureRecognizer:</span>[[UITapGestureRecognizer alloc]<span class="string">initWithTarget:</span>self <span class="string">action:</span><span class="meta">@selector</span>(<span class="string">clickCategory:</span>)]];</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)<span class="string">clickCategory:</span>(UITapGestureRecognizer *)gestureRecognizer &#123;</span><br><span class="line">    <span class="keyword">if</span> ([gestureRecognizer view] == _mIBSetDeviceTime) &#123;</span><br><span class="line">        NSLog(@<span class="string">"_mIBSetDeviceTime"</span>);<span class="comment">//判断是哪个控件的点击</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>14、fragment如果要使用kotlin的 apply plugin: ‘kotlin-android-extensions’</p>
-<p>那么必须放在onActivityCreated后才能生效<br>onCreateView里面的是为空的</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -905,7 +892,7 @@ ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root_container_layou
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 dukelight
+    		&copy; 2020 dukelight
     	</div>
       	<div class="footer-right">
 		    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>记第一个flutter上线过程 | dukelight&#39;s home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="####flutter上gp 使用app bundle上传google后台，然后google会使用key生成不同架构的app，显示app大小7M~8M这样。优势是从gp下载会自动匹配手机，下载的apk包会比较小。缺点是从gp上下一个apk，但这个包不会是一个完整架构的apk，这个包是不能拿去其他渠道推广的。推广包最好重新打一个具备全部架构的apk包。 使用apk上传的话是要14M。 上传bundl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记第一个flutter上线过程">
+<meta property="og:url" content="http://ydpzg.github.io/2020/04/15/2020041501/index.html">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="####flutter上gp 使用app bundle上传google后台，然后google会使用key生成不同架构的app，显示app大小7M~8M这样。优势是从gp下载会自动匹配手机，下载的apk包会比较小。缺点是从gp上下一个apk，但这个包不会是一个完整架构的apk，这个包是不能拿去其他渠道推广的。推广包最好重新打一个具备全部架构的apk包。 使用apk上传的话是要14M。 上传bundl">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1586916725/blog/fvxn6oliifjegyambqxn.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1586916819/blog/d5do1jtm6rithczy6wzi.jpg">
+<meta property="og:updated_time" content="2020-04-21T07:07:22.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记第一个flutter上线过程">
+<meta name="twitter:description" content="####flutter上gp 使用app bundle上传google后台，然后google会使用key生成不同架构的app，显示app大小7M~8M这样。优势是从gp下载会自动匹配手机，下载的apk包会比较小。缺点是从gp上下一个apk，但这个包不会是一个完整架构的apk，这个包是不能拿去其他渠道推广的。推广包最好重新打一个具备全部架构的apk包。 使用apk上传的话是要14M。 上传bundl">
+<meta name="twitter:image" content="https://res.cloudinary.com/dhdnjapus/image/upload/v1586916725/blog/fvxn6oliifjegyambqxn.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://res.cloudinary.com/dhdnjapus/image/upload/v1575628921/avatar_b8wzph.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">dukelight</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="http://www.github.com/ydpzg" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Activity-intent-flag/" style="font-size: 10px;">Activity intent flag</a> <a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/cordova-plugin/" style="font-size: 10px;">cordova plugin</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/usb/" style="font-size: 10px;">usb</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/印象笔记/" style="font-size: 10px;">印象笔记</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.baidu.com/">百度</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://keeganlee.me/">Keegan小钢</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.gitbook.com/book/dodola/gitbook/details">dodola&#39;s Gitbook</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wuxiaolong.me/">吴小龙同學</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一个移动领域的攻城师，一个初出茅庐的小子，小余同学，这就是我。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">dukelight</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://res.cloudinary.com/dhdnjapus/image/upload/v1575628921/avatar_b8wzph.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">dukelight</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://www.github.com/ydpzg" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2020041501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/15/2020041501/" class="article-date">
+  	<time datetime="2020-04-15T01:35:53.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      记第一个flutter上线过程
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####flutter上gp</p>
+<p>使用app bundle上传google后台，然后google会使用key生成不同架构的app，显示app大小7M<br>~8M这样。<br>优势是从gp下载会自动匹配手机，下载的apk包会比较小。缺点是从gp上下一个apk，但这个包不会是一个完整架构的apk，这个包是不能拿去其他渠道推广的。推广包最好重新打一个具备全部架构的apk包。</p>
+<p>使用apk上传的话是要14M。</p>
+<p><code>上传bundle包给google出现
+Your app bundle targets the following unrecognised languages: fb. The list of supported language codes can be found in the IANA registry. Invalid languages caused by third-party libraries can be excluded using the resConfigs Gradle property.</code><br>需要在app/build.gradle里加下面的代码</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">defaultConfig</span> &#123;</span><br><span class="line">    <span class="attribute">resConfigs</span> <span class="string">"en"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>切记不要在google做实验性的传包，google后台是对包做唯一性的，维度有packageName，versionCode</code></p>
+<p><code>上传自己的key到google后台，这个有坑，注意看清楚在下一步</code></p>
+<p>切记慎点continue，google推荐的第一个方式是google自己生成的key，生成后就改不了，也导不出key以后供其他渠道使用。</p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1586916725/blog/fvxn6oliifjegyambqxn.jpg" alt></p>
+<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1586916819/blog/d5do1jtm6rithczy6wzi.jpg" alt></p>
+<p>####配置阶段<br>需要在android工程上配置的有：</p>
+<p><code>Androidmanifest.xml</code></p>
+<p>权限： </p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:<span class="attribute">name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>图标+应用名称</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">android:</span>label=<span class="string">"MoneyTopic"</span>   </span><br><span class="line"><span class="symbol">android:</span>icon=<span class="string">"@mipmap/ic_launcher"</span></span><br></pre></td></tr></table></figure>
+
+<p><code>build.gradle</code></p>
+<p>签名：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">signingConfigs</span> &#123;</span><br><span class="line">    <span class="section">release</span> &#123;</span><br><span class="line">        <span class="attribute">storeFile</span> file(<span class="string">'xxx.jks'</span>)</span><br><span class="line">        storePassword <span class="string">''</span></span><br><span class="line">        keyAlias <span class="string">''</span></span><br><span class="line">        keyPassword <span class="string">''</span></span><br><span class="line">        v1SigningEnabled <span class="literal">true</span></span><br><span class="line">        v2SigningEnabled <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">buildTypes &#123;</span><br><span class="line">    <span class="section">release</span> &#123;</span><br><span class="line">        <span class="attribute">signingConfig</span> signingConfigs.release</span><br><span class="line">        minifyEnabled <span class="literal">true</span></span><br><span class="line">        useProguard <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">注意混淆文件proguard-rules.pro的规则</span><br></pre></td></tr></table></figure>
+
+<p>app version 在pubspec.yaml</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">version</span>: 1.0.0+100   <span class="string">//versionName</span>+<span class="keyword">version</span>Code</span><br></pre></td></tr></table></figure>
+
+<p>firebase：使用</p>
+<p>#输入法问题<br><code>解决方案</code><br>需要背景图片</p>
+<ul>
+<li>SingleChildScrollView外包一层Stack<br>不需要背景图片</li>
+<li>包一层SingleChildScrollView</li>
+</ul>
+<p>#点击事件问题<br>onPressed: testAction() 页面加载完会自动进入方法一次</p>
+<p>onPressed: () =&gt; testAction()  正常，页面加载结束不会进入方法</p>
+<p>#try catch 不到问题</p>
+<p>await语法块里面才能呗try catch</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> api.xxx()</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">print</span>(e);  <span class="comment">//才能捕捉到xx里面的报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果await的方法报错，该方法不会执行后面的代码</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">run() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        test();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="built_in">print</span>(e);  <span class="comment">//捕捉不到test里面api的错误，</span></span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"3"</span>);  <span class="comment">//无论如何都会走，不管是报错，还是正确 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Future test() <span class="keyword">async</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"1"</span>)  <span class="comment">//跑这个</span></span><br><span class="line">    <span class="keyword">await</span> api.xxx()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"2"</span>)   <span class="comment">//如果报错，不会跑这个</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/07/2020050701/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          2020050701
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/28/2019122803/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android生成日历提醒事件</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2020041501" data-title="记第一个flutter上线过程" data-url="http://ydpzg.github.io/2020/04/15/2020041501/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2020 dukelight
+    	</div>
+      	<div class="footer-right">
+		    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+		    <span class="post-meta-divider">|</span>
+		    <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人</span>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

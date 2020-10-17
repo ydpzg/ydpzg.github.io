@@ -190,6 +190,193 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2018102301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/23/2018102301/" class="article-date">
+  	<time datetime="2018-10-23T07:26:32.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/23/2018102301/">RxJava多个api的处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>RxJava多个api的处理</p>
+<p>merge 单独输出，统一结束回调，api同时出去</p>
+<p>zip 封装在一起，最后统一输出和结束回调，api同时出去</p>
+<p>flatMap 一个请求回来再进行下一个请求</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2018101501" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/15/2018101501/" class="article-date">
+  	<time datetime="2018-10-15T05:59:12.000Z" itemprop="datePublished">2018-10-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/15/2018101501/">项目升级android P注意点点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、http报错CLEARTEXT communication to host not permitted by network<br><a href="https://blog.csdn.net/qq_18620851/article/details/80617549" target="_blank" rel="noopener">https://blog.csdn.net/qq_18620851/article/details/80617549</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2018101401" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/14/2018101401/" class="article-date">
+  	<time datetime="2018-10-14T05:44:42.000Z" itemprop="datePublished">2018-10-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/14/2018101401/">ios storyboard的入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>0、如何让storyboard的ViewController控件绑定代码的ViewController</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在storyboard里面创建了一个ViewController后，要在代码那边创建一个</span><br><span class="line">自定义Controller去继承UIViewController，然后在storyboard里面选择对应的custom <span class="class"><span class="keyword">class</span>为自定义<span class="title">Controller</span>，就可以完成关联</span></span><br></pre></td></tr></table></figure>
+
+<p>1、如何让storyboard与代码进行事件交互。</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在storyboard里拉出一个<span class="keyword">label</span>和一个button，然后屏幕调出来两个界面，一个storyboard，一个controller的代码框</span><br><span class="line">选中storyboard里的<span class="keyword">label</span>，右键按住，拉到代码框的@<span class="keyword">interface</span> @<span class="keyword">end</span>中间，就会出现<span class="keyword">label</span>的定义</span><br><span class="line">选中storyboard里的button，右键按住，拉到代码框的@<span class="keyword">implementation</span> @<span class="keyword">end</span>中间，就会出现button的事件定义</span><br></pre></td></tr></table></figure>
+
+<p>1、出现Launch screens may not set custom classnames问题</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">图中所画的不要打勾</span><br><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">http</span>:<span class="comment">//pd4ketimy.bkt.clouddn.com/15394960479910.jpg)</span></span><br></pre></td></tr></table></figure>
+
+<p>4、如何设定storyboard的入口</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在<span class="selector-tag">storyborad</span>的<span class="selector-tag">viewController</span>里面设置，如下图，红色那个选项打勾</span><br><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">http</span>:<span class="comment">//pd4ketimy.bkt.clouddn.com/15394966538273.jpg)</span></span><br></pre></td></tr></table></figure>
+
+<p>5、多个storyBoard，怎么设置特定的storyBoard</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目-&gt;<span class="function"><span class="title">info</span>.plist-&gt;</span>Main storyboard file base <span class="keyword">name</span> 设置为指定的storyBoard即可</span><br></pre></td></tr></table></figure>
+
+<p>6、使用storyBoard生成viewController，关联viewController后，代码pushViewController 黑屏</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">SecondController</span> <span class="meta">*controller</span> <span class="string">=</span> <span class="string">[[SecondController</span> <span class="string">alloc]init];</span></span><br><span class="line"><span class="string">[self.navigationController</span> <span class="attr">pushViewController:controller</span> <span class="attr">animated:YES];</span></span><br><span class="line"></span><br><span class="line"><span class="string">使用storyBoard创建的时候已经有了一个viewController实例，不应该在代码里再alloc</span> <span class="string">init另外一个controller，解决方案就是要去storyBoard里面把viewController拿出来</span></span><br><span class="line"></span><br><span class="line"> <span class="string">UIStoryboard</span> <span class="meta">*main</span> <span class="string">=[UIStoryboard</span> <span class="attr">storyboardWithName:@"LaunchScreen"</span> <span class="attr">bundle:nil];</span></span><br><span class="line">    <span class="string">SecondController</span> <span class="meta">*b</span> <span class="string">=</span> <span class="string">[main</span> <span class="attr">instantiateViewControllerWithIdentifier:@"SecondController"];</span></span><br><span class="line">    <span class="string">[self.navigationController</span> <span class="attr">pushViewController:b</span> <span class="attr">animated:YES];</span></span><br></pre></td></tr></table></figure>
+
+<p>7、回调的使用，<br>block<br>定义typeof<br>方法里面写</p>
+<p>8、cocopad的安装使用</p>
+<p>9、当改用cocoapods来管理依赖，<br>编译的时候提示 “ objc ld: library not found for -lPods”<br>这是因为打开的方式不对<br>之前打开的是.xcodeproj<br>用cocoapods后打开的是.xcworkspace</p>
+<p>target -&gt; Build Phases -&gt; Link Binary With Libraries -&gt; 添加.a文件</p>
+<p>10、数据库fmdb-&gt;orm</p>
+<p>11、UITable的使用</p>
+<p>12、storyboard使用xib的自定义view<br>新建一个.h .m文件叫ItemView<br>新建一个.xib文件叫ItemView<br>在xib文件里，设置view customView为空 设置file’s Owner的custionView为ItemView<br>storyboard里拖出一个UIview，custom class指向ItemView<br>在ItemView.m里添加</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIView</span> *view;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化CustomView的时候添加xib上的view</span></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder &#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> initWithCoder:aDecoder];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>)&#123;</span><br><span class="line">        [<span class="keyword">self</span> addSubview:<span class="keyword">self</span>.view];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取xib中的view</span></span><br><span class="line">- (<span class="built_in">UIView</span> *)view&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_view) &#123;</span><br><span class="line">        _view = [[<span class="built_in">NSBundle</span> mainBundle] loadNibNamed:<span class="string">@"ItemView"</span> owner:<span class="keyword">self</span> options:<span class="literal">nil</span>].lastObject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _view;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)layoutSubviews&#123;</span><br><span class="line">    [<span class="keyword">super</span> layoutSubviews];</span><br><span class="line">    <span class="comment">//设置大小</span></span><br><span class="line">    <span class="keyword">self</span>.view.frame = <span class="keyword">self</span>.bounds;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>13、给非UiButton的控件加点击事件</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[_mIBSetDeviceTime <span class="string">setUserInteractionEnabled:</span>YES];</span><br><span class="line">    [_mIBSetDeviceTime <span class="string">addGestureRecognizer:</span>[[UITapGestureRecognizer alloc]<span class="string">initWithTarget:</span>self <span class="string">action:</span><span class="meta">@selector</span>(<span class="string">clickCategory:</span>)]];</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)<span class="string">clickCategory:</span>(UITapGestureRecognizer *)gestureRecognizer &#123;</span><br><span class="line">    <span class="keyword">if</span> ([gestureRecognizer view] == _mIBSetDeviceTime) &#123;</span><br><span class="line">        NSLog(@<span class="string">"_mIBSetDeviceTime"</span>);<span class="comment">//判断是哪个控件的点击</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>14、fragment如果要使用kotlin的 apply plugin: ‘kotlin-android-extensions’</p>
+<p>那么必须放在onActivityCreated后才能生效<br>onCreateView里面的是为空的</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2018092901" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -584,225 +771,6 @@
 
 
   
-    <article id="post-2018080602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/06/2018080602/" class="article-date">
-  	<time datetime="2018-08-06T09:54:19.000Z" itemprop="datePublished">2018-08-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/06/2018080602/">上传到maven</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用自定义gradle插件</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018080601" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/05/2018080601/" class="article-date">
-  	<time datetime="2018-08-05T09:36:44.000Z" itemprop="datePublished">2018-08-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/05/2018080601/">kotlin实践</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>Apple.kt<br>val fun(name:String) {<br>println(name)<br>}<br>in kotlin<br>Apple.fun()<br>in java<br>AppleKt.fun()</p>
-<hr>
-<p>object关键词声明同时是单例的写法：<br>object Apple {<br>fun echo(name:String) {<br>println(name)<br>}<br>}<br>in kotlin<br>Apple.echo()<br>in java<br>Apple.INSTANCE.echo()</p>
-<hr>
-<p>kotlin中class作为参数的写法<br>fun main(args: Array&lt;String&gt;) {<br>test(JavaObject::class.java)<br>test(KotlinObject::class)<br>}<br>fun test(clazz: Class&lt;JavaObject&gt;) {<br>println(clazz.simpleName)<br>}<br>fun test(clazz: KClass&lt;KotlinObject&gt;) {<br>println(clazz.simpleName)<br>}</p>
-<hr>
-<p>java中的in变量在kotlin中是关键字<br>public class JavaObject {<br>public static final String in = “int”;<br>}<br>调用：<br>println(JavaObject.<code>in</code>)</p>
-<hr>
-<p>kotlin是没有封装类的，比如Integer<br>如何通过反射去调用Integer类型</p>
-<p>在调用java代码的时候，在不确定是否是非空且安全的，一定要声明成可空安全的类型，如string？     string?.length<br>假设两种情况 :string    :string! (兼容类型，暂时存在)，就会导致报错</p>
-<hr>
-<p>用注解@jvmStatic，修饰类成员方法，可以让调用简化：<br>如：<br>object Test {<br>        @jvmStatic<br>fun test() {<br>}<br>}</p>
-<p>Test.test(),<br>假设不加注解@jvmStatic，调用就是Test.Instance.test()</p>
-<hr>
-<p>函数<br>1 .函数可以省略{} 写在fun函数后面<br>fun getName(name: String = “me “):String?= “ hello “</p>
-<p>2.函数嵌套<br>不推荐使用，降低代码可读性<br><strong>在某些条件下触发递归的函数，或者不希望被外部函数访问到的函数，</strong><br>如，对外只是function，say不被外部函数访问<br>fun function() {<br>    val str = “hello”<br>    fun say(count: Int) {<br>        println(“$str,$count”)<br>        if (count &gt; 0) {<br>            say(count - 1)<br>        }<br>    }<br>    say(5)<br>}</p>
-<hr>
-<p>扩展函数<br>静态的给一个类添加一个方法或者一个变量，不具备运行时多态<br>扩展成员方法，成员变量<br>fun KtObject.hello: String = “ hello “</p>
-<p>in java<br>KtObjectKt.hello(object)   有待验证</p>
-<hr>
-<p>闭包<br>val  echo = {<br>name: String -&gt;<br>println(name)<br>}<br>echo(“hello”)</p>
-<p>原理：就是匿名内部类<br>lambda参数上限是22个，可以手动定义在延长这个上限</p>
-<hr>
-<p>高阶函数，<br>类里的方法可以当作参数赋值，<br>inline建议只用于高阶函数，不然会加重编译器的负担，等于把语句嵌进去</p>
-<p>inline fun onlyif(isDebug: Boolean, block: ()-&gt;Unit) {<br>    if (isDebug) {<br>        block()<br>    }<br>}<br>fun main(args: Array&lt;String&gt;) {  </p>
-<pre><code>val runnable = Runnable {  
-    println(&quot;runnable&quot;)  
-}  
-
-val function: () -\&gt; Unit  
-function = runnable::run  
-
-onlyif(true, function)  </code></pre><p>}</p>
-<hr>
-<p>类与对象<br>class A:B {}<br>open class</p>
-<p>open class(var int:Int): B(){<br>val v<br>init{<br>v = 5<br>}<br>constructor(int :Int):super(int)<br>constructor(int:int, str:String):this(int)</p>
-<p>}</p>
-<p>伴生对象，，，单例<br>kotlin 是没有static关键字的<br>private<br>protected<br>publick<br>internal 模块内可以访问，，，即module<br>伴生对象：<br>class A {<br>    companion object {<br>        fun isEmpty(str:String?): Boolean {}<br>    }<br>}</p>
-<p>kotlin A.isEmpty(xxx)<br>java A.Companion.isEmpty(xxx)  生成一个static对象Compantion</p>
-<p>伴生对象用来生成单例</p>
-<p>class Single private constructor() {<br>    companion object {<br>        fun get(): Single() {<br>            return Holder.instance<br>        }<br>    }<br>    private object Holder {<br>        val instance = Single()<br>    }<br>}</p>
-<p>java动态代理就是指一般静态代理基础上，为了解决静态代理需要写很多代理方法带来的重复工作，从而利用放射在运行时自动去寻找对应的代理方法。<br>kotlin的动态代理 使用by关键字</p>
-<p>如果是以前java，一般做法是采用静态代理</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bark</span><span class="params">()</span></span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">jump</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>: <span class="type">Animal &#123;</span></span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">jump</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"jump"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">bark</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"bark"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态代理类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zoo</span></span>(animal: Animal): Animal&#123;</span><br><span class="line">    <span class="keyword">var</span> mAnimal: Animal? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        mAnimal = animal</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">jump</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mAnimal?.jump()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">bark</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mAnimal?.bark()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestAnimal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@JvmStatic</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">            Zoo(Dog()).bark()</span><br><span class="line">            Zoo(Dog()).jump()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>kotlin使用by关键字来做伪动态代理，而不用反射,最终编译成静态代理</p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Zoo(<span class="keyword">animal</span>: <span class="keyword">Animal</span>): <span class="keyword">Animal</span> by <span class="keyword">animal</span></span><br></pre></td></tr></table></figure>
-
-<p>kotlin 枚举类</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">class</span> <span class="title">Command</span> &#123;</span></span><br><span class="line">    A, B, C, D</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">exec</span></span>(<span class="symbol">command:</span> Command) = <span class="keyword">when</span>(command) &#123;</span><br><span class="line">    A -&gt; &#123;</span><br><span class="line">        println(<span class="string">"A!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    B -&gt; &#123;</span><br><span class="line">        println(<span class="string">"B!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    C -&gt; &#123;</span><br><span class="line">        println(<span class="string">"C!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    D -&gt; &#123;</span><br><span class="line">        println(<span class="string">"D!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>kotlin 密封类《超级枚举类》 暂时不知道exec有什么好处</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">SuperCommand</span> </span>&#123;</span><br><span class="line">    <span class="keyword">object</span> A : SuperCommand()</span><br><span class="line">    <span class="keyword">object</span> B : SuperCommand()</span><br><span class="line">    <span class="keyword">object</span> C : SuperCommand()</span><br><span class="line">    <span class="keyword">object</span> D : SuperCommand()</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">E</span></span>(<span class="keyword">var</span> id: <span class="built_in">Int</span>) : SuperCommand()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">exec</span><span class="params">(superCommand: <span class="type">SuperCommand</span>)</span></span> = <span class="keyword">when</span>(superCommand) &#123;</span><br><span class="line">    SuperCommand.A -&gt; &#123;</span><br><span class="line">        println(<span class="string">"AA"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    SuperCommand.B -&gt; &#123;</span><br><span class="line">        println(<span class="string">"BB"</span>)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    SuperCommand.C -&gt; &#123;</span><br><span class="line">        println(<span class="string">"CC"</span>)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    SuperCommand.D -&gt; &#123;</span><br><span class="line">        println(<span class="string">"DD"</span>)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">is</span> SuperCommand.E -&gt; &#123;</span><br><span class="line">        println(<span class="string">"EE"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>oop</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、<span class="class"><span class="keyword">interface</span>+实现类，消除<span class="title">ifelse</span>类的代码，把动作赋给对象</span></span><br><span class="line"><span class="number">2</span>、代理类代理<span class="class"><span class="keyword">interface</span>，以便对<span class="title">interface</span>的统一修改，也可以视为不要污染了原来的类</span></span><br><span class="line"><span class="number">3</span>、每个类都有自己的行为，如果不是这个类发出的，抽出去独立的类实现</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018080201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/02/2018080201/" class="article-date">
-  	<time datetime="2018-08-02T12:31:24.000Z" itemprop="datePublished">2018-08-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/02/2018080201/">android悬浮窗</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>##悬浮窗具体的做法</p>
-</blockquote>
-<p>小米5，7.0</p>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT \&gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line"><span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (Build.VERSION.SDK_INT \&gt;= Build.VERSION_CODES.N)&#123;</span><br><span class="line"><span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_PHONE;<span class="comment">//判断是否是洗小米系统，如果是，使用toast.settext去实现</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_TOAST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.csdn.net/yhaolpz/article/details/78527803" target="_blank" rel="noopener">https://blog.csdn.net/yhaolpz/article/details/78527803</a></p>
-<p><a href="https://github.com/yhaolpz/FloatWindow" target="_blank" rel="noopener">https://github.com/yhaolpz/FloatWindow</a></p>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"> final WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">        WindowManager.LayoutParams <span class="built_in">param</span> = new WindowManager.LayoutParams();</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line">            <span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.N)&#123;</span><br><span class="line">            <span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_PHONE;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">param</span>.<span class="built_in">type</span> = WindowManager.LayoutParams.TYPE_TOAST;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">param</span>.<span class="built_in">format</span> = PixelFormat.TRANSLUCENT;</span><br><span class="line">        <span class="built_in">param</span>.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL; <span class="comment">// 不能抢占聚焦点</span></span><br><span class="line">        <span class="built_in">param</span>.flags = <span class="built_in">param</span>.flags | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;</span><br><span class="line">        <span class="built_in">param</span>.flags = <span class="built_in">param</span>.flags | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS; <span class="comment">// 排版不受限制</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">param</span>.alpha = <span class="number">1</span>f;</span><br><span class="line">        <span class="built_in">param</span>.gravity = Gravity.CENTER;   <span class="comment">//调整悬浮窗口至左上角</span></span><br><span class="line">        <span class="built_in">param</span>.x = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">param</span>.y = <span class="number">0</span>;</span><br><span class="line">        final View v = LayoutInflater.<span class="keyword">from</span>(context).inflate(R.layout.dialog_buy_share, null);</span><br><span class="line"></span><br><span class="line">        Button btnPopup = (Button) v.findViewById(R.id.confirm_btn);</span><br><span class="line">        Button btnCancel = (Button) v.findViewById(R.id.cancel_btn);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!TextUtils.isEmpty(bean.getButtonText())) &#123;</span><br><span class="line">            btnPopup.<span class="built_in">setText</span>(bean.getButtonText());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        btnPopup.setOnClickListener(new OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                StatisticsUtils.statisticsEvent(context, <span class="string">"购买成功页popup_点击_分享"</span>, <span class="string">"活动名称"</span>, <span class="string">"邀请"</span>);</span><br><span class="line">                windowManager.removeView(v);</span><br><span class="line">                <span class="keyword">if</span> (bean != null &amp;&amp; ActivityManager.getInstance().currentActivity() != null) &#123;</span><br><span class="line">                    RedirectActivityUtils.redirectPage(ActivityManager.getInstance().currentActivity(), bean);</span><br><span class="line"><span class="comment">//                    ActivityMapManager.finishActivity(InvestSuccessActivity.class.getSimpleName());</span></span><br><span class="line"><span class="comment">//                    ActivityMapManager.finishActivity(BuyFixResultCountDownActivity.class.getSimpleName());</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        btnCancel.setOnClickListener(new OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">              windowManager.removeView(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span> (windowManager != null) &#123;</span><br><span class="line">            windowManager.addView(v, <span class="built_in">param</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -815,7 +783,7 @@ onlyif(true, function)  </code></pre><p>}</p>
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 dukelight
+    		&copy; 2020 dukelight
     	</div>
       	<div class="footer-right">
 		    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

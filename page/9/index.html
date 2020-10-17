@@ -190,6 +190,195 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017030101" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/01/2017030101/" class="article-date">
+  	<time datetime="2017-03-01T15:17:33.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/2017030101/">自定义view用到的几种定时刷新方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用"><a href="#1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用" class="headerlink" title="1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用"></a>1、定时器刷新法，使用timer，timertask，在合适的地方初始化，然后调用</h4><p><code>Timer timer = new Timer();  
+        TimerTask timerTask = new TimerTask() {  
+            @Override  
+            public void run() {  
+                //具体处理代码  
+                postInvalidate();  
+            }  
+        };  
+timer.schedule(timerTask, 0, 50);</code></p>
+<h4 id="2、使用view内部的延迟刷新方法"><a href="#2、使用view内部的延迟刷新方法" class="headerlink" title="2、使用view内部的延迟刷新方法"></a>2、使用view内部的延迟刷新方法</h4><p><code>public void draw(Canvas canvas) {</code><br><code>postDelayed(new Runnable() {  
+    @Override  
+    public void run() {  
+        //具体处理代码  
+        postInvalidate();  
+    }  
+}, 50);</code><br><code>super.draw(canvas);</code><br><code>}</code></p>
+<h4 id="3、利用属性动画对view里的某个属性进行赋值来实现动画效果"><a href="#3、利用属性动画对view里的某个属性进行赋值来实现动画效果" class="headerlink" title="3、利用属性动画对view里的某个属性进行赋值来实现动画效果"></a>3、利用属性动画对view里的某个属性进行赋值来实现动画效果</h4><p><code>ObjectAnimator waveShiftAnim = ObjectAnimator.ofFloat(  
+        mWaveView, &quot;waveShiftRatio&quot;, 0f, 1f);  
+waveShiftAnim.setRepeatCount(ValueAnimator.INFINITE);  
+waveShiftAnim.setDuration(1000);  
+waveShiftAnim.setInterpolator(new LinearInterpolator());  
+animators.add(waveShiftAnim);</code>  </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017022001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/20/2017022001/" class="article-date">
+  	<time datetime="2017-02-20T03:18:00.000Z" itemprop="datePublished">2017-02-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/2017022001/">去掉android5.0以上button默认的阴影</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、在button的xml属性里加入<br><code>&lt;button</code><br><code>style=&quot;?android:attr/borderlessButtonStyle&quot; &gt;</code><br><code>&lt;/button</code></p>
+<p>2、如果button已经写成style了，就让button的style继承Widget.AppCompat.Button.Borderless</p>
+<p><code>&lt;style name=&quot;btnStyle&quot; parent=&quot;Widget.AppCompat.Button.Borderless&quot;&gt;</code><br>`&lt;/style<br>`</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2017021601" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/16/2017021601/" class="article-date">
+  	<time datetime="2017-02-16T00:20:41.000Z" itemprop="datePublished">2017-02-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/16/2017021601/">使用viewpager注意几个有用的点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>背景：做一个图片切换器<br>做法：使用普通PagerAdapter 与 view pager来做，配合view集合<br>要点：以下几个神奇的东西</p>
+<p><code>// 设置一开始初始化的页面个数</code><br><code>mVpCarInfo.setOffscreenPageLimit(Math.min(mPageCarViews.size(), 5));</code></p>
+<p><code>// 点击延伸到背后的容器  
+mLlPageCarContainer.setOnTouchListener(new View.OnTouchListener() {  
+    @Override  
+    public boolean onTouch(View v, MotionEvent event) {  
+        return mVpCarInfo.dispatchTouchEvent(event);  
+    }  
+});</code></p>
+<p><code>// 显示完整，不剪掉子view  
+mLlPageCarContainer.setClipChildren(false);  
+mVpCarInfo.setClipChildren(false);</code></p>
+<p><code>// 拖动不要出现边界黑色边框  
+mVpCarInfo.setOverScrollMode(View.OVER_SCROLL_NEVER);</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017020701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -596,166 +785,6 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
 
 
   
-    <article id="post-2016111001" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/11/10/2016111001/" class="article-date">
-  	<time datetime="2016-11-10T12:10:26.000Z" itemprop="datePublished">2016-11-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/10/2016111001/">mac下如何通过vpn连接公司的svn</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>window下通过vpn连接到公司的svn很轻松，但是mac怎么搞都不行。最后终于找到了解决方法。</p>
-<p>1、了解公司内网的svn部署的内网ip地址，然后记下来，例如是10.11.12.2。</p>
-<p>2、先sudo -i（如果mac没有root，建议先开启root，具体教程自行百度），然后转到/etc/ppp这个目录下。用vi编辑（创建）一个叫ip-up的文件。在里面加入下面的命令。</p>
-<p>3、        </p>
-<p><code>#!/bin/sh</code><br><code>/sbin/route add -net x.x.x -interface ppp0</code></p>
-<p>注：ppp0不要修改它，上述例子中需要将x.x.x替换成10.11.12</p>
-<p>4、试试打开公司svn的外网地址，是不是可以访问了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016102201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/21/2016102201/" class="article-date">
-  	<time datetime="2016-10-21T12:02:06.000Z" itemprop="datePublished">2016-10-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/21/2016102201/">2016102201</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016101801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/20/2016101801/" class="article-date">
-  	<time datetime="2016-10-19T16:03:34.000Z" itemprop="datePublished">2016-10-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/20/2016101801/">编译android4.3</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>环境 ：<br>ubuntu16.04<br>oracle jdk1.6<br>make3.82<br>百度云下载android的7z源码，从window复制到linux，再解压缩。<br>7z x file.7z  解压缩7z</p>
-<p>android5.1.1<br>. build/envsetup.sh<br>lunch  /  lunch full-eng<br>openjdk1.7</p>
-<p>make clean<br>make update-api<br>make<br>cp /usr/bin/ld.gold prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.11-4.6/x86_64-linux/bin/ld</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
@@ -768,7 +797,7 @@ javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 dukelight
+    		&copy; 2020 dukelight
     	</div>
       	<div class="footer-right">
 		    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
