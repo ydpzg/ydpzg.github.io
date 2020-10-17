@@ -190,6 +190,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017052603" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/26/2017052603/" class="article-date">
+  	<time datetime="2017-05-26T15:53:29.000Z" itemprop="datePublished">2017-05-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/26/2017052603/">python 4-6如何去掉字符串中不需要的字符</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="有很多种"><a href="#有很多种" class="headerlink" title="有很多种"></a>有很多种</h4><pre><code>s = &quot;    jjj   ee    &quot;
+s.strip()
+s.lstrip()
+s.rstrip()
+
+s  = &apos;-----abd++++++&apos;
+s.strip(&apos;-+&apos;)
+
+s = &apos;adb:123&apos;
+s[:3] + s[4:]
+
+s = &apos;\tsss\tcvv\ppp&apos;
+s.replace(&apos;\t&apos;, &apos;&apos;)
+
+s = &apos;\tsss\tcvv\tppp\rfdf\rccc&apos;
+import re
+re.sub(&apos;[\t\r]&apos;, &apos;&apos;)</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017052602" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -734,99 +800,6 @@ for x in reversed(FloatRange(1.0, 4.0, 0.5)):
                 yield x
 
 for x in PrimeNum(1, 100):
-    print(x)</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052201" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/22/2017052201/" class="article-date">
-  	<time datetime="2017-05-22T00:13:27.000Z" itemprop="datePublished">2017-05-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/2017052201/">python 3-2如何实现可迭代对象和迭代器对象(2)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="实现可迭代对象和迭代器对象。"><a href="#实现可迭代对象和迭代器对象。" class="headerlink" title="实现可迭代对象和迭代器对象。"></a>实现可迭代对象和迭代器对象。</h4><ol>
-<li>先定义一个Iterator实现<strong>next</strong></li>
-<li>再定义一个weatherIterable实现<strong>iter</strong></li>
-<li>最后使用for in 遍历解决</li>
-</ol>
-<pre><code>import requests
-from collections.abc import Iterable, Iterator
-
-
-class weatherIterator(Iterator):
-    index = 0
-
-    def __init__(self, cities):
-        self.cities = cities
-
-    def __next__(self):
-        if self.index == len(self.cities):
-            raise StopIteration
-        city = self.cities[self.index]
-        self.index = self.index + 1
-        return self.getweather(city)
-
-    #获取天气接口API
-    def getweather(self, s):
-        cities = {&apos;北京&apos;: &apos;CH010100&apos;, &apos;上海&apos;: &apos;CH020100&apos;, &apos;广州&apos;: &apos;CH280101&apos;}
-        # 北京：CH010100 上海：CH020100 广州：CH280101
-        # CH280101 http://api.yytianqi.com/forecast7d?city=CH280101&amp;key=rsdo40081gvhnecf
-        r = requests.get(&quot;http://api.yytianqi.com/forecast7d?city=%s&amp;key=rsdo40081gvhnecf&quot; % cities[s])
-        data = r.json()[&apos;data&apos;][&apos;list&apos;][0]
-        return &quot;%s: 白天气温 %s ℃, 夜间气温 %s ℃&quot; % (s, data[&apos;qw1&apos;], data[&apos;qw2&apos;])
-
-
-class weatherIterable(Iterable):
-    def __init__(self, cities):
-        self.cities = cities
-
-    def __iter__(self):
-        return weatherIterator(self.cities)
-
-
-# 先定义一个Iterator实现__next__，再定义一个weatherIterable实现__iter__，最后使用for in 遍历解决
-cities = [&apos;北京&apos;, &apos;上海&apos;, &apos;广州&apos;]
-for x in weatherIterable(cities):
     print(x)</code></pre>
       
     </div>

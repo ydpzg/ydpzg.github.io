@@ -190,6 +190,60 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2018102301" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/23/2018102301/" class="article-date">
+  	<time datetime="2018-10-23T07:26:32.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/23/2018102301/">RxJava多个api的处理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>RxJava多个api的处理</p>
+<p>merge 单独输出，统一结束回调，api同时出去</p>
+<p>zip 封装在一起，最后统一输出和结束回调，api同时出去</p>
+<p>flatMap 一个请求回来再进行下一个请求</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2018101501" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -693,57 +747,6 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">8</span>-<span class="number">14</span> <span class="number">00</span>:<span class="number">16</span>:<span class="number">33.371</span> <span class="number">9119</span>-<span class="number">9119</span>/org<span class="selector-class">.cocos2d</span><span class="selector-class">.examplecases</span> E/art: No implementation found <span class="keyword">for</span> void org<span class="selector-class">.cocos2dx</span><span class="selector-class">.javascript</span><span class="selector-class">.SDKWrapper</span><span class="selector-class">.nativeLoadAllPlugins</span>() (tried Java_org_cocos2dx_javascript_SDKWrapper_nativeLoadAllPlugins and Java_org_cocos2dx_javascript_SDKWrapper_nativeLoadAllPlugins__)</span><br><span class="line"><span class="number">08</span>-<span class="number">14</span> <span class="number">00</span>:<span class="number">16</span>:<span class="number">33.376</span> <span class="number">9119</span>-<span class="number">9119</span>/org<span class="selector-class">.cocos2d</span><span class="selector-class">.examplecases</span> E/AndroidRuntime: FATAL EXCEPTION: main</span><br><span class="line">    Process: org<span class="selector-class">.cocos2d</span><span class="selector-class">.examplecases</span>, PID: <span class="number">9119</span></span><br><span class="line">    java<span class="selector-class">.lang</span><span class="selector-class">.UnsatisfiedLinkError</span>: No implementation found <span class="keyword">for</span> void org<span class="selector-class">.cocos2dx</span><span class="selector-class">.javascript</span><span class="selector-class">.SDKWrapper</span><span class="selector-class">.nativeLoadAllPlugins</span>() (tried Java_org_cocos2dx_javascript_SDKWrapper_nativeLoadAllPlugins and Java_org_cocos2dx_javascript_SDKWrapper_nativeLoadAllPlugins__)</span><br><span class="line">        at org<span class="selector-class">.cocos2dx</span><span class="selector-class">.javascript</span><span class="selector-class">.SDKWrapper</span><span class="selector-class">.nativeLoadAllPlugins</span>(Native Method)</span><br><span class="line">        at org<span class="selector-class">.cocos2dx</span><span class="selector-class">.javascript</span><span class="selector-class">.SDKWrapper</span><span class="selector-class">.init</span>(SDKWrapper<span class="selector-class">.java</span>:<span class="number">64</span>)</span><br><span class="line">        at org<span class="selector-class">.cocos2dx</span><span class="selector-class">.javascript</span><span class="selector-class">.AppActivity2</span><span class="selector-class">.onCreate</span>(AppActivity2<span class="selector-class">.java</span>:<span class="number">48</span>)</span><br><span class="line">        at android<span class="selector-class">.app</span><span class="selector-class">.Activity</span><span class="selector-class">.performCreate</span>(Activity<span class="selector-class">.java</span>:<span class="number">6251</span>)</span><br><span class="line">        at android<span class="selector-class">.app</span><span class="selector-class">.Instrumentation</span><span class="selector-class">.callActivityOnCreate</span>(Instrumentation<span class="selector-class">.java</span>:<span class="number">1107</span>)</span><br><span class="line">        at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="selector-class">.performLaunchActivity</span>(ActivityThread<span class="selector-class">.java</span>:<span class="number">2369</span>)</span><br><span class="line">        at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="selector-class">.handleLaunchActivity</span>(ActivityThread<span class="selector-class">.java</span>:<span class="number">2476</span>)</span><br><span class="line">        at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span>.-wrap11(ActivityThread.java)</span><br><span class="line">        at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="variable">$H</span>.handleMessage(ActivityThread<span class="selector-class">.java</span>:<span class="number">1344</span>)</span><br><span class="line">        at android<span class="selector-class">.os</span><span class="selector-class">.Handler</span><span class="selector-class">.dispatchMessage</span>(Handler<span class="selector-class">.java</span>:<span class="number">102</span>)</span><br><span class="line">        at android<span class="selector-class">.os</span><span class="selector-class">.Looper</span><span class="selector-class">.loop</span>(Looper<span class="selector-class">.java</span>:<span class="number">148</span>)</span><br><span class="line">        at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="selector-class">.main</span>(ActivityThread<span class="selector-class">.java</span>:<span class="number">5417</span>)</span><br><span class="line">        at java<span class="selector-class">.lang</span><span class="selector-class">.reflect</span><span class="selector-class">.Method</span><span class="selector-class">.invoke</span>(Native Method)</span><br><span class="line">        at com<span class="selector-class">.android</span><span class="selector-class">.internal</span><span class="selector-class">.os</span><span class="selector-class">.ZygoteInit</span><span class="variable">$MethodAndArgsCaller</span>.run(ZygoteInit<span class="selector-class">.java</span>:<span class="number">726</span>)</span><br><span class="line">        at com<span class="selector-class">.android</span><span class="selector-class">.internal</span><span class="selector-class">.os</span><span class="selector-class">.ZygoteInit</span><span class="selector-class">.main</span>(ZygoteInit<span class="selector-class">.java</span>:<span class="number">616</span>)</span><br></pre></td></tr></table></figure>
 
 <p>还没找到原因！</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2018080602" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/06/2018080602/" class="article-date">
-  	<time datetime="2018-08-06T09:54:19.000Z" itemprop="datePublished">2018-08-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/06/2018080602/">上传到maven</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用自定义gradle插件</p>
 
       
     </div>

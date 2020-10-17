@@ -3,15 +3,19 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>Archives: 2020 | dukelight&#39;s home</title>
+  <title>flutter 如何监控一个变量的变化，如js的watch | dukelight&#39;s home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dukelight&#39;s home">
-<meta property="og:url" content="http://ydpzg.github.io/archives/2020/index.html">
+  <meta name="description" content="####背景： 需要在一个页面里面加ga，统计页面里面banner的访问量，banner有一定的条件显示和隐藏。 ####架构： 一个页面主widget，一个子widget banner，通过子widget的 show字段控制banner的显示隐藏。双向绑定。在主widget只需要改show的值就可以控制banner。但要加访问量ga，没有想android里面有setShow的方法可以加。 ###">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter 如何监控一个变量的变化，如js的watch">
+<meta property="og:url" content="http://ydpzg.github.io/2020/10/17/2020101701/index.html">
 <meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="####背景： 需要在一个页面里面加ga，统计页面里面banner的访问量，banner有一定的条件显示和隐藏。 ####架构： 一个页面主widget，一个子widget banner，通过子widget的 show字段控制banner的显示隐藏。双向绑定。在主widget只需要改show的值就可以控制banner。但要加访问量ga，没有想android里面有setShow的方法可以加。 ###">
 <meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2020-10-17T15:36:13.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dukelight&#39;s home">
+<meta name="twitter:title" content="flutter 如何监控一个变量的变化，如js的watch">
+<meta name="twitter:description" content="####背景： 需要在一个页面里面加ga，统计页面里面banner的访问量，banner有一定的条件显示和隐藏。 ####架构： 一个页面主widget，一个子widget banner，通过子widget的 show字段控制banner的显示隐藏。双向绑定。在主widget只需要改show的值就可以控制banner。但要加访问量ga，没有想android里面有setShow的方法可以加。 ###">
   
     <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
   
@@ -188,103 +192,115 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-2020101701" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2020/10/17/2020101701/" class="article-date">
+  	<time datetime="2020-10-17T15:34:41.000Z" itemprop="datePublished">2020-10-17</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      flutter 如何监控一个变量的变化，如js的watch
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/17/2020101701/" class="archive-article-date">
-  	<time datetime="2020-10-17T15:34:41.000Z" itemprop="datePublished">Oct 17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/17/2020101701/">flutter 如何监控一个变量的变化，如js的watch</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####背景：</p>
+<p>需要在一个页面里面加ga，统计页面里面banner的访问量，banner有一定的条件显示和隐藏。</p>
+<p>####架构：</p>
+<p>一个页面主widget，一个子widget banner，通过子widget的 show字段控制banner的显示隐藏。双向绑定。<br>在主widget只需要改show的值就可以控制banner。但要加访问量ga，没有想android里面有setShow的方法可以加。</p>
+<p>####思路：</p>
+<p>监控show变量值的变化，然后当show变成true的时候统计ga访问量。</p>
+<p>####block：</p>
+<p>flutter里面没有watch关键词，最后找到一种类似watch的字段，叫ValueNotifier和ValueListenableBuilder</p>
+<p>####解决思路：</p>
+<p>根据show创建一个ValueNotifier，</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final <span class="keyword">bool</span> <span class="keyword">show</span>;</span><br><span class="line">_showNotifier = ValueNotifier&lt;<span class="keyword">bool</span>&gt;(<span class="keyword">show</span>);</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>看到ValueNotifier有方法addListener，removeListener<br>以为可以直接监听，从而变量用ValueNotifier包装后直接监听，很方便</p>
+<p>但事实上当变量show变化的时候，是监听不到任何回调的，后来发现addListener是需要动作触发的，即使用_showNotifier.value(true)，可以监听到回调。这并不是我想要的。</p>
+<p>所以继续找，发现一种可以收到回调，需要在widget树上使用ValueListenableBuilder，通过变量到widget树到监听回调，才能走完闭环。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ValueListenableBuilder(</span><br><span class="line">  builder: (<span class="name">BuildContext</span> context, bool value, Widget child) &#123;</span><br><span class="line">    if (<span class="name">this</span>.widget.show) &#123;</span><br><span class="line">      GaUtil.sendEvent(<span class="name">name</span>: ‘’)<span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">    return buildRootWidget()<span class="comment">;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  valueListenable: this.widget._showNotifier,</span><br><span class="line">)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/07/2020050701/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">gradle 闭包实现动态赋值</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/07/2020050701/" class="archive-article-date">
-  	<time datetime="2020-05-07T08:35:34.000Z" itemprop="datePublished">May 7</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/07/2020050701/">gradle 闭包实现动态赋值</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/15/2020041501/" class="archive-article-date">
-  	<time datetime="2020-04-15T01:35:53.000Z" itemprop="datePublished">Apr 15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/2020041501/">记第一个flutter上线过程</a>
-    </h1>
-  
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2020101701" data-title="flutter 如何监控一个变量的变化，如js的watch" data-url="http://ydpzg.github.io/2020/10/17/2020101701/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -315,8 +331,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

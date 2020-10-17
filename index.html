@@ -190,6 +190,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2020101701" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/17/2020101701/" class="article-date">
+  	<time datetime="2020-10-17T15:34:41.000Z" itemprop="datePublished">2020-10-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/17/2020101701/">flutter 如何监控一个变量的变化，如js的watch</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####背景：</p>
+<p>需要在一个页面里面加ga，统计页面里面banner的访问量，banner有一定的条件显示和隐藏。</p>
+<p>####架构：</p>
+<p>一个页面主widget，一个子widget banner，通过子widget的 show字段控制banner的显示隐藏。双向绑定。<br>在主widget只需要改show的值就可以控制banner。但要加访问量ga，没有想android里面有setShow的方法可以加。</p>
+<p>####思路：</p>
+<p>监控show变量值的变化，然后当show变成true的时候统计ga访问量。</p>
+<p>####block：</p>
+<p>flutter里面没有watch关键词，最后找到一种类似watch的字段，叫ValueNotifier和ValueListenableBuilder</p>
+<p>####解决思路：</p>
+<p>根据show创建一个ValueNotifier，</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final <span class="keyword">bool</span> <span class="keyword">show</span>;</span><br><span class="line">_showNotifier = ValueNotifier&lt;<span class="keyword">bool</span>&gt;(<span class="keyword">show</span>);</span><br></pre></td></tr></table></figure>
+
+<p>看到ValueNotifier有方法addListener，removeListener<br>以为可以直接监听，从而变量用ValueNotifier包装后直接监听，很方便</p>
+<p>但事实上当变量show变化的时候，是监听不到任何回调的，后来发现addListener是需要动作触发的，即使用_showNotifier.value(true)，可以监听到回调。这并不是我想要的。</p>
+<p>所以继续找，发现一种可以收到回调，需要在widget树上使用ValueListenableBuilder，通过变量到widget树到监听回调，才能走完闭环。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ValueListenableBuilder(</span><br><span class="line">  builder: (<span class="name">BuildContext</span> context, bool value, Widget child) &#123;</span><br><span class="line">    if (<span class="name">this</span>.widget.show) &#123;</span><br><span class="line">      GaUtil.sendEvent(<span class="name">name</span>: ‘’)<span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">    return buildRootWidget()<span class="comment">;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  valueListenable: this.widget._showNotifier,</span><br><span class="line">)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2020050701" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -836,59 +903,6 @@ rewarded unitId: ca-app-pub-3940256099942544/5224354917</code></pre><p>测试的
 <p>2、用法：<br>import xxx from ‘xxx/index.vue’<br><xxx v-model="showDialog" :yyy="yyy"></xxx></p>
 <p>场景：<br>普通单页业务，既有view层，又有script层</p>
 <p>注意：<br>控制对话框显示与隐藏的字段是value，通过值为true or false来代表对话框的显示与隐藏，因为使用了v-model</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2019070401" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/04/2019070401/" class="article-date">
-  	<time datetime="2019-07-04T01:56:45.000Z" itemprop="datePublished">2019-07-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019070401/">flutter release后报错 No address associated with hostname, errno = 7</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>权限问题<br>android的AndroidManifest要添加网络权限</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:<span class="attribute">name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
