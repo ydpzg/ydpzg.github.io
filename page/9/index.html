@@ -190,6 +190,62 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017032201" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/22/2017032201/" class="article-date">
+  	<time datetime="2017-03-21T16:46:58.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/2017032201/">xutils使用post上传base64图片的时候的问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>utils的网络部分，其实比较简单，但是也是有坑，比如在post一些比较长的参数值的时候就会报错。</p>
+</blockquote>
+<p>x.http().post 这个会想当然认为就是指定了post，其实不完全，<br>requestParams.addBodyParameter(key, value)里，默认是GET方式的body，也就是附到url上变成get方式的参数形式，也就导致了长的参数值会报错，比较url不支持那么长的值。</p>
+<p>所以解决方法就是：requestParams.setMethod(HttpMethod.POST);<br>将requestParams变成post方式的键值对。</p>
+<p>ps：requestParams.toString也不要随便调，会把参数值附到url上的。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017030102" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -697,83 +753,6 @@ Thread.sleep(1000);
       
         <p>adb shell input tap 1000 130<br>模拟点击，x， y</p>
 <p>开发者选项-》指针位置-》可以看某个点的x，y</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2016120202" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/02/2016120202/" class="article-date">
-  	<time datetime="2016-12-02T14:47:19.000Z" itemprop="datePublished">2016-12-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/2016120202/">android连接https web service忽略证书的方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果直接连接https，都会出现报证书的错误，如果是正式用的话一定要添加证书，但是测试用的话，直接忽略掉证书，然后就可以继续连接上去。</p>
-<p>解决方法如下：</p>
-<p>在使用web service之前调用allowAllSSL()就行了。</p>
-<pre><code>public static void allowAllSSL() {  
-javax.net.ssl.HttpsURLConnection  
-        .setDefaultHostnameVerifier(new HostnameVerifier() {  
-            public boolean verify(String hostname, SSLSession session) {  
-                return true;  
-            }  
-        });  
-
-javax.net.ssl.SSLContext context = null;  
-
-if (trustManagers == null) {  
-    trustManagers = new javax.net.ssl.TrustManager[] { new _FakeX509TrustManager() };  
-}  
-
-try {  
-    context = javax.net.ssl.SSLContext.getInstance(&quot;TLS&quot;);  
-    context.init(null, trustManagers, new SecureRandom());  
-} catch (NoSuchAlgorithmException e) {  
-    Log.e(&quot;allowAllSSL&quot;, e.toString());  
-} catch (KeyManagementException e) {  
-    Log.e(&quot;allowAllSSL&quot;, e.toString());  
-}  
-javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(context  
-        .getSocketFactory());  </code></pre><p>}`</p>
 
       
     </div>

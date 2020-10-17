@@ -190,6 +190,77 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2017060201" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/02/2017060201/" class="article-date">
+  	<time datetime="2017-06-02T00:28:42.000Z" itemprop="datePublished">2017-06-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/02/2017060201/">研究root权限</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://blog.csdn.net/hxdanya/article/details/39371759" target="_blank" rel="noopener">http://blog.csdn.net/hxdanya/article/details/39371759</a></p>
+<p>PIE这个安全机制从4.1引入，但是Android L之前的系统版本并不会去检验可执行文件是否基于PIE编译出的。因此不会报错。但是Android L已经开启验证，如果调用的可执行文件不是基于PIE方式编译的，则无法运行。解决办法非常简单，在Android.mk中加入如下flag就行。</p>
+<p>LOCAL_CFLAGS += -pie -fPIE<br>LOCAL_LDFLAGS += -pie -fPIE_</p>
+<p><a href="http://hold-on.iteye.com/blog/1901152" target="_blank" rel="noopener">http://hold-on.iteye.com/blog/1901152</a></p>
+<p>Android应用程序永久获取root权限方法的基本思路，引入zlsu</p>
+<p><a href="http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966" target="_blank" rel="noopener">http://blog.csdn.net/fengqiaoyebo2008/article/details/8843966</a></p>
+<p>解决办法：</p>
+<ol>
+<li><p>最简单的，adb remount</p>
+</li>
+<li><p>不行的话，adb shell su之后将文件系统remount为读写权限： mount -o remount rw /system。出于安全考虑，记得完事后remount回只读： mount -o ro,remount /system</p>
+</li>
+<li><p>和方法2类似，mount -o rw,remount -t ext3 /dev/block/mmcblk1p21 /system</p>
+<p>chown 0:0 /system/bin/su</p>
+</li>
+</ol>
+<p>busybox chown 0:0 /system/bin/su</p>
+<p><a href="http://blog.csdn.net/wan_ing/article/details/53407748" target="_blank" rel="noopener">http://blog.csdn.net/wan_ing/article/details/53407748</a></p>
+<p>android 版本更新 静默安装及自启动</p>
+<p><a href="http://www.jianshu.com/p/9ece07344630" target="_blank" rel="noopener">http://www.jianshu.com/p/9ece07344630</a></p>
+<p>Android上app_process启动java进程</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2017053101" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -724,82 +795,6 @@ for x in islice(t, 5, 10):
     ...:    print(x)
 for x in t:
     ...:     print(x)</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2017052302" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/23/2017052302/" class="article-date">
-  	<time datetime="2017-05-23T13:58:03.000Z" itemprop="datePublished">2017-05-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/23/2017052302/">python 3-4如何进行反向迭代以及如何实现反向迭代</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="利用生成器做了一个浮点的步进器，reversed-调用的是内部的reversed方法"><a href="#利用生成器做了一个浮点的步进器，reversed-调用的是内部的reversed方法" class="headerlink" title="利用生成器做了一个浮点的步进器，reversed()调用的是内部的reversed方法"></a>利用生成器做了一个浮点的步进器，reversed()调用的是内部的<strong>reversed</strong>方法</h4><pre><code> class FloatRange:
-    def __init__(self, start, end, step=0.1):
-        self.start = start
-        self.end = end
-        self.step = step
-
-    def __iter__(self):
-        value = self.start
-        while value &lt;= self.end:
-            yield value
-            value += self.step
-
-    def __reversed__(self):
-        value = self.end
-        while value &gt;= self.start:
-            yield value
-            value -= self.step
-
-print(&quot;顺序：&quot;)
-
-for x in FloatRange(1.0, 4.0, 0.5):
-    print(x)
-
-print(&quot;\n倒序：&quot;)
-
-for x in reversed(FloatRange(1.0, 4.0, 0.5)):
-    print(x)</code></pre>
       
     </div>
     

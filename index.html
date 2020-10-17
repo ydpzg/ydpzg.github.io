@@ -190,6 +190,63 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-2020101703" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/18/2020101703/" class="article-date">
+  	<time datetime="2020-10-17T16:38:38.000Z" itemprop="datePublished">2020-10-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/18/2020101703/">如何上架gp ，在被代码关联的情况下</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>2020的主要工作其实是如何上架gp，背景是公司使用马甲包app上架gp后，被gp大批量下架了，导致在很长一段时间app都上架不上去。有审核时秒挂，有审核几天挂，有上线后几天挂。后来跟一个代上架服务商合作，把代码改成了纯java，结果代上架也上不去，都是下架。这半年来都是要跟gp审核战斗，大大小小包提审了有12+个包。</p>
+</blockquote>
+<p>关于关联性做过的尝试</p>
+<p>1、上架的环境处理<br>        —— 用一个远程服务器，不用chrome，用firefox，用不同信用卡去购买google账号，使用到的账号都用一套新的。避免被关联到是同一个app<br>2、apk的处理<br>        ——  提高混淆等级，换代码根路径，换文件名，换资源，增加无用代码，无用的第三方库，资源混淆，使用混淆字典，string.xml随机添加字符等，降低代码重复率<br>3、服务器接口的处理<br>        —— 换服务器ip，部署一套独立的环境<br>4、app 产品流程和ui的处理<br>        —— 换另外一套ui，产品流程稍微调一下不同<br>使用上面方式目的是为了让app关联性降到最低，得以审核通过。但还是一直审核不过。就差换人写和换办公室写代码了。<br>最后使用的方式：<br>1、android端使用360加固<br>2、android端使用反抓包<br>3、后端接口更改route和header，避免使用之前被封的域名<br>4、使用flutter语言去重写。</p>
+<p>上面4条结果实施后app就通过了gp审核，得以上架成功。</p>
+<p>#&gt;猜想：怀疑使用了反抓包功能后，gp看不到请求的api，加固后反编译也看不到里面文件夹，所以gp分析不了这个app跟之前app的对比。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2020101702" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -854,100 +911,6 @@ rewarded unitId: ca-app-pub-3940256099942544/5224354917</code></pre><p>测试的
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/">flutter</a></li></ul>
 	</div>
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2019072801" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/28/2019072801/" class="article-date">
-  	<time datetime="2019-07-28T12:44:44.000Z" itemprop="datePublished">2019-07-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/28/2019072801/">android编译插桩</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>背景：这一次分享一下关于android编译插桩这个话题，在正常编写代码实现程序的逻辑外，还要使用一点点黑科技，拿起操作代码无所不能的武器。</p>
-</blockquote>
-<hr>
-<h4 id="Android常用的能动态改变代码逻辑的方法有两种"><a href="#Android常用的能动态改变代码逻辑的方法有两种" class="headerlink" title="Android常用的能动态改变代码逻辑的方法有两种"></a>Android常用的能动态改变代码逻辑的方法有两种</h4><ol>
-<li><p>Java hook（反射，动态代理）<br>android是基于java，同时也就有了反射的概念，动态去加载代码，同时动态代理也可以实现，但比较难理解，网络上讲得也很多了，这里就不讲。</p>
-</li>
-<li><p>插桩（编译插桩，插件化插桩）<br>如果是按照插桩时机，在编译时候的就是编译插桩，然而，有些时候需要在程序运行的时候动态加载一些东西。我理解的差异性是插桩的代码是跟原来程序是分开的，在一个特定的时机与原有程序合二为一。</p>
-</li>
-</ol>
-<h4 id="从xposed框架到编译插桩"><a href="#从xposed框架到编译插桩" class="headerlink" title="从xposed框架到编译插桩"></a>从xposed框架到编译插桩</h4><p>记得去年曾经分享过xposed框架的使用，那是在系统层面去hook住方法，不足之处是系统要先刷入框架包，优点是可以对该系统里面所有的app进行hook</p>
-<blockquote>
-<p>是否可以对我们自己的应用进行代码的修改？比如上面提到的有java hook,还有编译插桩：下面是比较流行的框架</p>
-</blockquote>
-<ol>
-<li>aspectJ （面向切面框架）  跟普通代码一样，理解容易</li>
-<li>Asm     （操作字节码框架）需要使用asm字节码，相对复杂</li>
-</ol>
-<p>而插桩的应用场景：apm，无埋点</p>
-<h4 id="比较一下aspectJ-与asm分别插桩后的代码"><a href="#比较一下aspectJ-与asm分别插桩后的代码" class="headerlink" title="比较一下aspectJ 与asm分别插桩后的代码"></a>比较一下aspectJ 与asm分别插桩后的代码</h4><p>aspectJ</p>
-<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328617/blog/szr5rfwoocyinhckskvp.jpg" alt></p>
-<p>asm</p>
-<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328675/blog/hhizmrqmldepmorj5nkl.jpg" alt></p>
-<p>通过上面两个图可以看出插桩后的代码还是有所区别，aspectJ采用插入方法的方式，这种代码混淆的时候一定要注意，不然会出现找不到方法名。而asm采用直接把差异代码嵌入原有的方法里，显然执行起来更加高效。</p>
-<h4 id="asm实现的插桩"><a href="#asm实现的插桩" class="headerlink" title="asm实现的插桩"></a>asm实现的插桩</h4><p>原代码</p>
-<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328901/blog/zswgrny2n2x9ksbdjcqb.jpg" alt></p>
-<p>字节码</p>
-<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328971/blog/c1fkyykpuqixuk8hxigr.jpg" alt></p>
-<p>asm代码</p>
-<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564328994/blog/osbprhgbn8whvjbukkhe.jpg" alt></p>
-<p>可以看出代码相对来说是比较复杂的，可能需要工具才能正确去编写asm代码，比如idea插件bytecode outline</p>
-<p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1557425055/blog/qjbca6p3bdomicb7i7u4.jpg" alt></p>
-<h4 id="asm在编译打包的哪个步骤插桩呢"><a href="#asm在编译打包的哪个步骤插桩呢" class="headerlink" title="asm在编译打包的哪个步骤插桩呢"></a>asm在编译打包的哪个步骤插桩呢</h4><p><img src="https://res.cloudinary.com/dhdnjapus/image/upload/v1564329556/blog/d8j2ixczfj4vhcr8j9ia.jpg" alt></p>
-<p>如图所示：在编译成.class文件后，执行asm步骤，对class文件进行处理。而后就把各种编译后的文件打包进dex文件的过程。</p>
-<h4 id="demo-采用asm为某个方法插入代码"><a href="#demo-采用asm为某个方法插入代码" class="headerlink" title="demo-采用asm为某个方法插入代码"></a>demo-采用asm为某个方法插入代码</h4><p>一个简单的demo，对一个方法进行asm插桩</p>
-<p><a href>https://github.com/ydpzg/TestPlugin</a></p>
-<hr>
-<h4 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h4><p>自定义gradle plugin</p>
-<p><a href>https://guides.gradle.org/writing-gradle-plugins/
-</a></p>
-<p><a href>https://docs.gradle.org/current/userguide/custom_plugins.html</a></p>
-<p>Asm 字节码插件：</p>
-<figure class="highlight plain"><figcaption><span>Bytecode Outline```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java字节码：</span><br><span class="line">```javac Apple.java javap -verbose Apple.class</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
       
 
       
