@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+
+  <title>读《Super-agent 设计探索》：Agent 的瓶颈，可能是人的注意力 | dukelight&#39;s home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="读 DeepSeek Harness 团队的 Super-agent 设计探索：从会话管理到任务管理，从事件驱动与异步协作到持续在线，也谈主动 Agent 的权限边界。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《Super-agent 设计探索》：Agent 的瓶颈，可能是人的注意力">
+<meta property="og:url" content="http://ydpzg.github.io/2026/11/13/2026111301/index.html">
+<meta property="og:site_name" content="dukelight&#39;s home">
+<meta property="og:description" content="读 DeepSeek Harness 团队的 Super-agent 设计探索：从会话管理到任务管理，从事件驱动与异步协作到持续在线，也谈主动 Agent 的权限边界。">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2026-11-12T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读《Super-agent 设计探索》：Agent 的瓶颈，可能是人的注意力">
+<meta name="twitter:description" content="读 DeepSeek Harness 团队的 Super-agent 设计探索：从会话管理到任务管理，从事件驱动与异步协作到持续在线，也谈主动 Agent 的权限边界。">
+
+    <link rel="alternative" href="/atom.xml" title="dukelight&#39;s home" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.png">
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+
+			<img lazy-src="https://res.cloudinary.com/dhdnjapus/image/upload/v1575628921/avatar_b8wzph.png" class="js-avatar">
+
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">dukelight</a></h1>
+		</hgroup>
+
+
+		<p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+
+
+
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+
+
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+
+						<li>友情链接</li>
+
+
+						<li>关于我</li>
+
+					</ul>
+				</div>
+			</div>
+
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+
+							<li><a href="/">主页</a></li>
+
+							<li><a href="/archives">所有文章</a></li>
+
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+
+								<a class="github" target="_blank" href="http://www.github.com/ydpzg" title="github">github</a>
+
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
+
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+
+						</div>
+					</nav>
+				</section>
+
+
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Activity-intent-flag/" style="font-size: 10px;">Activity intent flag</a> <a href="/tags/android-AutoCompleteTextView/" style="font-size: 10px;">android AutoCompleteTextView</a> <a href="/tags/cordova-plugin/" style="font-size: 10px;">cordova plugin</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/hexo-github-自搭建/" style="font-size: 10px;">hexo github 自搭建</a> <a href="/tags/nexus/" style="font-size: 10px;">nexus</a> <a href="/tags/rsa-HMac-hash/" style="font-size: 10px;">rsa HMac hash</a> <a href="/tags/usb/" style="font-size: 10px;">usb</a> <a href="/tags/xposed-xposedmodule-XposedBridge-hook/" style="font-size: 10px;">xposed xposedmodule XposedBridge hook</a> <a href="/tags/印象笔记/" style="font-size: 10px;">印象笔记</a> <a href="/tags/蓝牙通讯，pc与android/" style="font-size: 10px;">蓝牙通讯，pc与android</a>
+					</div>
+				</section>
+
+
+
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.baidu.com/">百度</a>
+
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://keeganlee.me/">Keegan小钢</a>
+
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.gitbook.com/book/dodola/gitbook/details">dodola&#39;s Gitbook</a>
+
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://wuxiaolong.me/">吴小龙同學</a>
+
+			        </div>
+				</section>
+
+
+
+
+				<section class="switch-part switch-part4">
+
+					<div id="js-aboutme">一个移动领域的攻城师，一个初出茅庐的小子，小余同学，这就是我。</div>
+				</section>
+
+			</div>
+		</div>
+	</header>
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+	<div class="overlay">
+		<div class="slider-trigger"></div>
+		<h1 class="header-author js-mobile-header hide">dukelight</h1>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://res.cloudinary.com/dhdnjapus/image/upload/v1575628921/avatar_b8wzph.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">dukelight</h1>
+			</hgroup>
+
+			<p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+
+			<nav class="header-menu">
+				<ul>
+
+					<li><a href="/">主页</a></li>
+
+					<li><a href="/archives">所有文章</a></li>
+
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+
+						<a class="github" target="_blank" href="http://www.github.com/ydpzg" title="github">github</a>
+
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1933804472" title="weibo">weibo</a>
+
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2026111301" class="article article-type-post" itemscope itemprop="blogPost">
+
+    <div class="article-meta">
+      <a href="/2026/11/13/2026111301/" class="article-date">
+	<time datetime="2026-11-12T16:00:00.000Z" itemprop="datePublished">2026-11-13</time>
+</a>
+    </div>
+
+  <div class="article-inner">
+
+      <input type="hidden" class="isFancy" />
+
+
+      <header class="article-header">
+
+
+    <h1 class="article-title" itemprop="name">
+      读《Super-agent 设计探索》：Agent 的瓶颈，可能是人的注意力
+    </h1>
+
+
+      </header>
+
+      <div class="article-info article-info-post">
+
+
+
+        <div class="clearfix"></div>
+      </div>
+
+
+    <div class="article-entry" itemprop="articleBody">
+
+        <p>原文：<a href="https://zhuanlan.zhihu.com/p/2099987320443237060" target="_blank" rel="noopener">《Super-agent 设计探索：迈向更自主的 Agent 系统》</a></p>
+<p>读完这篇文章，我最在意的不是“让 Agent 多调几个工具”，而是它试着把人从不断切换会话、补上下文、盯执行进度这些管理工作里解放出来。模型越来越能完成单项任务后，瓶颈可能真的开始转向人的注意力。</p>
+<h2>从会话管理，走向任务管理</h2>
+<p>我们现在常用的 Agent，大多还是围绕一个 Session 工作。事情一多，人就得自己开新会话、搬背景、记住哪个任务跑到哪一步。DeepSeek 提出的 Router / Worker 双层架构，把这部分协调工作放到了系统里：Router 接住人和外部渠道的消息、维护整体上下文并分派任务；Worker 在彼此隔离的会话里并行处理具体工作，再把结果交回 Router。</p>
+<p>我理解这不只是“一个主管 Agent 带几个子 Agent”。关键是把交互和执行分开，让用户面对一个连续的入口，底层则能并发处理多个任务。否则即使有很多 Worker，最后仍要用户手动管理它们的上下文和进度，复杂度只是换了个地方。</p>
+<h2>主动性不是定时醒来，而是理解事件</h2>
+<p>文章把群聊、邮件、日程、代码评审和 CI 结果等环境输入视为 Trigger。要让 Agent 主动做事，第一步不是把所有消息都交给模型，而是先用程序规则挡掉大量无关事件，再让模型判断少数候选事件是否值得行动。之后还要把相关事件路由给已有任务，并在需要时召回上下文。</p>
+<p>这个设计让我想到，真正有用的“主动”应该是有选择的主动。收到一个信号后，系统要知道它和哪项工作有关、是否已有 Worker 在处理、现在行动有没有价值。像根据 CI 失败尝试复现问题，或者先准备会议背景，听起来很自然；但如果过滤和上下文边界做不好，主动性也可能很快变成噪音。</p>
+<h2>异步执行也是交互设计</h2>
+<p>传统 ReAct Loop 执行耗时工具时会阻塞当前会话。异步方式让 Agent 启动后台任务后先返回状态，任务完成再把结果作为新事件送回来；用户可以继续发消息，Agent 也能按需停止耗时操作。</p>
+<p>这看似只是工具调用方式的变化，实际上会改变用户体验。既然任务在后台运行，就需要清楚的状态、可追踪的结果、合适的通知，以及可靠的取消和接管入口。用户不应该因为 Agent 能异步执行，就失去对任务的控制。</p>
+<h2>Agent 持续在线靠的是系统工程</h2>
+<p>把计算、持久化状态和执行环境解耦，是文章里很工程化的一点：会话状态由存储保障，Agent Loop 可以在云端运行，而代码仓库、工具链和凭据等重状态环境可以留在原来的设备上，通过轻量组件接入。再加一个独立的 Watchdog，检查的不只是进程是否活着，也包括任务是否还在取得进展。</p>
+<p>这提醒我，Agent 长期在线不是把一个 Agent Loop 拉得更长，也不是单纯增加上下文窗口。系统得能在进程重启后恢复任务，能区分执行环境，并能发现“还在运行、但已经跑偏”的情况。自主程度越高，故障恢复和状态管理就越是产品本身的一部分。</p>
+<h2>越主动，越需要清楚的权限边界</h2>
+<p>我认为文章列出的安全与隐私问题尤其重要：事件里可能带有不可信输入，Agent 可能跨设备访问环境，而本地环境又可能含有私有代码和凭据。提示词注入、凭据泄露和权限扩散都不是边缘问题，而是主动式系统的核心设计约束。</p>
+<p>一个可信的 Agent，至少要让人能看清它依据什么事件行动、使用了哪些权限、改动了什么；对敏感操作要有清楚的授权和确认边界，也要能随时暂停或收回权限。越是希望它替人节省注意力，越不能把人的控制权一起省掉。</p>
+<h2>我会怎样看这类架构</h2>
+<p>这套思路最适合先落在边界清楚、结果可验证的工作流里：比如监控某类 CI 失败、整理指定渠道里的待办、在明确规则下准备修复建议。评估时也不能只看完成得快不快，还要看误触发有多少、需要人介入几次、失败后能不能恢复、权限是否收得住。</p>
+<p>文中给出的初步实验基于合成消息负载和简化环境，主要观察调度与协作，不等于真实任务能力的普遍基准。这个限定值得保留：它证明的是一些系统设计方向值得继续验证，而不是说明所有工作都已经可以放心交给 Agent。</p>
+<p>读完之后，我对“更自主”的理解更具体了：不是让 AI 不经允许地替人做更多事，而是让系统接住任务编排、并发、上下文同步和恢复这些繁琐环节，让人把精力留给目标、关键判断和结果验收。Agent 做得好不好，最后还是要看它有没有减少打扰、交付是否可信，以及人能不能随时介入。</p>
+
+
+    </div>
+
+  </div>
+
+
+<nav id="article-nav">
+
+
+    <a href="/2020/10/17/2020101702/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android反抓包</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+
+</nav>
+
+
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2026111301" data-title="读《Super-agent 设计探索》：Agent 的瓶颈，可能是人的注意力" data-url="http://ydpzg.github.io/2026/11/13/2026111301/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer id="footer">
+
+  <div class="outer">
+    <div id="footer-info">
+	<div class="footer-left">
+		&copy; 2020 dukelight
+	</div>
+	<div class="footer-right">
+		    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+		    <span class="post-meta-divider">|</span>
+		    <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人</span>
+        </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
