@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>把 Dify 接进业务系统：从一个订单助手 Demo 说起 | dukelight's home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="记录 Dify 的学习路径与业务接入方法：应用 API、知识库 RAG、OpenAPI 工具、工作流和人工审核，以及适合业务系统的价值与权限边界。">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="把 Dify 接进业务系统：从一个订单助手 Demo 说起">
+  <meta property="og:url" content="https://ydpzg.github.io/2026/11/18/2026111801/">
+  <meta property="og:site_name" content="dukelight's home">
+  <meta property="og:description" content="记录 Dify 的学习路径与业务接入方法：应用 API、知识库 RAG、OpenAPI 工具、工作流和人工审核，以及适合业务系统的价值与权限边界。">
+  <meta property="og:locale" content="Chinese">
+  <meta property="og:updated_time" content="2026-11-17T16:00:00.000Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="把 Dify 接进业务系统：从一个订单助手 Demo 说起">
+  <meta name="twitter:description" content="记录 Dify 的学习路径与业务接入方法：应用 API、知识库 RAG、OpenAPI 工具、工作流和人工审核，以及适合业务系统的价值与权限边界。">
+  <link rel="alternative" href="/atom.xml" title="dukelight's home" type="application/atom+xml">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+      <div class="intrude-less">
+        <header id="header" class="inner">
+          <hgroup><h1 class="header-author"><a href="/">dukelight</a></h1></hgroup>
+          <p class="header-subtitle">每天都这么苦逼，只为解决一个bug。</p>
+          <nav class="header-menu">
+            <ul>
+              <li><a href="/">主页</a></li>
+              <li><a href="/archives">所有文章</a></li>
+            </ul>
+          </nav>
+          <nav class="header-nav">
+            <div class="social">
+              <a class="github" target="_blank" rel="noopener" href="https://github.com/ydpzg" title="github">github</a>
+            </div>
+          </nav>
+        </header>
+      </div>
+    </div>
+    <nav id="mobile-nav">
+      <div class="overlay"><h1 class="header-author"><a href="/">dukelight</a></h1></div>
+    </nav>
+    <div class="mid-col">
+      <div class="body-wrap">
+        <article id="post-2026111801" class="article article-type-post" itemscope itemprop="blogPost">
+          <div class="article-meta">
+            <a href="/2026/11/18/2026111801/" class="article-date">
+              <time datetime="2026-11-17T16:00:00.000Z" itemprop="datePublished">2026-11-18</time>
+            </a>
+          </div>
+          <div class="article-inner">
+            <input type="hidden" class="isFancy">
+            <header class="article-header">
+              <h1 class="article-title" itemprop="name">把 Dify 接进业务系统：从一个订单助手 Demo 说起</h1>
+            </header>
+            <div class="article-info article-info-post"><div class="clearfix"></div></div>
+            <div class="article-entry" itemprop="articleBody">
+              <p>最近我把一个订单助手拆成了一个 Dify 接入 Demo。学习的重点不是堆 API 名称，而是把一条业务请求从用户入口、模型编排、知识检索，一直追到业务服务，并明确每一步由谁负责。</p>
+              <p>项目代码和完整配置步骤：<a href="https://github.com/ydpzg/dify_demo" target="_blank" rel="noopener">github.com/ydpzg/dify_demo</a>。示例只使用合成订单，退款端点会校验参数后返回 SIMULATED，不会修改真实数据。</p>
+
+              <h2>我是怎么学的：从一个具体业务问题开始</h2>
+              <p>我先把问题限定为“用户问订单状态，必要时发起退款申请”。这让学习过程有了可检查的结果：能否拿到正确订单、能否解释规则、工具调用是否受控，以及遇到需要审批的操作时能否停下来等人处理。</p>
+              <p>接着把系统拆成四段：业务前端负责交互；自己的后端负责登录态、租户和 Dify App Key；Dify 负责 Agent、知识库与工作流编排；业务 API 负责返回真实数据并执行最终校验。Demo 用 Python 标准库直接调用 Dify API，没有依赖 Dify SDK，因此每个请求、身份字段和流式事件都能看到。</p>
+              <pre><code>Web / App
+  -&gt; 业务后端：认证用户、检查权限、保存密钥
+  -&gt; Dify App API：检索知识、组织步骤、选择工具
+  -&gt; 业务 API：按权限查订单或执行已批准的动作</code></pre>
+              <p>随后我按能力逐步搭建：先用 Chatflow 连知识库做问答，再通过 Agent 调订单查询工具；接着试 Workflow 的固定步骤和流式事件；最后把 Human Input 加在高风险步骤前。这样可以分清“模型生成了建议”和“业务系统真的执行了操作”。</p>
+
+              <h2>先把 Dify 应用配置好</h2>
+              <ol>
+                <li>在 Dify Workspace 配置可用的模型提供商。</li>
+                <li>需要企业知识问答时，创建知识库、上传资料，等索引完成后在 Chatflow 中添加知识检索节点并发布。</li>
+                <li>需要自主选择工具时，创建 Agent 并加入工具；需要固定业务步骤时，创建 Workflow，声明输入和输出后发布。</li>
+                <li>在每个应用的 API Access 页面创建 App API Key。知识库服务使用单独的 Knowledge Service API Key，不要混用。</li>
+              </ol>
+              <p>把项目克隆到本地后，在仓库目录复制 <code>.env.example</code> 为 <code>.env</code>，再填入相应密钥和知识库 ID。执行 <code>python3 dify_demo.py info</code> 可以检查 Chat 应用密钥；不要把真实密钥放进浏览器代码或提交到仓库。</p>
+              <pre><code>git clone https://github.com/ydpzg/dify_demo.git
+cd dify_demo
+cp .env.example .env
+python3 dify_demo.py info</code></pre>
+              <p>Dify Cloud 使用官方 API 地址；自托管部署则使用实例显示的 API Base URL。具体接口和授权方式以所用实例的 API 文档为准。</p>
+
+              <h2>三种常见接法：Chatflow、Agent 和 Workflow</h2>
+              <p><strong>Chatflow + 知识库</strong>适合让用户用自然语言查询制度、产品手册和内部 FAQ。文档先经过切分与索引，检索到的片段再进入回答流程。Demo 的 <code>chat</code> 命令调用已发布的 Chat/Chatflow；<code>retrieve</code> 命令则直接检查经典知识库命中的片段，便于调试切分和召回。</p>
+              <pre><code>python3 dify_demo.py chat "公司的退款政策是什么？"
+python3 dify_demo.py retrieve "退款到账需要多久？"</code></pre>
+              <p><strong>Agent</strong>适合需要根据上下文选择一个或多个工具的场景，例如先查订单，再根据订单状态解释后续步骤。Demo 的 Agent API 用 SSE 流式接收回复和工具事件，并可通过 conversation_id 延续会话。</p>
+              <pre><code>python3 dify_demo.py agent "查询 order-1001 状态，并说明下一步"
+python3 dify_demo.py agent "继续说明退款条件" --conversation-id YOUR_CONVERSATION_ID</code></pre>
+              <p><strong>Workflow</strong>适合规则明确、步骤可预期的流程，例如校验输入、查业务数据、生成说明、等待审核、再返回结果。Workflow API 可以流式运行；执行到 Human Input 时会暂停，读取表单并提交 action 后再恢复。</p>
+
+              <h2>让模型调用业务工具，但把执行权留在后端</h2>
+              <p>项目提供一个 mock 业务 API，并在 <code>openapi/business_tools.yaml</code> 描述两个工具：Bearer Token 保护的订单查询，以及有金额范围校验的退款模拟。把 OpenAPI 定义导入 Dify 的 Swagger API 工具，再将工具加入 Agent 或流程，即可让 Dify 按工具描述构造请求。</p>
+              <pre><code>python3 business_api.py
+python3 dify_demo.py agent "查询 order-1001 状态"
+
+# 订单数据是合成数据，退款只会返回 SIMULATED</code></pre>
+              <p>关键经验是让工具保持窄而清楚：一个工具做一件明确的事，参数写明格式和约束，服务端对输入重新验证。工具 URL 必须能被 Dify 服务端访问；Cloud 服务不能访问你电脑上的 localhost。生产环境需要可达的 HTTPS 服务和合适的网络控制。</p>
+              <p>订单归属、用户授权、租户隔离、退款上限、幂等和审计都应由业务 API 执行。模型可以帮助理解用户意图、选择允许的工具并组织回复，但不会成为业务授权来源。对退款等有副作用的接口，还应设计人工确认和重复提交保护。</p>
+
+              <h2>知识、文件、人工审核和反馈怎样组合</h2>
+              <p>知识库解决“回答依据从哪里来”，工具解决“怎样读取或请求业务动作”，Workflow 解决“步骤如何串起来”。上传 PDF、提取语音或合成语音可以扩展输入输出；用户会话、消息历史与反馈 API 则帮助把助手接进客服界面并收集质量信号。</p>
+              <p>当工作流需要审批时，Human Input 会让运行暂停并返回 form_token。业务前端应使用当前登录用户呈现审核表单，再把批准或拒绝结果提交给 Dify；token 要绑定原用户和会话，不应作为公开链接传播。Demo 中的 <code>workflow-stream</code>、<code>human-get</code> 和 <code>human-submit</code> 展示了这个暂停与恢复过程。</p>
+              <p>点赞、点踩和人工维护的问答标注可以用于发现回答问题、补充高频标准答案。用户反馈并不自动等于可信知识；需要经过审核，再决定是否更新知识库或标注。项目也提供把已发布 Dify 应用作为 MCP Server 提供给 Cursor 等客户端的配置示例。</p>
+
+              <h2>Dify 能给业务系统带来什么</h2>
+              <ul>
+                <li><strong>把自然语言接到现有 API。</strong> 用户可以描述目标，Dify 负责把意图路由到设计好的工具，业务系统继续管理数据和交易。</li>
+                <li><strong>让分散文档变成可查询的知识入口。</strong> 通过知识库检索，把制度、手册和常见问题放入问答流程，减少用户在多个系统间查找信息的步骤。</li>
+                <li><strong>把固定流程可视化并便于调整。</strong> Workflow/Chatflow 可以组合模型、知识库、条件分支、工具和人工输入，让产品与工程更容易共同检查业务步骤。</li>
+                <li><strong>逐步扩展交互形态。</strong> 在一个 API 集成基础上，可以增加文件、音频、会话历史、反馈以及面向 MCP 客户端的入口。</li>
+                <li><strong>把迭代聚焦到业务价值。</strong> 团队可以先验证一个低风险问答或只读查询流程，再逐渐接入审批和写操作，并用失败率、人工接管率、回答采纳率和每次任务成本衡量效果。</li>
+              </ul>
+              <p>这些价值来自减少信息查找和流程编排的摩擦，不是自动获得的效率收益。是否有效，要结合真实任务的正确率、延迟、模型成本、人工审核时间和业务风险来评估。</p>
+
+              <h2>从 Demo 到生产，需要补上的部分</h2>
+              <p>这个仓库是一份学习和集成样例，不是生产系统。退款端点不会执行真实退款，业务服务也没有真实用户体系、数据库、租户隔离、速率限制、持久化审计或完整的重试与恢复策略。上线前应逐项补齐，并确保 Dify 使用的网络地址和 API Key 范围符合部署环境。</p>
+              <p>我会按风险从低到高推进：先做有来源可核验的知识问答，再接只读查询，然后引入带权限检查的业务请求；涉及资金或数据变更时，先让系统生成待审核操作，获得明确授权后才由业务后端执行。每一步都保留监控、告警和人工接管入口。</p>
+
+              <h2>资料与代码</h2>
+              <ul>
+                <li><a href="https://github.com/ydpzg/dify_demo" target="_blank" rel="noopener">项目仓库：Dify 业务接入 Demo</a></li>
+                <li><a href="https://docs.dify.ai/en/api-reference/guides/get-started" target="_blank" rel="noopener">Dify API 快速开始</a></li>
+                <li><a href="https://docs.dify.ai/en/api-reference/guides/agent" target="_blank" rel="noopener">Agent API 与流式会话</a></li>
+                <li><a href="https://docs.dify.ai/en/api-reference/guides/workflow" target="_blank" rel="noopener">Workflow API</a></li>
+                <li><a href="https://docs.dify.ai/en/api-reference/guides/knowledge" target="_blank" rel="noopener">经典知识库 API</a></li>
+                <li><a href="https://docs.dify.ai/en/cloud/use-dify/workspace/tools" target="_blank" rel="noopener">Dify Tools 与 OpenAPI 工具</a></li>
+                <li><a href="https://docs.dify.ai/en/api-reference/guides/human-input-flow" target="_blank" rel="noopener">Human Input API 流程</a></li>
+                <li><a href="https://docs.dify.ai/en/cloud/use-dify/publish/publish-mcp" target="_blank" rel="noopener">将 Dify 应用发布为 MCP Server</a></li>
+              </ul>
+            </div>
+          </div>
+          <nav id="article-nav">
+            <a href="/2026/11/13/2026111301/" id="article-nav-older" class="article-nav-link-wrap">
+              <div class="article-nav-title">读《Super-agent 设计探索》：Agent 的瓶颈，可能是人的注意力</div>
+              <strong class="article-nav-caption">&gt;</strong>
+            </a>
+          </nav>
+        </article>
+      </div>
+    </div>
+  </div>
+  <script src="/js/main.js"></script>
+</body>
+</html>
