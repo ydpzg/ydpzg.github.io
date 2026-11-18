@@ -225,8 +225,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>from random import randint<br>data = [randint(1, 10) for _ in range(20)]<br>d = dict.fromkeys(data, 0)<br>d<br>for x in data:<br>…     d[x] += 1<br>d</p>
-<p>from collections import Counter<br>c = Counter(data)<br>c.most_common()<br>c.most_common(1)<br>c.most_common(2)<br>file = open(“/Users/dukelight/project/EasyPR/LICENSE”, “r”).read()<br>words = re.split(“\W+”, file)<br>wordsCounter = Counter(words)<br>wordsCounter.most_common(10)</p>
+        <pre><code>from random import randint
+data = [randint(1, 10) for _ in range(20)]
+d = dict.fromkeys(data, 0)</code></pre><p>d<br>for x in data:<br></p><pre><code>…     d[x] += 1</code></pre><p>d</p>
+<pre><code>from collections import Counter
+c = Counter(data)
+c.most_common()
+c.most_common(1)
+c.most_common(2)
+file = open(“/Users/dukelight/project/EasyPR/LICENSE”, “r”).read()
+words = re.split(“\W+”, file)
+wordsCounter = Counter(words)
+wordsCounter.most_common(10)</code></pre>
 
       
     </div>

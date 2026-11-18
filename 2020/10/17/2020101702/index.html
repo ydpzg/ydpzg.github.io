@@ -226,13 +226,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>####一开始以为很简单</p>
-<p>Android7.0以下<br>第一步<br><a href="https://juejin.im/post/5cb98386e51d456e2c24851d" target="_blank" rel="noopener">https://juejin.im/post/5cb98386e51d456e2c24851d</a><br>client = new OkHttpClient.Builder() .proxy(Proxy.NO_PROXY) .connectTimeout(10, TimeUnit.SECONDS) .readTimeout(10, TimeUnit.SECONDS) .build();</p>
-<p>第二步<br> public static boolean isWifiProxy(Context context) {<br>        final boolean IS_ICS_OR_LATER = Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.ICE_CREAM_SANDWICH;<br>        String proxyAddress;<br>        int proxyPort;<br>        if (IS_ICS_OR_LATER) {<br>            proxyAddress = System.getProperty(“http.proxyHost”);<br>            String portStr = System.getProperty(“http.proxyPort”);<br>            proxyPort = Integer.parseInt((portStr != null ? portStr : “-1”));<br>        } else {<br>            proxyAddress = android.net.Proxy.getHost(context);<br>            proxyPort = android.net.Proxy.getPort(context);<br>        }<br>        return (!TextUtils.isEmpty(proxyAddress)) &amp;&amp; (proxyPort != -1);<br>    }</p>
+<p>Android7.0以下<br>第一步<br><a href="https://juejin.im/post/5cb98386e51d456e2c24851d" target="_blank" rel="noopener">https://juejin.im/post/5cb98386e51d456e2c24851d</a><br></p><pre><code>client = new OkHttpClient.Builder() .proxy(Proxy.NO_PROXY) .connectTimeout(10, TimeUnit.SECONDS) .readTimeout(10, TimeUnit.SECONDS) .build();</code></pre>
+<p>第二步<br></p><pre><code>public static boolean isWifiProxy(Context context) {
+final boolean IS_ICS_OR_LATER = Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
+String proxyAddress;
+int proxyPort;
+if (IS_ICS_OR_LATER) {
+proxyAddress = System.getProperty(“http.proxyHost”);
+String portStr = System.getProperty(“http.proxyPort”);
+proxyPort = Integer.parseInt((portStr != null ? portStr : “-1”));
+} else {
+proxyAddress = android.net.Proxy.getHost(context);
+proxyPort = android.net.Proxy.getPort(context);
+}
+return (!TextUtils.isEmpty(proxyAddress)) &amp;&amp; (proxyPort != -1);
+}</code></pre>
 <p>android7.0以上<br><a href="https://blog.csdn.net/alcoholdi/article/details/106455192" target="_blank" rel="noopener">https://blog.csdn.net/alcoholdi/article/details/106455192</a></p>
 <p>####然而，抓包却可以使用drony破掉，drony代理了手机所有的流量</p>
-<p>第三步：<br>自带证书走起<br>从运维得到 xxxxx.pem<br>然后使用openssl转换成cer证书<br>openssl x509 -outform der -in xxxxx.pem -out ClientCertificate.cer<br>打印cer证书得到字符串<br>keytool -printcert -rfc -file ClientCertificate.cer    </p>
+<p>第三步：<br>自带证书走起<br>从运维得到 xxxxx.pem<br>然后使用openssl转换成cer证书<br></p><pre><code>openssl x509 -outform der -in xxxxx.pem -out ClientCertificate.cer</code></pre><p>打印cer证书得到字符串<br></p><pre><code>keytool -printcert -rfc -file ClientCertificate.cer</code></pre>
 <p>链接参考：<br>android设置反抓包：<br><a href="https://juejin.im/post/5d8c593ee51d45783544b9ac" target="_blank" rel="noopener">https://juejin.im/post/5d8c593ee51d45783544b9ac</a><br><a href="https://www.jianshu.com/p/cc7ae2f96b64" target="_blank" rel="noopener">https://www.jianshu.com/p/cc7ae2f96b64</a><br>转换证书：<br><a href="https://www.anquanke.com/post/id/201219" target="_blank" rel="noopener">https://www.anquanke.com/post/id/201219</a></p>
-<p>目的是让客户端验证服务端的https证书<br>最后会报网络错误<br>java.security.cert.CertPathValidatorException: Trust anchor for certification path not found.</p>
+<p>目的是让客户端验证服务端的https证书<br>最后会报网络错误<br></p><pre><code>java.security.cert.CertPathValidatorException: Trust anchor for certification path not found.</code></pre>
 <p>####最后：</p>
 <p>####哈哈，抓包如果还想破也是可以的，需要反编译app，然后找到cer证书，在charles上设置该证书，所以要把cer证书藏得深一点。</p>
 <p>####flutter上的做法<br>charles 只要开了ssl后：</p>
@@ -243,10 +256,21 @@
 <p>加以下的true后，可以抓到包</p>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">client2.badCertificateCallback = (X509Certificate cert, <span class="built_in">String</span> host, <span class="built_in">int</span> port)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="comment">;</span></span><br><span class="line">client2.badCertificateCallback = (X509Certificate cert, <span class="built_in">String</span> host, <span class="built_in">int</span> port)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span><span class="comment">;</span></span><br><span class="line">&#125;<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 
-<p>[DioErrorType.DEFAULT]: HandshakeException: Handshake error in client (OS Error:<br>CERTIFICATE_VERIFY_FAILED: self signed certificate in certificate chain(handshake.cc:354))</p>
+<pre><code>[DioErrorType.DEFAULT]: HandshakeException: Handshake error in client (OS Error:
+CERTIFICATE_VERIFY_FAILED: self signed certificate in certificate chain(handshake.cc:354))</code></pre>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;HttpClient&gt; getHttpClient() async &#123;</span><br><span class="line">    <span class="keyword">ByteData </span>data = await rootBundle.load(<span class="string">'images/ClientCertificate.pem'</span>)<span class="comment">;</span></span><br><span class="line">    SecurityContext <span class="built_in">context</span> = SecurityContext.defaultContext<span class="comment">;</span></span><br><span class="line">    <span class="built_in">context</span>.setTrustedCertificatesBytes(data.<span class="keyword">buffer.asUint8List());</span></span><br><span class="line"><span class="keyword"> </span>   HttpClient httpClient = new HttpClient(<span class="built_in">context</span>: <span class="built_in">context</span>)<span class="comment">;</span></span><br><span class="line">    return httpClient<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>调用的地方<br>…<br>dio = Dio(options);<br>HttpClient client2 = await getHttpClient();<br>(dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate  = (client) {<br>  client2.findProxy = (uri) {<br>    return “PROXY 10.10.18.4:8888; PROXY 10.10.21.6:8888;”;<br>  };<br>  client2.badCertificateCallback = (X509Certificate cert, String host, int port){<br>    return false;<br>  };<br>  return client2;<br>};</p>
+<p>调用的地方<br>…<br></p><pre><code>dio = Dio(options);
+HttpClient client2 = await getHttpClient();
+(dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate  = (client) {
+client2.findProxy = (uri) {
+return “PROXY 10.10.18.4:8888; PROXY 10.10.21.6:8888;”;
+};
+client2.badCertificateCallback = (X509Certificate cert, String host, int port){
+return false;
+};
+return client2;
+};</code></pre>
 <p>完整</p>
 <p>####最后验证了，如果不开proxy，怎么设置都可以顺利请求数据</p>
 <p><a href="https://book.flutterchina.club/chapter10/http.html" target="_blank" rel="noopener">https://book.flutterchina.club/chapter10/http.html</a><br>证书校验<br>Https中为了防止通过伪造证书而发起的中间人攻击，客户端应该对自签名或非CA颁发的证书进行校验。HttpClient对证书校验的逻辑如下：</p>
@@ -255,7 +279,8 @@
 <li>如果第一步验证失败，但在创建HttpClient时，已经通过SecurityContext将证书添加到证书信任链中，那么当服务器返回的证书在信任链中的话，则验证通过。</li>
 <li>如果1、2验证都失败了，如果用户提供了badCertificateCallback回调，则会调用它，如果回调返回true，则允许继续链接，如果返回false，则终止链接。<br>综上所述，我们的证书校验其实就是提供一个badCertificateCallback回调，下面通过一个示例来说明。<br>上面几句话验证过正确<br>其实，如果要防抓包的话直接一句代码就好，正常请求是可以work，只要代理并且尝试用ssl proxying，那么都禁止即可<br>client2.badCertificateCallback = (X509Certificate cert, String host, int port){<br>return false;<br>};</li>
 </ol>
-<p>最后保险再加一道<br>import ‘package:http_certificate_pinning/http_certificate_pinning.dart’;<br>http_certificate_pinning: ^1.0.3<br>List<string> allowedSHAFingerprints = [‘24:AE:ED:0F:06:35:A9:D5:77:C4:A9:66:D9:56:33:27:97:87:36:4C:83:DF:96:55:FE:8E:A6:04:26:D4:8C:1E’].toList();<br>dio.interceptors.add(CertificatePinningInterceptor(allowedSHAFingerprints));<br>这种方式不好，原因如下</string></p>
+<p>最后保险再加一道<br></p><pre><code>import ‘package:http_certificate_pinning/http_certificate_pinning.dart’;</code></pre><p>http_certificate_pinning: ^1.0.3<br></p><pre><code>List<string> allowedSHAFingerprints = [‘24:AE:ED:0F:06:35:A9:D5:77:C4:A9:66:D9:56:33:27:97:87:36:4C:83:DF:96:55:FE:8E:A6:04:26:D4:8C:1E’].toList();
+dio.interceptors.add(CertificatePinningInterceptor(allowedSHAFingerprints));</code></pre><p>这种方式不好，原因如下</string></p>
 <p>#####最新实验出来的 flutter</p>
 <p>#####这种会导致https线上跑的时候卡顿，原因是每个api接口都去请求一次服务器验证，很慢，1s或者2s时间</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Application.baseUrl.startsWith(<span class="string">'https'</span>)) &#123;</span><br><span class="line">        dio.interceptors.<span class="keyword">add</span>(CertificatePinningInterceptor([Application.HTTPS_FINGERPRINT].toList()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

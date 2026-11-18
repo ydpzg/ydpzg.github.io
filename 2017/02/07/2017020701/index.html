@@ -234,7 +234,8 @@
 Thread.sleep(1000);
 // 代码
    }
-});</code></pre><p>ThreadPoolUtils.execute(futureTask);<br>ThreadPoolUtils.cancel(futureTask);</p>
+});</code></pre><pre><code>ThreadPoolUtils.execute(futureTask);
+ThreadPoolUtils.cancel(futureTask);</code></pre>
 <p>删掉 try catch代码后发现现在可以cancel这个FutureTask了。</p>
 
       

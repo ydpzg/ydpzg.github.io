@@ -225,8 +225,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>from random import randint<br>data = {x: randinx(80, 100) for x in ‘abcxyz’}<br>zipresult = zip(data.values(), data.keys())<br>sorted(zipresult)<br>list(zipresult)</p>
-<p>data.items()<br>sorted(data.items(), key=lambda x: x[1])<br>sorted(data.items(), key=lambda x: x[1], reverse=True)</p>
+        <pre><code>from random import randint
+data = {x: randinx(80, 100) for x in ‘abcxyz’}
+zipresult = zip(data.values(), data.keys())
+sorted(zipresult)
+list(zipresult)</code></pre>
+<pre><code>data.items()
+sorted(data.items(), key=lambda x: x[1])
+sorted(data.items(), key=lambda x: x[1], reverse=True)</code></pre>
 
       
     </div>

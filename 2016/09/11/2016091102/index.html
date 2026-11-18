@@ -232,7 +232,19 @@
 <li><p><a href>{ }</a> object型  </p>
 </li>
 <li><p><a href>[] </a> array型</p>
-<p> Gson gson = new GsonBuilder().registerTypeAdapter(TestPeople.class, new MyDeserializer()).create();<br> String ssArray = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[]}}”;<br> System.out.println(ssArray);<br> String ssArray2 = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}]}}”;<br> System.out.println(ssArray2);<br> String ssObject = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}}}”;<br> System.out.println(ssObject);<br> TestHouse testHouseArray = gson.fromJson(ssArray, TestHouse.class);<br> TestHouse testHouseArray2 = gson.fromJson(ssArray2, TestHouse.class);<br> TestHouse testHouseObject = gson.fromJson(ssObject, TestHouse.class);<br> System.out.println(“result=” + testHouseArray.toString());<br> System.out.println(“result=” + testHouseArray2.toString());<br> System.out.println(“result=” + testHouseObject.toString());</p>
+<pre><code>Gson gson = new GsonBuilder().registerTypeAdapter(TestPeople.class, new MyDeserializer()).create();
+String ssArray = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[]}}”;
+System.out.println(ssArray);
+String ssArray2 = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:[{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}]}}”;
+System.out.println(ssArray2);
+String ssObject = “{&quot;name&quot;:&quot;333&quot;,&quot;id&quot;:&quot;18&quot;,&quot;testPeople&quot;:{&quot;name&quot;:&quot;222&quot;,&quot;testApple&quot;:{&quot;name&quot;:&quot;111&quot;,&quot;id&quot;:&quot;9&quot;}}}”;
+System.out.println(ssObject);
+TestHouse testHouseArray = gson.fromJson(ssArray, TestHouse.class);
+TestHouse testHouseArray2 = gson.fromJson(ssArray2, TestHouse.class);
+TestHouse testHouseObject = gson.fromJson(ssObject, TestHouse.class);
+System.out.println(“result=” + testHouseArray.toString());
+System.out.println(“result=” + testHouseArray2.toString());
+System.out.println(“result=” + testHouseObject.toString());</code></pre>
 </li>
 </ol>
 <h4 id="输出内容"><a href="#输出内容" class="headerlink" title="输出内容"></a>输出内容</h4><p>根据testApple可以看到，确实可以根据不同的输入正确解析出来。</p>

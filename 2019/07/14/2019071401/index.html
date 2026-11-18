@@ -226,10 +226,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>component的文件形态<br>xxx 文件夹<br>    index.js （封装了createDialog方法，操作了dom树）<br>    index.vue</p>
-<p>1、用法：<br>import xxx from ‘xxx/index.js’<br>let dialog = xxx({ YYY: yyy})</p>
+<p>1、用法：<br></p><pre><code>import xxx from ‘xxx/index.js’
+let dialog = xxx({ YYY: yyy})</code></pre>
 <p>场景：<br>不需要view层的公共类，只需要script层</p>
 <p>注意：<br>控制对话框显示与隐藏的字段是visible，通过值为true or false来代表对话框的显示与隐藏，因为要操作dom树，dom元素的显示隐藏就是visible</p>
-<p>2、用法：<br>import xxx from ‘xxx/index.vue’<br><xxx v-model="showDialog" :yyy="yyy"></xxx></p>
+<p>2、用法：<br></p><pre><code>import xxx from ‘xxx/index.vue’</code></pre><p><xxx v-model="showDialog" :yyy="yyy"></xxx></p>
 <p>场景：<br>普通单页业务，既有view层，又有script层</p>
 <p>注意：<br>控制对话框显示与隐藏的字段是value，通过值为true or false来代表对话框的显示与隐藏，因为使用了v-model</p>
 

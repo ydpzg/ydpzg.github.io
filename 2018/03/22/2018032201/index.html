@@ -227,15 +227,21 @@
       
         <blockquote>
 <h1 id="公司有40个渠道包的需要，我用了一台主机专门打包，最快也要40分钟才能打完，一般都是50分钟，当在发布前发现问题的时候，重新打包导致开发人员噩梦开始，并且推广人员跟着加班，效率很低。"><a href="#公司有40个渠道包的需要，我用了一台主机专门打包，最快也要40分钟才能打完，一般都是50分钟，当在发布前发现问题的时候，重新打包导致开发人员噩梦开始，并且推广人员跟着加班，效率很低。" class="headerlink" title="公司有40个渠道包的需要，我用了一台主机专门打包，最快也要40分钟才能打完，一般都是50分钟，当在发布前发现问题的时候，重新打包导致开发人员噩梦开始，并且推广人员跟着加班，效率很低。"></a>公司有40个渠道包的需要，我用了一台主机专门打包，最快也要40分钟才能打完，一般都是50分钟，当在发布前发现问题的时候，重新打包导致开发人员噩梦开始，并且推广人员跟着加班，效率很低。</h1></blockquote>
-<p>1、gradle参数提速<br>org.gradle.daemon=true  开启daemon守护进程<br>gradle assembleDebug –dry-run –no-daemon  11.374 secs<br>gradle assembleDebug –dry-run –daemon         2.565 secs</p>
+<p>1、gradle参数提速<br></p><pre><code>org.gradle.daemon=true  开启daemon守护进程
+gradle assembleDebug –dry-run –no-daemon  11.374 secs
+gradle assembleDebug –dry-run –daemon         2.565 secs</code></pre>
 <p>org.gradle.parallel=true 并行化编译，模块化项目提升比较多</p>
 <p>2、将不常改动的类封装成稳定的底层类，甚至可以建公司的maven仓库等；<br>jar或者aar<br>结果：可以抽取的类不多，提速的效果不是很明显 。</p>
 <p>3、减少方法数，将方法数降到65535，不使用multidex，可以提升编译速度，也可以提高app启动速度</p>
 <p>目前必须引入的第三方类库加起来已经超过65535，目前v3.22.0的方法数是91001，远超65535，实现难度比较大</p>
-<p>4、剔除不需要和重复的库<br>使用gradle :app:dependencies –configuration compile可以分析出该项目的所有第三方包的依赖，<br>使用 debugCompile和exclude来减少不需要和重复的库<br>compile(‘com.android.support:support-fragment:25.3.1’) {<br>exclude group: ‘com.android.support’, module: ‘support-media-compat’<br>exclude group: ‘com.android.support’, module: ‘support-annotations’<br>}</p>
+<p>4、剔除不需要和重复的库<br>使用gradle :app:dependencies –configuration compile可以分析出该项目的所有第三方包的依赖，<br>使用 debugCompile和exclude来减少不需要和重复的库<br></p><pre><code>compile(‘com.android.support:support-fragment:25.3.1’) {</code></pre><p>exclude group: ‘com.android.support’, module: ‘support-media-compat’<br>exclude group: ‘com.android.support’, module: ‘support-annotations’<br></p><pre><code>}</code></pre>
 <p>5、开发阶段将minSdk设置为21，发布或者调试兼容性的时候将minSdk设置回14<br>minSdk 14 ———— 1m16s<br>minSdk 21 ———— 24s </p>
 <p>风险：设置后IDE会认为项目默认是支持最低21，导致一些兼容性友好的提示消失了，开发完必须要做低版本的测试。</p>
-<p>6、去掉lint步骤<br>tasks.whenTaskAdded { task -&gt;<br>if (task.name.equals(“lint”) || (task.name.contains(“lintVital”) &amp;&amp; task.name.contains(“Release”))) {<br>task.enabled = false<br>}<br>}</p>
+<p>6、去掉lint步骤<br></p><pre><code>tasks.whenTaskAdded { task -&gt;
+if (task.name.equals(“lint”) || (task.name.contains(“lintVital”) &amp;&amp; task.name.contains(“Release”))) {
+task.enabled = false
+}
+}</code></pre>
 <p>在考拉项目里省去了5*n秒的lint时间(n为Flavors数量)</p>
 <p>7、采用可商用的多渠道打包方案<br>VasDolly 腾讯<br>Walle 美团  （考拉接入）</p>
 <p>原理都差不多，都是找到不被app签名校验的地方（某个文件空间，某个文件），用来记录一些信息，而不破坏之前app的签名，不能重新打包，所以，可以认为这部分信息是不需要被保护的，比如渠道标识。</p>
