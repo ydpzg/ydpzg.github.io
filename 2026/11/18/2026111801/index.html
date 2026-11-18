@@ -65,10 +65,16 @@
               <h2>我是怎么学的：从一个具体业务问题开始</h2>
               <p>我先把问题限定为“用户问订单状态，必要时发起退款申请”。这让学习过程有了可检查的结果：能否拿到正确订单、能否解释规则、工具调用是否受控，以及遇到需要审批的操作时能否停下来等人处理。</p>
               <p>接着把系统拆成四段：业务前端负责交互；自己的后端负责登录态、租户和 Dify App Key；Dify 负责 Agent、知识库与工作流编排；业务 API 负责返回真实数据并执行最终校验。Demo 用 Python 标准库直接调用 Dify API，没有依赖 Dify SDK，因此每个请求、身份字段和流式事件都能看到。</p>
-              <pre><code>Web / App
-  -&gt; 业务后端：认证用户、检查权限、保存密钥
-  -&gt; Dify App API：检索知识、组织步骤、选择工具
-  -&gt; 业务 API：按权限查订单或执行已批准的动作</code></pre>
+              <figure class="flow-figure" aria-label="订单助手系统架构流程图">
+                <figcaption>一次请求如何经过各层系统</figcaption>
+                <ol class="flowchart architecture-flow">
+                  <li class="flow-node user-node"><span class="flow-kicker">01 / 入口</span><strong>Web / App</strong><small>用户提问 · 查看结果</small></li>
+                  <li class="flow-node backend-node"><span class="flow-kicker">02 / 业务边界</span><strong>业务后端</strong><small>认证 · 权限 · 会话</small></li>
+                  <li class="flow-node dify-node"><span class="flow-kicker">03 / 智能编排</span><strong>Dify App API</strong><small>检索知识 · 组织步骤 · 选择工具</small></li>
+                  <li class="flow-node service-node"><span class="flow-kicker">04 / 数据与执行</span><strong>业务 API</strong><small>查询订单 · 校验并执行获批动作</small></li>
+                </ol>
+                <p class="flow-note">App Key 保存在业务后端；业务 API 始终负责最终授权和数据校验。</p>
+              </figure>
               <p>随后我按能力逐步搭建：先用 Chatflow 连知识库做问答，再通过 Agent 调订单查询工具；接着试 Workflow 的固定步骤和流式事件；最后把 Human Input 加在高风险步骤前。这样可以分清“模型生成了建议”和“业务系统真的执行了操作”。</p>
 
               <h2>先把 Dify 应用配置好</h2>
@@ -87,6 +93,14 @@ python3 dify_demo.py info</code></pre>
 
               <h2>三种常见接法：Chatflow、Agent 和 Workflow</h2>
               <p><strong>Chatflow + 知识库</strong>适合让用户用自然语言查询制度、产品手册和内部 FAQ。文档先经过切分与索引，检索到的片段再进入回答流程。Demo 的 <code>chat</code> 命令调用已发布的 Chat/Chatflow；<code>retrieve</code> 命令则直接检查经典知识库命中的片段，便于调试切分和召回。</p>
+              <figure class="flow-figure" aria-label="Chatflow、Agent 和 Workflow 的流程对比">
+                <figcaption>按业务步骤选择应用形态</figcaption>
+                <div class="flow-compare">
+                  <section class="flow-option chatflow-option"><span class="flow-kicker">知识问答</span><strong>Chatflow</strong><div class="mini-flow"><span>用户问题</span><i></i><span>知识检索</span><i></i><span>有依据的回答</span></div></section>
+                  <section class="flow-option agent-option"><span class="flow-kicker">动态选工具</span><strong>Agent</strong><div class="mini-flow"><span>用户目标</span><i></i><span>判断与选工具</span><i></i><span>汇总结果</span></div></section>
+                  <section class="flow-option workflow-option"><span class="flow-kicker">固定业务步骤</span><strong>Workflow</strong><div class="mini-flow"><span>输入校验</span><i></i><span>业务节点</span><i></i><span>结果 / 审批</span></div></section>
+                </div>
+              </figure>
               <pre><code>python3 dify_demo.py chat "公司的退款政策是什么？"
 python3 dify_demo.py retrieve "退款到账需要多久？"</code></pre>
               <p><strong>Agent</strong>适合需要根据上下文选择一个或多个工具的场景，例如先查订单，再根据订单状态解释后续步骤。Demo 的 Agent API 用 SSE 流式接收回复和工具事件，并可通过 conversation_id 延续会话。</p>
@@ -102,6 +116,18 @@ python3 dify_demo.py agent "查询 order-1001 状态"
 # 订单数据是合成数据，退款只会返回 SIMULATED</code></pre>
               <p>关键经验是让工具保持窄而清楚：一个工具做一件明确的事，参数写明格式和约束，服务端对输入重新验证。工具 URL 必须能被 Dify 服务端访问；Cloud 服务不能访问你电脑上的 localhost。生产环境需要可达的 HTTPS 服务和合适的网络控制。</p>
               <p>订单归属、用户授权、租户隔离、退款上限、幂等和审计都应由业务 API 执行。模型可以帮助理解用户意图、选择允许的工具并组织回复，但不会成为业务授权来源。对退款等有副作用的接口，还应设计人工确认和重复提交保护。</p>
+              <figure class="flow-figure approval-figure" aria-label="带人工审核的退款申请流程图">
+                <figcaption>退款申请：模型准备建议，业务后端控制执行</figcaption>
+                <ol class="flowchart approval-flow">
+                  <li class="flow-node"><span class="flow-kicker">用户请求</span><strong>提出退款</strong><small>说明订单与原因</small></li>
+                  <li class="flow-node"><span class="flow-kicker">只读核验</span><strong>查询订单</strong><small>校验归属与退款条件</small></li>
+                  <li class="flow-node"><span class="flow-kicker">流程暂停</span><strong>Dify 等待审核</strong><small>返回审核表单与 form_token</small></li>
+                  <li class="flow-node decision-node"><span class="flow-kicker">人工决定</span><strong>批准？</strong><small>批准 / 拒绝</small></li>
+                  <li class="flow-node execute-node"><span class="flow-kicker">仅批准后</span><strong>后端再次校验</strong><small>幂等、权限、金额后执行</small></li>
+                </ol>
+                <div class="approval-outcomes"><span class="approved-outcome">批准 → 调用退款业务 API</span><span class="rejected-outcome">拒绝 → 记录原因并结束</span></div>
+                <p class="flow-note">Demo 中退款只返回 SIMULATED；模型本身没有直接执行退款的权限。</p>
+              </figure>
 
               <h2>知识、文件、人工审核和反馈怎样组合</h2>
               <p>知识库解决“回答依据从哪里来”，工具解决“怎样读取或请求业务动作”，Workflow 解决“步骤如何串起来”。上传 PDF、提取语音或合成语音可以扩展输入输出；用户会话、消息历史与反馈 API 则帮助把助手接进客服界面并收集质量信号。</p>
