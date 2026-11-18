@@ -226,31 +226,31 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>Apple.kt<br>val fun(name:String) {<br>println(name)<br>}<br>in kotlin<br>Apple.fun()<br>in java<br>AppleKt.fun()</p>
+<p>Apple.kt<br><code>val fun(name:String) {</code><br><code>println(name)</code><br><code>}</code><br>in kotlin<br><code>Apple.fun()</code><br>in java<br><code>AppleKt.fun()</code></p>
 <hr>
-<p>object关键词声明同时是单例的写法：<br>object Apple {<br>fun echo(name:String) {<br>println(name)<br>}<br>}<br>in kotlin<br>Apple.echo()<br>in java<br>Apple.INSTANCE.echo()</p>
+<p><code>object</code>关键词声明同时是单例的写法：<br><code>object Apple {</code><br><code>fun echo(name:String) {</code><br><code>println(name)</code><br><code>}</code><br><code>}</code><br>in kotlin<br><code>Apple.echo()</code><br>in java<br><code>Apple.INSTANCE.echo()</code></p>
 <hr>
-<p>kotlin中class作为参数的写法<br>fun main(args: Array&lt;String&gt;) {<br>test(JavaObject::class.java)<br>test(KotlinObject::class)<br>}<br>fun test(clazz: Class&lt;JavaObject&gt;) {<br>println(clazz.simpleName)<br>}<br>fun test(clazz: KClass&lt;KotlinObject&gt;) {<br>println(clazz.simpleName)<br>}</p>
+<p>kotlin中class作为参数的写法<br><code>fun main(args: Array&lt;String&gt;) {</code><br><code>test(JavaObject::class.java)</code><br><code>test(KotlinObject::class)</code><br><code>}</code><br><code>fun test(clazz: Class&lt;JavaObject&gt;) {</code><br><code>println(clazz.simpleName)</code><br><code>}</code><br><code>fun test(clazz: KClass&lt;KotlinObject&gt;) {</code><br><code>println(clazz.simpleName)</code><br><code>}</code></p>
 <hr>
-<p>java中的in变量在kotlin中是关键字<br>public class JavaObject {<br>public static final String in = “int”;<br>}<br>调用：<br>println(JavaObject.<code>in</code>)</p>
+<p>java中的in变量在kotlin中是关键字<br><code>public class JavaObject {</code><br><code>public static final String in = “int”;</code><br><code>}</code><br>调用：<br>println(JavaObject.<code>in</code>)</p>
 <hr>
 <p>kotlin是没有封装类的，比如Integer<br>如何通过反射去调用Integer类型</p>
 <p>在调用java代码的时候，在不确定是否是非空且安全的，一定要声明成可空安全的类型，如string？     string?.length<br>假设两种情况 :string    :string! (兼容类型，暂时存在)，就会导致报错</p>
 <hr>
-<p>用注解@jvmStatic，修饰类成员方法，可以让调用简化：<br>如：<br>object Test {<br>        @jvmStatic<br>fun test() {<br>}<br>}</p>
-<p>Test.test(),<br>假设不加注解@jvmStatic，调用就是Test.Instance.test()</p>
+<p>用注解@jvmStatic，修饰类成员方法，可以让调用简化：<br>如：<br><code>object Test {</code><br>        @jvmStatic<br><code>fun test() {</code><br><code>}</code><br><code>}</code></p>
+<p><code>Test.test(),</code><br>假设不加注解@jvmStatic，调用就是Test.Instance.test()</p>
 <hr>
-<p>函数<br>1 .函数可以省略{} 写在fun函数后面<br>fun getName(name: String = “me “):String?= “ hello “</p>
-<p>2.函数嵌套<br>不推荐使用，降低代码可读性<br><strong>在某些条件下触发递归的函数，或者不希望被外部函数访问到的函数，</strong><br>如，对外只是function，say不被外部函数访问<br>fun function() {<br>    val str = “hello”<br>    fun say(count: Int) {<br>        println(“$str,$count”)<br>        if (count &gt; 0) {<br>            say(count - 1)<br>        }<br>    }<br>    say(5)<br>}</p>
+<p>函数<br>1 .函数可以省略{} 写在fun函数后面<br><code>fun getName(name: String = “me “):String?= “ hello “</code></p>
+<p>2.函数嵌套<br>不推荐使用，降低代码可读性<br><strong>在某些条件下触发递归的函数，或者不希望被外部函数访问到的函数，</strong><br>如，对外只是function，say不被外部函数访问<br><code>fun function() {</code><br>    <code>val str = “hello”</code><br>    <code>fun say(count: Int) {</code><br>        <code>println(“$str,$count”)</code><br>        <code>if (count &gt; 0) {</code><br>            <code>say(count - 1)</code><br>        <code>}</code><br>    <code>}</code><br>    <code>say(5)</code><br><code>}</code></p>
 <hr>
-<p>扩展函数<br>静态的给一个类添加一个方法或者一个变量，不具备运行时多态<br>扩展成员方法，成员变量<br>fun KtObject.hello: String = “ hello “</p>
-<p>in java<br>KtObjectKt.hello(object)   有待验证</p>
+<p>扩展函数<br>静态的给一个类添加一个方法或者一个变量，不具备运行时多态<br>扩展成员方法，成员变量<br><code>fun KtObject.hello: String = “ hello “</code></p>
+<p>in java<br><code>KtObjectKt.hello(object)</code>有待验证</p>
 <hr>
-<p>闭包<br>val  echo = {<br>name: String -&gt;<br>println(name)<br>}<br>echo(“hello”)</p>
+<p>闭包<br><code>val  echo = {</code><br><code>name: String -&gt;</code><br><code>println(name)</code><br><code>}</code><br><code>echo(“hello”)</code></p>
 <p>原理：就是匿名内部类<br>lambda参数上限是22个，可以手动定义在延长这个上限</p>
 <hr>
 <p>高阶函数，<br>类里的方法可以当作参数赋值，<br>inline建议只用于高阶函数，不然会加重编译器的负担，等于把语句嵌进去</p>
-<p>inline fun onlyif(isDebug: Boolean, block: ()-&gt;Unit) {<br>    if (isDebug) {<br>        block()<br>    }<br>}<br>fun main(args: Array&lt;String&gt;) {  </p>
+<p><code>inline fun onlyif(isDebug: Boolean, block: ()-&gt;Unit) {</code><br>    <code>if (isDebug) {</code><br>        <code>block()</code><br>    <code>}</code><br><code>}</code><br><code>fun main(args: Array&lt;String&gt;) {</code>  </p>
 <pre><code>val runnable = Runnable {  
     println(&quot;runnable&quot;)  
 }  
@@ -260,13 +260,13 @@ function = runnable::run
 
 onlyif(true, function)  </code></pre><p>}</p>
 <hr>
-<p>类与对象<br>class A:B {}<br>open class</p>
-<p>open class(var int:Int): B(){<br>val v<br>init{<br>v = 5<br>}<br>constructor(int :Int):super(int)<br>constructor(int:int, str:String):this(int)</p>
+<p>类与对象<br><code>class A:B {}</code><br><code>open class</code></p>
+<p><code>open class(var int:Int): B(){</code><br><code>val v</code><br><code>init{</code><br><code>v = 5</code><br><code>}</code><br><code>constructor(int :Int):super(int)</code><br><code>constructor(int:int, str:String):this(int)</code></p>
 <p>}</p>
-<p>伴生对象，，，单例<br>kotlin 是没有static关键字的<br>private<br>protected<br>publick<br>internal 模块内可以访问，，，即module<br>伴生对象：<br>class A {<br>    companion object {<br>        fun isEmpty(str:String?): Boolean {}<br>    }<br>}</p>
-<p>kotlin A.isEmpty(xxx)<br>java A.Companion.isEmpty(xxx)  生成一个static对象Compantion</p>
+<p>伴生对象，，，单例<br>kotlin 是没有static关键字的<br><code>private</code><br><code>protected</code><br><code>publick</code><br><code>internal 模块内可以访问，，，即module</code><br>伴生对象：<br><code>class A {</code><br>    <code>companion object {</code><br>        <code>fun isEmpty(str:String?): Boolean {}</code><br>    <code>}</code><br><code>}</code></p>
+<p><code>kotlin A.isEmpty(xxx)</code><br><code>java A.Companion.isEmpty(xxx)</code>生成一个static对象Compantion</p>
 <p>伴生对象用来生成单例</p>
-<p>class Single private constructor() {<br>    companion object {<br>        fun get(): Single() {<br>            return Holder.instance<br>        }<br>    }<br>    private object Holder {<br>        val instance = Single()<br>    }<br>}</p>
+<p><code>class Single private constructor() {</code><br>    <code>companion object {</code><br>        <code>fun get(): Single() {</code><br>            <code>return Holder.instance</code><br>        <code>}</code><br>    <code>}</code><br>    <code>private object Holder {</code><br>        <code>val instance = Single()</code><br>    <code>}</code><br><code>}</code></p>
 <p>java动态代理就是指一般静态代理基础上，为了解决静态代理需要写很多代理方法带来的重复工作，从而利用放射在运行时自动去寻找对应的代理方法。<br>kotlin的动态代理 使用by关键字</p>
 <p>如果是以前java，一般做法是采用静态代理</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bark</span><span class="params">()</span></span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">jump</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>: <span class="type">Animal &#123;</span></span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">jump</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"jump"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">bark</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">"bark"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//静态代理类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zoo</span></span>(animal: Animal): Animal&#123;</span><br><span class="line">    <span class="keyword">var</span> mAnimal: Animal? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">init</span> &#123;</span><br><span class="line">        mAnimal = animal</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">jump</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mAnimal?.jump()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">bark</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mAnimal?.bark()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestAnimal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@JvmStatic</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">            Zoo(Dog()).bark()</span><br><span class="line">            Zoo(Dog()).jump()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

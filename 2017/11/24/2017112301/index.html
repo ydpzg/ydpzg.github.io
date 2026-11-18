@@ -230,9 +230,9 @@
 <p>1、listivew如果想在最前面加个view，要用addHeaderView，不要用在每个item里面通过设置gone和visible，因为这样会影响listview的渲染效率，特别是在使用noScrollListview的时候。</p>
 <p>2、scrollview嵌套listivew或者其他view的时候，一旦listview的数据发生改变，scrollview会滚到数据更新的那个位置，不让scrollview自己滚动的方法是：focusOn srcollview下面的子view。</p>
 <p>3、listview使用addHeaderView后，导致点击回调的position错乱，解决方法是，回调后去调</p>
-<p>position = (int) listview.getAdapter().getItemId(position);</p>
+<p><code>position = (int) listview.getAdapter().getItemId(position);</code></p>
 <p>而adatper里面要实现</p>
-<p>@Override<br>public long getItemId(int position) {<br>    // TODO Auto-generated method stub<br>    return position;<br>}</p>
+<p><code>@Override</code><br><code>public long getItemId(int position) {</code><br>    // TODO Auto-generated method stub<br>    <code>return position;</code><br><code>}</code></p>
 
       
     </div>
