@@ -148,6 +148,15 @@ python3 dify_demo.py agent "查询 order-1001 状态"
               <p>这个仓库是一份学习和集成样例，不是生产系统。退款端点不会执行真实退款，业务服务也没有真实用户体系、数据库、租户隔离、速率限制、持久化审计或完整的重试与恢复策略。上线前应逐项补齐，并确保 Dify 使用的网络地址和 API Key 范围符合部署环境。</p>
               <p>我会按风险从低到高推进：先做有来源可核验的知识问答，再接只读查询，然后引入带权限检查的业务请求；涉及资金或数据变更时，先让系统生成待审核操作，获得明确授权后才由业务后端执行。每一步都保留监控、告警和人工接管入口。</p>
 
+              <h2>项目迭代记录</h2>
+              <p>这个 Demo 也随着学习过程持续补充。下面几次提交记录了从“能跑起来”到“把凭证边界说清楚”的变化：</p>
+              <ul>
+                <li><a href="https://github.com/ydpzg/dify_demo/commit/3eff8d3" target="_blank" rel="noopener"><code>3eff8d3</code> 发布 Dify 业务接入 Demo</a>：加入 Dify API CLI、知识库检索、Agent、Workflow、Human Input、反馈接口和 mock 订单服务。</li>
+                <li><a href="https://github.com/ydpzg/dify_demo/commit/acd7755" target="_blank" rel="noopener"><code>acd7755</code> 解释用户 Token 传递</a>：区分 Dify 的 <code>user</code>、App API Key、工具服务凭证和真实业务用户 Token，并补充 BFF 转发与 Token Broker 两种方案。</li>
+                <li><a href="https://github.com/ydpzg/dify_demo/commit/4f9694d" target="_blank" rel="noopener"><code>4f9694d</code> 解释模型网关凭证流</a>：说明只有把 Dify Provider 的 Base URL 指向网关，网关中的供应商 Key 才真正参与请求；同时补充模型网关需要兼容普通响应、SSE、工具调用和错误码。</li>
+              </ul>
+              <p>这几次迭代的共同结论是：Dify 可以负责模型编排和工具调度，但凭证、身份、授权和真实业务副作用仍要由后端边界控制。</p>
+
               <h2>资料与代码</h2>
               <ul>
                 <li><a href="https://github.com/ydpzg/dify_demo" target="_blank" rel="noopener">项目仓库：Dify 业务接入 Demo</a></li>
