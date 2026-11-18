@@ -252,7 +252,7 @@ Your app bundle targets the following unrecognised languages: fb. The list of su
 <p>签名：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">signingConfigs</span> &#123;</span><br><span class="line">    <span class="section">release</span> &#123;</span><br><span class="line">        <span class="attribute">storeFile</span> file(<span class="string">'xxx.jks'</span>)</span><br><span class="line">        storePassword <span class="string">''</span></span><br><span class="line">        keyAlias <span class="string">''</span></span><br><span class="line">        keyPassword <span class="string">''</span></span><br><span class="line">        v1SigningEnabled <span class="literal">true</span></span><br><span class="line">        v2SigningEnabled <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">buildTypes &#123;</span><br><span class="line">    <span class="section">release</span> &#123;</span><br><span class="line">        <span class="attribute">signingConfig</span> signingConfigs.release</span><br><span class="line">        minifyEnabled <span class="literal">true</span></span><br><span class="line">        useProguard <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">注意混淆文件proguard-rules.pro的规则</span><br></pre></td></tr></table></figure>
 
-<p>app version 在<code>pubspec.yaml</code></p>
+<p>app version 在pubspec.yaml</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">version</span>: 1.0.0+100   <span class="string">//versionName</span>+<span class="keyword">version</span>Code</span><br></pre></td></tr></table></figure>
 
 <p>firebase：使用</p>
@@ -261,8 +261,8 @@ Your app bundle targets the following unrecognised languages: fb. The list of su
 <li>SingleChildScrollView外包一层Stack<br>不需要背景图片</li>
 <li>包一层SingleChildScrollView</li>
 </ul>
-<p>#点击事件问题<br><code>onPressed: testAction()</code>页面加载完会自动进入方法一次</p>
-<p><code>onPressed: () =&gt; testAction()</code>正常，页面加载结束不会进入方法</p>
+<p>#点击事件问题<br>onPressed: testAction() 页面加载完会自动进入方法一次</p>
+<p>onPressed: () =&gt; testAction()  正常，页面加载结束不会进入方法</p>
 <p>#try catch 不到问题</p>
 <p>await语法块里面才能呗try catch</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> api.xxx()</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">print</span>(e);  <span class="comment">//才能捕捉到xx里面的报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

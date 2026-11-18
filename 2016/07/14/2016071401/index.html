@@ -228,9 +228,9 @@
         <blockquote>
 <p>导入web service的证书到本地jdk的证书库里</p>
 </blockquote>
-<p>报错<br><code>com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names present</code><br>原因<br>ip的问题，如果是域名就没问题。<br>解决方案<br>jdk1.8 的话<br><code>HttpsURLConnection.setDefaultHostnameVerifier((hostname, session) -&gt; hostname.equals(“10.173.235.52”));</code></p>
+<p>报错<br>com.sun.xml.ws.client.ClientTransportException: HTTP 传输错误: javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names present<br>原因<br>ip的问题，如果是域名就没问题。<br>解决方案<br>jdk1.8 的话<br>在代码里面加入HttpsURLConnection.setDefaultHostnameVerifier((hostname, session) -&gt; hostname.equals(“10.173.235.52”));</p>
 <p>解决的链接<br><a href="http://stackoverflow.com/questions/10258101/sslhandshakeexception-no-subject-alternative-names-present" target="_blank" rel="noopener">http://stackoverflow.com/questions/10258101/sslhandshakeexception-no-subject-alternative-names-present</a></p>
-<p>报错<br>由于 accessExternalSchema 属性设置的限制而不允许 ‘file’ 访问, 因此无法读取方案文档 ‘xjc.xsd’。<br>解决方案<br>Create a file named <code>jaxp.properties</code> (if it doesn’t exist) under <code>/path/to/jdk1.8.0/jre/lib</code> and then write this line in it:<br><code>javax.xml.accessExternalSchema = all</code><br>解决的链接<br><a href="http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8" target="_blank" rel="noopener">http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8</a></p>
+<p>报错<br>由于 accessExternalSchema 属性设置的限制而不允许 ‘file’ 访问, 因此无法读取方案文档 ‘xjc.xsd’。<br>解决方案<br>Create a file named jaxp.properties (if it doesn’t exist) under /path/to/jdk1.8.0/jre/lib and then write this line in it:<br>javax.xml.accessExternalSchema = all<br>解决的链接<br><a href="http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8" target="_blank" rel="noopener">http://stackoverflow.com/questions/23011547/webservice-client-generation-error-with-jdk8</a></p>
 
       
     </div>

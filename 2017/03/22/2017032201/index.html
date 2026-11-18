@@ -228,9 +228,9 @@
         <blockquote>
 <p>utils的网络部分，其实比较简单，但是也是有坑，比如在post一些比较长的参数值的时候就会报错。</p>
 </blockquote>
-<p><code>x.http().post</code>这个会想当然认为就是指定了post，其实不完全，<br><code>requestParams.addBodyParameter(key, value)</code>里，默认是GET方式的body，也就是附到url上变成get方式的参数形式，也就导致了长的参数值会报错，比较url不支持那么长的值。</p>
+<p>x.http().post 这个会想当然认为就是指定了post，其实不完全，<br>requestParams.addBodyParameter(key, value)里，默认是GET方式的body，也就是附到url上变成get方式的参数形式，也就导致了长的参数值会报错，比较url不支持那么长的值。</p>
 <p>所以解决方法就是：requestParams.setMethod(HttpMethod.POST);<br>将requestParams变成post方式的键值对。</p>
-<p><code>ps：requestParams.toString</code>也不要随便调，会把参数值附到url上的。</p>
+<p>ps：requestParams.toString也不要随便调，会把参数值附到url上的。</p>
 
       
     </div>

@@ -245,7 +245,7 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SWIFT_CLASS(<span class="string">"_TtC16TestSwiftWifthOc9TestSwift"</span>)</span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">TestSwift</span> : <span class="title">NSObject</span></span></span><br><span class="line">- (<span class="keyword">nonnull</span> <span class="keyword">instancetype</span>)init OBJC_DESIGNATED_INITIALIZER;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 
 <p>7、最后找到了解决方法，在swift方法上加注解@objc，问题解决<br>、、、<br>import Foundation</p>
-<p><code>public class TestSwift : NSObject {</code><br>    <code>@objc func printLog() {</code><br>        <code>print(“hello”)</code><br>    <code>}</code><br><code>}</code><br>、、、</p>
+<p>public class TestSwift : NSObject {<br>    @objc func printLog() {<br>        print(“hello”)<br>    }<br>}<br>、、、</p>
 
       
     </div>
